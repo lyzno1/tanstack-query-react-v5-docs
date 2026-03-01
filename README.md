@@ -37,6 +37,8 @@ The sync script also generates `framework/react/examples/*` placeholder pages to
 
 ```bash
 pnpm install
+cp .env.example .env
+# set SITE_URL in .env before production build checks
 pnpm run sync:docs
 pnpm run build
 ```
@@ -56,12 +58,33 @@ pnpm run sync:docs -- --ref=v5.90.3
 
 A scheduled GitHub Actions workflow is included to run sync daily and open a PR when upstream changes are detected.
 
+## Environment variables
+
+- `SITE_URL`: production site origin, used to generate canonical URLs and sitemap entries.
+- Local development and build checks:
+
+```bash
+cp .env.example .env
+# edit .env and set your real deploy URL
+```
+
+- Vercel: set `SITE_URL` in Project Settings -> Environment Variables for at least `Production` (recommended: also `Preview`).
+
 ## Deploy to Vercel
 
 1. Push this repository to GitHub.
 2. Import the repo in Vercel.
 3. Build command: `pnpm run build`
 4. Output directory: `dist`
+5. Add environment variable `SITE_URL` (for example `https://<your-project>.vercel.app` or your custom domain).
+
+### Automatic deploys from `main`
+
+- This project is connected to Vercel Git Integration.
+- Every push to `main` triggers a Production Deployment automatically.
+- Pushes to non-`main` branches create Preview Deployments.
+- `vercel.json` is included to keep build/install/output behavior explicit and stable across environments.
+- Keep GitHub Actions focused on checks (build/lint) to avoid duplicate deployments from CI.
 
 ## Why not git submodule by default
 
