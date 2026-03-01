@@ -83,64 +83,159 @@ function normalizeInternalMarkdownLinks() {
 }
 
 /**
- * @param {any} config
- * @param {string} label
+ * @typedef {{label: string, link: string, route: string, score: number, index: number}} RankedLink
  */
-function getSection(config, label) {
-	const sections = Array.isArray(config?.sections) ? config.sections : [];
-	for (const section of sections) {
-		if (section?.label === label) return section;
-	}
-	return null;
-}
+
+const SORT_RULES = [
+	{ score: 0, pattern: /(^|\/)(overview|getting-started|quick-start|quickstart|installation)(\/|$)/ },
+	{ score: 1, pattern: /(^|\/)guide(s)?(\/|$)/ },
+	{ score: 2, pattern: /(^|\/)(api|reference)(\/|$)/ },
+	{ score: 3, pattern: /(^|\/)(plugin|plugins|eslint|example|examples|integration|integrations)(\/|$)/ },
+	{ score: 4, pattern: /(^|\/)(community|video|videos|faq|comparison)(\/|$)/ },
+];
 
 /**
- * @param {any} section
+ * @param {string} value
  */
-function getSectionEntries(section) {
-	return Array.isArray(section?.children) ? section.children : [];
+function scoreByKeywords(value) {
+	const normalized = value.trim().toLowerCase().replace(/\s+/g, '-');
+	for (const rule of SORT_RULES) {
+		if (rule.pattern.test(normalized)) return rule.score;
+	}
+	return 5;
 }
 
 /**
  * @param {any} section
  * @param {string} framework
  */
-function getFrameworkEntries(section, framework = 'react') {
+function getSectionDocEntries(section, framework = 'react') {
+	const shared = Array.isArray(section?.children) ? section.children : [];
 	const frameworks = Array.isArray(section?.frameworks) ? section.frameworks : [];
+	const frameworkChildren = [];
+
 	for (const item of frameworks) {
-		if (item?.label === framework) {
-			return Array.isArray(item?.children) ? item.children : [];
+		if (item?.label === framework && Array.isArray(item?.children)) {
+			frameworkChildren.push(...item.children);
 		}
 	}
-	return [];
+
+	return [...shared, ...frameworkChildren];
+}
+
+/**
+ * @param {RankedLink} a
+ * @param {RankedLink} b
+ */
+function compareRankedLinks(a, b) {
+	if (a.score !== b.score) return a.score - b.score;
+	return a.index - b.index;
 }
 
 /**
  * @param {Array<{label?: string, to?: string}>} entries
+ * @param {(route: string) => boolean} filterRoute
+ * @returns {RankedLink[]} Ranked links sorted by semantic priority.
  */
-function toSidebarLinks(entries) {
-	/** @type {Array<{label: string, link: string}>} */
-	const links = [];
+function toRankedSidebarLinks(entries, filterRoute) {
+	/** @type {Map<string, RankedLink>} */
+	const uniqueByRoute = new Map();
 
-	for (const entry of entries) {
+	for (let index = 0; index < entries.length; index += 1) {
+		const entry = entries[index];
 		if (typeof entry?.to !== 'string') continue;
-		links.push({
+		const route = entry.to.toLowerCase();
+		if (!filterRoute(route)) continue;
+
+		const candidate = {
 			label: entry.label || entry.to,
-			link: `/${entry.to.toLowerCase()}/`,
-		});
+			link: `/${route}/`,
+			route,
+			score: scoreByKeywords(route),
+			index,
+		};
+
+		const existing = uniqueByRoute.get(route);
+		if (!existing || compareRankedLinks(candidate, existing) < 0) {
+			uniqueByRoute.set(route, candidate);
+		}
 	}
 
-	return links;
+	return [...uniqueByRoute.values()].sort(compareRankedLinks);
 }
 
 /**
- * @param {string} label
- * @param {Array<any>} items
- * @param {boolean} [collapsed]
+ * @param {any} config
+ * @param {string} framework
+ * @param {(route: string) => boolean} filterRoute
  */
-function createGroup(label, items, collapsed = false) {
-	if (!items.length) return undefined;
-	return { label, items, collapsed };
+function collectSidebarSections(config, framework, filterRoute) {
+	const sections = Array.isArray(config?.sections) ? config.sections : [];
+	const grouped = [];
+
+	for (let sectionIndex = 0; sectionIndex < sections.length; sectionIndex += 1) {
+		const section = sections[sectionIndex];
+		const sectionEntries = getSectionDocEntries(section, framework);
+		const links = toRankedSidebarLinks(sectionEntries, filterRoute);
+		if (!links.length) continue;
+
+		const rawLabel =
+			typeof section?.label === 'string' && section.label.trim()
+				? section.label.trim()
+				: `Section ${sectionIndex + 1}`;
+
+		const sectionScore = Math.min(
+			scoreByKeywords(rawLabel),
+			...links.map((link) => link.score),
+		);
+
+		grouped.push({
+			label: rawLabel,
+			score: sectionScore,
+			index: sectionIndex,
+			items: links.map(({ label, link }) => ({ label, link })),
+		});
+	}
+
+	grouped.sort((a, b) => {
+		if (a.score !== b.score) return a.score - b.score;
+		return a.index - b.index;
+	});
+
+	return grouped;
+}
+
+/**
+ * @param {any} config
+ * @param {string} framework
+ * @param {(route: string) => boolean} filterRoute
+ */
+function collectFlatSidebarLinks(config, framework, filterRoute) {
+	const sections = Array.isArray(config?.sections) ? config.sections : [];
+	const allEntries = [];
+
+	for (const section of sections) {
+		allEntries.push(...getSectionDocEntries(section, framework));
+	}
+
+	return toRankedSidebarLinks(allEntries, filterRoute).map(({ label, link }) => ({
+		label,
+		link,
+	}));
+}
+
+/**
+ * @param {string} route
+ */
+function isReactDocsRoute(route) {
+	return route.startsWith('framework/react/') || route.startsWith('reference/');
+}
+
+/**
+ * @param {string} route
+ */
+function isEslintRoute(route) {
+	return route.startsWith('eslint/');
 }
 
 /**
@@ -154,43 +249,12 @@ function buildReactSidebar(config) {
 		};
 	}
 
-	const gettingStarted = toSidebarLinks(
-		getFrameworkEntries(getSection(config, 'Getting Started'), 'react')
-	);
-	const guides = toSidebarLinks(
-		getFrameworkEntries(getSection(config, 'Guides & Concepts'), 'react')
-	);
-	const apiSection = getSection(config, 'API Reference');
-	const apiCore = toSidebarLinks(getSectionEntries(apiSection));
-	const apiReact = toSidebarLinks(getFrameworkEntries(apiSection, 'react'));
-	const plugins = toSidebarLinks(getFrameworkEntries(getSection(config, 'Plugins'), 'react'));
-	const examples = toSidebarLinks(getFrameworkEntries(getSection(config, 'Examples'), 'react'));
-	const community = toSidebarLinks(
-		getFrameworkEntries(getSection(config, 'Community Resources'), 'react')
-	);
-
-	/** @type {Array<any>} */
-	const apiItems = [];
-	const coreGroup = createGroup('Core', apiCore);
-	const reactGroup = createGroup('React', apiReact);
-	if (coreGroup) apiItems.push(coreGroup);
-	if (reactGroup) apiItems.push(reactGroup);
-
-	/** @type {Array<any>} */
-	const items = [];
-	const gettingStartedGroup = createGroup('Getting Started', gettingStarted);
-	const guidesGroup = createGroup('Guides & Concepts', guides);
-	const apiGroup = createGroup('API Reference', apiItems);
-	const pluginsGroup = createGroup('Plugins', plugins, true);
-	const examplesGroup = createGroup('Examples', examples, true);
-	const communityGroup = createGroup('Community Resources', community, true);
-
-	if (gettingStartedGroup) items.push(gettingStartedGroup);
-	if (guidesGroup) items.push(guidesGroup);
-	if (apiGroup) items.push(apiGroup);
-	if (pluginsGroup) items.push(pluginsGroup);
-	if (examplesGroup) items.push(examplesGroup);
-	if (communityGroup) items.push(communityGroup);
+	const sections = collectSidebarSections(config, 'react', isReactDocsRoute);
+	const items = sections.map((section) => ({
+		label: section.label,
+		items: section.items,
+		collapsed: section.score >= 3,
+	}));
 
 	if (!items.length) {
 		return {
@@ -216,7 +280,7 @@ function buildEslintSidebar(config) {
 		};
 	}
 
-	const eslint = toSidebarLinks(getSectionEntries(getSection(config, 'ESLint Plugin Query')));
+	const eslint = collectFlatSidebarLinks(config, 'react', isEslintRoute);
 	if (!eslint.length) {
 		return {
 			label: 'ESLint',
