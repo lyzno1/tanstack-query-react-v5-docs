@@ -21,6 +21,68 @@ function readUpstreamDocsConfig() {
 }
 
 /**
+ * Rewrite internal markdown links to Starlight doc routes.
+ * Example:
+ * - ../reference/useQuery.md -> ../reference/usequery/
+ * - ../../guides/filters.md#query-filters -> ../../guides/filters/#query-filters
+ */
+function normalizeInternalMarkdownLinks() {
+	/**
+	 * @param {string} url
+	 */
+	function normalizeUrl(url) {
+		if (
+			url.startsWith('http://') ||
+			url.startsWith('https://') ||
+			url.startsWith('mailto:') ||
+			url.startsWith('tel:') ||
+			url.startsWith('#')
+		) {
+			return url;
+		}
+
+		const [beforeHash, hash = ''] = url.split('#');
+		const [pathname, query = ''] = beforeHash.split('?');
+		if (!/\.mdx?$/i.test(pathname)) return url;
+
+		const withoutExt = pathname.replace(/\.mdx?$/i, '');
+		const normalizedPath = withoutExt
+			.split('/')
+			.map((segment) => {
+				if (segment === '' || segment === '.' || segment === '..') return segment;
+				return segment.toLowerCase();
+			})
+			.join('/');
+		const withSlash = normalizedPath.endsWith('/') ? normalizedPath : `${normalizedPath}/`;
+		const queryPart = query ? `?${query}` : '';
+		const hashPart = hash ? `#${hash}` : '';
+		return `${withSlash}${queryPart}${hashPart}`;
+	}
+
+	/**
+	 * @param {any} node
+	 */
+	function walk(node) {
+		if (!node || typeof node !== 'object') return;
+
+		if (node.type === 'link' && typeof node.url === 'string') {
+			node.url = normalizeUrl(node.url);
+		}
+
+		const children = Array.isArray(node.children) ? node.children : [];
+		for (const child of children) {
+			walk(child);
+		}
+	}
+
+	return (
+		/** @type {any} */ tree,
+	) => {
+		walk(tree);
+	};
+}
+
+/**
  * @param {any} config
  * @param {string} label
  */
@@ -177,6 +239,9 @@ const sidebar = [
 // https://astro.build/config
 export default defineConfig({
 	site: process.env.SITE_URL || 'https://example.com',
+	markdown: {
+		remarkPlugins: [normalizeInternalMarkdownLinks],
+	},
 	integrations: [
 		starlight({
 			title: 'TanStack Query React v5 Docs',
