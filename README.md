@@ -1,49 +1,70 @@
-# Starlight Starter Kit: Basics
+# TanStack Query React v5 Docs Mirror
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+A standalone docs project that mirrors TanStack Query React v5 docs into a Starlight site.
 
+## Why this stack
+
+- **Starlight (Astro):** markdown-first, static output, easy free hosting.
+- **No platform lock-in:** deploy anywhere static hosting is supported.
+- **Automated sync:** scripted pull from upstream with version lock and integrity checks.
+
+## Project goals
+
+- Keep a local mirror of React v5 docs with minimal manual work.
+- Avoid missing pages during upstream sync.
+- Keep deploy path simple (`git push` -> auto deploy on hosting platform).
+
+## Synced sources
+
+From `https://github.com/TanStack/query`:
+
+- `docs/framework/react/**/*.md`
+- `docs/reference/**/*.md`
+- `docs/eslint/**/*.md`
+- `docs/community-resources.md` (if present in the tracked ref)
+- `docs/config.json` (metadata for validation and example redirects)
+
+The sync script also generates `framework/react/examples/*` placeholder pages to avoid broken internal links.
+
+## Commands
+
+- `pnpm run dev`: local preview
+- `pnpm run build`: production build
+- `pnpm run sync:docs`: sync docs from latest upstream v5 tag
+- `pnpm run sync:check`: check whether a newer upstream v5 tag exists
+
+## First setup
+
+```bash
+pnpm install
+pnpm run sync:docs
+pnpm run build
 ```
-npm create astro@latest -- --template starlight
+
+## Pin a specific ref
+
+```bash
+pnpm run sync:docs -- --ref=v5.90.3
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Maintenance workflow
 
-## 🚀 Project Structure
+1. `pnpm run sync:check`
+2. If update is available, run `pnpm run sync:docs`
+3. Run `pnpm run build`
+4. Commit and deploy
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+A scheduled GitHub Actions workflow is included to run sync daily and open a PR when upstream changes are detected.
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+## Deploy to Vercel
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+1. Push this repository to GitHub.
+2. Import the repo in Vercel.
+3. Build command: `pnpm run build`
+4. Output directory: `dist`
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## Why not git submodule by default
 
-Static assets, like favicons, can be placed in the `public/` directory.
+Submodule can track upstream repository state, but this project needs filtered sync + generated example redirect pages + validation. A sync script gives stricter guarantees for what gets deployed.
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+If you still prefer submodule, add upstream as a submodule and adapt the sync script to read from submodule path instead of cloning.

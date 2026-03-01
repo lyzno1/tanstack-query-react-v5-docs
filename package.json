@@ -2,12 +2,16 @@
   "name": "tanstack-query-react-v5-docs",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.30.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "check": "astro check",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync:docs": "node scripts/sync-tanstack-query-react-v5.mjs",
+    "sync:check": "node scripts/check-upstream-update.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.37.6",

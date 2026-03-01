@@ -1,0 +1,50 @@
+name: Sync TanStack Query React v5 Docs
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 3 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Sync upstream docs
+        run: pnpm run sync:docs
+
+      - name: Build site
+        run: pnpm run build
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: 'chore: sync TanStack Query React v5 docs'
+          branch: chore/sync-query-react-v5-docs
+          title: 'chore: sync TanStack Query React v5 docs'
+          body: |
+            Automated sync from upstream TanStack Query v5 docs.
+
+            - Ran `pnpm run sync:docs`
+            - Ran `pnpm run build`
