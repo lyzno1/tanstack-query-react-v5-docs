@@ -9,7 +9,7 @@
   --sl-content-gap-y: 1.125rem;
   --sl-nav-height: 3.5rem;
   --sl-sidebar-width: 18rem;
-  --sl-right-sidebar-width: 15rem;
+  --sl-right-sidebar-width: 12rem;
 
   --sl-color-white: #ececec;
   --sl-color-gray-1: #d1d1d1;
@@ -183,10 +183,6 @@ header.header {
   border-inline-start: 1px solid var(--sl-color-hairline-light);
 }
 
-:root[data-has-sidebar][data-has-toc] .right-sidebar-panel {
-  --sl-sidebar-width: var(--sl-right-sidebar-width);
-}
-
 .right-sidebar-panel a[aria-current='true'] {
   color: var(--sl-color-text-accent);
 }
@@ -242,8 +238,12 @@ button[data-open-modal] {
 }
 
 @media (min-width: 72rem) {
-  :root[data-has-sidebar][data-has-toc] :is(.right-sidebar-container, .main-pane) {
+  :root[data-has-sidebar][data-has-toc] :is(.right-sidebar-container, .main-pane, .right-sidebar-panel) {
     --sl-sidebar-width: var(--sl-right-sidebar-width);
+  }
+
+  :root[data-has-sidebar][data-has-toc] .right-sidebar-panel .sl-container {
+    width: min(100%, 16rem);
   }
 }
 
