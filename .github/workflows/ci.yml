@@ -31,6 +31,9 @@ jobs:
       - name: Astro check
         run: pnpm run check
 
+      - name: Lint
+        run: pnpm run lint
+
       - name: Translation integrity check
         run: pnpm run i18n:check
 
