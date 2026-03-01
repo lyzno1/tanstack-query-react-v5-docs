@@ -9,6 +9,7 @@
   --sl-content-gap-y: 1.125rem;
   --sl-nav-height: 3.5rem;
   --sl-sidebar-width: 18rem;
+  --sl-right-sidebar-width: 15rem;
 
   --sl-color-white: #ececec;
   --sl-color-gray-1: #d1d1d1;
@@ -182,6 +183,10 @@ header.header {
   border-inline-start: 1px solid var(--sl-color-hairline-light);
 }
 
+:root[data-has-sidebar][data-has-toc] .right-sidebar-panel {
+  --sl-sidebar-width: var(--sl-right-sidebar-width);
+}
+
 .right-sidebar-panel a[aria-current='true'] {
   color: var(--sl-color-text-accent);
 }
@@ -190,6 +195,11 @@ nav.sidebar summary,
 nav.sidebar a {
   border-radius: 0.5rem;
   transition: background-color 180ms ease, color 180ms ease;
+}
+
+nav.sidebar a {
+  box-sizing: border-box;
+  border: 1px solid transparent;
 }
 
 nav.sidebar summary:hover,
@@ -207,7 +217,8 @@ nav.sidebar a[aria-current='page']:hover,
 nav.sidebar a[aria-current='page']:focus {
   background: var(--sl-color-accent-low);
   color: var(--sl-color-white);
-  border: 1px solid var(--sl-color-hairline);
+  border-color: var(--sl-color-hairline);
+  font-weight: inherit;
 }
 
 button[data-open-modal] {
@@ -216,6 +227,10 @@ button[data-open-modal] {
 }
 
 @media (min-width: 50rem) {
+  :root[data-has-sidebar][data-has-toc] {
+    --__toc-width: var(--sl-right-sidebar-width);
+  }
+
   button[data-open-modal] {
     border-color: var(--sl-color-hairline);
     background: var(--sl-color-accent-low);
@@ -223,6 +238,12 @@ button[data-open-modal] {
 
   button[data-open-modal]:hover {
     border-color: var(--sl-color-gray-3);
+  }
+}
+
+@media (min-width: 72rem) {
+  :root[data-has-sidebar][data-has-toc] :is(.right-sidebar-container, .main-pane) {
+    --sl-sidebar-width: var(--sl-right-sidebar-width);
   }
 }
 
