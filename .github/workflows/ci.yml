@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +27,20 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Astro check
+        run: pnpm run check
+
+      - name: Translation integrity check
+        run: pnpm run i18n:check
+
+      - name: Upstream update probe (non-blocking)
+        run: |
+          if pnpm run sync:check; then
+            echo "Upstream ref is up to date."
+          else
+            echo "::notice::A newer upstream v5 tag is available. Run pnpm run sync:docs."
+          fi
 
       - name: Build
         run: pnpm run build

@@ -25,7 +25,11 @@ function readUpstreamDocsConfig() {
  * @param {string} label
  */
 function getSection(config, label) {
-	return config?.sections?.find((section) => section?.label === label);
+	const sections = Array.isArray(config?.sections) ? config.sections : [];
+	for (const section of sections) {
+		if (section?.label === label) return section;
+	}
+	return null;
 }
 
 /**
@@ -41,20 +45,30 @@ function getSectionEntries(section) {
  */
 function getFrameworkEntries(section, framework = 'react') {
 	const frameworks = Array.isArray(section?.frameworks) ? section.frameworks : [];
-	const target = frameworks.find((item) => item?.label === framework);
-	return Array.isArray(target?.children) ? target.children : [];
+	for (const item of frameworks) {
+		if (item?.label === framework) {
+			return Array.isArray(item?.children) ? item.children : [];
+		}
+	}
+	return [];
 }
 
 /**
  * @param {Array<{label?: string, to?: string}>} entries
  */
 function toSidebarLinks(entries) {
-	return entries
-		.filter((entry) => typeof entry?.to === 'string')
-		.map((entry) => ({
+	/** @type {Array<{label: string, link: string}>} */
+	const links = [];
+
+	for (const entry of entries) {
+		if (typeof entry?.to !== 'string') continue;
+		links.push({
 			label: entry.label || entry.to,
 			link: `/${entry.to.toLowerCase()}/`,
-		}));
+		});
+	}
+
+	return links;
 }
 
 /**
@@ -63,10 +77,13 @@ function toSidebarLinks(entries) {
  * @param {boolean} [collapsed]
  */
 function createGroup(label, items, collapsed = false) {
-	if (!items.length) return null;
+	if (!items.length) return undefined;
 	return { label, items, collapsed };
 }
 
+/**
+ * @param {any} config
+ */
 function buildReactSidebar(config) {
 	if (!config) {
 		return {
@@ -90,19 +107,28 @@ function buildReactSidebar(config) {
 		getFrameworkEntries(getSection(config, 'Community Resources'), 'react')
 	);
 
-	const apiItems = [
-		createGroup('Core', apiCore),
-		createGroup('React', apiReact),
-	].filter(Boolean);
+	/** @type {Array<any>} */
+	const apiItems = [];
+	const coreGroup = createGroup('Core', apiCore);
+	const reactGroup = createGroup('React', apiReact);
+	if (coreGroup) apiItems.push(coreGroup);
+	if (reactGroup) apiItems.push(reactGroup);
 
-	const items = [
-		createGroup('Getting Started', gettingStarted),
-		createGroup('Guides & Concepts', guides),
-		createGroup('API Reference', apiItems),
-		createGroup('Plugins', plugins, true),
-		createGroup('Examples', examples, true),
-		createGroup('Community Resources', community, true),
-	].filter(Boolean);
+	/** @type {Array<any>} */
+	const items = [];
+	const gettingStartedGroup = createGroup('Getting Started', gettingStarted);
+	const guidesGroup = createGroup('Guides & Concepts', guides);
+	const apiGroup = createGroup('API Reference', apiItems);
+	const pluginsGroup = createGroup('Plugins', plugins, true);
+	const examplesGroup = createGroup('Examples', examples, true);
+	const communityGroup = createGroup('Community Resources', community, true);
+
+	if (gettingStartedGroup) items.push(gettingStartedGroup);
+	if (guidesGroup) items.push(guidesGroup);
+	if (apiGroup) items.push(apiGroup);
+	if (pluginsGroup) items.push(pluginsGroup);
+	if (examplesGroup) items.push(examplesGroup);
+	if (communityGroup) items.push(communityGroup);
 
 	if (!items.length) {
 		return {
@@ -117,6 +143,9 @@ function buildReactSidebar(config) {
 	};
 }
 
+/**
+ * @param {any} config
+ */
 function buildEslintSidebar(config) {
 	if (!config) {
 		return {
@@ -143,10 +172,6 @@ const upstreamDocsConfig = readUpstreamDocsConfig();
 const sidebar = [
 	buildReactSidebar(upstreamDocsConfig),
 	buildEslintSidebar(upstreamDocsConfig),
-	{
-		label: 'Project',
-		items: [{ label: 'Sync Status', slug: 'sync-status' }],
-	},
 ];
 
 // https://astro.build/config
@@ -154,8 +179,19 @@ export default defineConfig({
 	site: process.env.SITE_URL || 'https://example.com',
 	integrations: [
 		starlight({
-			title: 'TanStack Query React v5 Mirror',
-			description: 'Unofficial mirror of TanStack Query React v5 docs with automated upstream sync.',
+			title: 'TanStack Query React v5 Docs',
+			description: 'TanStack Query React v5 documentation with automated upstream synchronization.',
+			defaultLocale: 'root',
+			locales: {
+				root: {
+					label: 'English',
+					lang: 'en',
+				},
+				zh: {
+					label: '简体中文',
+					lang: 'zh-CN',
+				},
+			},
 			customCss: ['./src/styles/theme.css'],
 			social: [
 				{

@@ -1,6 +1,6 @@
-# TanStack Query React v5 Docs Mirror
+# TanStack Query React v5 Docs
 
-A standalone docs project that mirrors TanStack Query React v5 docs into a Starlight site.
+A standalone docs project that syncs TanStack Query React v5 docs into a Starlight site.
 
 ## Why this stack
 
@@ -10,7 +10,7 @@ A standalone docs project that mirrors TanStack Query React v5 docs into a Starl
 
 ## Project goals
 
-- Keep a local mirror of React v5 docs with minimal manual work.
+- Keep a local synchronized copy of React v5 docs with minimal manual work.
 - Avoid missing pages during upstream sync.
 - Keep deploy path simple (`git push` -> auto deploy on hosting platform).
 
@@ -85,9 +85,3 @@ cp .env.example .env
 - Pushes to non-`main` branches create Preview Deployments.
 - `vercel.json` is included to keep build/install/output behavior explicit and stable across environments.
 - Keep GitHub Actions focused on checks (build/lint) to avoid duplicate deployments from CI.
-
-## Why not git submodule by default
-
-Submodule can track upstream repository state, but this project needs filtered sync + generated example redirect pages + validation. A sync script gives stricter guarantees for what gets deployed.
-
-If you still prefer submodule, add upstream as a submodule and adapt the sync script to read from submodule path instead of cloning.

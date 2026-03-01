@@ -1,9 +1,9 @@
 ---
 title: Sync Status
-description: Upstream synchronization metadata for this mirror.
+description: Upstream synchronization metadata for this docs site.
 ---
 
-This mirror tracks TanStack Query React docs from the v5 release line.
+This site tracks TanStack Query React docs from the v5 release line.
 
 - Upstream repo: [https://github.com/TanStack/query.git](https://github.com/TanStack/query.git)
 - Tracking strategy: `latest-v5-tag`

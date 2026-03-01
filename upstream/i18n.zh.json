@@ -1,0 +1,462 @@
+{
+  "locale": "zh",
+  "sourceRef": "v5.90.3",
+  "generatedAt": "2026-03-01T07:21:53.046Z",
+  "translations": {
+    "eslint/eslint-plugin-query.md": {
+      "hash": "77b8f7f8fe843c2cc26d4f29284272e832c54b480cfbbd3051f2aaa7262f7dc0",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "eslint/exhaustive-deps.md": {
+      "hash": "9ea85b5cf98ee83c1976ecb6b83071ad7d8012ef09e1fce6f2e5402371f30f9e",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "eslint/infinite-query-property-order.md": {
+      "hash": "3640888d103bd8997d074863efa30374ec634db80230df865708df35fddd82e6",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "eslint/no-rest-destructuring.md": {
+      "hash": "c75c9a3a0e0a88e88a5f17c59c9bedb1f716be4215e5103300fdd730f2a91f14",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "eslint/no-unstable-deps.md": {
+      "hash": "02f9a9a886bd4770969091541f01d6b1d099ba962e31d89b3f309f395473f7ea",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "eslint/no-void-query-fn.md": {
+      "hash": "4fecc9433aef965fee18a7576bffeef66441e55cc8437c2ea91abb4c1c901d7d",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "eslint/stable-query-client.md": {
+      "hash": "c1dfb2a1e569e8b729ffa61c1334936d731d2dc06bb730c5b18c752007ff148e",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/community/community-projects.md": {
+      "hash": "40845315a8876c5796c8c3418f0eb45f1232aab0b14ea74450fcf5db7485db03",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/community/tkdodos-blog.md": {
+      "hash": "0254e821df8bcb8357a84057c8796128c7ed1b1e17f660ac145d7212fc13bea8",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/comparison.md": {
+      "hash": "bd907b17d86496d056097216d222f062343973506a3a4caf9c0cd2a8aa7659c1",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/devtools.md": {
+      "hash": "29b4d1cb9e9cffd1fc44be2e2080ec77c64b4b85be5edbe17755282046dc290d",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/graphql.md": {
+      "hash": "305999891fd5ef4d823fcc8ecb7f3f04e913e8cc09c0fddf2e398f21b1b1b3db",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/advanced-ssr.md": {
+      "hash": "d2b60a8cb55729f73e54c59518457ebd6d0949c6fd96496270cf78176457e18a",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/background-fetching-indicators.md": {
+      "hash": "382050352efa8cddccad4b3984c67848657470da878c283ea8f3a178372e8f6a",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/caching.md": {
+      "hash": "9001989b7ed68c70aa3873fd110104718d55392121e9238647578fa5316e0dba",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/default-query-function.md": {
+      "hash": "da695c29a919b2237501d92eeb57f44534c2d0ab70e55618a1c61956ffdc9d73",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/dependent-queries.md": {
+      "hash": "20c9113ab3f25481fb5298c6c36da2efd92525d0cbcf5d484073c70751864168",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/disabling-queries.md": {
+      "hash": "2ac06e279df6db4ac7b3abade980e24d21f8ef8453b9bd42273fda8087f121ca",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/does-this-replace-client-state.md": {
+      "hash": "e839285d23777e13420d5d291b1cdf8f49642509c5ee569f8a88074ac6adb2b9",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/filters.md": {
+      "hash": "6789540681506d95b701e56c6f04dc9808faacb8c9c038429ccd48861b92a067",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/important-defaults.md": {
+      "hash": "8b2f7a5752c576e87fb22f5365fce6592540ea9313dcbd3a9d4ceb7faa866c34",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/infinite-queries.md": {
+      "hash": "64073828df79abc313624be94e0ea3257a3b0394b4a36766d33e31a58608d3b0",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/initial-query-data.md": {
+      "hash": "a4de3908b66a613bace5fed051f93a0b1be1215fedf635cbb2a94613c4aa69ee",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/invalidations-from-mutations.md": {
+      "hash": "f49fac522e92585ddd0f6c142d543fbd4bc56b5d8c2d397c2703c8c01b90ea17",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/migrating-to-react-query-3.md": {
+      "hash": "e94de1ea594743578b158a394f49b7ab7ad50d985924cfd5f2ce8bdc209b6c7a",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/migrating-to-react-query-4.md": {
+      "hash": "c64fa6be6f86a27650d480be17fec4955a7113be10528f99f60738aeba56d4b7",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:21:53.046Z"
+    },
+    "framework/react/guides/migrating-to-v5.md": {
+      "hash": "ad69ae96a8c5e7ab2c6cdbb11a9b6646250f921afce8ca4d8dbfb0e322556ffd",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/mutations.md": {
+      "hash": "bf19671447366fa67967ceeb74de580c4d7e3c3217280c65984a956b939702eb",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/network-mode.md": {
+      "hash": "0bc75cad2b61e222074a2d4dbca68f333e5773d3d90f55d3eddd11f7853e00aa",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/optimistic-updates.md": {
+      "hash": "15bc398ce50a602b8447683d30933dba4f3d9c391ba13ccc4117eb006b102b71",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/paginated-queries.md": {
+      "hash": "656f0a1f3e4e1b49fa42a2562e0a554c19aa09cd65bc7f87c47bccd89f023d5f",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/parallel-queries.md": {
+      "hash": "e3380ec66bb9af46f0ad66fdd8abb4a956d71a4ba45f9010287ac17505933074",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/placeholder-query-data.md": {
+      "hash": "e051631eba8661aa5442249fd1d5e877061cbef3ef379cc6e2dccc36713e4b54",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/prefetching.md": {
+      "hash": "4f863e6b667bd7a6680d8e37ae66d2d8bc05e9cd490ce14c502b3c25ee3fa1c1",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/queries.md": {
+      "hash": "7e9d39b3c2a34bd872b9bac0f7dbb274c0d6d430dba9a0a0d6a18c414ee4db11",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/query-cancellation.md": {
+      "hash": "94c7f7f523f1d2c742c86c12fe001839ffcbb0e206ef8935d1428aaf724e10ab",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/query-functions.md": {
+      "hash": "59d0979caf356c3d88720af8e539d6ebba161369ec475668898276ea5dda2b8f",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/query-invalidation.md": {
+      "hash": "e00c3f205c131ba26b1dede60a4d78acb62a2c8f11fbd5bc8cd1fb781cdfe895",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/query-keys.md": {
+      "hash": "e02b6d0101431f3a4221fefa0a4bbc331f7d940c4779cf0c8b15492395fe5a72",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/query-options.md": {
+      "hash": "4d9b49d2ad4a34e7847aa6d23642647fd3a2dbbbad48d39e2a7a376cee1be6f1",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/query-retries.md": {
+      "hash": "4681a0b430947210498fa3d1354c75b4ef4d088c2224a434b5ab5c559d95821e",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/render-optimizations.md": {
+      "hash": "a7752c4c95d36ab4b180446b1b9592327287c8b1ad2a854b00254e5b5023f701",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/request-waterfalls.md": {
+      "hash": "14b2e5cfb6612af6b378b49338592597ccb5daa2b2b3e12fba4a8ff25796dcf6",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/scroll-restoration.md": {
+      "hash": "4ea81187d0fc54ed3a6bab73c525b171847f7ef20817648f8cef92a058bf10f2",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/ssr.md": {
+      "hash": "95363fa22c0dfac564703848137a5d094d9d12fd75e100139456f8f9093f7c61",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/suspense.md": {
+      "hash": "93a5597ea2cb791eac02990b1830a84d08ffce2f0a84912bacaeae342993f51a",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/testing.md": {
+      "hash": "f4012179c6ed4bf087622d5dc1c9c8367ade61afae80dca9f2e3771b5fed79ec",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/updates-from-mutation-responses.md": {
+      "hash": "1430feeac806246d3a839e3b3b16db1e573db888c877320796d2b41c9934d1d8",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/guides/window-focus-refetching.md": {
+      "hash": "cfdb00a9a9515efe21c03d3bafc377b21d6bc88c8ff21a2c62d53005f4f9723e",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/installation.md": {
+      "hash": "8bb3ab5c4ea0955dfe783bdf8b495ad9eb06337d99560a1ed25d3e86c6383d6a",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/overview.md": {
+      "hash": "3aa7ee1b3afa01f1637007b250a8c89883523538ac299edd982fef0dcdfd8aca",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/plugins/broadcastQueryClient.md": {
+      "hash": "e0a64b9939bca6b14d25c1f0071bf4642afbe5e15986efd76d0ce830541cc935",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/plugins/createAsyncStoragePersister.md": {
+      "hash": "d3148d03de20057a3a35f575be7f6fb4a25f680bdd3d7ef626ea2298f55abbe2",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/plugins/createPersister.md": {
+      "hash": "62b1d064d4fcd4f3dd0e7649bd40e4cfdecb3039b7e18b42ce85b32a83601c24",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/plugins/createSyncStoragePersister.md": {
+      "hash": "40ba179988da3dc593d8360cb2cc147efc023bebbeb4111e0f57b2202b6f612a",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/plugins/persistQueryClient.md": {
+      "hash": "f8ab3a7f119a8bb3905826cc00aa7aab87838dbbb04d7dc842e9eecdc1130734",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/quick-start.md": {
+      "hash": "875da51e7536106f3148361ff7a6b41ca412298d432d8e4fb96e4589a24533fc",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/react-native.md": {
+      "hash": "ba79835aa68a10cf2cf4a9c4540bd4825701a9cdd285a2c0a55d62149794b658",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/QueryClientProvider.md": {
+      "hash": "88392d3389c87ab221dcca5390d32fae5200b0b0f7757456f27652922d6d8f4c",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/QueryErrorResetBoundary.md": {
+      "hash": "3ecc98d707a57fd2609794fc6169b00023649268789632a1f902be6d297f4211",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/hydration.md": {
+      "hash": "9b00b510243dce7c5a5cd17ec503be3918a46708f2cd1a514ea596d72ddc8d52",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/infiniteQueryOptions.md": {
+      "hash": "3397d4776faf3509ff0eee0bccd736fbc6705615b0d09ac4d92474b6ec6f12e4",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/mutationOptions.md": {
+      "hash": "31dd0a1478fb0c81e173456d419caaacfad27582ade2ea7301549b12e7b9c1b2",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/queryOptions.md": {
+      "hash": "6566582ce14963502fa9c88bed8fff2079256e85e27015d5f300718bc96a03b3",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useInfiniteQuery.md": {
+      "hash": "18bb1024b70aa3849ef956cf37f75072aac88c99458b7959364f12c54441ba4f",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useIsFetching.md": {
+      "hash": "12fd3b07f851c83381ce426b71fdb0a01bddef1e633d5e187627fbb6e34f726d",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useIsMutating.md": {
+      "hash": "af5d718588c544d884d3c246265897a05f69f5ffcbde4edcf3886912ab68708e",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useMutation.md": {
+      "hash": "d8350e2e7a74cfa1bb154458ed955b05dda4be83f3067800797f1b9a9bc3c839",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useMutationState.md": {
+      "hash": "0ac2ff1e7a95d3b5a211f92824e467ad1a9968328ac4fd88cb22467a6279d530",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/usePrefetchInfiniteQuery.md": {
+      "hash": "054ea49f1891e4bcecf5c872ea29ddb2484f995e03c6bb6983a011d86c36aec9",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/usePrefetchQuery.md": {
+      "hash": "10cbd4f5a64ea597ea28a0306e1b674442cde34b6fa4e39ba57db360e614d2da",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useQueries.md": {
+      "hash": "a23aaec418ef584b397e130a6bb38a93bf5eecfae7839f7612bff8677c809da2",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useQuery.md": {
+      "hash": "92cbc1f9cabb80891d6cf0500e386a578326675ca84b820e4b974fd5b19d30d4",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useQueryClient.md": {
+      "hash": "57e20f5c63ac769e4e423d59f8a1d0dfe3855c9f0f760b813aeba514f5bc049b",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useQueryErrorResetBoundary.md": {
+      "hash": "489874ab6044c78f5ccd7faa6b65c409414c789947490a3451db34f91ac6cc39",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useSuspenseInfiniteQuery.md": {
+      "hash": "fe00e1c23f78f173ae76ddc3ce5ec6f6358c0431d0ba0abc6a266c7a6cd74bd8",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useSuspenseQueries.md": {
+      "hash": "f939a399b79d004dbc04ce0ff177ad3ca08e2fdbbdd2aff38cc9044a1a24e9a4",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/reference/useSuspenseQuery.md": {
+      "hash": "b6a9a58bb2c5b10c0cfa8c0ffc6ed693f1ef00738624119e17e65c3df4ceaa72",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/typescript.md": {
+      "hash": "a6ab2cd793efbc78b0da5e863d99763b058bd91cc4275ec4514321dad768cc57",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "framework/react/videos.md": {
+      "hash": "ae27ac7b10da98c72443e18d3b3524e464a213ffbcd315f67c8b3e5932055a37",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/InfiniteQueryObserver.md": {
+      "hash": "aca49fb9044d16991ad99bd92c6bfe1b7f9f909718184327936031b3958d848a",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/MutationCache.md": {
+      "hash": "8f6964ee32b5ca01b1dc6d2ce99792dcf3d6abf6244a37216ba87a003e253e11",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/QueriesObserver.md": {
+      "hash": "538febbb2e7c3a99827da9294f93ef50b75ee2303685bfd0cf0343ec34adefa6",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/QueryCache.md": {
+      "hash": "1ce35e2039747081c28c9aa1753cb286b10f88fbda9258e739184c9bbd778a11",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/QueryClient.md": {
+      "hash": "b0a3e940dd8fa648f8d4e1e255e715f906b0456931589f93b82756499a89ad35",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/QueryObserver.md": {
+      "hash": "36deff470afec7c6884cd7691b0221fa36e56552726616704483b1ae0ef97d8d",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/focusManager.md": {
+      "hash": "d8b81b4d3f53a12a95713ec70a315fb7f261c7b42906e6bab9c5ed5198f8af90",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/notifyManager.md": {
+      "hash": "ec4f118c66a4d7e08f781e3260bf5a40459b9f0a2b5d0fb2701b57a4914652df",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/onlineManager.md": {
+      "hash": "b15d65c26fc20a4f28d5a0dfc135c23137bd4ad8ecf885d88426d26ddfd82d0b",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/streamedQuery.md": {
+      "hash": "221cd1b2d05e8d74d4fa18909ab8958e7b21c4508dd2cf8dd621225ea41342b1",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    },
+    "reference/timeoutManager.md": {
+      "hash": "2a2f970daa130ed0f76c118fc85193f51266a87614f742fd55b837d48b62431e",
+      "sourceRef": "v5.90.3",
+      "translatedAt": "2026-03-01T07:14:51.116Z"
+    }
+  }
+}

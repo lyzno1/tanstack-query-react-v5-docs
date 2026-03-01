@@ -60,7 +60,7 @@ Shape:
 
 ## Scope Rules
 
-- Treat upstream mirrored paths as source of truth:
+- Treat upstream synchronized paths as source of truth:
   - `framework/react/**`
   - `reference/**`
   - `eslint/**`

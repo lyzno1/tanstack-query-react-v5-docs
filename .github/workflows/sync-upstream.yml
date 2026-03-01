@@ -34,6 +34,9 @@ jobs:
       - name: Sync upstream docs
         run: pnpm run sync:docs
 
+      - name: Astro check
+        run: pnpm run check
+
       - name: Build site
         run: pnpm run build
 
@@ -47,4 +50,5 @@ jobs:
             Automated sync from upstream TanStack Query v5 docs.
 
             - Ran `pnpm run sync:docs`
+            - Ran `pnpm run check`
             - Ran `pnpm run build`
