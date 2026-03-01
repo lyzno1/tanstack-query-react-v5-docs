@@ -1,100 +1,466 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,450;8..60,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap');
 
 :root {
-  --sl-font: 'Space Grotesk';
-  --sl-font-mono: 'IBM Plex Mono';
-  --sl-color-accent-low: hsl(181, 61%, 18%);
-  --sl-color-accent: hsl(181, 68%, 47%);
-  --sl-color-accent-high: hsl(181, 78%, 78%);
-  --sl-color-bg: hsl(196, 32%, 8%);
-  --sl-color-bg-nav: hsl(196, 30%, 11%);
-  --sl-color-bg-sidebar: hsl(196, 30%, 11%);
-  --sl-color-text: hsl(195, 18%, 84%);
-  --sl-color-text-accent: hsl(181, 78%, 78%);
+  --sl-font: 'IBM Plex Sans';
+  --sl-font-mono: 'JetBrains Mono';
+  --sl-line-height: 1.7;
+  --sl-line-height-headings: 1.15;
+  --sl-content-width: 48rem;
+  --sl-content-gap-y: 1.125rem;
+  --sl-nav-height: 4rem;
+  --sl-sidebar-width: 19.5rem;
+  --surface-glass: hsl(216 28% 12% / 0.74);
+  --surface-raised: hsl(217 31% 14%);
+  --surface-muted: hsl(216 24% 17%);
+  --surface-quote: hsl(214 33% 13% / 0.86);
+  --surface-quote-strong: hsl(207 92% 72%);
+  --ring-strong: hsl(206 94% 67% / 0.85);
+
+  --sl-color-white: hsl(210 28% 97%);
+  --sl-color-gray-1: hsl(212 24% 90%);
+  --sl-color-gray-2: hsl(214 16% 79%);
+  --sl-color-gray-3: hsl(214 13% 63%);
+  --sl-color-gray-4: hsl(216 14% 44%);
+  --sl-color-gray-5: hsl(217 20% 22%);
+  --sl-color-gray-6: hsl(218 27% 13%);
+  --sl-color-black: hsl(220 38% 7%);
+
+  --sl-hue-orange: 32;
+  --sl-color-orange-low: hsl(var(--sl-hue-orange) 65% 17%);
+  --sl-color-orange: hsl(var(--sl-hue-orange) 96% 66%);
+  --sl-color-orange-high: hsl(var(--sl-hue-orange) 100% 88%);
+  --sl-hue-green: 154;
+  --sl-color-green-low: hsl(var(--sl-hue-green) 54% 16%);
+  --sl-color-green: hsl(var(--sl-hue-green) 76% 58%);
+  --sl-color-green-high: hsl(var(--sl-hue-green) 88% 83%);
+  --sl-hue-blue: 211;
+  --sl-color-blue-low: hsl(var(--sl-hue-blue) 66% 19%);
+  --sl-color-blue: hsl(var(--sl-hue-blue) 92% 63%);
+  --sl-color-blue-high: hsl(var(--sl-hue-blue) 98% 84%);
+  --sl-hue-purple: 264;
+  --sl-color-purple-low: hsl(var(--sl-hue-purple) 46% 20%);
+  --sl-color-purple: hsl(var(--sl-hue-purple) 84% 69%);
+  --sl-color-purple-high: hsl(var(--sl-hue-purple) 92% 88%);
+  --sl-hue-red: 5;
+  --sl-color-red-low: hsl(var(--sl-hue-red) 58% 18%);
+  --sl-color-red: hsl(var(--sl-hue-red) 90% 66%);
+  --sl-color-red-high: hsl(var(--sl-hue-red) 96% 86%);
+
+  --sl-color-accent-low: hsl(212 67% 18%);
+  --sl-color-accent: hsl(212 93% 64%);
+  --sl-color-accent-high: hsl(208 96% 82%);
+
+  --sl-color-text: var(--sl-color-gray-2);
+  --sl-color-text-accent: hsl(200 92% 75%);
+  --sl-color-text-invert: hsl(214 72% 16%);
+  --sl-color-bg: hsl(220 36% 8%);
+  --sl-color-bg-nav: var(--surface-glass);
+  --sl-color-bg-sidebar: hsl(218 27% 11% / 0.84);
+  --sl-color-bg-inline-code: var(--surface-muted);
+  --sl-color-bg-accent: hsl(200 93% 74%);
+  --sl-color-hairline-light: hsl(216 19% 21%);
+  --sl-color-hairline: hsl(218 27% 15%);
+  --sl-color-hairline-shade: hsl(220 32% 9%);
+  --sl-color-backdrop-overlay: hsl(222 32% 7% / 0.72);
+
+  --sl-shadow-sm: 0 1px 2px hsl(220 40% 4% / 0.35);
+  --sl-shadow-md: 0 10px 28px hsl(220 62% 4% / 0.28);
+  --sl-shadow-lg: 0 18px 44px hsl(221 62% 3% / 0.45);
+
+  --sl-badge-note-bg: hsl(212 80% 20% / 0.7);
+  --sl-badge-note-border: hsl(209 86% 64% / 0.65);
+  --sl-badge-note-text: hsl(207 100% 89%);
+  --sl-badge-tip-bg: hsl(152 54% 18% / 0.75);
+  --sl-badge-tip-border: hsl(155 70% 54% / 0.62);
+  --sl-badge-tip-text: hsl(150 77% 87%);
+  --sl-badge-caution-bg: hsl(32 88% 18% / 0.74);
+  --sl-badge-caution-border: hsl(34 95% 62% / 0.65);
+  --sl-badge-caution-text: hsl(37 100% 88%);
+  --sl-badge-danger-bg: hsl(5 72% 19% / 0.74);
+  --sl-badge-danger-border: hsl(5 90% 64% / 0.62);
+  --sl-badge-danger-text: hsl(4 100% 90%);
 }
 
 :root[data-theme='light'] {
-  --sl-color-accent-low: hsl(182, 48%, 92%);
-  --sl-color-accent: hsl(182, 72%, 38%);
-  --sl-color-accent-high: hsl(182, 82%, 24%);
-  --sl-color-bg: hsl(48, 80%, 98%);
-  --sl-color-bg-nav: hsl(48, 58%, 96%);
-  --sl-color-bg-sidebar: hsl(49, 54%, 95%);
-  --sl-color-text: hsl(199, 22%, 22%);
-  --sl-color-text-accent: hsl(182, 82%, 24%);
-  --sl-color-hairline: hsl(182, 22%, 79%);
-  --sl-color-hairline-light: hsl(182, 18%, 88%);
+  --surface-glass: hsl(214 52% 97% / 0.86);
+  --surface-raised: hsl(210 63% 99%);
+  --surface-muted: hsl(214 34% 93%);
+  --surface-quote: hsl(211 94% 98%);
+  --surface-quote-strong: hsl(212 86% 44%);
+  --ring-strong: hsl(212 92% 46% / 0.78);
+
+  --sl-color-white: hsl(214 31% 16%);
+  --sl-color-gray-1: hsl(216 22% 24%);
+  --sl-color-gray-2: hsl(216 15% 33%);
+  --sl-color-gray-3: hsl(215 11% 46%);
+  --sl-color-gray-4: hsl(216 10% 60%);
+  --sl-color-gray-5: hsl(216 18% 84%);
+  --sl-color-gray-6: hsl(215 34% 93%);
+  --sl-color-gray-7: hsl(210 56% 97%);
+  --sl-color-black: hsl(0 0% 100%);
+
+  --sl-color-orange-low: hsl(var(--sl-hue-orange) 100% 93%);
+  --sl-color-orange: hsl(var(--sl-hue-orange) 90% 54%);
+  --sl-color-orange-high: hsl(var(--sl-hue-orange) 80% 28%);
+  --sl-color-green-low: hsl(var(--sl-hue-green) 68% 92%);
+  --sl-color-green: hsl(var(--sl-hue-green) 82% 40%);
+  --sl-color-green-high: hsl(var(--sl-hue-green) 74% 24%);
+  --sl-color-blue-low: hsl(var(--sl-hue-blue) 96% 93%);
+  --sl-color-blue: hsl(var(--sl-hue-blue) 87% 56%);
+  --sl-color-blue-high: hsl(var(--sl-hue-blue) 76% 29%);
+  --sl-color-purple-low: hsl(var(--sl-hue-purple) 94% 93%);
+  --sl-color-purple: hsl(var(--sl-hue-purple) 80% 62%);
+  --sl-color-purple-high: hsl(var(--sl-hue-purple) 66% 34%);
+  --sl-color-red-low: hsl(var(--sl-hue-red) 96% 92%);
+  --sl-color-red: hsl(var(--sl-hue-red) 82% 58%);
+  --sl-color-red-high: hsl(var(--sl-hue-red) 75% 34%);
+
+  --sl-color-accent-low: hsl(211 90% 92%);
+  --sl-color-accent: hsl(212 88% 48%);
+  --sl-color-accent-high: hsl(212 86% 30%);
+
+  --sl-color-text: hsl(215 17% 30%);
+  --sl-color-text-accent: hsl(212 88% 38%);
+  --sl-color-text-invert: hsl(0 0% 100%);
+  --sl-color-bg: hsl(214 43% 98%);
+  --sl-color-bg-nav: var(--surface-glass);
+  --sl-color-bg-sidebar: hsl(210 47% 97% / 0.92);
+  --sl-color-bg-inline-code: hsl(215 43% 94%);
+  --sl-color-bg-accent: hsl(212 88% 46%);
+  --sl-color-hairline-light: hsl(216 22% 88%);
+  --sl-color-hairline: hsl(216 20% 82%);
+  --sl-color-hairline-shade: hsl(215 28% 88%);
+  --sl-color-backdrop-overlay: hsl(218 22% 72% / 0.48);
+
+  --sl-shadow-sm: 0 1px 2px hsl(217 25% 30% / 0.08);
+  --sl-shadow-md: 0 8px 24px hsl(219 35% 35% / 0.12);
+  --sl-shadow-lg: 0 16px 36px hsl(219 39% 32% / 0.16);
+
+  --sl-badge-note-bg: hsl(211 100% 95%);
+  --sl-badge-note-border: hsl(211 88% 66%);
+  --sl-badge-note-text: hsl(211 72% 28%);
+  --sl-badge-tip-bg: hsl(150 64% 94%);
+  --sl-badge-tip-border: hsl(154 65% 55%);
+  --sl-badge-tip-text: hsl(153 63% 22%);
+  --sl-badge-caution-bg: hsl(36 100% 93%);
+  --sl-badge-caution-border: hsl(34 94% 56%);
+  --sl-badge-caution-text: hsl(31 74% 27%);
+  --sl-badge-danger-bg: hsl(5 92% 94%);
+  --sl-badge-danger-border: hsl(5 80% 60%);
+  --sl-badge-danger-text: hsl(2 66% 30%);
 }
 
 body {
+  background-color: var(--sl-color-bg);
   background-image:
-    radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--sl-color-accent) 24%, transparent) 0, transparent 38%),
-    radial-gradient(circle at 92% 100%, color-mix(in srgb, #f59e0b 20%, transparent) 0, transparent 34%),
-    linear-gradient(180deg, color-mix(in srgb, var(--sl-color-bg) 96%, #0f172a 4%) 0%, var(--sl-color-bg) 100%);
+    radial-gradient(circle at 10% -4%, color-mix(in srgb, var(--sl-color-accent) 18%, transparent) 0, transparent 46%),
+    radial-gradient(circle at 88% 104%, color-mix(in srgb, hsl(194 97% 67%) 12%, transparent) 0, transparent 42%),
+    repeating-linear-gradient(0deg, hsl(210 30% 72% / 0.018) 0, hsl(210 30% 72% / 0.018) 1px, transparent 1px, transparent 152px),
+    repeating-linear-gradient(90deg, hsl(210 30% 72% / 0.018) 0, hsl(210 30% 72% / 0.018) 1px, transparent 1px, transparent 152px),
+    linear-gradient(165deg, color-mix(in srgb, var(--sl-color-bg) 96%, hsl(220 54% 12%) 4%) 0%, var(--sl-color-bg) 60%, color-mix(in srgb, var(--sl-color-bg) 93%, hsl(213 74% 16%) 7%) 100%);
   background-attachment: fixed;
 }
 
 :root[data-theme='light'] body {
   background-image:
-    radial-gradient(circle at 10% 5%, color-mix(in srgb, var(--sl-color-accent) 10%, transparent) 0, transparent 34%),
-    radial-gradient(circle at 96% 95%, color-mix(in srgb, #ea580c 16%, transparent) 0, transparent 30%),
-    linear-gradient(180deg, #fffef7 0%, #fefce8 100%);
+    radial-gradient(circle at 6% -4%, color-mix(in srgb, var(--sl-color-accent) 8%, transparent) 0, transparent 42%),
+    radial-gradient(circle at 90% 102%, color-mix(in srgb, hsl(190 88% 48%) 5%, transparent) 0, transparent 44%),
+    repeating-linear-gradient(0deg, hsl(212 25% 53% / 0.024) 0, hsl(212 25% 53% / 0.024) 1px, transparent 1px, transparent 160px),
+    repeating-linear-gradient(90deg, hsl(212 25% 53% / 0.024) 0, hsl(212 25% 53% / 0.024) 1px, transparent 1px, transparent 160px),
+    linear-gradient(180deg, hsl(210 54% 99%) 0%, hsl(212 60% 97%) 54%, hsl(210 64% 98%) 100%);
 }
 
 .site-title {
-  letter-spacing: 0.01em;
-  font-weight: 700;
-}
-
-h1,
-h2,
-h3 {
-  letter-spacing: -0.01em;
-}
-
-h1 {
-  font-family: 'Source Serif 4', serif;
+  font-family: 'Sora', sans-serif;
   font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.sl-markdown-content :is(h1, h2, h3, h4),
+.hero h1 {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.sl-markdown-content h1 {
+  letter-spacing: -0.028em;
+}
+
+.sl-markdown-content p,
+.sl-markdown-content li,
+.sl-markdown-content blockquote {
+  max-width: 72ch;
+}
+
+:where(a, button, summary, select, input, textarea, [role='button'], [tabindex]):focus-visible {
+  outline: 2px solid var(--ring-strong);
+  outline-offset: 2px;
 }
 
 header.header {
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid color-mix(in srgb, var(--sl-color-accent) 24%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, var(--sl-color-hairline));
+  background: color-mix(in srgb, var(--sl-color-bg-nav) 94%, transparent);
+  box-shadow: 0 6px 16px hsl(220 56% 4% / 0.12);
 }
 
 .sidebar-pane,
-.right-sidebar {
-  border-color: color-mix(in srgb, var(--sl-color-accent) 18%, transparent);
+.right-sidebar-panel {
+  backdrop-filter: blur(10px) saturate(130%);
+}
+
+.sidebar-pane {
+  border-inline-end: 1px solid color-mix(in srgb, var(--sl-color-accent) 16%, var(--sl-color-hairline));
+  background: color-mix(in srgb, var(--sl-color-bg-sidebar) 92%, transparent);
+}
+
+.right-sidebar-panel {
+  border-inline-start: 1px solid color-mix(in srgb, var(--sl-color-accent) 14%, var(--sl-color-hairline));
+}
+
+.right-sidebar-panel .sl-container {
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 16%, var(--sl-color-hairline-light));
+  border-radius: 0.95rem;
+  background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+  padding: 0.9rem;
+}
+
+.right-sidebar-panel a[aria-current='true'] {
+  color: var(--sl-color-text-accent);
+}
+
+nav.sidebar summary,
+nav.sidebar a {
+  border-radius: 0.6rem;
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+nav.sidebar summary:hover,
+nav.sidebar a:hover,
+nav.sidebar a:focus {
+  background: color-mix(in srgb, var(--sl-color-accent) 11%, transparent);
+}
+
+nav.sidebar ul ul li {
+  border-inline-start-color: color-mix(in srgb, var(--sl-color-accent) 20%, var(--sl-color-hairline-light));
+}
+
+nav.sidebar a[aria-current='page'],
+nav.sidebar a[aria-current='page']:hover,
+nav.sidebar a[aria-current='page']:focus {
+  background: color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
+  color: var(--sl-color-white);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 46%, var(--sl-color-hairline-light));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--sl-color-accent-high) 35%, transparent);
+}
+
+button[data-open-modal] {
+  border-radius: 0.75rem;
+  transition: border-color 220ms ease, background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+
+@media (min-width: 50rem) {
+  button[data-open-modal] {
+    border-color: color-mix(in srgb, var(--sl-color-accent) 22%, var(--sl-color-gray-5));
+    background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+    box-shadow: 0 6px 14px hsl(220 55% 4% / 0.1);
+    min-height: 2.75rem;
+  }
+
+  button[data-open-modal]:hover {
+    border-color: color-mix(in srgb, var(--sl-color-accent) 46%, var(--sl-color-gray-3));
+    color: var(--sl-color-white);
+    background: color-mix(in srgb, var(--sl-color-accent-low) 42%, var(--surface-raised));
+  }
+}
+
+button > kbd {
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 18%, var(--sl-color-hairline-light));
+  background: color-mix(in srgb, var(--surface-muted) 86%, transparent);
+}
+
+dialog {
+  border-radius: 0.95rem;
+  border-color: color-mix(in srgb, var(--sl-color-accent) 24%, var(--sl-color-hairline));
+  background: color-mix(in srgb, var(--surface-raised) 96%, transparent);
+}
+
+#starlight__search {
+  --pagefind-ui-border-radius: 0.65rem;
+}
+
+#starlight__search .pagefind-ui__search-input {
+  letter-spacing: 0.01em;
+}
+
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)),
+#starlight__search .pagefind-ui__result-nested,
+#starlight__search .pagefind-ui__result-tags {
+  background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
 }
 
 .sl-markdown-content a:not(.sl-anchor-link) {
-  text-decoration-thickness: 0.1em;
-  text-underline-offset: 0.14em;
+  color: var(--sl-color-text-accent);
+  text-decoration-thickness: 0.11em;
+  text-underline-offset: 0.17em;
+  transition: color 200ms ease;
 }
 
-.sl-markdown-content pre,
+.sl-markdown-content a:not(.sl-anchor-link):hover {
+  color: var(--sl-color-white);
+}
+
+.sl-markdown-content code:not(pre code) {
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 18%, transparent);
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--sl-color-accent-low) 42%, var(--sl-color-bg-inline-code));
+}
+
+.sl-markdown-content pre:not(:where(.expressive-code *)) {
+  border-radius: 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 24%, var(--sl-color-hairline));
+  background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+}
+
+.expressive-code {
+  --ec-brdRad: 0.95rem;
+  --ec-brdCol: color-mix(in srgb, var(--sl-color-accent) 24%, var(--sl-color-hairline));
+  --ec-frm-frameBoxShdCssVal: 0 14px 30px color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+}
+
 .expressive-code .frame {
-  border-radius: 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--sl-color-accent) 16%, transparent);
+  border-radius: 0.95rem;
+  overflow: hidden;
+}
+
+.sl-markdown-content blockquote {
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 22%, var(--sl-color-hairline));
+  border-inline-start: 0.28rem solid color-mix(in srgb, var(--surface-quote-strong) 88%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-quote) 94%, transparent) 0%, color-mix(in srgb, var(--surface-quote) 76%, transparent) 100%);
+  border-radius: 0.8rem;
+  padding: 0.95rem 1.05rem 0.95rem 1.15rem;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--sl-color-accent-high) 22%, transparent),
+    0 8px 20px color-mix(in srgb, var(--sl-color-accent) 9%, transparent);
+}
+
+.sl-markdown-content blockquote::before {
+  content: '“';
+  position: absolute;
+  inset-inline-end: 0.7rem;
+  top: 0.22rem;
+  font-family: 'Sora', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--surface-quote-strong) 60%, transparent);
+  pointer-events: none;
+}
+
+.sl-markdown-content blockquote > :first-child {
+  margin-top: 0;
+}
+
+.sl-markdown-content blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.sl-markdown-content details {
+  border-inline-start-width: 3px;
 }
 
 .sl-markdown-content table {
-  border-radius: 0.8rem;
+  border-radius: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, var(--sl-color-hairline));
+  background: color-mix(in srgb, var(--surface-raised) 94%, transparent);
   overflow: hidden;
+}
+
+.sl-markdown-content th {
+  background: color-mix(in srgb, var(--sl-color-accent-low) 46%, transparent);
 }
 
 .card,
 .sl-link-card {
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 28%, transparent);
-  background: color-mix(in srgb, var(--sl-color-bg) 84%, transparent);
-  box-shadow: 0 10px 32px color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 26%, var(--sl-color-hairline-light));
+  background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.card .icon {
+  border-radius: 0.45rem;
+}
+
+.card:hover,
+.sl-link-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--sl-color-accent) 44%, var(--sl-color-hairline-light));
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+}
+
+[data-has-hero] .content-panel:first-child .sl-container {
+  border: 1px solid color-mix(in srgb, var(--sl-color-accent) 20%, var(--sl-color-hairline));
+  border-radius: 1.25rem;
+  background: linear-gradient(165deg, color-mix(in srgb, var(--surface-raised) 98%, transparent) 0%, color-mix(in srgb, var(--sl-color-accent-low) 26%, transparent) 100%);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--sl-color-accent) 9%, transparent);
+  padding: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+}
+
+.hero .tagline {
+  max-width: 40ch;
+  color: var(--sl-color-gray-2);
+}
+
+.hero .actions .sl-link-button {
+  border-radius: 0.75rem;
+}
+
+.sl-link-button.primary {
+  background: linear-gradient(120deg, color-mix(in srgb, var(--sl-color-accent) 78%, white 22%) 0%, color-mix(in srgb, var(--sl-color-accent) 92%, black 8%) 100%);
+  color: var(--sl-color-text-invert);
+  border-color: color-mix(in srgb, var(--sl-color-accent-high) 65%, transparent);
+  box-shadow: 0 8px 16px color-mix(in srgb, var(--sl-color-accent) 20%, transparent);
+}
+
+.sl-link-button.secondary {
+  border-color: color-mix(in srgb, var(--sl-color-accent) 32%, var(--sl-color-hairline-light));
+  background: color-mix(in srgb, var(--surface-raised) 82%, transparent);
+}
+
+.sl-link-button.minimal {
+  border-radius: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--sl-color-accent) 52%, transparent);
+}
+
+.pagination-links a {
+  border-radius: 0.9rem;
+  border-color: color-mix(in srgb, var(--sl-color-accent) 24%, var(--sl-color-hairline-light));
+  background: color-mix(in srgb, var(--surface-raised) 90%, transparent);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.pagination-links a:hover {
+  border-color: color-mix(in srgb, var(--sl-color-accent) 48%, var(--sl-color-gray-3));
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+}
+
+.pagination-links .link-title {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+footer .meta {
+  padding-top: 0.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--sl-color-accent) 14%, var(--sl-color-hairline));
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .sl-markdown-content > * {
-    animation: rise-in 420ms ease-out both;
+    animation: content-rise 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 
   .sl-markdown-content > *:nth-child(2) {
@@ -102,18 +468,29 @@ header.header {
   }
 
   .sl-markdown-content > *:nth-child(3) {
-    animation-delay: 110ms;
+    animation-delay: 100ms;
   }
 
   .sl-markdown-content > *:nth-child(4) {
-    animation-delay: 160ms;
+    animation-delay: 140ms;
   }
 }
 
-@keyframes rise-in {
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .sl-link-card,
+  .pagination-links a,
+  .sl-markdown-content > * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+@keyframes content-rise {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(7px);
   }
 
   to {
