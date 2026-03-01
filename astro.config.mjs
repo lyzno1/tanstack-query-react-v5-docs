@@ -310,6 +310,9 @@ export default defineConfig({
 		starlight({
 			title: 'TanStack Query React v5 Docs',
 			description: 'TanStack Query React v5 documentation with automated upstream synchronization.',
+			components: {
+				PageTitle: './src/components/starlight/PageTitle.astro',
+			},
 			defaultLocale: 'root',
 			locales: {
 				root: {
