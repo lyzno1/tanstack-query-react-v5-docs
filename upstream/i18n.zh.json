@@ -1,7 +1,7 @@
 {
   "locale": "zh",
   "sourceRef": "v5.90.3",
-  "generatedAt": "2026-03-01T07:21:53.046Z",
+  "generatedAt": "2026-03-01T08:15:24.873Z",
   "translations": {
     "eslint/eslint-plugin-query.md": {
       "hash": "77b8f7f8fe843c2cc26d4f29284272e832c54b480cfbbd3051f2aaa7262f7dc0",
@@ -129,9 +129,9 @@
       "translatedAt": "2026-03-01T07:14:51.116Z"
     },
     "framework/react/guides/migrating-to-react-query-4.md": {
-      "hash": "c64fa6be6f86a27650d480be17fec4955a7113be10528f99f60738aeba56d4b7",
+      "hash": "6b5b58892e4d8607e71dfbf4383d62ef7140a129da77ff1bac4fada32996ef2b",
       "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:21:53.046Z"
+      "translatedAt": "2026-03-01T08:15:24.873Z"
     },
     "framework/react/guides/migrating-to-v5.md": {
       "hash": "ad69ae96a8c5e7ab2c6cdbb11a9b6646250f921afce8ca4d8dbfb0e322556ffd",
