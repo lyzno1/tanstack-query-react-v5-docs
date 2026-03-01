@@ -2,22 +2,33 @@
 const { entry } = Astro.locals.starlightRoute;
 const title = entry.data.title;
 const rawMarkdown = entry.body ?? '';
+const sourceId = `md-source-${entry.id.replace(/[^\w-]+/g, '-')}`;
 
-const frontmatterLines = [`title: '${title}'`];
+const frontmatterLines = [`title: ${JSON.stringify(title)}`];
 for (const [key, value] of Object.entries(entry.data)) {
   if (key === 'title' || key === 'editUrl') continue;
   if (value === undefined || value === null || value === false) continue;
   frontmatterLines.push(`${key}: ${JSON.stringify(value)}`);
 }
 const fullMarkdown = `---\n${frontmatterLines.join('\n')}\n---\n\n${rawMarkdown}`;
+// Keep JSON safe inside a script tag even when markdown includes "</script>" or similar.
+const serializeForScriptTag = (value: string) =>
+  JSON.stringify(value)
+    .replace(/</g, '\\u003C')
+    .replace(/>/g, '\\u003E')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+const fullMarkdownJson = serializeForScriptTag(fullMarkdown);
 ---
 
-<div class="page-title-row">
+<div class="page-title-row" data-copy-md-root>
   <h1 id="_top">{title}</h1>
   <button
     class="copy-md-btn"
     type="button"
     aria-label="Copy page as Markdown"
+    data-md-source-id={sourceId}
   >
   <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M16 3H4a2 2 0 0 0-2 2v11"></path>
@@ -26,10 +37,10 @@ const fullMarkdown = `---\n${frontmatterLines.join('\n')}\n---\n\n${rawMarkdown}
   <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="20 6 9 17 4 12"></polyline>
   </svg>
-  <span class="copy-label">Copy as Markdown</span>
+  <span class="copy-label">Copy</span>
   </button>
 </div>
-<script is:inline id="__md-source" type="application/json" set:html={JSON.stringify(fullMarkdown)} />
+<script is:inline id={sourceId} type="application/json" set:html={fullMarkdownJson} />
 
 <style>
   @layer starlight.core {
@@ -115,42 +126,50 @@ const fullMarkdown = `---\n${frontmatterLines.join('\n')}\n---\n\n${rawMarkdown}
   };
 
   const __initCopyMd = () => {
-    const btn = document.querySelector('.copy-md-btn');
-    if (!btn || btn.__copyBound) return;
-    btn.__copyBound = true;
+    const roots = document.querySelectorAll('[data-copy-md-root]');
+    for (const root of roots) {
+      if (root.__copyBound) continue;
+      root.__copyBound = true;
 
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('copied')) return;
+      const btn = root.querySelector('.copy-md-btn');
+      if (!btn) continue;
 
-      const el = document.getElementById('__md-source');
-      if (!el) return;
-      let md;
-      try {
-        md = JSON.parse(el.textContent || '""');
-      } catch {
-        return;
-      }
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('copied')) return;
 
-      const label = btn.querySelector('.copy-label');
-      const onDone = () => {
-        btn.classList.add('copied');
-        if (label) label.textContent = 'Copied!';
-        setTimeout(() => {
-          btn.classList.remove('copied');
-          if (label) label.textContent = 'Copy as Markdown';
-        }, 2000);
-      };
+        const sourceId = btn.getAttribute('data-md-source-id');
+        if (!sourceId) return;
+        const el = document.getElementById(sourceId);
+        if (!el) return;
 
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(md).then(onDone).catch(() => {
+        let md;
+        try {
+          md = JSON.parse(el.textContent || '""');
+        } catch {
+          return;
+        }
+
+        const label = btn.querySelector('.copy-label');
+        const onDone = () => {
+          btn.classList.add('copied');
+          if (label) label.textContent = 'Copied!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            if (label) label.textContent = 'Copy';
+          }, 2000);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(md).then(onDone).catch(() => {
+            __fallbackCopy(md);
+            onDone();
+          });
+        } else {
           __fallbackCopy(md);
           onDone();
-        });
-      } else {
-        __fallbackCopy(md);
-        onDone();
-      }
-    });
+        }
+      });
+    }
   };
 
   document.addEventListener('astro:page-load', __initCopyMd);
