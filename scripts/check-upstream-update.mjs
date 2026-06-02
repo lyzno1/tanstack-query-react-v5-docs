@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { spawnSync } from 'node:child_process'
-import { readFile } from 'node:fs/promises'
+import { appendFile, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const LOCK_PATH = path.join(ROOT, 'upstream', 'lock.json')
 const UPSTREAM_REPO = 'https://github.com/TanStack/query.git'
+const writeGithubOutput = process.argv.includes('--github-output')
 
 function run(command, args) {
   const result = spawnSync(command, args, { encoding: 'utf8', stdio: 'pipe' })
@@ -51,16 +52,42 @@ function latestV5Tag() {
   return tags[0]
 }
 
+async function writeOutputs(outputs) {
+  if (!writeGithubOutput) return
+
+  const outputPath = process.env.GITHUB_OUTPUT
+  if (!outputPath) {
+    throw new Error('--github-output requires GITHUB_OUTPUT')
+  }
+
+  await appendFile(
+    outputPath,
+    `${Object.entries(outputs)
+      .map(([key, value]) => `${key}=${value}`)
+      .join('\n')}\n`,
+  )
+}
+
 async function main() {
   const lock = JSON.parse(await readFile(LOCK_PATH, 'utf8'))
   const latest = latestV5Tag()
+  const current = lock.ref ?? 'unknown'
+  const hasUpdate = current !== latest
 
-  if (lock.ref === latest) {
+  await writeOutputs({
+    current_ref: current,
+    latest_ref: latest,
+    has_update: String(hasUpdate),
+  })
+
+  if (!hasUpdate) {
     console.log(`No update. Current ref is already latest: ${latest}`)
     return
   }
 
-  console.log(`Update available: current=${lock.ref}, latest=${latest}`)
+  console.log(`Update available: current=${current}, latest=${latest}`)
+  if (writeGithubOutput) return
+
   process.exit(1)
 }
 

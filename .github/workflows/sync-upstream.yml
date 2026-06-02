@@ -17,24 +17,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.30.1
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
+
+      - name: Check upstream ref
+        id: upstream
+        run: node scripts/check-upstream-update.mjs --github-output
+
+      - name: Setup pnpm
+        if: steps.upstream.outputs.has_update == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.1
 
       - name: Install dependencies
+        if: steps.upstream.outputs.has_update == 'true'
         run: pnpm install --frozen-lockfile
 
       - name: Sync upstream docs
+        if: steps.upstream.outputs.has_update == 'true'
         run: pnpm run sync:docs
 
       - name: Collect sync metadata
+        if: steps.upstream.outputs.has_update == 'true'
         id: sync_meta
         run: |
           echo "timestamp=$(date -u +'%Y%m%d-%H%M%S')" >> "$GITHUB_OUTPUT"
@@ -42,6 +49,7 @@ jobs:
           echo "synced_ref=$ref" >> "$GITHUB_OUTPUT"
 
       - name: Collect zh translation status
+        if: steps.upstream.outputs.has_update == 'true'
         id: i18n
         run: |
           status_json="$RUNNER_TEMP/i18n-status.json"
@@ -84,15 +92,19 @@ jobs:
           NODE
 
       - name: Astro check
+        if: steps.upstream.outputs.has_update == 'true'
         run: pnpm run check
 
       - name: Lint
+        if: steps.upstream.outputs.has_update == 'true'
         run: pnpm run lint
 
       - name: Build site
+        if: steps.upstream.outputs.has_update == 'true'
         run: pnpm run build
 
       - name: Build pull request body
+        if: steps.upstream.outputs.has_update == 'true'
         run: |
           cat > "$RUNNER_TEMP/sync-pr-body.md" <<EOF
           Automated sync from upstream TanStack Query v5 docs.
@@ -124,6 +136,7 @@ jobs:
           EOF
 
       - name: Create pull request
+        if: steps.upstream.outputs.has_update == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: 'chore: sync TanStack Query React v5 docs'
