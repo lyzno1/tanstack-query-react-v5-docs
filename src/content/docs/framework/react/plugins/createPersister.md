@@ -106,7 +106,7 @@ If `query` is `expired`, `busted` or `malformed` it would be removed from the st
 
 ### `persisterGc(): Promise<void>`
 
-This function can be used to sporadically clean up stoage from `expired`, `busted` or `malformed` entries.
+This function can be used to sporadically clean up storage from `expired`, `busted` or `malformed` entries.
 
 For this function to work, your storage must expose `entries` method that would return a `key-value tuple array`.  
 For example `Object.entries(localStorage)` for `localStorage` or `entries` from `idb-keyval`.
@@ -115,6 +115,21 @@ For example `Object.entries(localStorage)` for `localStorage` or `entries` from 
 
 This function can be used to restore queries that are currently stored by persister.  
 For example when your app is starting up in offline mode, or you want all or only specific data from previous session to be immediately available without intermediate `loading` state.
+
+The filter object supports the following properties:
+
+- `queryKey?: QueryKey`
+  - Set this property to define a query key to match on.
+- `exact?: boolean`
+  - If you don't want to search queries inclusively by query key, you can pass the `exact: true` option to return only the query with the exact query key you have passed.
+
+For this function to work, your storage must expose `entries` method that would return a `key-value tuple array`.  
+For example `Object.entries(localStorage)` for `localStorage` or `entries` from `idb-keyval`.
+
+### `removeQueries(filters): Promise<void>`
+
+When using `queryClient.removeQueries`, the data remains in the persister and needs to be removed separately.
+This function can be used to remove queries that are currently stored by persister.
 
 The filter object supports the following properties:
 
@@ -170,6 +185,13 @@ export interface StoragePersisterOptions {
    */
   prefix?: string
   /**
+   * If set to `true`, the query will refetch on successful query restoration if the data is stale.
+   * If set to `false`, the query will not refetch on successful query restoration.
+   * If set to `'always'`, the query will always refetch on successful query restoration.
+   * Defaults to `true`.
+   */
+  refetchOnRestore?: boolean | 'always'
+  /**
    * Filters to narrow down which Queries should be persisted.
    */
   filters?: QueryFilters
@@ -191,5 +213,6 @@ The default options are:
   maxAge = 1000 * 60 * 60 * 24,
   serialize = JSON.stringify,
   deserialize = JSON.parse,
+  refetchOnRestore = true,
 }
 ```

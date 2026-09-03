@@ -6,15 +6,15 @@ description: Upstream synchronization metadata for this docs site.
 This site tracks TanStack Query React docs from the v5 release line.
 
 - Upstream repo: [https://github.com/TanStack/query.git](https://github.com/TanStack/query.git)
-- Tracking strategy: `latest-v5-tag`
-- Current synced ref: `v5.90.3`
-- Upstream commit: `4d8da1e29e97ad5b0c151822d4962849515b4478`
-- Synced at (UTC): `2026-06-02T04:57:50.775Z`
+- Tracking strategy: `upstream-main`
+- Current synced ref: `main`
+- Upstream commit: `b4f5736437f8ada26f7d4454606ea0c2bee0e769`
+- Synced at (UTC): `2026-09-03T15:08:41.004Z`
 
 ## Synced counts
 
-- Markdown files: 91
-- React docs pages: 73
-- Core reference pages: 11
-- ESLint docs pages: 7
+- Markdown files: 139
+- React docs pages: 117
+- Core reference pages: 12
+- ESLint docs pages: 9
 - Generated example redirect pages: 25

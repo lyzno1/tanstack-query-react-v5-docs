@@ -1,9 +1,9 @@
 ---
 id: InfiniteQueryObserver
 title: InfiniteQueryObserver
+redirect_from:
+  - framework/react/reference/InfiniteQueryObserver
 ---
-
-## `InfiniteQueryObserver`
 
 The `InfiniteQueryObserver` can be used to observe and switch between infinite queries.
 
@@ -23,4 +23,4 @@ const unsubscribe = observer.subscribe((result) => {
 
 **Options**
 
-The options for the `InfiniteQueryObserver` are exactly the same as those of [`useInfiniteQuery`](../../framework/react/reference/useInfiniteQuery).
+The options for the `InfiniteQueryObserver` are exactly the same as those of [`useInfiniteQuery`](../framework/react/reference/functions/useInfiniteQuery.md).
