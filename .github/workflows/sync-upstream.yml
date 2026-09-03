@@ -5,6 +5,8 @@ on:
   push:
     paths:
       - '.github/workflows/sync-upstream.yml'
+      - 'scripts/check-upstream-update.mjs'
+      - 'scripts/sync-tanstack-query-react-v5.mjs'
   schedule:
     - cron: '20 3 * * *'
 
