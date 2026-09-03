@@ -18,7 +18,7 @@ const ROOT = path.resolve(__dirname, '..')
 const DOCS_ROOT = path.join(ROOT, 'src', 'content', 'docs')
 const UPSTREAM_ROOT = path.join(ROOT, 'upstream')
 const UPSTREAM_REPO = 'https://github.com/TanStack/query.git'
-const TRACK_PREFIX = 'v5.'
+const DEFAULT_REF = 'main'
 
 const args = process.argv.slice(2)
 const refArg = args.find((arg) => arg.startsWith('--ref='))
@@ -43,46 +43,6 @@ function run(command, commandArgs, options = {}) {
   }
 
   return result.stdout?.trim() ?? ''
-}
-
-function parseSemver(tag) {
-  const trimmed = tag.startsWith('v') ? tag.slice(1) : tag
-  const [major, minor, patch] = trimmed.split('.').map((part) => Number(part))
-  if ([major, minor, patch].some((part) => Number.isNaN(part))) {
-    throw new Error(`Invalid semver tag: ${tag}`)
-  }
-
-  return { major, minor, patch }
-}
-
-function compareTagDesc(a, b) {
-  const av = parseSemver(a)
-  const bv = parseSemver(b)
-  if (av.major !== bv.major) return bv.major - av.major
-  if (av.minor !== bv.minor) return bv.minor - av.minor
-  return bv.patch - av.patch
-}
-
-function latestV5Tag() {
-  const output = run('git', [
-    'ls-remote',
-    '--tags',
-    '--refs',
-    UPSTREAM_REPO,
-    `refs/tags/${TRACK_PREFIX}*`,
-  ])
-
-  const tags = output
-    .split('\n')
-    .map((line) => line.split('\t')[1]?.replace('refs/tags/', ''))
-    .filter((tag) => tag && /^v5\.\d+\.\d+$/.test(tag))
-
-  if (!tags.length) {
-    throw new Error('Unable to resolve any v5 tags from upstream')
-  }
-
-  tags.sort(compareTagDesc)
-  return tags[0]
 }
 
 function collectDocEntries(value, entries = []) {
@@ -200,7 +160,7 @@ This site tracks TanStack Query React docs from the v5 release line.
 }
 
 async function main() {
-  const resolvedRef = requestedRef ?? latestV5Tag()
+  const resolvedRef = requestedRef ?? DEFAULT_REF
   const tmpRoot = await mkdtemp(path.join(os.tmpdir(), 'tanstack-query-sync-'))
   const repoDir = path.join(tmpRoot, 'query')
 
@@ -315,7 +275,7 @@ async function main() {
 
     const lock = {
       upstreamRepo: UPSTREAM_REPO,
-      track: 'latest-v5-tag',
+      track: 'upstream-main',
       ref: resolvedRef,
       commit: upstreamCommit,
       syncedAt: new Date().toISOString(),
