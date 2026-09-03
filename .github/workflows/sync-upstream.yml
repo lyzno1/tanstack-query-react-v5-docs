@@ -2,6 +2,9 @@ name: Sync TanStack Query React v5 Docs
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/sync-upstream.yml'
   schedule:
     - cron: '20 3 * * *'
 
