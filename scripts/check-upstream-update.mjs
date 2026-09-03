@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const LOCK_PATH = path.join(ROOT, 'upstream', 'lock.json')
 const UPSTREAM_REPO = 'https://github.com/TanStack/query.git'
+const UPSTREAM_REF = 'main'
 const writeGithubOutput = process.argv.includes('--github-output')
 
 function run(command, args) {
@@ -18,38 +19,20 @@ function run(command, args) {
   return result.stdout.trim()
 }
 
-function parseSemver(tag) {
-  const [major, minor, patch] = tag.replace(/^v/, '').split('.').map(Number)
-  return { major, minor, patch }
-}
-
-function compareDesc(a, b) {
-  const av = parseSemver(a)
-  const bv = parseSemver(b)
-  if (av.major !== bv.major) return bv.major - av.major
-  if (av.minor !== bv.minor) return bv.minor - av.minor
-  return bv.patch - av.patch
-}
-
-function latestV5Tag() {
+function latestUpstreamCommit() {
   const output = run('git', [
     'ls-remote',
-    '--tags',
-    '--refs',
+    '--heads',
     UPSTREAM_REPO,
-    'refs/tags/v5.*',
+    `refs/heads/${UPSTREAM_REF}`,
   ])
-  const tags = output
-    .split('\n')
-    .map((line) => line.split('\t')[1]?.replace('refs/tags/', ''))
-    .filter((tag) => tag && /^v5\.\d+\.\d+$/.test(tag))
-    .sort(compareDesc)
+  const commit = output.split('\t')[0]
 
-  if (!tags.length) {
-    throw new Error('No v5 tags found from upstream')
+  if (!/^[0-9a-f]{40}$/.test(commit)) {
+    throw new Error(`Unable to resolve upstream ${UPSTREAM_REF} commit`)
   }
 
-  return tags[0]
+  return commit
 }
 
 async function writeOutputs(outputs) {
@@ -70,22 +53,28 @@ async function writeOutputs(outputs) {
 
 async function main() {
   const lock = JSON.parse(await readFile(LOCK_PATH, 'utf8'))
-  const latest = latestV5Tag()
-  const current = lock.ref ?? 'unknown'
-  const hasUpdate = current !== latest
+  const latestCommit = latestUpstreamCommit()
+  const currentCommit = lock.commit ?? 'unknown'
+  const hasUpdate = currentCommit !== latestCommit
 
   await writeOutputs({
-    current_ref: current,
-    latest_ref: latest,
+    current_ref: lock.ref ?? 'unknown',
+    latest_ref: UPSTREAM_REF,
+    current_commit: currentCommit,
+    latest_commit: latestCommit,
     has_update: String(hasUpdate),
   })
 
   if (!hasUpdate) {
-    console.log(`No update. Current ref is already latest: ${latest}`)
+    console.log(
+      `No update. Current commit is already upstream ${UPSTREAM_REF}: ${latestCommit}`,
+    )
     return
   }
 
-  console.log(`Update available: current=${current}, latest=${latest}`)
+  console.log(
+    `Update available: current=${currentCommit}, latest=${latestCommit} (${UPSTREAM_REF})`,
+  )
   if (writeGithubOutput) return
 
   process.exit(1)
