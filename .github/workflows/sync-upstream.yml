@@ -165,6 +165,8 @@ jobs:
 
       - name: Create pull request
         if: steps.upstream.outputs.has_update == 'true'
+        env:
+          SKIP_SIMPLE_GIT_HOOKS: 1
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: 'chore: sync TanStack Query React v5 docs'
