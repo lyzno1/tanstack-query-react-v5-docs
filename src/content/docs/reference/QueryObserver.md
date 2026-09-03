@@ -1,6 +1,8 @@
 ---
 id: QueryObserver
 title: QueryObserver
+redirect_from:
+  - framework/react/reference/QueryObserver
 ---
 
 The `QueryObserver` can be used to observe and switch between queries.
@@ -16,4 +18,4 @@ const unsubscribe = observer.subscribe((result) => {
 
 **Options**
 
-The options for the `QueryObserver` are exactly the same as those of [`useQuery`](../../framework/react/reference/useQuery).
+The options for the `QueryObserver` are exactly the same as those of [`useQuery`](../framework/react/reference/functions/useQuery.md).

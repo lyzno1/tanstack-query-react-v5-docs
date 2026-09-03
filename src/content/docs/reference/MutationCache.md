@@ -1,6 +1,8 @@
 ---
 id: MutationCache
 title: MutationCache
+redirect_from:
+  - framework/react/reference/MutationCache
 ---
 
 The `MutationCache` is the storage for mutations.
@@ -22,9 +24,9 @@ const mutationCache = new MutationCache({
 
 Its available methods are:
 
-- [`getAll`](#mutationcachegetall)
-- [`subscribe`](#mutationcachesubscribe)
-- [`clear`](#mutationcacheclear)
+- [`getAll`](#mutationcache-getall)
+- [`subscribe`](#mutationcache-subscribe)
+- [`clear`](#mutationcache-clear)
 
 **Options**
 

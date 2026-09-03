@@ -1,9 +1,9 @@
 ---
 id: QueriesObserver
 title: QueriesObserver
+redirect_from:
+  - framework/react/reference/QueriesObserver
 ---
-
-## `QueriesObserver`
 
 The `QueriesObserver` can be used to observe multiple queries.
 
@@ -21,4 +21,4 @@ const unsubscribe = observer.subscribe((result) => {
 
 **Options**
 
-The options for the `QueriesObserver` are exactly the same as those of [`useQueries`](../../framework/react/reference/useQueries).
+The options for the `QueriesObserver` are exactly the same as those of [`useQueries`](../framework/react/reference/functions/useQueries.md).
