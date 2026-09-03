@@ -5,7 +5,7 @@ title: 默认查询函数
 
 <!--
 translation-source-path: framework/react/guides/default-query-function.md
-translation-source-ref: v5.90.3
+translation-source-ref: main
 translation-source-hash: da695c29a919b2237501d92eeb57f44534c2d0ab70e55618a1c61956ffdc9d73
 translation-status: translated
 -->

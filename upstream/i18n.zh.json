@@ -1,462 +1,697 @@
 {
   "locale": "zh",
-  "sourceRef": "v5.90.3",
-  "generatedAt": "2026-03-01T08:15:24.873Z",
+  "sourceRef": "main",
+  "generatedAt": "2026-09-03T16:09:19.620Z",
   "translations": {
     "eslint/eslint-plugin-query.md": {
-      "hash": "77b8f7f8fe843c2cc26d4f29284272e832c54b480cfbbd3051f2aaa7262f7dc0",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "9dc5644c65099aee09714ca447f3398c5d07af3c60116b5384259607a831d4bb",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "eslint/exhaustive-deps.md": {
-      "hash": "9ea85b5cf98ee83c1976ecb6b83071ad7d8012ef09e1fce6f2e5402371f30f9e",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "fedcddd26fc3810150dc72c5475c600b5247b1d7f5f89fd483d7056b336242f8",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "eslint/infinite-query-property-order.md": {
       "hash": "3640888d103bd8997d074863efa30374ec634db80230df865708df35fddd82e6",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "eslint/mutation-property-order.md": {
+      "hash": "fc6119dc87431f042851d8ac036e6dac657507ef550be94a8052fb9ab56971e0",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "eslint/no-rest-destructuring.md": {
-      "hash": "c75c9a3a0e0a88e88a5f17c59c9bedb1f716be4215e5103300fdd730f2a91f14",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "f1501e5fa3d98e9a7a7e98b89bdc7b5196cc69a3bfe8be32484eb02fb756b0a7",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "eslint/no-unstable-deps.md": {
-      "hash": "02f9a9a886bd4770969091541f01d6b1d099ba962e31d89b3f309f395473f7ea",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "ecf3d1eb030a1a5510445fb7a92d42ee145964af4139e6409abed2362e2a820f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "eslint/no-void-query-fn.md": {
       "hash": "4fecc9433aef965fee18a7576bffeef66441e55cc8437c2ea91abb4c1c901d7d",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "eslint/prefer-query-options.md": {
+      "hash": "f7438a59e80d52799effd7d795181e7f1c44b03ccbd99167c627235cfdfe4134",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "eslint/stable-query-client.md": {
-      "hash": "c1dfb2a1e569e8b729ffa61c1334936d731d2dc06bb730c5b18c752007ff148e",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
-    },
-    "framework/react/community/community-projects.md": {
-      "hash": "40845315a8876c5796c8c3418f0eb45f1232aab0b14ea74450fcf5db7485db03",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
-    },
-    "framework/react/community/tkdodos-blog.md": {
-      "hash": "0254e821df8bcb8357a84057c8796128c7ed1b1e17f660ac145d7212fc13bea8",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "72dcebfd80451305796c5e56c7356dc1cc37975849f197fb7b2d32e4b12f8f1b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/comparison.md": {
-      "hash": "bd907b17d86496d056097216d222f062343973506a3a4caf9c0cd2a8aa7659c1",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "5037af0f815d5e76565b865183eb77f28983c4792966a76ca044415e3a1cbce5",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/devtools.md": {
-      "hash": "29b4d1cb9e9cffd1fc44be2e2080ec77c64b4b85be5edbe17755282046dc290d",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "aed8d75c7c0f9fb08c4569697d20e2087e0fdf307e295ca72218a9db1b88c76a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/graphql.md": {
       "hash": "305999891fd5ef4d823fcc8ecb7f3f04e913e8cc09c0fddf2e398f21b1b1b3db",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/advanced-ssr.md": {
-      "hash": "d2b60a8cb55729f73e54c59518457ebd6d0949c6fd96496270cf78176457e18a",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "d2ea5ba6c0a0816e7a89b7f2c2dc4381f75575cd92bdac5ad908d5b1a465835e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/background-fetching-indicators.md": {
       "hash": "382050352efa8cddccad4b3984c67848657470da878c283ea8f3a178372e8f6a",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/caching.md": {
-      "hash": "9001989b7ed68c70aa3873fd110104718d55392121e9238647578fa5316e0dba",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "8684bf526124b63f4f53f8f864361b2e89aa24f4472daf3c5adc9dba3e23355c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/default-query-function.md": {
       "hash": "da695c29a919b2237501d92eeb57f44534c2d0ab70e55618a1c61956ffdc9d73",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/dependent-queries.md": {
-      "hash": "20c9113ab3f25481fb5298c6c36da2efd92525d0cbcf5d484073c70751864168",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "417af315fab62db4dd90f5e207308498110e32089a576a1d01f5a99a0a355c7d",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/disabling-queries.md": {
-      "hash": "2ac06e279df6db4ac7b3abade980e24d21f8ef8453b9bd42273fda8087f121ca",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "9446ce0f06dbb3f2f8d7653b5fd5c29dcac33d8c93a6c0993f0589516761ec1d",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/does-this-replace-client-state.md": {
       "hash": "e839285d23777e13420d5d291b1cdf8f49642509c5ee569f8a88074ac6adb2b9",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/filters.md": {
       "hash": "6789540681506d95b701e56c6f04dc9808faacb8c9c038429ccd48861b92a067",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/important-defaults.md": {
-      "hash": "8b2f7a5752c576e87fb22f5365fce6592540ea9313dcbd3a9d4ceb7faa866c34",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "530bb4d5397f19d3222fc0bbd0bfcf89a556a9d861c4ec549b8991ae5543a5f9",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/infinite-queries.md": {
-      "hash": "64073828df79abc313624be94e0ea3257a3b0394b4a36766d33e31a58608d3b0",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "977f5fb0cd3a3819c20c2160a4f38eb06a97d9dbc380817683411e544d602691",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/initial-query-data.md": {
-      "hash": "a4de3908b66a613bace5fed051f93a0b1be1215fedf635cbb2a94613c4aa69ee",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "7928e0cef2252e7e154dd572359ba83bfc3589dba8010c4d4dacc900c1940e94",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/invalidations-from-mutations.md": {
-      "hash": "f49fac522e92585ddd0f6c142d543fbd4bc56b5d8c2d397c2703c8c01b90ea17",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "4699ba0bb16ee55a9c4e1b975f41899e5bed6e9b619c696cd50dbeb4d36fdf73",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/migrating-to-react-query-3.md": {
-      "hash": "e94de1ea594743578b158a394f49b7ab7ad50d985924cfd5f2ce8bdc209b6c7a",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "a6e32d318e3c23efc588f4745b6c3d3a0ce8c09a23db7ab7c18ec1f9c38b5574",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/migrating-to-react-query-4.md": {
-      "hash": "6b5b58892e4d8607e71dfbf4383d62ef7140a129da77ff1bac4fada32996ef2b",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T08:15:24.873Z"
+      "hash": "38ed6abf06e0e9ef4bb167acd441bef67763bfa59a767bc6d6eb9079d414f247",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/migrating-to-v5.md": {
-      "hash": "ad69ae96a8c5e7ab2c6cdbb11a9b6646250f921afce8ca4d8dbfb0e322556ffd",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "3a0ba561046d8d6022cacec89ca8eb6c93b942fb4f143906e2867d5b30f8037c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/mutations.md": {
-      "hash": "bf19671447366fa67967ceeb74de580c4d7e3c3217280c65984a956b939702eb",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "fc5f01b017df348b439a1c4bcc19abe99555d076d305df6b598c33fd88f7de42",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/network-mode.md": {
-      "hash": "0bc75cad2b61e222074a2d4dbca68f333e5773d3d90f55d3eddd11f7853e00aa",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "713fae3317d926526999ea809f08f94a5b03875c2ff00f3281da5d2a0e90f865",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/optimistic-updates.md": {
-      "hash": "15bc398ce50a602b8447683d30933dba4f3d9c391ba13ccc4117eb006b102b71",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "0c32fabbe875f00ac62e7e1f70156e95e27eca0a8446b09005ca5faf6ec1ecc7",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/paginated-queries.md": {
-      "hash": "656f0a1f3e4e1b49fa42a2562e0a554c19aa09cd65bc7f87c47bccd89f023d5f",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "59d450af46d5d22a983e5864356c3e6e8dab463ad64ff3265cc462f95e4e015f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/parallel-queries.md": {
-      "hash": "e3380ec66bb9af46f0ad66fdd8abb4a956d71a4ba45f9010287ac17505933074",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "9bdfe27b0162db6353caadd708905cdea5ad1638b57fe52ddd10347b6a31d6f9",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/placeholder-query-data.md": {
-      "hash": "e051631eba8661aa5442249fd1d5e877061cbef3ef379cc6e2dccc36713e4b54",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "dc0bf8b698ec4f1ee1e95920b641d827535e4b1b6eab82821ae5952fd3f573b3",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/guides/polling.md": {
+      "hash": "4ca50ab200e96b4c99d65c77d1e7541a81cd4985ab64d50d08c4ea8e948bf9f5",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/prefetching.md": {
-      "hash": "4f863e6b667bd7a6680d8e37ae66d2d8bc05e9cd490ce14c502b3c25ee3fa1c1",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "f2c85894fa0587f005ef43c0cf0ad52c3d459fe601f3fe089f4547a487f29af6",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/queries.md": {
-      "hash": "7e9d39b3c2a34bd872b9bac0f7dbb274c0d6d430dba9a0a0d6a18c414ee4db11",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "3f0ccb1ffee73eb8cd9476e769c62a70af18fc1cc4250fce7bba7073bf6a80ab",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/query-cancellation.md": {
-      "hash": "94c7f7f523f1d2c742c86c12fe001839ffcbb0e206ef8935d1428aaf724e10ab",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "fc73340be44796b9bc3fddc7c41118a199ede9749cddad2dd21c728f5a403e2b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/query-functions.md": {
-      "hash": "59d0979caf356c3d88720af8e539d6ebba161369ec475668898276ea5dda2b8f",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "f5ae9a4120c8a9bbd5666774710c05f5ddcde35a7517c92230428bff666f97bb",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/query-invalidation.md": {
-      "hash": "e00c3f205c131ba26b1dede60a4d78acb62a2c8f11fbd5bc8cd1fb781cdfe895",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "e4cda3acadb7fb216fe6454ef55a790c2baa09a783fdd6c61b5b79d00faca63c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/query-keys.md": {
-      "hash": "e02b6d0101431f3a4221fefa0a4bbc331f7d940c4779cf0c8b15492395fe5a72",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "dbd62ca3fc372cada909b9282e2f9ac94e4c695a078fee17b4660df2dd4ac413",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/query-options.md": {
-      "hash": "4d9b49d2ad4a34e7847aa6d23642647fd3a2dbbbad48d39e2a7a376cee1be6f1",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "a41ef393863a3e5af8d525eee2106734369e8e5d639dc41978cfe9c6a4f86bb3",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/query-retries.md": {
-      "hash": "4681a0b430947210498fa3d1354c75b4ef4d088c2224a434b5ab5c559d95821e",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "dddfc003c62658c91ba05d5e1412fbef12565953ec7e5767087694a0143c08fe",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/render-optimizations.md": {
-      "hash": "a7752c4c95d36ab4b180446b1b9592327287c8b1ad2a854b00254e5b5023f701",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "605528cca321e3337baa9911c475914e65d8b11e8e737af4bc83286d5455da82",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/request-waterfalls.md": {
-      "hash": "14b2e5cfb6612af6b378b49338592597ccb5daa2b2b3e12fba4a8ff25796dcf6",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "df429afdd7f8fa45bf2f738ac3c2c1d9bc591e341222702930c53972562f4b44",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/scroll-restoration.md": {
-      "hash": "4ea81187d0fc54ed3a6bab73c525b171847f7ef20817648f8cef92a058bf10f2",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "5e1e4f165c07e838587a142021fe82f996d6afbd42350e7e55adf99011f9303d",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/ssr.md": {
-      "hash": "95363fa22c0dfac564703848137a5d094d9d12fd75e100139456f8f9093f7c61",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "9c7e17ca9c70cc4f5a9b2e9c1e7f7a0984a7f72003bdeabdd28a9522b642036c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/suspense.md": {
-      "hash": "93a5597ea2cb791eac02990b1830a84d08ffce2f0a84912bacaeae342993f51a",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "f228f8c90851e928b4a3a168457636ee174e0a82c32056dfb0855cbb5094a22e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/testing.md": {
-      "hash": "f4012179c6ed4bf087622d5dc1c9c8367ade61afae80dca9f2e3771b5fed79ec",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "c079651545dcdc850ab3ab33d2e338203b81bcae5dab43b950eeb572b923ab28",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/updates-from-mutation-responses.md": {
-      "hash": "1430feeac806246d3a839e3b3b16db1e573db888c877320796d2b41c9934d1d8",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "d5554e202a2196e9a5c5b8f821221d4e05d213184be4f4c74e726eafd4e6a3c7",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/window-focus-refetching.md": {
       "hash": "cfdb00a9a9515efe21c03d3bafc377b21d6bc88c8ff21a2c62d53005f4f9723e",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/installation.md": {
-      "hash": "8bb3ab5c4ea0955dfe783bdf8b495ad9eb06337d99560a1ed25d3e86c6383d6a",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "89030a5abb31fe70d1bfc2a94b1957d259a6f63a74c2c3f5092b7195196457ea",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/overview.md": {
-      "hash": "3aa7ee1b3afa01f1637007b250a8c89883523538ac299edd982fef0dcdfd8aca",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "6b83435a4bba0e13061ad9529df35d5fc02d27d311b04474c68c6dc193ab204b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/plugins/broadcastQueryClient.md": {
-      "hash": "e0a64b9939bca6b14d25c1f0071bf4642afbe5e15986efd76d0ce830541cc935",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "ee7a7fcdca99ee87f06f87689e4584c7301f3562440e373eebf9be9f5f7c11e7",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/plugins/createAsyncStoragePersister.md": {
-      "hash": "d3148d03de20057a3a35f575be7f6fb4a25f680bdd3d7ef626ea2298f55abbe2",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "ff285a4bf31e493104e4b9d568368dbd2dad3e3a1c56b62ca84edf088e27ecab",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/plugins/createPersister.md": {
-      "hash": "62b1d064d4fcd4f3dd0e7649bd40e4cfdecb3039b7e18b42ce85b32a83601c24",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "685c2edb37c2ad602e5ca96b433b3d4450f34db8e48a9ca1762f06949942ebab",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/plugins/createSyncStoragePersister.md": {
-      "hash": "40ba179988da3dc593d8360cb2cc147efc023bebbeb4111e0f57b2202b6f612a",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "bda39f3d3fafd1249c16a4e12aab73de5916f209b9bc41922071daf8bb66ad9a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/plugins/persistQueryClient.md": {
-      "hash": "f8ab3a7f119a8bb3905826cc00aa7aab87838dbbb04d7dc842e9eecdc1130734",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "4d946ad090835cea7f8e4f5987a2296b68f0efa1cc62571e3860fdf752401265",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/quick-start.md": {
-      "hash": "875da51e7536106f3148361ff7a6b41ca412298d432d8e4fb96e4589a24533fc",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "e695ac2a71213c51b25931bb4819511319a5d78baf07f141cf109972c14b8df5",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/react-native.md": {
-      "hash": "ba79835aa68a10cf2cf4a9c4540bd4825701a9cdd285a2c0a55d62149794b658",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "93e057636a108ad6e70092b8210d2bea4e30dc220bdfdb952acc81a36315ced5",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/QueryClientProvider.md": {
-      "hash": "88392d3389c87ab221dcca5390d32fae5200b0b0f7757456f27652922d6d8f4c",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/HydrationBoundary.md": {
+      "hash": "90f7563cb2f86100cd39be409a535e428bebbfa7e6ba1883a414a254bb275ae9",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/QueryErrorResetBoundary.md": {
-      "hash": "3ecc98d707a57fd2609794fc6169b00023649268789632a1f902be6d297f4211",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/QueryClientProvider.md": {
+      "hash": "89be7dd58b90db4a0b8fb4c52fd8acca68a713ab58d84e9145fa08c6db4872dd",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/hydration.md": {
-      "hash": "9b00b510243dce7c5a5cd17ec503be3918a46708f2cd1a514ea596d72ddc8d52",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/QueryErrorResetBoundary.md": {
+      "hash": "9b527bfd4fab15d0cfb852905cdad30dcada5748f8fbf141bb0b45cdc903d820",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/infiniteQueryOptions.md": {
-      "hash": "3397d4776faf3509ff0eee0bccd736fbc6705615b0d09ac4d92474b6ec6f12e4",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/infiniteQueryOptions.md": {
+      "hash": "31162aedf193e09780311ada25105d08b052f605aa50aa60fd186cdc1bb997a2",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/mutationOptions.md": {
-      "hash": "31dd0a1478fb0c81e173456d419caaacfad27582ade2ea7301549b12e7b9c1b2",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/mutationOptions.md": {
+      "hash": "989a4f8bc3ff3b5808959cdfac8ec1aaeaf1de2746eb1ef98df7c3b536bcd813",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/queryOptions.md": {
-      "hash": "6566582ce14963502fa9c88bed8fff2079256e85e27015d5f300718bc96a03b3",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/queryOptions.md": {
+      "hash": "cdceb06dd2c7a99a11968ecf481cb321aa2a1597195d74de74ce4b915a29b38b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useInfiniteQuery.md": {
-      "hash": "18bb1024b70aa3849ef956cf37f75072aac88c99458b7959364f12c54441ba4f",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useInfiniteQuery.md": {
+      "hash": "09dfd528eb0daca1a7f1073e3a0bd8662e95ab1a8b3c6d1da5cf9d5dbbf783af",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useIsFetching.md": {
-      "hash": "12fd3b07f851c83381ce426b71fdb0a01bddef1e633d5e187627fbb6e34f726d",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useIsFetching.md": {
+      "hash": "b976e8c44131b64274a7d6db3fe1d63862444abbb628fcac24bb7f570774ac81",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useIsMutating.md": {
-      "hash": "af5d718588c544d884d3c246265897a05f69f5ffcbde4edcf3886912ab68708e",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useIsMutating.md": {
+      "hash": "e5b5ca50affaee50d4e36f2f07567b5ba95c340457d4646e6ee4230a6f01eb58",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useMutation.md": {
-      "hash": "d8350e2e7a74cfa1bb154458ed955b05dda4be83f3067800797f1b9a9bc3c839",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useIsRestoring.md": {
+      "hash": "88a2ccc0471c5eb7d4f983cf2a7b9c11b70d6953db66fe2d35904673e7fb81aa",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useMutationState.md": {
-      "hash": "0ac2ff1e7a95d3b5a211f92824e467ad1a9968328ac4fd88cb22467a6279d530",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useMutation.md": {
+      "hash": "fb2434ec052b70367364a203783975611d8bc4fac0cfd432f56152bf75f13eb0",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/usePrefetchInfiniteQuery.md": {
-      "hash": "054ea49f1891e4bcecf5c872ea29ddb2484f995e03c6bb6983a011d86c36aec9",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useMutationState.md": {
+      "hash": "dfbaa45813eb48e2fd2f63a1300ac4f5c7c6481fd47c307c9d23ff8694831d5e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/usePrefetchQuery.md": {
-      "hash": "10cbd4f5a64ea597ea28a0306e1b674442cde34b6fa4e39ba57db360e614d2da",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/usePrefetchInfiniteQuery.md": {
+      "hash": "4d2b3903d5db847364c79c24d1f48bfbbf1571358f6e01c78617033024fc193a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useQueries.md": {
-      "hash": "a23aaec418ef584b397e130a6bb38a93bf5eecfae7839f7612bff8677c809da2",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/usePrefetchQuery.md": {
+      "hash": "d6880e4264f6a56c7f4b4aa02328a3d985a0ac25ad9a3da410c51bbbce953695",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useQuery.md": {
-      "hash": "92cbc1f9cabb80891d6cf0500e386a578326675ca84b820e4b974fd5b19d30d4",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useQueries.md": {
+      "hash": "afb28f17c6db97fb6b38de801daa55d31b327519ae6a09d9932f240f6d283e72",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useQueryClient.md": {
-      "hash": "57e20f5c63ac769e4e423d59f8a1d0dfe3855c9f0f760b813aeba514f5bc049b",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useQuery.md": {
+      "hash": "f2418847ec2ebb63892199aab376f69a1655eb970af473b4ddcf6590cb9a60ae",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useQueryErrorResetBoundary.md": {
-      "hash": "489874ab6044c78f5ccd7faa6b65c409414c789947490a3451db34f91ac6cc39",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useQueryClient.md": {
+      "hash": "215237d9398bfdb19491f66fff8cd285524a4680e5cbc550ee4825705a99ce1c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useSuspenseInfiniteQuery.md": {
-      "hash": "fe00e1c23f78f173ae76ddc3ce5ec6f6358c0431d0ba0abc6a266c7a6cd74bd8",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useQueryErrorResetBoundary.md": {
+      "hash": "7ea4e63119507d45d414142b7a4134204b124c8c30509e721d96cc27a687e0dd",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useSuspenseQueries.md": {
-      "hash": "f939a399b79d004dbc04ce0ff177ad3ca08e2fdbbdd2aff38cc9044a1a24e9a4",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useSuspenseInfiniteQuery.md": {
+      "hash": "15f8c8f4cfc123f21d3d6e6afd53162b9c325bf9892a04af9a48a50d4a24d3e6",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/useSuspenseQuery.md": {
-      "hash": "b6a9a58bb2c5b10c0cfa8c0ffc6ed693f1ef00738624119e17e65c3df4ceaa72",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+    "framework/react/reference/functions/useSuspenseQueries.md": {
+      "hash": "bd4d46c90c795ad4cc326f0038bd9a83bef8f8d5b70307dc438a3b2ba7defc6a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/functions/useSuspenseQuery.md": {
+      "hash": "5d95b97bf553f036257f20bb3fa101a4fa81baf5d9c8b65bdda14d4ab86ae388",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/index.md": {
+      "hash": "fb73ec797c55eae32a3837a2bf8c8ca7d1bc7d745ed8dbb9eff331cee496a315",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/interfaces/HydrationBoundaryProps.md": {
+      "hash": "fbb1638c12a99022698f36d62deca91533caf6c0caa394e733fe3e710e4656a4",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/interfaces/QueryErrorResetBoundaryProps.md": {
+      "hash": "4b5ef15561c6042f133817f48140aa649ab9ab1df6ab4e1c067e8597bc48d727",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/interfaces/UseBaseQueryOptions.md": {
+      "hash": "a5d086e02c8b447ff324c147ed54485ea041841ee5c4ce536abeda6fe5bf2948",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/interfaces/UseInfiniteQueryOptions.md": {
+      "hash": "49098a485bff2f03de74b67960621ed99fc681055e52a4848dba487b9df7c558",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/interfaces/UseMutationOptions.md": {
+      "hash": "e4ec45173ee97e6f9840dcd56e114fc51f1883e5be258c2a66830a7e2c4e4de8",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/interfaces/UseQueryOptions.md": {
+      "hash": "b62081549fd45ec51bbdc2f1f1e36a01b339c884af1e74708033c170887efd31",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/interfaces/UseSuspenseInfiniteQueryOptions.md": {
+      "hash": "b801697ebb665e6d83ddb26c440b205dae43f24269a8935de3b83f8c6f41c9bf",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/interfaces/UseSuspenseQueryOptions.md": {
+      "hash": "7178c5b5a9903a4dd621d61978d39a2093df316199f2f3314cd510e9460a6cff",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/AnyUseBaseQueryOptions.md": {
+      "hash": "a77ceda37a42bfb34a023df09a64b2483ae6de1726ff72caf97215882ff43925",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/AnyUseInfiniteQueryOptions.md": {
+      "hash": "ae239bf0d7af150d41dd4bbe08d0e564fa56aa8ccf69a0a6ac7fd940a775684e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/AnyUseMutationOptions.md": {
+      "hash": "2aec0afece0bd41296fa9991cbf065a8e8a42c406554bff1eb8118f0c3adfd45",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/AnyUseQueryOptions.md": {
+      "hash": "c194b57d2d218a4ff9200088639dc22277dcae061d64507735dbea84e0c44123",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/AnyUseSuspenseInfiniteQueryOptions.md": {
+      "hash": "aa389e432053d3be2f6ec4b2abaad43d643fb53b6a4321917dd197dd099559d0",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/AnyUseSuspenseQueryOptions.md": {
+      "hash": "b622898e4b31b602f0ccec304604c49699405c8154556f0f9faed822debb2bad",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/DefinedInitialDataInfiniteOptions.md": {
+      "hash": "e95fca4081a6b37e29d2123ad047b7fc6e9f0e6bbc040977fb25519c305959e5",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/DefinedInitialDataOptions.md": {
+      "hash": "3f143bb6ca8902c7ce975541f885d4ef70cdfdc5411655cb6c5af0792030e422",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/DefinedUseInfiniteQueryResult.md": {
+      "hash": "40274e06b401a64224f0db4875fb4f90fdc4da86bf6df53ec3b1d7e9497b0699",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/DefinedUseQueryResult.md": {
+      "hash": "2975a68555ec7ea6a768ddf4c531534f522f6b89b9ad43f510a1753e9c658209",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/QueriesOptions.md": {
+      "hash": "436b89ecbb017d099cb799fec96fe9080c548d252654a3932c36e458322141fa",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/QueriesResults.md": {
+      "hash": "12e89ff3dbd5fe57700704df224b2124853b7c0f8a1e91f8be87e5993998290e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/QueryClientProviderProps.md": {
+      "hash": "68cee87b7fc034b5cfb558946228673b4389b93cc7c694a1043c12cf132b2787",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/QueryErrorClearResetFunction.md": {
+      "hash": "04e27a31b21488d4ff121dbea7fb5bc63069a1a8a76f71498710a79cd1b7a74c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/QueryErrorIsResetFunction.md": {
+      "hash": "da0f12d8ef284c961810489ba67989feb3cdbb21f13491d880eef00e6081e5aa",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/QueryErrorResetBoundaryFunction.md": {
+      "hash": "70475f31079cbebbcbe3c407a0aa32771cf1a6c842b9dc98ecab817dce9155f4",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/QueryErrorResetFunction.md": {
+      "hash": "56009405a267050b81c6e7a5f01ecfd44189f67860fe7c1747978f8599f228a7",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/SuspenseQueriesOptions.md": {
+      "hash": "37eb37d73e05025f4006cd9b2b2506568fdd63448e399f2c32c53a2678c63ca9",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/SuspenseQueriesResults.md": {
+      "hash": "c5c8564a927cc05cb27dcc50247064ed45de9fa2be99e7a7c6f927cdb33cbe8c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UndefinedInitialDataInfiniteOptions.md": {
+      "hash": "6362073c9a81459173e0da38be809480eac9623baa0bd97b62b72bd1d1e72215",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UndefinedInitialDataOptions.md": {
+      "hash": "7d63cde619381cfeaf1ae47e74d7a934fdb9db1604c629c1ff006d4fee3027bd",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UnusedSkipTokenInfiniteOptions.md": {
+      "hash": "a4f73272943c769a20c67a7f0fb1d1c0438a952180a86034cce7c20f537013bb",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UnusedSkipTokenOptions.md": {
+      "hash": "dbea307a6d531005c46a0d8175531d2ce17711d41cf34d543ac5a63411fcb3ef",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseBaseMutationResult.md": {
+      "hash": "c93dee01dbb5e624f59da77aae9aab256b18d1704c8737f1cd5da9e0008a8d6c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseBaseQueryResult.md": {
+      "hash": "59f9a2df7133b7b3e733a33a34597a94c6278b16e13b2793216286201d26f55d",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseInfiniteQueryResult.md": {
+      "hash": "71117f81f16e404522967fe5c8877054d61680f6699cb1815504e7082632f875",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseMutateAsyncFunction.md": {
+      "hash": "5c53db65b395151e5474104abd32fbdacec0fe74bb31f3e9585032f96205f915",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseMutateFunction.md": {
+      "hash": "c0205e05550fe8fc1aa617a341d0d56d1f752b49acb9dae3742be085095ad424",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseMutationResult.md": {
+      "hash": "21881b360bccf32f06f80c5b2bc0815f1c5769e3045b0c696497316b887cf2c6",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UsePrefetchInfiniteQueryOptions.md": {
+      "hash": "06425d8fbfb209e4aa01a12b1cb7d3bf8c4b09f826e4a72099e168fbeb1d00cd",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UsePrefetchQueryOptions.md": {
+      "hash": "a677f7b5220c87b867476f9f9f25655b3ea414126ff8a6c5cd63c3bbef4b79c0",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseQueryResult.md": {
+      "hash": "ecc83fd6efacbf8b5e170e07aa8c3502390a16269868ed168e4c88d88f590f20",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseSuspenseInfiniteQueryResult.md": {
+      "hash": "92a8bf114c44d3d0699a0f267fac4079c99fbb1a033a2fdc4ac85b6d8081f8d9",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/type-aliases/UseSuspenseQueryResult.md": {
+      "hash": "eb49c6e1362d24d424a08bc84edea91f1caab2cd7b657b0be8b59f838facf6c2",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/variables/IsRestoringProvider.md": {
+      "hash": "c78eaf029a8ac170aa556e68f4ef04d42f8d6168b726f00eb0bf3bcec779e982",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "framework/react/reference/variables/QueryClientContext.md": {
+      "hash": "95c0e8b0bfddfeaff598af8a745d3efc1d05c129308d8b624ef5ddf1b3bec025",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/typescript.md": {
-      "hash": "a6ab2cd793efbc78b0da5e863d99763b058bd91cc4275ec4514321dad768cc57",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
-    },
-    "framework/react/videos.md": {
-      "hash": "ae27ac7b10da98c72443e18d3b3524e464a213ffbcd315f67c8b3e5932055a37",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "c0447f868693710828ef484a9507b2e96dece8870b189728c678558084bd3a08",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/InfiniteQueryObserver.md": {
-      "hash": "aca49fb9044d16991ad99bd92c6bfe1b7f9f909718184327936031b3958d848a",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "6816a206df11504275fe4540c66da24cc3f9bbb5090414ebcd3c98f3d344a39c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/MutationCache.md": {
-      "hash": "8f6964ee32b5ca01b1dc6d2ce99792dcf3d6abf6244a37216ba87a003e253e11",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "86c01ebf1703f84bcca2acf3378f123f3bab30dec675def8da9b47f0f5790856",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/QueriesObserver.md": {
-      "hash": "538febbb2e7c3a99827da9294f93ef50b75ee2303685bfd0cf0343ec34adefa6",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "de3126b53d842e75cc838221af0c3fb431299e9fca5fe0aa615680b298a08bb1",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/QueryCache.md": {
-      "hash": "1ce35e2039747081c28c9aa1753cb286b10f88fbda9258e739184c9bbd778a11",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "f9d662e2487376d364a707d2c3c311496a179fc1e661a7d367bab30b7899423b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/QueryClient.md": {
-      "hash": "b0a3e940dd8fa648f8d4e1e255e715f906b0456931589f93b82756499a89ad35",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "01dcfff3d2766f5096da082fdc4b905d4ff72f5b55d772c3106865a0a5391649",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/QueryObserver.md": {
-      "hash": "36deff470afec7c6884cd7691b0221fa36e56552726616704483b1ae0ef97d8d",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "8f956494ea1bbdf22a60536987cc7822305d5e7604a0a472cf4ad649bb8f61c4",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
+    },
+    "reference/environmentManager.md": {
+      "hash": "5d74d5b05f4bb1e12bf6c7e2fe5ea2c5feebc912776ee041dffc89551b4e65b8",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/focusManager.md": {
-      "hash": "d8b81b4d3f53a12a95713ec70a315fb7f261c7b42906e6bab9c5ed5198f8af90",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "e3d3b079cb6dbdc2d4911e44c16e22cfc9d761cf79d8454dada5643ff631a82a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/notifyManager.md": {
-      "hash": "ec4f118c66a4d7e08f781e3260bf5a40459b9f0a2b5d0fb2701b57a4914652df",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "b7ec287fdc9156fe529fbd680ebe6e466478cef887a79dc36744688234f0142e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/onlineManager.md": {
-      "hash": "b15d65c26fc20a4f28d5a0dfc135c23137bd4ad8ecf885d88426d26ddfd82d0b",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "ac269888ceebe226c40f35bb4de51730702507114436dcf222454e3465734562",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/streamedQuery.md": {
-      "hash": "221cd1b2d05e8d74d4fa18909ab8958e7b21c4508dd2cf8dd621225ea41342b1",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "244ee24bcc3486a0b34180fac52fdb97cb7815265b0fca188a71fbb50a63e3b4",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "reference/timeoutManager.md": {
-      "hash": "2a2f970daa130ed0f76c118fc85193f51266a87614f742fd55b837d48b62431e",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T07:14:51.116Z"
+      "hash": "2cc3b015d18a43902cb9bdb5d0b8f019d61862686c4e215219642d357b96f945",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-03T16:09:19.620Z"
     }
   }
 }

@@ -5,8 +5,8 @@ title: 迁移到 React Query 4
 
 <!--
 translation-source-path: framework/react/guides/migrating-to-react-query-4.md
-translation-source-ref: v5.90.3
-translation-source-hash: 6b5b58892e4d8607e71dfbf4383d62ef7140a129da77ff1bac4fada32996ef2b
+translation-source-ref: main
+translation-source-hash: 38ed6abf06e0e9ef4bb167acd441bef67763bfa59a767bc6d6eb9079d414f247
 translation-status: translated
 -->
 
@@ -17,7 +17,7 @@ v4 是一个主要版本，因此需要注意一些重大更改：
 
 ### react-query 现在是 @tanstack/react-query
 
-您将需要卸载/安装依赖项并更改导入：
+你将需要卸载/安装依赖项并更改导入：
 
 ```
 npm uninstall react-query
@@ -39,9 +39,9 @@ npm install @tanstack/react-query-devtools
 
 > codemod 会尽力帮助你迁移这些破坏性变更。请务必仔细检查生成的代码！另外，codemod 无法覆盖某些边界情况，请留意日志输出。
 
-您可以使用以下命令之一（或两个）轻松应用它：
+你可以使用以下命令之一（或两个）轻松应用它：
 
-如果您想针对 `.js` 或 `.jsx` 文件运行它，请使用以下命令：
+如果你想针对 `.js` 或 `.jsx` 文件运行它，请使用以下命令：
 
 ```
 npx jscodeshift ./path/to/src/ \
@@ -49,7 +49,7 @@ npx jscodeshift ./path/to/src/ \
   --transform=./node_modules/@tanstack/react-query/codemods/v4/replace-import-specifier.js
 ```
 
-如果您想针对 `.ts` 或 `.tsx` 文件运行它，请使用以下命令：
+如果你想针对 `.ts` 或 `.tsx` 文件运行它，请使用以下命令：
 
 ```
 npx jscodeshift ./path/to/src/ \
@@ -58,19 +58,19 @@ npx jscodeshift ./path/to/src/ \
   --transform=./node_modules/@tanstack/react-query/codemods/v4/replace-import-specifier.js
 ```
 
-请注意，在 `TypeScript` 的情况下，您需要使用 `tsx` 作为解析器；否则，codemod将无法正确应用！
+请注意，处理 TypeScript 时需要使用 `tsx` 解析器，否则 codemod 无法正确应用！
 
-**注意：** 应用 codemod 可能会破坏您的代码格式，因此请不要忘记在应用 codemod 后运行 `prettier` 和/或 `eslint`！
+**注意：** 应用 codemod 可能会破坏你的代码格式，因此请不要忘记在应用 codemod 后运行 `prettier` 和/或 `eslint`！
 
-**注意：** codemod 将_仅_更改导入 - 您仍然需要手动安装单独的开发工具包。
+**注意：** codemod _只会_更改导入，你仍需手动安装独立的 Devtools 包。
 
 ### 查询键（和变更键）需要是一个数组
 
-在 v3 中，查询和变更键可以是字符串或数组。在内部，React Query 始终仅使用数组键，我们有时会将其暴露给消费者。例如，在 `queryFn` 中，您始终会以数组形式获取密钥，以便更轻松地使用 [Default Query Functions](../default-query-function.md)。
+在 v3 中，查询键和变更键可以是字符串，也可以是数组。React Query 内部一直只使用数组形式的键，有时这一细节也会暴露给使用者。例如，`queryFn` 收到的键始终是数组，从而更方便地配合[默认查询函数](./default-query-function.md)使用。
 
-然而，我们并没有在所有 API 中都遵循这个概念。例如，当在 [Query Filters](../filters.md) 上使用 `predicate` 函数时，您将获得原始查询键。如果您使用混合数组和字符串的查询键，这使得使用此类函数变得困难。使用全局回调时也是如此。
+但这个规则并未贯彻到所有 API 中。例如，在[查询过滤器](./filters.md)的 `predicate` 函数中，你拿到的是原始查询键。如果同时使用数组和字符串形式的查询键，这类函数便很难处理。全局回调也有相同问题。
 
-为了简化所有 api，我们决定仅将所有键设为数组：
+为了统一所有 API，我们决定只允许使用数组形式的键：
 
 ```tsx
 ;-useQuery('todos', fetchTodos) + // [!code --]
@@ -83,9 +83,9 @@ npx jscodeshift ./path/to/src/ \
 
 > codemod 会尽力帮助你迁移这些破坏性变更。请务必仔细检查生成的代码！另外，codemod 无法覆盖某些边界情况，请留意日志输出。
 
-您可以使用以下命令之一（或两个）轻松应用它：
+你可以使用以下命令之一（或两个）轻松应用它：
 
-如果您想针对 `.js` 或 `.jsx` 文件运行它，请使用以下命令：
+如果你想针对 `.js` 或 `.jsx` 文件运行它，请使用以下命令：
 
 ```
 npx jscodeshift ./path/to/src/ \
@@ -93,7 +93,7 @@ npx jscodeshift ./path/to/src/ \
   --transform=./node_modules/@tanstack/react-query/codemods/v4/key-transformation.js
 ```
 
-如果您想针对 `.ts` 或 `.tsx` 文件运行它，请使用以下命令：
+如果你想针对 `.ts` 或 `.tsx` 文件运行它，请使用以下命令：
 
 ```
 npx jscodeshift ./path/to/src/ \
@@ -102,15 +102,15 @@ npx jscodeshift ./path/to/src/ \
   --transform=./node_modules/@tanstack/react-query/codemods/v4/key-transformation.js
 ```
 
-请注意，在 `TypeScript` 的情况下，您需要使用 `tsx` 作为解析器；否则，codemod将无法正确应用！
+请注意，处理 TypeScript 时需要使用 `tsx` 解析器，否则 codemod 无法正确应用！
 
-**注意：** 应用 codemod 可能会破坏您的代码格式，因此请不要忘记在应用 codemod 后运行 `prettier` 和/或 `eslint`！
+**注意：** 应用 codemod 可能会破坏你的代码格式，因此请不要忘记在应用 codemod 后运行 `prettier` 和/或 `eslint`！
 
 ### 空闲状态已被移除
 
-随着新的 [fetchStatus](../queries.md#fetchstatus) 的引入以提供更好的离线支持，`idle` 状态变得无关紧要，因为 `fetchStatus: 'idle'` 可以更好地捕获相同的状态。欲了解更多信息，请阅读[Why two different states](../queries.md#why-two-different-states)。
+为了更好地支持离线场景，我们引入了新的 [`fetchStatus`](./queries.md#fetchstatus)。此后 `idle` 状态就显得多余了，因为 `fetchStatus: 'idle'` 能更准确地表达同一种情况。详情请阅读[为什么有两种不同的状态](./queries.md#why-two-different-states)。
 
-这将主要影响还没有任何`data`的`disabled`查询，因为它们之前处于`idle`状态：
+这主要会影响尚无任何 `data` 的禁用查询，因为它们过去处于 `idle` 状态：
 
 ```tsx
 - status: 'idle' // [!code --]
@@ -118,22 +118,22 @@ npx jscodeshift ./path/to/src/ \
 + fetchStatus: 'idle' // [!code ++]
 ```
 
-另外，看看[the guide on dependent queries](../dependent-queries.md)
+另请参阅[依赖查询指南](./dependent-queries.md)。
 
 #### 禁用查询
 
-由于此更改，禁用的查询（即使是暂时禁用的查询）将以 `loading` 状态启动。为了使迁移更容易，特别是为了有一个好的标志来知道何时显示加载指示器，您可以检查 `isInitialLoading` 而不是 `isLoading`：
+由于这项变更，禁用查询（包括暂时禁用的查询）会从 `loading` 状态开始。为了方便迁移，并准确判断何时显示加载指示器，可以检查 `isInitialLoading`，而不是 `isLoading`：
 
 ```tsx
 ;-isLoading + // [!code --]
   isInitialLoading // [!code ++]
 ```
 
-另请参阅[disabling queries](../disabling-queries.md#isInitialLoading) 上的指南
+另请参阅[禁用查询指南](./disabling-queries.md#isloading-previously-isinitialloading)。
 
 ### `useQueries` 的新 API
 
-`useQueries` Hook 现在接受带有 `queries` 属性的对象作为其输入。 `queries` 属性的值是一个查询数组（该数组与 v3 中传递给 `useQueries` 的数组相同）。
+`useQueries` Hook 现在接收一个带 `queries` 属性的对象。`queries` 的值是查询数组，与 v3 中直接传给 `useQueries` 的数组相同。
 
 ```tsx
 ;-useQueries([
@@ -150,9 +150,9 @@ npx jscodeshift ./path/to/src/ \
 
 ### 未定义是成功查询的非法缓存值
 
-为了通过返回 `undefined` 来避免更新，我们必须将 `undefined` 设置为非法缓存值。这与反应查询的其他概念一致，例如，从 [initialData function](../initial-query-data.md#initial-data-function) 返回 `undefined` 也不会设置数据。
+为了能够通过返回 `undefined` 退出更新，我们必须禁止将 `undefined` 作为成功查询的缓存值。这与 React Query 中的其他设计一致：例如，从 [`initialData` 函数](./initial-query-data.md#initial-data-function)返回 `undefined` 同样_不会_设置数据。
 
-此外，通过在 queryFn 中添加日志记录来生成 `Promise<void>` 是一个很容易的错误：
+此外，只是在 `queryFn` 中增加日志，就很容易意外产生 `Promise<void>`：
 
 ```tsx
 useQuery(['key'], () =>
@@ -160,13 +160,13 @@ useQuery(['key'], () =>
 )
 ```
 
-现在在类型级别上不允许这样做；在运行时，`undefined`将被转换为_失败的Promise_，这意味着你将得到一个`error`，它也会在开发模式下记录到控制台。
+现在类型层面已禁止这种情况；在运行时，`undefined` 会转为一个_失败的 Promise_，查询会进入 `error` 状态，并在开发模式下把错误记录到控制台。
 
 ### 默认情况下，查询和变更需要网络连接才能运行
 
-请阅读[New Features announcement](#proper-offline-support)有关在线/离线支持的信息，以及有关[Network mode](../network-mode.md)的专用页面
+请阅读[新功能公告](#proper-offline-support)中关于在线/离线支持的说明，以及专门的[网络模式](./network-mode.md)页面。
 
-尽管 React Query 是一个异步状态管理器，可用于产生 Promise 的任何内容，但它最常与数据获取库结合用于数据获取。这就是为什么默认情况下，如果没有网络连接，查询和变更将为`paused`。如果您想选择之前的行为，您可以为查询和变更全局设置`networkMode: offlineFirst`：
+尽管 React Query 是异步状态管理器，可用于任何产生 Promise 的任务，但它最常与数据获取库配合获取数据。因此，默认情况下，没有网络连接时查询和变更会进入 `paused` 状态。如果希望恢复此前的行为，可以为查询和变更全局设置 `networkMode: offlineFirst`：
 
 ```tsx
 new QueryClient({
@@ -185,7 +185,7 @@ new QueryClient({
 
 `notifyOnChangeProps` 选项不再接受`"tracked"` 值。相反，`useQuery` 默认跟踪属性。所有使用 `notifyOnChangeProps: "tracked"` 的查询都应通过删除此选项进行更新。
 
-如果您想在任何查询中绕过此设置，以模拟每当查询更改时重新渲染的 v3 默认行为，`notifyOnChangeProps` 现在接受 `"all"` 值以选择退出默认智能跟踪优化。
+如果你想在任何查询中绕过此设置，以模拟每当查询更改时重新渲染的 v3 默认行为，`notifyOnChangeProps` 现在接受 `"all"` 值以选择退出默认智能跟踪优化。
 
 ### `notifyOnChangePropsExclusion` 已被删除
 
@@ -193,19 +193,19 @@ new QueryClient({
 
 ### `cancelRefetch` 的一致行为
 
-`cancelRefetch` 选项可以传递给所有强制获取查询的函数，即：
+`cancelRefetch` 选项可以传给所有以命令式方式获取查询的函数，包括：
 
 - `queryClient.refetchQueries`
 - `queryClient.invalidateQueries`
 - `queryClient.resetQueries`
-- `refetch` 从 `useQuery` 返回
-- `fetchNextPage` 和`fetchPreviousPage` 从`useInfiniteQuery` 返回
+- `useQuery` 返回的 `refetch`
+- `useInfiniteQuery` 返回的 `fetchNextPage` 和 `fetchPreviousPage`
 
-除了 `fetchNextPage` 和 `fetchPreviousPage` 之外，此标志默认为 `false`，这是不一致的并且可能会带来麻烦：如果先前的慢速获取已经在进行，则在变更后调用 `refetchQueries` 或 `invalidateQueries` 可能不会产生最新结果，因为本次重新获取将被跳过。
+除 `fetchNextPage` 和 `fetchPreviousPage` 外，这个标志过去都默认为 `false`。这种不一致可能带来问题：如果之前已有一个较慢的获取正在进行，那么在变更后调用 `refetchQueries` 或 `invalidateQueries` 时，本次重新获取会被跳过，最终结果可能不是最新的。
 
-我们相信，如果您编写的某些代码主动重新获取查询，则默认情况下，它应该重新启动获取。
+我们认为，当代码主动要求重新获取查询时，默认就应该重新启动获取。
 
-这就是为什么对于上述所有方法，该标志现在默认为 _true_ 。这也意味着，如果您连续调用 `refetchQueries` 两次，而不等待它，它现在将取消第一次获取并重新启动第二次获取：
+因此，上述所有方法现在都将该标志默认设为 _true_。这也意味着，如果不等待第一次调用完成就再次调用 `refetchQueries`，现在会取消第一次获取，并启动新的获取：
 
 ```
 queryClient.refetchQueries({ queryKey: ['todos'] })
@@ -213,7 +213,7 @@ queryClient.refetchQueries({ queryKey: ['todos'] })
 queryClient.refetchQueries({ queryKey: ['todos'] })
 ```
 
-您可以通过显式传递 `cancelRefetch:false` 来选择退出此行为：
+可以通过显式传入 `cancelRefetch: false` 禁用此行为：
 
 ```
 queryClient.refetchQueries({ queryKey: ['todos'] })
@@ -221,11 +221,11 @@ queryClient.refetchQueries({ queryKey: ['todos'] })
 queryClient.refetchQueries({ queryKey: ['todos'] }, { cancelRefetch: false })
 ```
 
-> 注意：自动触发的提取的行为没有变化，例如因为安装了查询或因为窗口焦点重新获取。
+> 注意：自动触发的获取行为没有变化，例如查询挂载或窗口重新获得焦点时发生的重新获取。
 
 ### 查询过滤器
 
-[query filter](../filters.md) 是一个具有某些条件来匹配查询的对象。从历史上看，过滤器选项主要是布尔标志的组合。然而，组合这些标志可能会导致不可能的状态。具体来说：
+[查询过滤器](./filters.md)是一个包含特定条件、用于匹配查询的对象。过去，过滤选项大多由多个布尔标志组合而成。但这些标志组合起来可能产生不可能的状态。具体如下：
 
 ```
 active?: boolean
@@ -246,11 +246,11 @@ inactive?: boolean
 + type?: 'active' | 'inactive' | 'all' // [!code ++]
 ```
 
-过滤器默认为`all`，您可以选择仅匹配`active` 或`inactive` 查询。
+过滤器默认为 `all`，你也可以选择只匹配 `active` 或 `inactive` 查询。
 
 #### 重新获取活动/重新获取非活动
 
-[queryClient.invalidateQueries](../../../../reference/QueryClient.md#queryclientinvalidatequeries) 有两个额外的类似标志：
+[`queryClient.invalidateQueries`](../../../reference/QueryClient.md#queryclientinvalidatequeries) 还有两个额外且相似的标志：
 
 ```
 refetchActive: Boolean
@@ -271,15 +271,15 @@ refetchInactive: Boolean
 + refetchType?: 'active' | 'inactive' | 'all' | 'none' // [!code ++]
 ```
 
-该标志默认为`active`，因为`refetchActive` 默认为`true`。这意味着我们还需要一种方法来告诉`invalidateQueries`根本不重新获取，这就是为什么这里也允许第四个选项（`none`）。
+该标志默认为 `active`，因为 `refetchActive` 过去默认为 `true`。我们还需要一种方式告诉 `invalidateQueries` 完全不要重新获取，因此这里也允许第四个选项 `none`。
 
 ### `onSuccess` 不再从 `setQueryData` 调用
 
 这让许多人感到困惑，并且如果从 `onSuccess` 内部调用 `setQueryData`，也会产生无限循环。当与 `staleTime` 结合使用时，它也是一个常见的错误源，因为如果仅从缓存中读取数据，`onSuccess` 不会被调用。
 
-与`onError` 和`onSettled` 类似，`onSuccess` 回调现在与发出的请求相关联。没有请求 -> 没有回调。
+与 `onError` 和 `onSettled` 类似，`onSuccess` 回调现在只与实际发出的请求绑定：没有请求，就没有回调。
 
-如果您想监听`data`字段的变化，最好使用`useEffect`来实现，其中`data`是依赖数组的一部分。由于 React Query 通过结构共享确保数据稳定，因此效果不会在每次后台重新获取时执行，但仅当数据中的某些内容发生更改时才执行：
+如果你想监听 `data` 字段的变化，最好使用 `useEffect`，并把 `data` 放入依赖数组。React Query 会通过结构共享保持数据引用稳定，因此 Effect 不会在每次后台重新获取时都执行，而只会在数据内容实际发生变化时执行：
 
 ```
 const { data } = useQuery({ queryKey, queryFn })
@@ -288,7 +288,7 @@ React.useEffect(() => mySideEffectHere(data), [data])
 
 ### `persistQueryClient` 和相应的持久化插件不再是实验性的，并且已被重命名
 
-插件`createWebStoragePersistor` 和`createAsyncStoragePersistor` 已分别重命名为[`createSyncStoragePersister`](../../plugins/createSyncStoragePersister.md) 和[`createAsyncStoragePersister`](../../plugins/createAsyncStoragePersister.md)。 `persistQueryClient` 中的接口`Persistor` 也已重命名为`Persister`。查看[this stackexchange](https://english.stackexchange.com/questions/206893/persister-or-persistor) 以了解此更改的动机。
+插件 `createWebStoragePersistor` 和 `createAsyncStoragePersistor` 已分别更名为 [`createSyncStoragePersister`](../plugins/createSyncStoragePersister.md) 和 [`createAsyncStoragePersister`](../plugins/createAsyncStoragePersister.md)。`persistQueryClient` 中的 `Persistor` 接口也更名为了 `Persister`。更名原因可参阅这个 [Stack Exchange 问题](https://english.stackexchange.com/questions/206893/persister-or-persistor)。
 
 由于这些插件不再是实验性的，因此它们的导入路径也已更新：
 
@@ -304,15 +304,15 @@ React.useEffect(() => mySideEffectHere(data), [data])
 
 ### 不再支持 Promise 上的 `cancel` 方法
 
-[旧的 `promise.cancel` 方法](../query-cancellation.md#old-cancel-function) 允许您在 Promise 上定义 `cancel` 函数，然后库使用该函数来支持查询取消，该 [旧的 `promise.cancel` 方法](../query-cancellation.md#old-cancel-function) 已被删除。我们建议使用[newer API](../query-cancellation.md)（v3.30.0中引入）进行查询取消，它内部使用[`AbortController` API](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)，并为您的查询函数提供[`AbortSignal` instance](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)以支持查询取消。
+旧的 `cancel` 方法允许你在 Promise 上定义 `cancel` 函数，库再通过它支持取消查询。该方法现已删除。我们建议使用 v3.30.0 引入的[新 API](./query-cancellation.md) 来取消查询。它在内部使用 [`AbortController` API](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)，并向查询函数提供 [`AbortSignal` 实例](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)。
 
-### 打字稿
+### TypeScript
 
 类型现在需要使用 TypeScript v4.1 或更高版本
 
 ### 支持的浏览器
 
-从 v4 开始，React Query 针对现代浏览器进行了优化。我们更新了浏览器列表，以生成更现代、更高性能且更小的捆绑包。您可以阅读有关要求[here](../../installation#requirements)。
+从 v4 开始，React Query 针对现代浏览器进行了优化。我们更新了 browserslist，以生成更现代、性能更好且体积更小的构建产物。你可以在[这里](../installation#requirements)查看具体要求。
 
 ### `setLogger` 已删除
 
@@ -327,28 +327,28 @@ React.useEffect(() => mySideEffectHere(data), [data])
 + const queryClient = new QueryClient({ logger: customLogger }) // [!code ++]
 ```
 
-### 无_默认_手动垃圾回收服务器端
+### 服务端默认_不再_手动进行垃圾回收
 
 在 v3 中，React Query 将默认缓存查询结果 5 分钟，然后手动垃圾回收该数据。此默认值也适用于服务器端 React Query。
 
-这会导致高内存消耗和挂起进程等待手动垃圾回收完成。在 v4 中，默认情况下，服务器端 `cacheTime` 现在设置为 `Infinity`，有效禁用手动垃圾回收（一旦请求完成，NodeJS 进程将清除所有内容）。
+这会导致较高的内存占用，并让进程一直等待手动垃圾回收完成。在 v4 中，服务端 `cacheTime` 默认改为 `Infinity`，实际上禁用了手动垃圾回收（请求完成后，Node.js 进程会自行清除所有内容）。
 
-此更改仅影响服务器端 React Query 的用户，例如 Next.js。如果您手动设置 `cacheTime`，这不会影响您（不过您可能希望保持行为一致）。
+此更改仅影响服务器端 React Query 的用户，例如 Next.js。如果你手动设置 `cacheTime`，这不会影响你（不过你可能希望保持行为一致）。
 
-### 登录生产环境
+### 生产环境中的日志记录
 
 从 v4 开始，react-query 将不再在生产模式下将错误（例如失败的获取）记录到控制台，因为这让许多人感到困惑。
 在开发模式下错误仍然会出现。
 
-### 支持 package exports 与环境管理
+### ESM 支持
 
-React Query 现在支持 [package.json `exports`](https://nodejs.org/api/packages.html#exports) 并与 Node 的 CommonJS 和 ESM 原生解析完全兼容。我们不希望这对大多数用户来说是一个重大变化，但这限制了您可以导入到项目中的文件仅限于我们正式支持的入口点。
+React Query 现在支持 [package.json `"exports"`](https://nodejs.org/api/packages.html#exports)，并完全兼容 Node 对 CommonJS 和 ESM 的原生解析。我们预计这不会给大多数用户带来破坏性影响，但此后项目只能从官方支持的入口点导入文件。
 
 ### 简化的通知事件
 
-手动订阅 `QueryCache` 始终会为您提供 `QueryCacheNotifyEvent`，但 `MutationCache` 则不然。我们简化了行为并相应地调整了事件名称。
+手动订阅 `QueryCache` 始终会为你提供 `QueryCacheNotifyEvent`，但 `MutationCache` 则不然。我们简化了行为并相应地调整了事件名称。
 
-#### 查询缓存通知事件
+#### QueryCacheNotifyEvent
 
 ```tsx
 - type: 'queryAdded' // [!code --]
@@ -359,15 +359,15 @@ React Query 现在支持 [package.json `exports`](https://nodejs.org/api/package
 + type: 'updated' // [!code ++]
 ```
 
-#### 变更缓存通知事件
+#### MutationCacheNotifyEvent
 
 `MutationCacheNotifyEvent` 使用与 `QueryCacheNotifyEvent` 相同的类型。
 
-> 注意：仅当您通过 `queryCache.subscribe` 或 `mutationCache.subscribe` 手动订阅缓存时，这才相关
+> 注意：仅当你通过 `queryCache.subscribe` 或 `mutationCache.subscribe` 手动订阅缓存时，这才相关
 
-### 单独的水化导出已被删除
+### 单独的水合导出已被删除
 
-在 [3.22.0](https://github.com/tannerlinsley/react-query/releases/tag/v3.22.0) 版本中，水合实用程序移至 React Query 核心。在 v3 中，您仍然可以使用 `react-query/hydration` 中的旧导出，但这些导出已在 v4 中删除。
+从 [3.22.0](https://github.com/TanStack/query/releases/tag/v3.22.0) 开始，水合工具已迁移到 React Query 核心包。在 v3 中，你仍可以从 `react-query/hydration` 使用旧导出，但 v4 已将这些导出删除。
 
 ```tsx
 - import { dehydrate, hydrate, useHydrate, Hydrate } from 'react-query/hydration' // [!code --]
@@ -376,7 +376,7 @@ React Query 现在支持 [package.json `exports`](https://nodejs.org/api/package
 
 ### 从 `queryClient`、`query` 和 `mutation` 中删除了未记录的方法
 
-`QueryClient` 上的方法 `cancelMutations` 和 `executeMutation` 未记录且内部未使用，因此我们删除了它们。由于它只是 `mutationCache` 上可用方法的包装，因此您仍然可以使用 `executeMutation` 的功能
+`QueryClient` 上的 `cancelMutations` 和 `executeMutation` 既没有文档，内部也未使用，因此现已删除。`executeMutation` 只是对 `mutationCache` 上可用方法的一层封装，所以你仍可以直接通过 `mutationCache` 实现相同功能。
 
 ```tsx
 - executeMutation< // [!code --]
@@ -391,11 +391,11 @@ React Query 现在支持 [package.json `exports`](https://nodejs.org/api/package
 - } // [!code --]
 ```
 
-此外，`query.setDefaultOptions` 也被删除，因为它也未被使用。 `mutation.cancel` 已被删除，因为它实际上并未取消传出请求。
+此外，`query.setDefaultOptions` 也因未被使用而删除。`mutation.cancel` 同样已被删除，因为它实际上并不会取消已发出的请求。
 
-### `src/react` 目录已重命名为`src/reactjs`
+### `src/react` 目录已重命名为 `src/reactjs`
 
-以前，React Query 有一个名为 `react` 的目录，它是从 `react` 模块导入的。这可能会导致某些 Jest 配置出现问题，从而导致运行测试时出现错误，例如：
+过去，React Query 有一个名为 `react` 的目录，同时还会从 `react` 模块导入内容。这可能与某些 Jest 配置冲突，运行测试时会出现如下错误：
 
 ```
 TypeError: Cannot read property 'createContext' of undefined
@@ -403,39 +403,39 @@ TypeError: Cannot read property 'createContext' of undefined
 
 重命名目录后，这不再是问题。
 
-如果您直接在项目中从 `'react-query/react'` 导入任何内容（而不是仅 `'react-query'`），那么您需要更新导入：
+如果你直接在项目中从 `'react-query/react'` 导入任何内容（而不是仅 `'react-query'`），那么你需要更新导入：
 
 ```tsx
 - import { QueryClientProvider } from 'react-query/react'; // [!code --]
 + import { QueryClientProvider } from '@tanstack/react-query/reactjs'; // [!code ++]
 ```
 
-## 新功能🚀
+## 新功能 🚀
 
 v4 附带了一组很棒的新功能：
 
 ### 支持 React 18
 
-React 18 于今年早些时候发布，v4 现在对其及其带来的新并发功能拥有一流的支持。
+React 18 于当年早些时候发布，v4 现在已对它及其带来的新并发特性提供完整支持。
 
-### 适当的离线支持
+### 完善的离线支持
 
-在 v3 中，React Query 始终会触发查询和变更，但随后假设如果您想重试，则需要连接到互联网。这导致了几种令人困惑的情况：
+在 v3 中，React Query 始终会触发查询和变更，但随后假设如果你想重试，则需要连接到互联网。这导致了几种令人困惑的情况：
 
-- 您处于离线状态并挂载查询 - 它会进入加载状态，请求失败，并且它会保持加载状态，直到您再次上线，即使它并没有真正获取。
-- 同样，如果您处于离线状态并且关闭了重试，您的查询将触发并失败，并且查询将进入错误状态。
-- 您处于离线状态，想要启动一个不一定需要网络连接的查询（因为您_可以_使用 React Query 进行数据获取以外的其他操作），但由于某些其他原因而失败。该查询现在将暂停，直到您再次上线。
-- 如果您处于离线状态，窗口焦点重新获取根本不会执行任何操作。
+- 你处于离线状态并挂载查询 - 它会进入加载状态，请求失败，并且它会保持加载状态，直到你再次上线，即使它并没有真正获取。
+- 同样，如果你处于离线状态并且关闭了重试，你的查询将触发并失败，并且查询将进入错误状态。
+- 你处于离线状态，想要启动一个不一定需要网络连接的查询（因为你_可以_使用 React Query 进行数据获取以外的其他操作），但由于某些其他原因而失败。该查询现在将暂停，直到你再次上线。
+- 如果你处于离线状态，窗口焦点重新获取根本不会执行任何操作。
 
-在 v4 中，React Query 引入了新的 `networkMode` 来解决所有这些问题。请阅读有关新[Network mode](../network-mode) 的专用页面以获取更多信息。
+在 v4 中，React Query 引入了新的 `networkMode` 来解决这些问题。详情请阅读专门的[网络模式](./network-mode)页面。
 
 ### 默认跟踪查询
 
-React Query 默认为“跟踪”查询属性，这应该会给您带来渲染优化的良好提升。该功能自 [v3.6.0](https://github.com/tannerlinsley/react-query/releases/tag/v3.6.0) 以来就已经存在，现在已成为 v4 的默认行为。
+React Query 默认会“跟踪”查询属性，这能显著优化渲染。该功能自 [v3.6.0](https://github.com/TanStack/query/releases/tag/v3.6.0) 起就已存在，现在成为了 v4 的默认行为。
 
 ### 使用 setQueryData 避免更新
 
-使用[functional updater form of setQueryData](../../../../reference/QueryClient.md#queryclientsetquerydata)时，您现在可以通过返回`undefined`来退​​出更新。如果 `undefined` 作为 `previousValue` 提供给您，这会很有帮助，这意味着当前不存在缓存条目，并且您不想/无法创建一个条目，就像切换待办事项的示例一样：
+使用 [`setQueryData` 的函数式 updater](../../../reference/QueryClient.md#queryclientsetquerydata) 时，现在可以通过返回 `undefined` 退出更新。当你收到的 `previousValue` 是 `undefined` 时，这会很有用：它表示当前没有缓存条目，而你不想或无法创建条目。例如以下切换 todo 状态的示例：
 
 ```tsx
 queryClient.setQueryData(['todo', id], (previousTodo) =>
@@ -447,9 +447,9 @@ queryClient.setQueryData(['todo', id], (previousTodo) =>
 
 就像查询一样，现在也可以自动对变更进行垃圾回收。变更的默认 `cacheTime` 也设置为 5 分钟。
 
-### 多个提供商的自定义上下文
+### 为多个 Provider 自定义上下文
 
-现在可以指定自定义上下文来将Hook与其匹配的 `Provider` 配对。当组件树中可能有多个 React Query `Provider` 实例时，这一点至关重要，并且您需要确保您的Hook使用正确的 `Provider` 实例。
+现在可以指定自定义上下文，将 Hook 与对应的 `Provider` 匹配起来。当组件树中存在多个 React Query `Provider` 实例时，这一点尤其重要：你需要确保 Hook 使用正确的 `Provider` 实例。
 
 一个例子：
 
@@ -507,7 +507,7 @@ export const MyComponentDataProvider = ({
 }
 ```
 
-3. 在您的应用程序中使用这两个数据包。
+3. 在你的应用程序中使用这两个数据包。
 
 ```tsx
 // Our application

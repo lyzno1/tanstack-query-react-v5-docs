@@ -5,8 +5,8 @@ title: 迁移到 React Query 3
 
 <!--
 translation-source-path: framework/react/guides/migrating-to-react-query-3.md
-translation-source-ref: v5.90.3
-translation-source-hash: e94de1ea594743578b158a394f49b7ab7ad50d985924cfd5f2ce8bdc209b6c7a
+translation-source-ref: main
+translation-source-hash: a6e32d318e3c23efc588f4745b6c3d3a0ce8c09a23db7ab7c18ec1f9c38b5574
 translation-status: translated
 -->
 
@@ -22,8 +22,8 @@ React Query 的早期版本已经非常优秀，带来了很多惊艳的新特�
 - 查询数据选择器
 - 可在使用前完整配置查询和/或变更默认项
 - 可选渲染优化拥有更细粒度控制
-- 新增 `useQueries` hook！（可变长度并行查询执行）
-- `useIsFetching()` hook 支持查询过滤器
+- 新增 `useQueries` Hook！（可变长度并行查询执行）
+- `useIsFetching()` Hook 支持查询过滤器
 - 变更支持重试/离线/回放
 - 可在 React 之外观察查询/变更
 - 在任何地方复用 React Query 核心逻辑
@@ -111,8 +111,8 @@ try {
 
 它们组合后提供了与之前相同的体验，同时增加了对“重置哪些组件树”的控制。更多信息见：
 
-- [QueryErrorResetBoundary](../../reference/QueryErrorResetBoundary.md)
-- [useQueryErrorResetBoundary](../../reference/useQueryErrorResetBoundary.md)
+- [QueryErrorResetBoundary](../reference/functions/QueryErrorResetBoundary.md)
+- [useQueryErrorResetBoundary](../reference/functions/useQueryErrorResetBoundary.md)
 
 ### `QueryCache.getQuery()` 已替换为 `QueryCache.find()`
 
@@ -126,7 +126,7 @@ try {
 
 **注意：它现在是函数，不再是属性。**
 
-### `useQueryCache` hook 已替换为 `useQueryClient` hook
+### `useQueryCache` Hook 已替换为 `useQueryClient` Hook
 
 它返回当前组件树注入的 `queryClient`，除了重命名，基本无需额外调整。
 
@@ -454,7 +454,7 @@ const { data, status } = useQuery(['post', id], () => fetchPost(id))
 
 #### 查询数据选择器
 
-`useQuery` 和 `useInfiniteQuery` hook 现在支持 `select` 选项，可选择或转换查询结果的某一部分。
+`useQuery` 和 `useInfiniteQuery` Hook 现在支持 `select` 选项，可选择或转换查询结果的某一部分。
 
 ```tsx
 import { useQuery } from 'react-query'
@@ -469,7 +469,7 @@ function User() {
 
 把 `notifyOnChangeProps` 设为 `['data', 'error']`，即可仅在选中数据变化时重新渲染。
 
-#### `useQueries()` hook：可变长度并行查询执行
+#### `useQueries()` Hook：可变长度并行查询执行
 
 想在循环里跑 `useQuery`？Hook 规则不允许。但有了新的 `useQueries()`，你可以做到。
 
@@ -579,7 +579,7 @@ function Component() {
 
 #### useIsFetching()
 
-`useIsFetching()` hook 现在支持过滤器，例如只为某类查询显示加载指示器：
+`useIsFetching()` Hook 现在支持过滤器，例如只为某类查询显示加载指示器：
 
 ```tsx
 const fetches = useIsFetching({ queryKey: ['posts'] })

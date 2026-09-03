@@ -5,7 +5,7 @@ title: 窗口聚焦时重新获取
 
 <!--
 translation-source-path: framework/react/guides/window-focus-refetching.md
-translation-source-ref: v5.90.3
+translation-source-ref: main
 translation-source-hash: cfdb00a9a9515efe21c03d3bafc377b21d6bc88c8ff21a2c62d53005f4f9723e
 translation-status: translated
 -->
@@ -50,7 +50,7 @@ useQuery({
 
 ## 自定义窗口聚焦事件
 
-在少数场景下，你可能希望自行管理触发 TanStack Query 重新校验的窗口聚焦事件。为此，TanStack Query 提供了 `focusManager.setEventListener`，它会把窗口聚焦时应触发的回调传给你，并允许你自行注册事件。调用 `focusManager.setEventListener` 时，之前设置的处理器会被移除（大多数情况下是默认处理器），并改为使用你的新处理器。下面是默认处理器示例：
+在少数场景下，你可能希望自行管理触发 TanStack Query 重新获取的窗口聚焦事件。为此，TanStack Query 提供了 `focusManager.setEventListener`：它会把窗口聚焦时应触发的回调传给你，并允许你自行注册事件。调用 `focusManager.setEventListener` 时，之前设置的处理器会被移除（通常是默认处理器），并改用你的新处理器。下面是默认处理器示例：
 
 [//]: # 'Example3'
 

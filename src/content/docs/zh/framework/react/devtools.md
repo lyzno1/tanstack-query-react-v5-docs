@@ -5,25 +5,26 @@ title: Devtools
 
 <!--
 translation-source-path: framework/react/devtools.md
-translation-source-ref: v5.90.3
-translation-source-hash: 29b4d1cb9e9cffd1fc44be2e2080ec77c64b4b85be5edbe17755282046dc290d
+translation-source-ref: main
+translation-source-hash: aed8d75c7c0f9fb08c4569697d20e2087e0fdf307e295ca72218a9db1b88c76a
 translation-status: translated
 -->
 
 
 挥起双手欢呼吧，React Query 自带专用 devtools！🥳
 
-当你开始使用 React Query 时，强烈建议把这些 devtools 常驻在身边。它们可以可视化 React Query 的内部运作机制，在你陷入问题时大概率能帮你省下数小时调试时间。
+开始使用 React Query 时，强烈建议把这些 devtools 常驻在身边。它们能将 React Query 的内部运行机制
+可视化，在遇到问题时很可能帮你节省数小时调试时间。
 
 > 对于 Chrome、Firefox 和 Edge 用户：可以使用第三方浏览器扩展，直接在浏览器 DevTools 中调试 TanStack Query。它们提供与框架专用 devtools 包相同的功能：
 >
-> - <img alt="Chrome logo" src="https://www.google.com/chrome/static/images/chrome-logo.svg" width="16" height="16" class="inline mr-1 not-prose" /> [Devtools for Chrome](https://chromewebstore.google.com/detail/tanstack-query-devtools/annajfchloimdhceglpgglpeepfghfai)
-> - <img alt="Firefox logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg" width="16" height="16" class="inline mr-1 not-prose" /> [Devtools for Firefox](https://addons.mozilla.org/en-US/firefox/addon/tanstack-query-devtools/)
-> - <img alt="Edge logo" src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" width="16" height="16" class="inline mr-1 not-prose" /> [Devtools for Edge](https://microsoftedge.microsoft.com/addons/detail/tanstack-query-devtools/edmdpkgkacmjopodhfolmphdenmddobj)
+> - <img alt="Chrome 图标" src="https://www.google.com/chrome/static/images/chrome-logo.svg" width="16" height="16" class="inline mr-1 not-prose" /> <a href="https://chromewebstore.google.com/detail/tanstack-query-devtools/annajfchloimdhceglpgglpeepfghfai">Chrome 版 Devtools</a>
+> - <img alt="Firefox 图标" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg" width="16" height="16" class="inline mr-1 not-prose" /> <a href="https://addons.mozilla.org/en-US/firefox/addon/tanstack-query-devtools/">Firefox 版 Devtools</a>
+> - <img alt="Edge 图标" src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" width="16" height="16" class="inline mr-1 not-prose" /> <a href="https://microsoftedge.microsoft.com/addons/detail/tanstack-query-devtools/edmdpkgkacmjopodhfolmphdenmddobj">Edge 版 Devtools</a>
 
 > 对于 React Native 用户：有一个第三方原生 macOS 应用可用于在任意基于 JS 的应用中调试 React Query，并实时监控多设备查询。查看这里：[rn-better-dev-tools](https://github.com/LovesWorking/rn-better-dev-tools)
 
-> 注意：从 v5 开始，devtools 也支持观察 mutations。
+> 注意：从 v5 开始，devtools 也支持观察变更。
 
 ## 安装并导入 Devtools
 
@@ -33,19 +34,19 @@ devtools 是一个需要单独安装的包：
 npm i @tanstack/react-query-devtools
 ```
 
-or
+或者
 
 ```bash
 pnpm add @tanstack/react-query-devtools
 ```
 
-or
+或者
 
 ```bash
 yarn add @tanstack/react-query-devtools
 ```
 
-or
+或者
 
 ```bash
 bun add @tanstack/react-query-devtools
@@ -82,11 +83,11 @@ function App() {
 
 ### 选项
 
-- `initialIsOpen: Boolean`
-  - 如果希望 dev tools 默认展开，将其设为 `true`
+- `initialIsOpen: boolean`
+  - 如果希望 devtools 默认展开，将其设为 `true`
 - `buttonPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right" | "relative"`
   - 默认值为 `bottom-right`
-  - React Query 图标的位置，用于打开或关闭 devtools 面板
+  - TanStack 图标的位置，用于打开或关闭 devtools 面板
   - 若为 `relative`，按钮会放在你渲染 devtools 的位置
 - `position?: "top" | "bottom" | "left" | "right"`
   - 默认值为 `bottom`
@@ -100,6 +101,9 @@ function App() {
 - `shadowDOMTarget?: ShadowRoot`
   - 默认行为是将 devtools 样式应用到 DOM 中的 head 标签。
   - 通过该选项可传入 shadow DOM 目标，使样式应用在 shadow DOM 中，而非 light DOM 的 head 标签。
+- `theme?: "light" | "dark" | "system"`
+  - 默认值为 `system`。
+  - 用于更改 devtools 面板的主题。
 
 ## 嵌入模式
 
@@ -132,7 +136,7 @@ function App() {
   - 默认值：`{ height: '500px' }`
   - 示例：`{ height: '100%' }`
   - 示例：`{ height: '100%', width: '100%' }`
-- `onClose?: () => unknown`
+- `onClose?: () => void`
   - devtools 面板关闭时触发的回调函数
 - `client?: QueryClient`,
   - 用于传入自定义 QueryClient。否则会使用最近上下文中的实例。
@@ -143,6 +147,9 @@ function App() {
 - `shadowDOMTarget?: ShadowRoot`
   - 默认行为是将 devtools 样式应用到 DOM 中的 head 标签。
   - 通过该选项可传入 shadow DOM 目标，使样式应用在 shadow DOM 中，而非 light DOM 的 head 标签。
+- `theme?: "light" | "dark" | "system"`
+  - 默认值为 `system`。
+  - 用于更改 devtools 面板的主题。
 
 ## 在生产环境使用 Devtools
 

@@ -5,13 +5,13 @@ title: 从变更响应更新数据
 
 <!--
 translation-source-path: framework/react/guides/updates-from-mutation-responses.md
-translation-source-ref: v5.90.3
-translation-source-hash: 1430feeac806246d3a839e3b3b16db1e573db888c877320796d2b41c9934d1d8
+translation-source-ref: main
+translation-source-hash: d5554e202a2196e9a5c5b8f821221d4e05d213184be4f4c74e726eafd4e6a3c7
 translation-status: translated
 -->
 
 
-在处理会**更新**服务端对象的变更时，新的对象通常会自动包含在变更响应里。相比重新获取该项的查询并额外浪费一次网络请求，我们可以直接利用变更函数返回的对象，通过 [Query Client 的 `setQueryData`](../../../../reference/QueryClient.md#queryclientsetquerydata) 立即更新现有查询数据：
+在处理会**更新**服务端对象的变更时，新的对象通常会自动包含在变更响应里。相比重新获取该项的查询并额外浪费一次网络请求，我们可以直接利用变更函数返回的对象，通过 [Query Client 的 `setQueryData`](../../../reference/QueryClient.md#queryclientsetquerydata) 立即更新现有查询数据：
 
 [//]: # 'Example'
 

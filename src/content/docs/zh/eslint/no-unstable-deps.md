@@ -1,17 +1,17 @@
 ---
 id: no-unstable-deps
-title: Disallow putting the result of query hooks directly in a React hook dependency array
+title: 禁止将查询 Hook 的结果直接放入 React Hook 的依赖数组
 ---
 
 <!--
 translation-source-path: eslint/no-unstable-deps.md
-translation-source-ref: v5.90.3
-translation-source-hash: 02f9a9a886bd4770969091541f01d6b1d099ba962e31d89b3f309f395473f7ea
+translation-source-ref: main
+translation-source-hash: ecf3d1eb030a1a5510445fb7a92d42ee145964af4139e6409abed2362e2a820f
 translation-status: translated
 -->
 
 
-以下查询 hooks 返回的对象在引用上**并不稳定**：
+以下查询 Hook 返回的对象在引用上**并不稳定**：
 
 - `useQuery`
 - `useSuspenseQuery`
@@ -21,8 +21,8 @@ translation-status: translated
 - `useSuspenseInfiniteQuery`
 - `useMutation`
 
-这些 hooks 返回的对象**不应**直接放入 React hook（如 `useEffect`、`useMemo`、`useCallback`）的依赖数组中。
-应改为先解构查询 hook 的返回值，再把解构出的值放进 React hook 的依赖数组。
+这些 Hook 返回的对象**不应**直接放入 React Hook（如 `useEffect`、`useMemo`、`useCallback`）的依赖数组中。
+应改为先解构查询 Hook 的返回值，再将解构出的值传入 React Hook 的依赖数组。
 
 ## 规则详情
 
@@ -30,7 +30,7 @@ translation-status: translated
 
 ```tsx
 /* eslint "@tanstack/query/no-unstable-deps": "warn" */
-import { useCallback } from 'React'
+import { useCallback } from 'react'
 import { useMutation } from '@tanstack/react-query'
 
 function Component() {
@@ -46,7 +46,7 @@ function Component() {
 
 ```tsx
 /* eslint "@tanstack/query/no-unstable-deps": "warn" */
-import { useCallback } from 'React'
+import { useCallback } from 'react'
 import { useMutation } from '@tanstack/react-query'
 
 function Component() {

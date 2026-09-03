@@ -5,8 +5,8 @@ title: 由变更触发的失效
 
 <!--
 translation-source-path: framework/react/guides/invalidations-from-mutations.md
-translation-source-ref: v5.90.3
-translation-source-hash: f49fac522e92585ddd0f6c142d543fbd4bc56b5d8c2d397c2703c8c01b90ea17
+translation-source-ref: main
+translation-source-hash: 4699ba0bb16ee55a9c4e1b975f41899e5bed6e9b619c696cd50dbeb4d36fdf73
 translation-status: translated
 -->
 
@@ -23,7 +23,7 @@ const mutation = useMutation({ mutationFn: postTodo })
 
 [//]: # 'Example'
 
-当 `postTodo` 变更成功时，我们通常希望所有 `todos` 查询失效，并可能重新获取以展示新增 todo。你可以通过 `useMutation` 的 `onSuccess` 选项和客户端的 `invalidateQueries` 函数来实现：
+当 `postTodo` 变更成功时，我们通常希望所有 `todos` 查询失效，并可能重新获取以展示新增 todo。你可以通过 `useMutation` 的 `onSuccess` 选项和 `client` 的 `invalidateQueries` 函数来实现：
 
 [//]: # 'Example2'
 
@@ -54,12 +54,12 @@ const mutation = useMutation({
 
 [//]: # 'Example2'
 
-你可以使用 [`useMutation` hook](../mutations.md) 提供的任一回调来挂接失效逻辑。
+你可以使用 [`useMutation` Hook](./mutations.md) 提供的任一回调来挂接失效逻辑。
 
 [//]: # 'Materials'
 
 ## 延伸阅读
 
-关于“在变更后自动让查询失效”的技巧，请查看社区资源中的 [Automatic Query Invalidation after Mutations](../../community/tkdodos-blog.md#25-automatic-query-invalidation-after-mutations)。
+关于“在变更后自动让查询失效”的技巧，请阅读 TkDodo 的文章 [Automatic Query Invalidation after Mutations](https://tkdodo.eu/blog/automatic-query-invalidation-after-mutations)。
 
 [//]: # 'Materials'

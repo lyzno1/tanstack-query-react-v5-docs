@@ -5,18 +5,18 @@ title: persistQueryClient
 
 <!--
 translation-source-path: framework/react/plugins/persistQueryClient.md
-translation-source-ref: v5.90.3
-translation-source-hash: f8ab3a7f119a8bb3905826cc00aa7aab87838dbbb04d7dc842e9eecdc1130734
+translation-source-ref: main
+translation-source-hash: 4d946ad090835cea7f8e4f5987a2296b68f0efa1cc62571e3860fdf752401265
 translation-status: translated
 -->
 
 
-这是一组用于与 “persister” 交互的工具。persister 可以保存你的 queryClient 供后续使用。你可以使用不同的 **persister**，将 client 和缓存存入不同的存储层。
+这是一组用于与“Persister”交互的工具。Persister 会保存你的 Query Client，供后续使用。不同的 **Persister** 可以将客户端及其缓存存入多种不同的存储层。
 
 ## 构建 Persister
 
-- [createSyncStoragePersister](../createSyncStoragePersister.md)
-- [createAsyncStoragePersister](../createAsyncStoragePersister.md)
+- [createSyncStoragePersister](./createSyncStoragePersister.md)
+- [createAsyncStoragePersister](./createAsyncStoragePersister.md)
 - [创建自定义 persister](#persisters)
 
 ## 工作原理
@@ -29,7 +29,7 @@ translation-status: translated
 
 你也可以把它设为 `Infinity` 来完全禁用垃圾回收行为。
 
-受 JavaScript 限制影响，`gcTime` 的最大允许值大约是 [24 天](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#maximum_delay_value)。不过可以通过 [timeoutManager.setTimeoutProvider](../../../../reference/timeoutManager.md#timeoutmanagersettimeoutprovider) 绕过该限制。
+受 JavaScript 限制影响，`gcTime` 的最大允许值大约是 [24 天](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#maximum_delay_value)。不过可以通过 [timeoutManager.setTimeoutProvider](../../../reference/timeoutManager.md#timeoutmanagersettimeoutprovider) 绕过该限制。
 
 ```tsx
 const queryClient = new QueryClient({
@@ -41,7 +41,7 @@ const queryClient = new QueryClient({
 })
 ```
 
-### 缓存失效（Cache Busting）
+### 缓存废弃（Cache Busting）
 
 有时你可能会对应用或数据做出变更，从而立刻使所有缓存数据失效。发生这种情况时，你可以传入 `buster` 字符串选项。如果找到的缓存不带该 `buster` 字符串，就会被丢弃。以下函数都接受该选项：
 
@@ -56,7 +56,7 @@ persistQueryClientRestore({ queryClient, persister, buster: buildHash })
 如果发现的数据属于以下任意情况：
 
 1. 已过期（见 `maxAge`）
-2. 已失效（见 `buster`）
+2. buster 不匹配（见 `buster`）
 3. 出错（例如：`throws ...`）
 4. 为空（例如：`undefined`）
 
@@ -66,7 +66,7 @@ persistQueryClientRestore({ queryClient, persister, buster: buildHash })
 
 ### `persistQueryClientSave`
 
-- 你的 query/mutation 会被 [`dehydrate`](../../reference/hydration.md#dehydrate) 并通过你提供的 persister 存储。
+- 你的查询和变更会被 `dehydrated`（脱水），并由你提供的 Persister 存储。
 - `createSyncStoragePersister` 和 `createAsyncStoragePersister` 会将该操作节流为最多每秒执行一次，以减少可能昂贵的写入开销。可查看它们的文档了解如何自定义节流时间。
 
 你可以用它在你选择的时机显式持久化缓存。
@@ -82,7 +82,7 @@ persistQueryClientSave({
 
 ### `persistQueryClientSubscribe`
 
-当 `queryClient` 的缓存发生变化时，执行 `persistQueryClientSave`。例如：用户登录并勾选 “Remember me” 时，你可以启动该 `subscribe`。
+当 `queryClient` 的缓存发生变化时，执行 `persistQueryClientSave`。例如，当用户登录并勾选“记住我”时，你可以启动该 `subscribe`。
 
 - 它会返回一个 `unsubscribe` 函数，你可以用它停止监听，从而结束对持久化缓存的更新。
 - 如果你希望在 `unsubscribe` 之后清除已持久化缓存，可以向 `persistQueryClientRestore` 传一个新的 `buster`，这会触发 persister 的 `removeClient` 函数并丢弃持久化缓存。
@@ -98,7 +98,7 @@ persistQueryClientSubscribe({
 
 ### `persistQueryClientRestore`
 
-- 尝试将 persister 中之前持久化的、已脱水（dehydrated）的 query/mutation 缓存恢复到传入 query client 的查询缓存中。
+- 尝试将 Persister 中之前持久化并脱水的查询/变更缓存，水合到所传 Query Client 的查询缓存中。
 - 如果找到的缓存超过 `maxAge`（默认 24 小时），它会被丢弃。该时长可按需自定义。
 
 你可以用它在你选择的时机恢复缓存。
@@ -139,24 +139,23 @@ persistQueryClient({
 
 ```tsx
 interface PersistQueryClientOptions {
-  /** The QueryClient to persist */
+  /** 要持久化的 QueryClient */
   queryClient: QueryClient
-  /** The Persister interface for storing and restoring the cache
-   * to/from a persisted location */
+  /** 用于在持久化位置存储和恢复缓存的 Persister 接口 */
   persister: Persister
-  /** The max-allowed age of the cache in milliseconds.
-   * If a persisted cache is found that is older than this
-   * time, it will be **silently** discarded
-   * (defaults to 24 hours) */
+  /** 缓存允许保留的最长时间（毫秒）。
+   * 如果找到的持久化缓存早于此时间，
+   * 该缓存会被**静默**丢弃
+   *（默认为 24 小时） */
   maxAge?: number
-  /** A unique string that can be used to forcefully
-   * invalidate existing caches if they do not share the same buster string */
+  /** 唯一字符串。现有缓存的 buster 字符串与其不同时，
+   * 可用它强制废弃这些缓存 */
   buster?: string
-  /** The options passed to the hydrate function
-   * Not used on `persistQueryClientSave` or `persistQueryClientSubscribe` */
+  /** 传给 hydrate 函数的选项
+   * `persistQueryClientSave` 和 `persistQueryClientSubscribe` 不使用此选项 */
   hydrateOptions?: HydrateOptions
-  /** The options passed to the dehydrate function
-   * Not used on `persistQueryClientRestore` */
+  /** 传给 dehydrate 函数的选项
+   * `persistQueryClientRestore` 不使用此选项 */
   dehydrateOptions?: DehydrateOptions
 }
 ```
@@ -169,26 +168,26 @@ interface PersistQueryClientOptions {
 
 ## 与 React 一起使用
 
-[persistQueryClient](#persistQueryClient) 会尝试恢复缓存，并自动订阅后续变化，从而将 client 同步到所提供的存储。
+[persistQueryClient](#persistQueryClient) 会尝试恢复缓存，并自动订阅后续变化，从而将客户端同步到所提供的存储。
 
 但恢复过程是异步的，因为 persister 天生都是异步的。这意味着如果你在恢复期间渲染 App，当某个查询同时挂载并请求时，可能会出现竞态条件。
 
 另外，如果你在 React 组件生命周期之外订阅变化，就无法取消订阅：
 
 ```tsx
-// 🚨 never unsubscribes from syncing
+// 🚨 永远不会取消同步订阅
 persistQueryClient({
   queryClient,
   persister: localStoragePersister,
 })
 
-// 🚨 happens at the same time as restoring
+// 🚨 与恢复过程同时发生
 ReactDOM.createRoot(rootElement).render(<App />)
 ```
 
 ### PersistQueryClientProvider
 
-针对这个用例，你可以使用 `PersistQueryClientProvider`。它会确保按 React 组件生命周期正确地订阅/取消订阅，也会确保在恢复尚未完成时，查询不会开始请求。查询仍会渲染，但在数据恢复前会保持在 `fetchingState: 'idle'`。恢复完成后，除非恢复的数据足够 _fresh_，否则会重新获取，且会遵循 _initialData_。它可以用来_替代_普通的 [QueryClientProvider](../../reference/QueryClientProvider.md)：
+针对这个用例，可以使用 `PersistQueryClientProvider`。它会确保按照 React 组件生命周期正确地订阅和取消订阅，同时确保恢复尚未完成时查询不会开始获取数据。查询仍会渲染，只是在数据恢复之前保持 `fetchingState: 'idle'`。随后，除非恢复的数据足够_新鲜（未过期）_，否则查询会重新获取；同时也会遵循 _initialData_。它可以_替代_普通的 [QueryClientProvider](../reference/functions/QueryClientProvider.md)：
 
 ```tsx
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
@@ -218,14 +217,14 @@ ReactDOM.createRoot(rootElement).render(
 
 #### Props
 
-`PersistQueryClientProvider` 接收与 [QueryClientProvider](../../reference/QueryClientProvider.md) 相同的 props，另外还有：
+`PersistQueryClientProvider` 接收与 [QueryClientProvider](../reference/functions/QueryClientProvider.md) 相同的 props，另外还接收：
 
 - `persistOptions: PersistQueryClientOptions`
-  - 你可传给 [persistQueryClient](#persistqueryclient) 的所有[选项](#options)，但不包含 QueryClient 本身
+  - [选项](#options)中除 Query Client 本身以外的所有内容，均可传给 [persistQueryClient](#persistqueryclient)
 - `onSuccess?: () => Promise<unknown> | unknown`
   - 可选
   - 初次恢复完成时会被调用
-  - 可用于 [resumePausedMutations](../../../../reference/QueryClient.md#queryclientresumepausedmutations)
+  - 可用于 [resumePausedMutations](../../../reference/QueryClient.md#queryclientresumepausedmutations)
   - 如果返回 Promise，会等待其完成；在此之前恢复仍视为进行中
 - `onError?: () => Promise<unknown> | unknown`
   - 可选
@@ -234,7 +233,7 @@ ReactDOM.createRoot(rootElement).render(
 
 ### useIsRestoring
 
-如果你在使用 `PersistQueryClientProvider`，还可以配合 `useIsRestoring` hook 检查当前是否正在恢复。`useQuery` 及其相关 hook 在内部也会检查这一状态，以避免恢复与查询挂载之间的竞态条件。
+如果你正在使用 `PersistQueryClientProvider`，还可以配合 `useIsRestoring` Hook 检查当前是否正在恢复。`useQuery` 及相关 Hook 在内部也会检查这一状态，以避免恢复过程与查询挂载之间出现竞态条件。
 
 ## Persisters
 
@@ -281,7 +280,7 @@ import {
 } from '@tanstack/react-query-persist-client'
 
 /**
- * Creates an Indexed DB persister
+ * 创建 Indexed DB persister
  * @see https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
  */
 export function createIDBPersister(idbValidKey: IDBValidKey = 'reactQuery') {

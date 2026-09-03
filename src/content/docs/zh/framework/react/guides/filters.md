@@ -5,7 +5,7 @@ title: 过滤器
 
 <!--
 translation-source-path: framework/react/guides/filters.md
-translation-source-ref: v5.90.3
+translation-source-ref: main
 translation-source-hash: 6789540681506d95b701e56c6f04dc9808faacb8c9c038429ccd48861b92a067
 translation-status: translated
 -->
@@ -79,7 +79,7 @@ await queryClient.isMutating({
 - `predicate?: (mutation: Mutation) => boolean`
   - 这个谓词函数会作为所有已匹配变更的最终过滤条件。如果未指定其他过滤器，该函数会对缓存中的每个变更执行判断。
 
-## Utils
+## 工具函数
 
 ### `matchQuery`
 

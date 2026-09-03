@@ -1,17 +1,18 @@
 ---
 id: overview
-title: Overview
+title: 概述
 ---
 
 <!--
 translation-source-path: framework/react/overview.md
-translation-source-ref: v5.90.3
-translation-source-hash: 3aa7ee1b3afa01f1637007b250a8c89883523538ac299edd982fef0dcdfd8aca
+translation-source-ref: main
+translation-source-hash: 6b83435a4bba0e13061ad9529df35d5fc02d27d311b04474c68c6dc193ab204b
 translation-status: translated
 -->
 
 
-TanStack Query（此前名为 React Query）常被描述为 Web 应用中缺失的数据获取库。更技术一点地说，它让你在 Web 应用里进行**服务端状态的获取、缓存、同步与更新**变得非常轻松。
+TanStack Query（此前名为 React Query）常被描述为 Web 应用中缺失的数据获取库。更准确地说，
+它让你能够轻松地在 Web 应用中**获取、缓存、同步和更新服务端状态**。
 
 ## 动机
 
@@ -54,7 +55,7 @@ TanStack Query 能帮助你攻克 _服务端状态_ 的复杂问题，在数据�
 
 下面的示例展示了 TanStack Query 最基础、最简单的用法：获取 TanStack Query GitHub 项目的统计信息。
 
-[Open in StackBlitz](https://stackblitz.com/github/TanStack/query/tree/main/examples/react/simple)
+[在 StackBlitz 中打开](https://stackblitz.com/github/TanStack/query/tree/main/examples/react/simple)
 
 ```tsx
 import {
@@ -104,7 +105,7 @@ function Example() {
 ## 你已经被说服了，接下来做什么？
 
 - 可以考虑参加官方 [TanStack Query Course](https://query.gg?s=tanstack)（也可以给整个团队购买）
-- 通过我们的完整 [Walkthrough Guide](../installation.md) 和 [API Reference](../reference/useQuery.md)，按自己的节奏学习 TanStack Query
-- 阅读社区资源中的 [Why You Want React Query](../community/tkdodos-blog.md#23-why-you-want-react-query)
+- 通过详尽的[入门指南](./installation.md)和 [API 参考](./reference/index.md)，按自己的节奏学习 TanStack Query
+- 阅读文章 [Why You Want React Query](https://tkdodo.eu/blog/why-you-want-react-query)
 
 [//]: # 'Materials'

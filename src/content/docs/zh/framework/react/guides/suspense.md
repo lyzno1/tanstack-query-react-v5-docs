@@ -5,24 +5,25 @@ title: Suspense
 
 <!--
 translation-source-path: framework/react/guides/suspense.md
-translation-source-ref: v5.90.3
-translation-source-hash: 93a5597ea2cb791eac02990b1830a84d08ffce2f0a84912bacaeae342993f51a
+translation-source-ref: main
+translation-source-hash: f228f8c90851e928b4a3a168457636ee174e0a82c32056dfb0855cbb5094a22e
 translation-status: translated
 -->
 
 
-React Query 也可以与 React 的 Suspense 数据获取 API 一起使用。为此我们提供了专用 hooks：
+React Query 也可以与 React 的 Suspense 数据获取 API 一起使用。为此我们提供了专用 Hook：
 
-- [useSuspenseQuery](../../reference/useSuspenseQuery.md)
-- [useSuspenseInfiniteQuery](../../reference/useSuspenseInfiniteQuery.md)
-- [useSuspenseQueries](../../reference/useSuspenseQueries.md)
-- 此外，你还可以使用 `useQuery().promise` 与 `React.use()`（实验性）
+- [useSuspenseQuery](../reference/functions/useSuspenseQuery.md)
+- [useSuspenseInfiniteQuery](../reference/functions/useSuspenseInfiniteQuery.md)
+- [useSuspenseQueries](../reference/functions/useSuspenseQueries.md)
 
-在 suspense 模式下，不再需要 `status` 状态和 `error` 对象，而是改用 `React.Suspense` 组件（包括 `fallback` 属性）以及用于捕获错误的 React Error Boundary。请阅读 [重置 Error Boundary](#resetting-error-boundaries)，并查看 [Suspense 示例](../../examples/suspense) 了解如何配置 suspense 模式。
+使用 Suspense 模式时，不再需要自行处理 `status` 状态和 `error` 对象；这些工作改由 `React.Suspense`
+组件（包括 `fallback` prop）和用于捕获错误的 React Error Boundary 完成。有关如何配置 Suspense 模式，
+请阅读[重置错误边界](#resetting-error-boundaries)，并查看 [Suspense 示例](../examples/suspense)。
 
-如果你希望变更也像查询一样把错误传播到最近的 error boundary，可以把 `throwOnError` 也设为 `true`。
+如果你希望变更也像查询一样将错误传播到最近的 Error Boundary，可以把 `throwOnError` 也设为 `true`。
 
-为查询启用 suspense 模式：
+为查询启用 Suspense 模式：
 
 ```tsx
 import { useSuspenseQuery } from '@tanstack/react-query'
@@ -30,15 +31,19 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 const { data } = useSuspenseQuery({ queryKey, queryFn })
 ```
 
-这在 TypeScript 中体验很好，因为 `data` 保证已定义（错误和加载状态由 Suspense 与 Error Boundaries 处理）。
+这与 TypeScript 配合得很好，因为 `data` 保证已定义（错误和加载状态由 Suspense 与 Error Boundary 处理）。
 
-另一方面，你将无法再按条件启用/禁用 Query。对于依赖查询通常也不需要这样做，因为在 suspense 下，同一组件中的所有 Query 会串行获取。
+相应地，你无法再按条件启用或禁用查询。对于依赖查询，通常也不需要这样做，因为在 Suspense 模式下，
+同一组件中的所有查询会串行获取。
 
-这个 Query 也不支持 `placeholderData`。如果想避免更新时 UI 被 fallback 替换，请把会改变 QueryKey 的更新包在 [startTransition](https://react.dev/reference/react/Suspense#preventing-unwanted-fallbacks) 中。
+这类查询也不支持 `placeholderData`。如果想避免更新期间 UI 被 fallback 替换，请将会改变查询键的更新
+包在 [`startTransition`](https://react.dev/reference/react/Suspense#preventing-unwanted-fallbacks) 中。
 
 ### `throwOnError` 默认值
 
-默认并不是所有错误都会抛给最近的 Error Boundary。只有在没有其他可展示数据时才会抛错。这意味着只要某个 Query 曾成功拿到过缓存数据，即使数据已经 `stale`，组件也会继续渲染。因此 `throwOnError` 的默认值是：
+默认情况下，并非所有错误都会抛给最近的 Error Boundary。只有在没有其他可展示数据时才会抛错。
+这意味着，只要某个查询曾成功将数据写入缓存，即使数据已经过期，组件仍会继续渲染。因此，
+`throwOnError` 的默认值是：
 
 ```
 throwOnError: (error, query) => typeof query.state.data === 'undefined'
@@ -58,11 +63,11 @@ if (error && !isFetching) {
 // continue rendering data
 ```
 
-## Resetting Error Boundaries
+## 重置错误边界
 
 无论你在查询中使用的是 **suspense** 还是 **throwOnError**，当发生错误后重新渲染时，你都需要一种方式告诉查询“再试一次”。
 
-查询错误可以通过 `QueryErrorResetBoundary` 组件或 `useQueryErrorResetBoundary` hook 来重置。
+可以通过 `QueryErrorResetBoundary` 组件或 `useQueryErrorResetBoundary` Hook 重置查询错误。
 
 使用组件时，它会重置该组件边界内的所有查询错误：
 
@@ -115,13 +120,16 @@ const App = () => {
 
 ## Fetch-on-render 与 Render-as-you-fetch
 
-默认情况下，React Query 在 `suspense` 模式下作为 **Fetch-on-render** 方案工作得很好，无需额外配置。这意味着当组件尝试挂载时，会触发查询并进入 suspend，但前提是组件已经被导入并挂载。
+默认情况下，React Query 在 Suspense 模式下无需额外配置，就是很好的 **Fetch-on-render** 方案。
+组件尝试挂载时会触发查询并暂停渲染，但这要等到组件已被导入并开始挂载之后才会发生。
 
-如果你想进一步实现 **Render-as-you-fetch** 模型，我们建议在路由回调和/或用户交互事件中实现 [预获取](../prefetching.md)，在组件挂载前（理想情况下甚至在导入或挂载父组件前）就启动查询加载。
+如果你想进一步实现 **Render-as-you-fetch** 模型，我们建议在路由回调和/或用户交互事件中进行[预取](./prefetching.md)，在组件挂载前（理想情况下甚至在导入或挂载父组件前）就启动查询加载。
 
 ## 在服务端通过流式传输使用 Suspense
 
-如果你使用 `NextJs`，可以使用我们针对服务端 Suspense 的**实验性**集成：`@tanstack/react-query-next-experimental`。该包允许你在客户端组件中仅通过调用 `useSuspenseQuery` 就在服务端获取数据，结果会在 SuspenseBoundary 逐步 resolve 时从服务端流式发送到客户端。
+如果你使用 Next.js，可以使用我们面向服务端 Suspense 的**实验性**集成：
+`@tanstack/react-query-next-experimental`。在客户端组件中调用 `useSuspenseQuery`，该包便可在服务端获取数据；
+随着各个 Suspense Boundary resolve，结果会从服务端流式发送到客户端。
 
 为此，请使用 `ReactQueryStreamedHydration` 包裹应用：
 
@@ -130,7 +138,7 @@ const App = () => {
 'use client'
 
 import {
-  isServer,
+  environmentManager,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
@@ -152,7 +160,7 @@ function makeQueryClient() {
 let browserQueryClient: QueryClient | undefined = undefined
 
 function getQueryClient() {
-  if (isServer) {
+  if (environmentManager.isServer()) {
     // Server: always make a new query client
     return makeQueryClient()
   } else {
@@ -182,57 +190,5 @@ export function Providers(props: { children: React.ReactNode }) {
 }
 ```
 
-更多信息请查看 [NextJs Suspense Streaming 示例](../../examples/nextjs-suspense-streaming) 和 [Advanced Rendering & Hydration](../advanced-ssr.md) 指南。
-
-## 使用 `useQuery().promise` 与 `React.use()`（实验性）
-
-> 启用该特性时，需要在创建 `QueryClient` 时将 `experimental_prefetchInRender` 设为 `true`
-
-**示例代码：**
-
-```tsx
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      experimental_prefetchInRender: true,
-    },
-  },
-})
-```
-
-**用法：**
-
-```tsx
-import React from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { fetchTodos, type Todo } from './api'
-
-function TodoList({ query }: { query: UseQueryResult<Todo[]> }) {
-  const data = React.use(query.promise)
-
-  return (
-    <ul>
-      {data.map((todo) => (
-        <li key={todo.id}>{todo.title}</li>
-      ))}
-    </ul>
-  )
-}
-
-export function App() {
-  const query = useQuery({ queryKey: ['todos'], queryFn: fetchTodos })
-
-  return (
-    <>
-      <h1>Todos</h1>
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <TodoList query={query} />
-      </React.Suspense>
-    </>
-  )
-}
-```
-
-更完整的示例见 [GitHub 上的 suspense 示例](https://github.com/TanStack/query/tree/main/examples/react/suspense)。
-
-Next.js 流式示例见 [GitHub 上的 nextjs-suspense-streaming 示例](https://github.com/TanStack/query/tree/main/examples/react/nextjs-suspense-streaming)。
+更多信息请查看 [Next.js Suspense Streaming 示例](../examples/nextjs-suspense-streaming)和
+[高级渲染与水合](./advanced-ssr.md)指南。

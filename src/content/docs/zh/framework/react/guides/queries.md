@@ -5,21 +5,25 @@ title: 查询
 
 <!--
 translation-source-path: framework/react/guides/queries.md
-translation-source-ref: v5.90.3
-translation-source-hash: 7e9d39b3c2a34bd872b9bac0f7dbb274c0d6d430dba9a0a0d6a18c414ee4db11
+translation-source-ref: main
+translation-source-hash: 3f0ccb1ffee73eb8cd9476e769c62a70af18fc1cc4250fce7bba7073bf6a80ab
 translation-status: translated
 -->
 
 
 ## 查询基础知识
 
-查询是对绑定到**唯一键**的异步数据源的声明性依赖。查询可以与任何基于 Promise 的方法（包括 GET 和 POST 方法）一起使用，以从服务器获取数据。如果您的方法修改了服务器上的数据，我们建议改用[Mutations](../mutations.md)。
+查询是对绑定到**唯一键**的异步数据源的声明式依赖。查询可与任何基于 Promise 的方法（包括 GET 和 POST 方法）配合使用，从服务器获取数据。如果你的方法会修改服务器上的数据，建议改用[变更](./mutations.md)。
 
-要订阅组件或自定义Hook中的查询，请至少使用以下命令调用 `useQuery` Hook：
+[//]: # 'SubscribeDescription'
+
+要在组件或自定义 Hook 中订阅查询，调用 `useQuery` Hook 时至少需要提供：
+
+[//]: # 'SubscribeDescription'
 
 - **查询的唯一键**
 - 返回 Promise 的函数：
-  - 解析数据，或者
+  - resolve 为数据，或者
   - 抛出错误
 
 [//]: # 'Example'
@@ -34,9 +38,9 @@ function App() {
 
 [//]: # 'Example'
 
-您提供的**唯一查询键**在内部用于在整个应用程序中重新获取、缓存和共享您的查询。
+你提供的**唯一查询键**会在内部用于重新获取、缓存，以及在整个应用中共享查询。
 
-`useQuery` 返回的查询结果包含有关模板化和任何其他数据用法所需的查询的所有信息：
+`useQuery` 返回的结果包含渲染及其他数据使用场景所需的全部查询信息：
 
 [//]: # 'Example2'
 
@@ -46,19 +50,19 @@ const result = useQuery({ queryKey: ['todos'], queryFn: fetchTodoList })
 
 [//]: # 'Example2'
 
-`result` 对象包含一些非常重要的状态，您需要了解这些状态才能提高工作效率。查询在任何给定时刻只能处于以下状态之一：
+`result` 对象包含几个非常重要的状态。查询在任意时刻只会处于以下状态之一：
 
 - `isPending` 或 `status === 'pending'` - 查询还没有数据
 - `isError` 或 `status === 'error'` - 查询遇到错误
-- `isSuccess` 或`status === 'success'` - 查询成功并且数据可用
+- `isSuccess` 或 `status === 'success'` - 查询成功并且数据可用
 
 除了这些主要状态之外，还可以根据查询的状态获取更多信息：
 
 - `error` - 如果查询处于 `isError` 状态，则可通过 `error` 属性获取错误。
 - `data` - 如果查询处于 `isSuccess` 状态，则可通过 `data` 属性获取数据。
-- `isFetching` - 在任何状态下，如果查询随时提取（包括后台重新获取），`isFetching` 将是`true`。
+- `isFetching` - 无论查询处于哪种状态，只要正在获取数据（包括后台重新获取），`isFetching` 就是 `true`。
 
-对于**大多数**查询，通常检查`isPending`状态就足够了，然后检查`isError`状态，最后，假设数据可用并呈现成功状态：
+对于**大多数**查询，通常先检查 `isPending`，再检查 `isError`，最后便可假定数据可用并渲染成功状态：
 
 [//]: # 'Example3'
 
@@ -90,7 +94,7 @@ function Todos() {
 
 [//]: # 'Example3'
 
-如果您不喜欢布尔值，您也可以随时使用 `status` 状态：
+如果你不想使用这些布尔值，也可以直接使用 `status`：
 
 [//]: # 'Example4'
 
@@ -122,32 +126,32 @@ function Todos() {
 
 [//]: # 'Example4'
 
-如果您在访问 `pending` 和 `error` 之前检查过它，TypeScript 也会正确缩小 `data` 的类型。
+依次检查 `pending` 和 `error` 后，TypeScript 也会正确收窄 `data` 的类型。
 
-### 获取状态
+### `fetchStatus`
 
-除了 `status` 字段之外，您还将获得一个附加的 `fetchStatus` 属性，其中包含以下选项：
+除 `status` 外，结果中还有 `fetchStatus` 属性，可能取以下值：
 
-- `fetchStatus === 'fetching'` - 当前正在获取查询。
-- `fetchStatus === 'paused'` - 查询想要获取，但已暂停。请在[Network Mode](../network-mode.md) 指南中了解更多相关信息。
+- `fetchStatus === 'fetching'` - 查询当前正在获取数据。
+- `fetchStatus === 'paused'` - 查询原本要获取数据，但目前已暂停。详情请参阅[网络模式](./network-mode.md)指南。
 - `fetchStatus === 'idle'` - 查询目前没有执行任何操作。
 
 ### 为什么是两个不同的状态？
 
-后台重新获取和重新验证时失效逻辑使`status` 和`fetchStatus` 的所有组合成为可能。例如：
+后台重新获取和 stale-while-revalidate 逻辑让 `status` 与 `fetchStatus` 的各种组合都有可能出现。例如：
 
-- `success` 状态的查询通常位于`idle` fetchStatus 中，但如果发生后台重新获取，它也可能位于`fetching` 中。
-- 已挂载但没有数据的查询通常处于 `pending` 状态和 `fetching` fetchStatus，但如果没有网络连接，也可能是 `paused`。
+- 处于 `success` 状态的查询，其 `fetchStatus` 通常是 `idle`；但如果正在后台重新获取，也可能是 `fetching`。
+- 刚挂载且没有数据的查询通常处于 `pending` 状态，`fetchStatus` 为 `fetching`；但在没有网络连接时，也可能是 `paused`。
 
-因此请记住，查询可以处于 `pending` 状态，而无需实际获取数据。根据经验：
+因此请记住，查询可能处于 `pending` 状态，但实际上并未获取数据。简单来说：
 
-- `status` 提供了有关`data` 的信息：我们有没有？
-- `fetchStatus` 提供有关 `queryFn` 的信息：它是否正在运行？
+- `status` 描述 `data`：目前是否已有数据？
+- `fetchStatus` 描述 `queryFn`：目前是否正在运行？
 
 [//]: # 'Materials'
 
 ## 进一步阅读
 
-有关执行状态检查的替代方法，请查看[Community Resources](../../community/tkdodos-blog.md#4-status-checks-in-react-query)。
+关于另一种状态检查方式，请参阅 [TkDodo 的这篇文章](https://tkdodo.eu/blog/status-checks-in-react-query)。
 
 [//]: # 'Materials'

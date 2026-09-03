@@ -5,7 +5,7 @@ title: TanStack Query 会替代 Redux、MobX 或其他全局状态管理器吗�
 
 <!--
 translation-source-path: framework/react/guides/does-this-replace-client-state.md
-translation-source-ref: v5.90.3
+translation-source-ref: main
 translation-source-hash: e839285d23777e13420d5d291b1cdf8f49642509c5ee569f8a88074ac6adb2b9
 translation-status: translated
 -->

@@ -1,0 +1,89 @@
+---
+id: "@tanstack/react-query"
+title: "@tanstack/react-query"
+---
+
+<!--
+translation-source-path: framework/react/reference/index.md
+translation-source-ref: main
+translation-source-hash: fb73ec797c55eae32a3837a2bf8c8ca7d1bc7d745ed8dbb9eff331cee496a315
+translation-status: translated
+-->
+
+
+## 接口
+
+- [HydrationBoundaryProps](interfaces/HydrationBoundaryProps.md)
+- [QueryErrorResetBoundaryProps](interfaces/QueryErrorResetBoundaryProps.md)
+- [UseBaseQueryOptions](interfaces/UseBaseQueryOptions.md)
+- [UseInfiniteQueryOptions](interfaces/UseInfiniteQueryOptions.md)
+- [UseMutationOptions](interfaces/UseMutationOptions.md)
+- [UseQueryOptions](interfaces/UseQueryOptions.md)
+- [UseSuspenseInfiniteQueryOptions](interfaces/UseSuspenseInfiniteQueryOptions.md)
+- [UseSuspenseQueryOptions](interfaces/UseSuspenseQueryOptions.md)
+
+## 类型别名
+
+- [AnyUseBaseQueryOptions](type-aliases/AnyUseBaseQueryOptions.md)
+- [AnyUseInfiniteQueryOptions](type-aliases/AnyUseInfiniteQueryOptions.md)
+- [AnyUseMutationOptions](type-aliases/AnyUseMutationOptions.md)
+- [AnyUseQueryOptions](type-aliases/AnyUseQueryOptions.md)
+- [AnyUseSuspenseInfiniteQueryOptions](type-aliases/AnyUseSuspenseInfiniteQueryOptions.md)
+- [AnyUseSuspenseQueryOptions](type-aliases/AnyUseSuspenseQueryOptions.md)
+- [DefinedInitialDataInfiniteOptions](type-aliases/DefinedInitialDataInfiniteOptions.md)
+- [DefinedInitialDataOptions](type-aliases/DefinedInitialDataOptions.md)
+- [DefinedUseInfiniteQueryResult](type-aliases/DefinedUseInfiniteQueryResult.md)
+- [DefinedUseQueryResult](type-aliases/DefinedUseQueryResult.md)
+- [QueriesOptions](type-aliases/QueriesOptions.md)
+- [QueriesResults](type-aliases/QueriesResults.md)
+- [QueryClientProviderProps](type-aliases/QueryClientProviderProps.md)
+- [QueryErrorClearResetFunction](type-aliases/QueryErrorClearResetFunction.md)
+- [QueryErrorIsResetFunction](type-aliases/QueryErrorIsResetFunction.md)
+- [QueryErrorResetBoundaryFunction](type-aliases/QueryErrorResetBoundaryFunction.md)
+- [QueryErrorResetFunction](type-aliases/QueryErrorResetFunction.md)
+- [SuspenseQueriesOptions](type-aliases/SuspenseQueriesOptions.md)
+- [SuspenseQueriesResults](type-aliases/SuspenseQueriesResults.md)
+- [UndefinedInitialDataInfiniteOptions](type-aliases/UndefinedInitialDataInfiniteOptions.md)
+- [UndefinedInitialDataOptions](type-aliases/UndefinedInitialDataOptions.md)
+- [UnusedSkipTokenInfiniteOptions](type-aliases/UnusedSkipTokenInfiniteOptions.md)
+- [UnusedSkipTokenOptions](type-aliases/UnusedSkipTokenOptions.md)
+- [UseBaseMutationResult](type-aliases/UseBaseMutationResult.md)
+- [UseBaseQueryResult](type-aliases/UseBaseQueryResult.md)
+- [UseInfiniteQueryResult](type-aliases/UseInfiniteQueryResult.md)
+- [UseMutateAsyncFunction](type-aliases/UseMutateAsyncFunction.md)
+- [UseMutateFunction](type-aliases/UseMutateFunction.md)
+- [UseMutationResult](type-aliases/UseMutationResult.md)
+- [UsePrefetchInfiniteQueryOptions](type-aliases/UsePrefetchInfiniteQueryOptions.md)
+- [UsePrefetchQueryOptions](type-aliases/UsePrefetchQueryOptions.md)
+- [UseQueryResult](type-aliases/UseQueryResult.md)
+- [UseSuspenseInfiniteQueryResult](type-aliases/UseSuspenseInfiniteQueryResult.md)
+- [UseSuspenseQueryResult](type-aliases/UseSuspenseQueryResult.md)
+
+## 变量
+
+- [IsRestoringProvider](variables/IsRestoringProvider.md)
+- [QueryClientContext](variables/QueryClientContext.md)
+
+## 函数
+
+- [HydrationBoundary](functions/HydrationBoundary.md)
+- [infiniteQueryOptions](functions/infiniteQueryOptions.md)
+- [mutationOptions](functions/mutationOptions.md)
+- [QueryClientProvider](functions/QueryClientProvider.md)
+- [QueryErrorResetBoundary](functions/QueryErrorResetBoundary.md)
+- [queryOptions](functions/queryOptions.md)
+- [useInfiniteQuery](functions/useInfiniteQuery.md)
+- [useIsFetching](functions/useIsFetching.md)
+- [useIsMutating](functions/useIsMutating.md)
+- [useIsRestoring](functions/useIsRestoring.md)
+- [useMutation](functions/useMutation.md)
+- [useMutationState](functions/useMutationState.md)
+- [usePrefetchInfiniteQuery](functions/usePrefetchInfiniteQuery.md)
+- [usePrefetchQuery](functions/usePrefetchQuery.md)
+- [useQueries](functions/useQueries.md)
+- [useQuery](functions/useQuery.md)
+- [useQueryClient](functions/useQueryClient.md)
+- [useQueryErrorResetBoundary](functions/useQueryErrorResetBoundary.md)
+- [useSuspenseInfiniteQuery](functions/useSuspenseInfiniteQuery.md)
+- [useSuspenseQueries](functions/useSuspenseQueries.md)
+- [useSuspenseQuery](functions/useSuspenseQuery.md)

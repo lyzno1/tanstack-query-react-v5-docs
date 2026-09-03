@@ -1,12 +1,14 @@
 ---
 id: OnlineManager
 title: OnlineManager
+redirect_from:
+  - framework/react/reference/onlineManager
 ---
 
 <!--
 translation-source-path: reference/onlineManager.md
-translation-source-ref: v5.90.3
-translation-source-hash: b15d65c26fc20a4f28d5a0dfc135c23137bd4ad8ecf885d88426d26ddfd82d0b
+translation-source-ref: main
+translation-source-hash: ac269888ceebe226c40f35bb4de51730702507114436dcf222454e3465734562
 translation-status: translated
 -->
 
@@ -23,10 +25,10 @@ translation-status: translated
 
 可用方法如下：
 
-- [`setEventListener`](#onlinemanagerseteventlistener)
-- [`subscribe`](#onlinemanagersubscribe)
-- [`setOnline`](#onlinemanagersetonline)
-- [`isOnline`](#onlinemanagerisonline)
+- [`setEventListener`](#onlinemanager-seteventlistener)
+- [`subscribe`](#onlinemanager-subscribe)
+- [`setOnline`](#onlinemanager-setonline)
+- [`isOnline`](#onlinemanager-isonline)
 
 ## `onlineManager.setEventListener`
 
@@ -62,10 +64,10 @@ const unsubscribe = onlineManager.subscribe((isOnline) => {
 ```tsx
 import { onlineManager } from '@tanstack/react-query'
 
-// Set to online
+// 设为在线
 onlineManager.setOnline(true)
 
-// Set to offline
+// 设为离线
 onlineManager.setOnline(false)
 ```
 

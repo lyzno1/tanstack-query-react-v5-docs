@@ -5,38 +5,38 @@ title: 分页/滞后查询
 
 <!--
 translation-source-path: framework/react/guides/paginated-queries.md
-translation-source-ref: v5.90.3
-translation-source-hash: 656f0a1f3e4e1b49fa42a2562e0a554c19aa09cd65bc7f87c47bccd89f023d5f
+translation-source-ref: main
+translation-source-hash: 59d450af46d5d22a983e5864356c3e6e8dab463ad64ff3265cc462f95e4e015f
 translation-status: translated
 -->
 
 
-渲染分页数据是一种非常常见的 UI 模式，在 TanStack Query 中，它通过在查询键中包含页面信息来“正常工作”：
+渲染分页数据是一种非常常见的 UI 模式。在 TanStack Query 中，只需将分页信息包含在查询键中即可：
 
 [//]: # 'Example'
 
 ```tsx
 const result = useQuery({
   queryKey: ['projects', page],
-  queryFn: fetchProjects,
+  queryFn: () => fetchProjects(page),
 })
 ```
 
 [//]: # 'Example'
 
-但是，如果您运行这个简单的示例，您可能会注意到一些奇怪的事情：
+不过，运行这个简单示例后，你可能会注意到一个问题：
 
-**UI 会跳进跳出 `success` 和 `pending` 状态，因为每个新页面都被视为一个全新的查询。**
+**由于每个新页面都被视为全新的查询，UI 会在 `success` 和 `pending` 状态之间来回切换。**
 
-这种体验并不是最佳的，不幸的是，今天有很多工具坚持工作。但不是 TanStack Query！正如您可能已经猜到的，TanStack Query 附带了一个名为 `placeholderData` 的出色功能，它使我们能够解决这个问题。
+这种体验并不理想，许多工具却只能如此工作。TanStack Query 则提供了 `placeholderData`，让我们可以避开这个问题。
 
-## 使用`placeholderData` 更好的分页查询
+## 使用 `placeholderData` 改善分页查询
 
-考虑以下示例，我们理想情况下希望为查询增加 pageIndex（或游标）。如果我们使用 `useQuery`，**从技术上来说它仍然可以正常工作**，但是当为每个页面或游标创建和销毁不同的查询时，UI 会跳入和跳出 `success` 和 `pending` 状态。通过将`placeholderData`设置为`(previousData) => previousData`或从TanStack Query导出的`keepPreviousData`函数，我们得到了一些新东西：
+设想一个需要递增查询 `pageIndex`（或游标）的场景。直接使用 `useQuery` **在技术上完全可行**，但每个页面或游标对应的查询不断创建与销毁时，UI 会在 `success` 和 `pending` 状态之间来回切换。将 `placeholderData` 设为 `(previousData) => previousData`，或使用 TanStack Query 导出的 `keepPreviousData` 函数后，会带来以下变化：
 
-- **即使查询键已更改，在请求新数据时，上次成功获取的数据仍然可用**。
-- 当新数据到达时，之前的`data`会无缝交换以显示新数据。
-- `isPlaceholderData` 可用于了解查询当前为您提供哪些数据
+- **即使查询键已经变化，请求新数据期间仍可使用上次成功获取的数据。**
+- 新数据到达后，会无缝替换先前的 `data`。
+- 可以通过 `isPlaceholderData` 判断查询当前提供的是否为占位数据。
 
 [//]: # 'Example2'
 
@@ -98,4 +98,4 @@ function Todos() {
 
 ## 使用 `placeholderData` 滞后无限查询结果
 
-虽然不常见，但 `placeholderData` 选项也可以与 `useInfiniteQuery` Hook 完美配合，因此您可以无缝地允许用户继续查看缓存的数据，同时无限查询键随时间变化。
+虽然不太常见，但 `placeholderData` 同样适用于 `useInfiniteQuery` Hook。这样，即使无限查询的查询键不断变化，用户仍能无缝地继续查看缓存数据。

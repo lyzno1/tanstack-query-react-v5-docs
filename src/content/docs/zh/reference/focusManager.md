@@ -1,12 +1,14 @@
 ---
 id: FocusManager
 title: FocusManager
+redirect_from:
+  - framework/react/reference/focusManager
 ---
 
 <!--
 translation-source-path: reference/focusManager.md
-translation-source-ref: v5.90.3
-translation-source-hash: d8b81b4d3f53a12a95713ec70a315fb7f261c7b42906e6bab9c5ed5198f8af90
+translation-source-ref: main
+translation-source-hash: e3d3b079cb6dbdc2d4911e44c16e22cfc9d761cf79d8454dada5643ff631a82a
 translation-status: translated
 -->
 
@@ -17,10 +19,10 @@ translation-status: translated
 
 可用方法如下：
 
-- [`setEventListener`](#focusmanagerseteventlistener)
-- [`subscribe`](#focusmanagersubscribe)
-- [`setFocused`](#focusmanagersetfocused)
-- [`isFocused`](#focusmanagerisfocused)
+- [`setEventListener`](#focusmanager-seteventlistener)
+- [`subscribe`](#focusmanager-subscribe)
+- [`setFocused`](#focusmanager-setfocused)
+- [`isFocused`](#focusmanager-isfocused)
 
 ## `focusManager.setEventListener`
 
@@ -30,13 +32,13 @@ translation-status: translated
 import { focusManager } from '@tanstack/react-query'
 
 focusManager.setEventListener((handleFocus) => {
-  // Listen to visibilitychange
+  // 监听 visibilitychange
   if (typeof window !== 'undefined' && window.addEventListener) {
     window.addEventListener('visibilitychange', handleFocus, false)
   }
 
   return () => {
-    // Be sure to unsubscribe if a new handler is set
+    // 设置新处理函数时，务必取消原有订阅
     window.removeEventListener('visibilitychange', handleFocus)
   }
 })
@@ -61,13 +63,13 @@ const unsubscribe = focusManager.subscribe((isVisible) => {
 ```tsx
 import { focusManager } from '@tanstack/react-query'
 
-// Set focused
+// 设为已聚焦
 focusManager.setFocused(true)
 
-// Set unfocused
+// 设为未聚焦
 focusManager.setFocused(false)
 
-// Fallback to the default focus check
+// 回退到默认焦点检查
 focusManager.setFocused(undefined)
 ```
 

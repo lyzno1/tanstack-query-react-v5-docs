@@ -1,12 +1,12 @@
 ---
 id: stable-query-client
-title: Stable Query Client
+title: 稳定的 Query Client
 ---
 
 <!--
 translation-source-path: eslint/stable-query-client.md
-translation-source-ref: v5.90.3
-translation-source-hash: c1dfb2a1e569e8b729ffa61c1334936d731d2dc06bb730c5b18c752007ff148e
+translation-source-ref: main
+translation-source-hash: 72dcebfd80451305796c5e56c7356dc1cc37975849f197fb7b2d32e4b12f8f1b
 translation-status: translated
 -->
 
@@ -59,7 +59,7 @@ function App() {
 ```tsx
 async function App() {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery(options)
+  await queryClient.query(options)
 }
 ```
 

@@ -5,17 +5,18 @@ title: 并行查询
 
 <!--
 translation-source-path: framework/react/guides/parallel-queries.md
-translation-source-ref: v5.90.3
-translation-source-hash: e3380ec66bb9af46f0ad66fdd8abb4a956d71a4ba45f9010287ac17505933074
+translation-source-ref: main
+translation-source-hash: 9bdfe27b0162db6353caadd708905cdea5ad1638b57fe52ddd10347b6a31d6f9
 translation-status: translated
 -->
 
 
-“并行”查询是并行执行的查询，或者同时执行的查询，以最大化获取并发性。
+“并行查询”是指同时执行多个查询，以尽可能提高数据获取的并发度。
 
 ## 手动并行查询
 
-当并行查询的数量不变时，**不需要额外的努力**来使用并行查询。只需并排使用任意数量的 TanStack Query 的 `useQuery` 和 `useInfiniteQuery` Hook 即可！
+当并行查询的数量固定时，**无需额外处理**。只需并列调用任意数量的 TanStack Query
+`useQuery` 和 `useInfiniteQuery` Hook 即可。
 
 [//]: # 'Example'
 
@@ -32,7 +33,7 @@ function App () {
 [//]: # 'Example'
 [//]: # 'Info'
 
-> 当在 Suspense 模式下使用 React Query 时，这种并行模式不起作用，因为第一个查询会在内部抛出一个 Promise，并会在其他查询运行之前挂起组件。为了解决这个问题，您要么需要使用 `useSuspenseQueries` Hook（推荐），要么为每个 `useSuspenseQuery` 实例使用单独的组件来自行编排并行执行。
+> 在 Suspense 模式下，这种并行写法无法生效，因为第一个查询会在内部抛出 Promise，使组件在其余查询运行前就进入挂起状态。此时应使用 `useSuspenseQueries` Hook（推荐），或把每个 `useSuspenseQuery` 放入独立组件，自行组织并行执行。
 
 [//]: # 'Info'
 
@@ -40,12 +41,15 @@ function App () {
 
 [//]: # 'DynamicParallelIntro'
 
-如果您需要执行的查询数量在不同渲染之间发生变化，则不能使用手动查询，因为这会违反Hook规则。相反，TanStack Query 提供了一个 `useQueries` Hook，您可以使用它来动态地并行执行任意数量的查询。
+如果需要执行的查询数量会随每次渲染而变化，就不能手动调用多个 Hook，否则会违反 Hook 规则。TanStack Query 提供了 `useQueries` Hook，可用于动态并行执行任意数量的查询。
 
 [//]: # 'DynamicParallelIntro'
 
-`useQueries` 接受一个带有 **查询键** 的 **选项对象**，其值是 **查询对象数组**。它返回一个**查询结果数组**：
+[//]: # 'DynamicParallelDescription'
 
+`useQueries` 接受一个**选项对象**，其中 `queries` 的值是**查询对象数组**；它会返回一个**查询结果数组**：
+
+[//]: # 'DynamicParallelDescription'
 [//]: # 'Example2'
 
 ```tsx
@@ -62,3 +66,9 @@ function App({ users }) {
 ```
 
 [//]: # 'Example2'
+
+[//]: # 'TypeScriptSelect'
+
+> 使用 TypeScript 时，如果直接在传给 `useQueries` 的查询对象中内联编写 `select`，它无法根据同一对象的 `queryFn` 推断 `data` 参数的类型，因而会回退为 `unknown`。请显式标注 `select` 参数的类型，或使用 [`queryOptions`](../reference/functions/queryOptions.md) 辅助函数定义查询，以保留类型推断。详情请参阅[这一已知限制](https://github.com/TanStack/query/issues/6556)。
+
+[//]: # 'TypeScriptSelect'

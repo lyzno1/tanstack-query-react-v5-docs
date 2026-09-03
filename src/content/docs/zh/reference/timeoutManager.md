@@ -5,8 +5,8 @@ title: TimeoutManager
 
 <!--
 translation-source-path: reference/timeoutManager.md
-translation-source-ref: v5.90.3
-translation-source-hash: 2a2f970daa130ed0f76c118fc85193f51266a87614f742fd55b837d48b62431e
+translation-source-ref: main
+translation-source-hash: 2cc3b015d18a43902cb9bdb5d0b8f019d61862686c4e215219642d357b96f945
 translation-status: translated
 -->
 
@@ -19,12 +19,12 @@ TanStack Query 使用计时器来实现查询 `staleTime`、`gcTime` 等功能�
 
 可用方法如下：
 
-- [`timeoutManager.setTimeoutProvider`](#timeoutmanagersettimeoutprovider)
+- [`timeoutManager.setTimeoutProvider`](#timeoutmanager-settimeoutprovider)
   - [`TimeoutProvider`](#timeoutprovider)
-- [`timeoutManager.setTimeout`](#timeoutmanagersettimeout)
-- [`timeoutManager.clearTimeout`](#timeoutmanagercleartimeout)
-- [`timeoutManager.setInterval`](#timeoutmanagersetinterval)
-- [`timeoutManager.clearInterval`](#timeoutmanagerclearinterval)
+- [`timeoutManager.setTimeout`](#timeoutmanager-settimeout)
+- [`timeoutManager.clearTimeout`](#timeoutmanager-cleartimeout)
+- [`timeoutManager.setInterval`](#timeoutmanager-setinterval)
+- [`timeoutManager.clearInterval`](#timeoutmanager-clearinterval)
 
 ## `timeoutManager.setTimeoutProvider`
 

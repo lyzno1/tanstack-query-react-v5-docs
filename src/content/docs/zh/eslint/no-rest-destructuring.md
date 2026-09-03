@@ -1,12 +1,12 @@
 ---
 id: no-rest-destructuring
-title: Disallow object rest destructuring on query results
+title: 禁止对查询结果使用对象剩余解构
 ---
 
 <!--
 translation-source-path: eslint/no-rest-destructuring.md
-translation-source-ref: v5.90.3
-translation-source-hash: c75c9a3a0e0a88e88a5f17c59c9bedb1f716be4215e5103300fdd730f2a91f14
+translation-source-ref: main
+translation-source-hash: f1501e5fa3d98e9a7a7e98b89bdc7b5196cc69a3bfe8be32484eb02fb756b0a7
 translation-status: translated
 -->
 
@@ -38,14 +38,16 @@ const todosQuery = useQuery({
   queryFn: () => api.getTodos(),
 })
 
-// normal object destructuring is fine
+// 普通的对象解构没有问题
 const { data: todos } = todosQuery
 ```
+
+启用[类型感知 lint](https://typescript-eslint.io/getting-started/typed-linting/) 后，该规则还会标记对返回 TanStack Query 结果的自定义 Hook 使用剩余解构的情况。
 
 ## 何时不该使用
 
 如果你手动设置了 `notifyOnChangeProps` 选项，可以关闭此规则。
-由于你未使用 tracked queries，需要自行指定哪些属性会触发重新渲染。
+由于你没有使用属性追踪查询，因此需要自行指定哪些属性应触发重新渲染。
 
 ## 属性
 

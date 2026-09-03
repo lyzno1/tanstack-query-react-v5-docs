@@ -5,13 +5,13 @@ title: 缓存示例
 
 <!--
 translation-source-path: framework/react/guides/caching.md
-translation-source-ref: v5.90.3
-translation-source-hash: 9001989b7ed68c70aa3873fd110104718d55392121e9238647578fa5316e0dba
+translation-source-ref: main
+translation-source-hash: 8684bf526124b63f4f53f8f864361b2e89aa24f4472daf3c5adc9dba3e23355c
 translation-status: translated
 -->
 
 
-> 在阅读本指南之前，请先完整阅读[重要默认值](../important-defaults.md)
+> 在阅读本指南之前，请先完整阅读[重要默认值](./important-defaults.md)
 
 ## 基础示例
 
@@ -27,11 +27,11 @@ translation-status: translated
 - 一个新的 `useQuery({ queryKey: ['todos'], queryFn: fetchTodos })` 实例被挂载。
   - 由于此前没有使用 `['todos']` 查询键发起过其他查询，这个查询会先显示硬加载状态，并发起网络请求获取数据。
   - 网络请求完成后，返回的数据会缓存到 `['todos']` 键下。
-  - hook 会在配置的 `staleTime` 到期后将数据标记为过期（默认是 `0`，即立即过期）。
+  - 数据会在配置的 `staleTime` 到期后被标记为过期（默认是 `0`，即立即过期）。
 - 在其他位置又挂载了第二个 `useQuery({ queryKey: ['todos'], queryFn: fetchTodos })` 实例。
   - 由于缓存里已经有第一个查询留下的 `['todos']` 数据，该数据会立刻从缓存返回。
   - 新实例会使用它自己的查询函数再次触发网络请求。
-    - 注意：无论两个 `fetchTodos` 查询函数是否完全相同，由于它们使用同一个查询键，两个查询的 [`status`](../../reference/useQuery.md)（包括 `isFetching`、`isPending` 以及其他相关值）都会更新。
+    - 注意：无论两个 `fetchTodos` 查询函数是否完全相同，由于它们使用同一个查询键，两个查询的 [`status`](../reference/functions/useQuery.md)（包括 `isFetching`、`isPending` 以及其他相关值）都会更新。
   - 请求成功完成后，缓存中 `['todos']` 键下的数据会被新数据更新，两个实例都会收到新数据。
 - 两个 `useQuery({ queryKey: ['todos'], queryFn: fetchTodos })` 查询实例都被卸载，不再使用。
   - 由于这个查询已没有活跃实例，会基于 `gcTime` 启动垃圾回收计时器来删除并回收该查询（默认 **5 分钟**）。

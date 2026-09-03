@@ -5,8 +5,8 @@ title: experimental_createQueryPersister
 
 <!--
 translation-source-path: framework/react/plugins/createPersister.md
-translation-source-ref: v5.90.3
-translation-source-hash: 62b1d064d4fcd4f3dd0e7649bd40e4cfdecb3039b7e18b42ce85b32a83601c24
+translation-source-ref: main
+translation-source-hash: 685c2edb37c2ad602e5ca96b433b3d4450f34db8e48a9ca1762f06949942ebab
 translation-status: translated
 -->
 
@@ -43,13 +43,13 @@ bun add @tanstack/query-persist-client-core
 
 - 导入 `experimental_createQueryPersister` 函数
 - 创建一个新的 `experimental_createQueryPersister`
-  - 你可以传入任意符合 `AsyncStorage` 接口的 `storage`。下面示例使用的是 React Native 的 async-storage。
-- 将该 `persister` 作为选项传给你的 Query。可以在 `QueryClient` 的 `defaultOptions` 中传入，也可以在任意 `useQuery` hook 实例上单独传入。
-  - 如果你将该 `persister` 作为 `defaultOptions` 传入，所有查询都会被持久化到提供的 `storage`。你还可以通过传入 `filters` 进一步缩小范围。与 `persistClient` 插件不同的是，这里不会把整个 query client 作为单个条目持久化，而是每个查询分别持久化，并使用查询 hash 作为 key。
-  - 如果你只将该 `persister` 提供给某一个 `useQuery` hook，则只会持久化这一个 Query。
+  - 你可以传入任意符合 `AsyncStorage` 接口的 `storage`。下面示例使用 React Native 的 async-storage。
+- 将该 `persister` 作为选项传给查询。既可以将它传入 `QueryClient` 的 `defaultOptions`，也可以传给任意 `useQuery` Hook 实例。
+  - 如果将该 `persister` 作为 `defaultOptions` 传入，所有查询都会持久化到提供的 `storage`。还可以通过传入 `filters` 进一步缩小范围。与 `persistClient` 插件不同，这里不会将整个 Query Client 持久化为单个条目，而是分别持久化每个查询，并以查询哈希作为键。
+  - 如果只将该 `persister` 提供给某一个 `useQuery` Hook，则只会持久化这个查询。
 - 注意：`queryClient.setQueryData()` 操作不会被持久化。这意味着如果你做了乐观更新，并在查询失效之前刷新页面，对查询数据的修改会丢失。参见 https://github.com/TanStack/query/issues/6310
 
-这样你就不需要存储整个 `QueryClient`，而是可以自行决定应用中哪些内容值得持久化。每个查询都会按需恢复（首次使用该 Query 时）并在持久化（每次执行 `queryFn` 之后）时写入，因此无需节流。恢复后也会遵循 `staleTime`：如果数据被视为 `stale`，恢复后会立刻重新获取；如果数据是 `fresh`，则不会执行 `queryFn`。
+这样便无需存储整个 `QueryClient`，而是可以自行决定应用中哪些内容值得持久化。每个查询都会按需恢复（首次使用该查询时），并在每次执行 `queryFn` 后持久化，因此无需节流。恢复查询后也会遵循 `staleTime`：如果数据被视为过期，恢复后会立即重新获取；如果数据仍然新鲜，则不会执行 `queryFn`。
 
 将 Query 从内存中进行垃圾回收**不会**影响已持久化的数据。这意味着可以缩短 Query 在内存中的保留时间，以提升**内存效率**。下次使用时，它们会再次从持久化存储中恢复。
 
@@ -98,9 +98,9 @@ useMutation({
   mutationFn: updateTodo,
   onMutate: async (newTodo) => {
     ...
-    // Optimistically update to the new value
+    // 乐观更新为新值
     queryClient.setQueryData(['todos'], (old) => [...old, newTodo])
-    // And persist it to storage
+    // 并将其持久化到存储中
     persister.persistQueryByKey(['todos'], queryClient)
     ...
   },
@@ -110,13 +110,13 @@ useMutation({
 ### `retrieveQuery<T>(queryHash: string): Promise<T | undefined>`
 
 该函数会尝试通过 `queryHash` 获取已持久化的查询。  
-如果 `query` 已 `expired`、`busted` 或 `malformed`，则会将其从存储中移除，并返回 `undefined`。
+如果 `query` 已过期（`expired`）、buster 不匹配（`busted`）或格式错误（`malformed`），则会将其从存储中移除，并返回 `undefined`。
 
 ### `persisterGc(): Promise<void>`
 
-该函数可用于间歇性清理存储中 `expired`、`busted` 或 `malformed` 的条目。
+该函数可用于不定期清理存储中已过期、buster 不匹配或格式错误的条目。
 
-要使该函数生效，你的 storage 必须暴露 `entries` 方法，并返回 `key-value tuple array`。  
+要使该函数生效，你的 storage 必须暴露 `entries` 方法，并返回键值元组数组。
 例如 `localStorage` 的 `Object.entries(localStorage)`，或 `idb-keyval` 的 `entries`。
 
 ### `restoreQueries(queryClient: QueryClient, filters): Promise<void>`
@@ -131,7 +131,22 @@ useMutation({
 - `exact?: boolean`
   - 如果你不希望按查询键进行包含式匹配，可传入 `exact: true`，仅返回与你传入查询键完全一致的查询。
 
-要使该函数生效，你的 storage 必须暴露 `entries` 方法，并返回 `key-value tuple array`。  
+要使该函数生效，你的 storage 必须暴露 `entries` 方法，并返回键值元组数组。
+例如 `localStorage` 的 `Object.entries(localStorage)`，或 `idb-keyval` 的 `entries`。
+
+### `removeQueries(filters): Promise<void>`
+
+使用 `queryClient.removeQueries` 时，数据仍会保留在 persister 中，需要单独移除。
+该函数可用于移除当前由 persister 存储的查询。
+
+过滤对象支持以下属性：
+
+- `queryKey?: QueryKey`
+  - 设置该属性来定义要匹配的查询键。
+- `exact?: boolean`
+  - 如果不想按查询键进行包含式匹配，可以传入 `exact: true` 选项，只处理查询键与你传入的键完全相同的查询。
+
+要使该函数生效，你的 storage 必须暴露 `entries` 方法，并返回键值元组数组。
 例如 `localStorage` 的 `Object.entries(localStorage)`，或 `idb-keyval` 的 `entries`。
 
 ## API
@@ -146,39 +161,46 @@ experimental_createQueryPersister(options: StoragePersisterOptions)
 
 ```tsx
 export interface StoragePersisterOptions {
-  /** The storage client used for setting and retrieving items from cache.
-   * For SSR pass in `undefined`.
+  /** 用于在缓存中设置和获取条目的存储客户端。
+   * SSR 环境请传入 `undefined`。
    */
   storage: AsyncStorage | Storage | undefined | null
   /**
-   * How to serialize the data to storage.
+   * 如何序列化要写入存储的数据。
    * @default `JSON.stringify`
    */
   serialize?: (persistedQuery: PersistedQuery) => string
   /**
-   * How to deserialize the data from storage.
+   * 如何反序列化存储中的数据。
    * @default `JSON.parse`
    */
   deserialize?: (cachedString: string) => PersistedQuery
   /**
-   * A unique string that can be used to forcefully invalidate existing caches,
-   * if they do not share the same buster string
+   * 唯一字符串。现有缓存的 buster 字符串与其不同时，
+   * 可用它强制废弃这些缓存。
    */
   buster?: string
   /**
-   * The max-allowed age of the cache in milliseconds.
-   * If a persisted cache is found that is older than this
-   * time, it will be discarded
-   * @default 24 hours
+   * 缓存允许保留的最长时间（毫秒）。
+   * 如果找到的持久化缓存早于此时间，
+   * 该缓存将被丢弃。
+   * @default 24 小时
    */
   maxAge?: number
   /**
-   * Prefix to be used for storage key.
-   * Storage key is a combination of prefix and query hash in a form of `prefix-queryHash`.
+   * 存储键使用的前缀。
+   * 存储键由前缀和查询哈希组成，格式为 `prefix-queryHash`。
    */
   prefix?: string
   /**
-   * Filters to narrow down which Queries should be persisted.
+   * 设为 `true` 时，如果成功恢复查询后数据已经过期，查询会重新获取。
+   * 设为 `false` 时，成功恢复查询后不会重新获取。
+   * 设为 `'always'` 时，成功恢复查询后始终重新获取。
+   * 默认为 `true`。
+   */
+  refetchOnRestore?: boolean | 'always'
+  /**
+   * 用于缩小需要持久化的查询范围的过滤器。
    */
   filters?: QueryFilters
 }
@@ -199,5 +221,6 @@ interface AsyncStorage<TStorageValue = string> {
   maxAge = 1000 * 60 * 60 * 24,
   serialize = JSON.stringify,
   deserialize = JSON.parse,
+  refetchOnRestore = true,
 }
 ```

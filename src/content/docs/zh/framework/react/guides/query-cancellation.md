@@ -5,23 +5,25 @@ title: 查询取消
 
 <!--
 translation-source-path: framework/react/guides/query-cancellation.md
-translation-source-ref: v5.90.3
-translation-source-hash: 94c7f7f523f1d2c742c86c12fe001839ffcbb0e206ef8935d1428aaf724e10ab
+translation-source-ref: main
+translation-source-hash: fc73340be44796b9bc3fddc7c41118a199ede9749cddad2dd21c728f5a403e2b
 translation-status: translated
 -->
 
 
-TanStack Query 为每个查询函数提供一个[`AbortSignal` instance](https://developer.mozilla.org/docs/Web/API/AbortSignal)。当查询变得过时或不活动时，此`signal`将被中止。这意味着所有查询都是可以取消的，并且如果需要，您可以在查询函数内响应取消。最好的部分是它允许您继续使用正常的 async/await 语法，同时获得自动取消的所有好处。
+TanStack Query 会为每个查询函数提供一个 [`AbortSignal` 实例](https://developer.mozilla.org/docs/Web/API/AbortSignal)。当查询变为过期或不活跃时，该 `signal` 会被中止。因此所有查询都可以取消，你也可以按需在查询函数中响应取消操作，同时继续使用熟悉的 async/await 语法并获得自动取消能力。
 
-`AbortController` API 在[most runtime environments](https://developer.mozilla.org/docs/Web/API/AbortController#browser_compatibility) 中可用，但如果您的运行时环境不支持它，您将需要提供一个polyfill。有[several available](https://www.npmjs.com/search?q=abortcontroller%20polyfill)。
+大多数[运行时环境](https://developer.mozilla.org/docs/Web/API/AbortController#browser_compatibility)都支持 `AbortController` API。如果你的环境不支持，则需要提供 [polyfill](https://www.npmjs.com/search?q=abortcontroller%20polyfill)。
 
 ## 默认行为
 
-默认情况下，在解决Promise之前卸载或变为未使用的查询不会被取消。这意味着在 Promise 解决后，结果数据将在缓存中可用。如果您已开始接收查询，但随后在查询完成之前卸载了组件，这会很有帮助。如果您再次挂载该组件并且查询尚未被垃圾回收，则数据将可用。
+默认情况下，如果查询在 Promise resolve 前因组件卸载而变为未使用状态，它并不会被取消。Promise resolve 后，
+结果仍会写入缓存。这很有用：如果你在查询完成前卸载组件，之后再次挂载时，只要该查询尚未被垃圾回收，
+就能直接使用这些数据。
 
-但是，如果您使用`AbortSignal`，则 Promise 将被取消（例如中止获取），因此，查询也必须被取消。取消查询将导致其状态_恢复_到之前的状态。
+但如果你消费了 `AbortSignal`，Promise 会被取消（例如中止 fetch 请求），查询也会随之取消，并将状态_还原_到先前的状态。
 
-## 使用`fetch`
+## 使用 `fetch`
 
 [//]: # 'Example'
 
@@ -69,7 +71,7 @@ const query = useQuery({
 
 [//]: # 'Example2'
 
-### 使用`axios`版本低于v0.22.0
+### 使用低于 v0.22.0 的 `axios`
 
 [//]: # 'Example3'
 
@@ -100,7 +102,7 @@ const query = useQuery({
 
 [//]: # 'Example3'
 
-## 使用`XMLHttpRequest`
+## 使用 `XMLHttpRequest`
 
 [//]: # 'Example4'
 
@@ -126,9 +128,9 @@ const query = useQuery({
 
 [//]: # 'Example4'
 
-## 使用`graphql-request`
+## 使用 `graphql-request`
 
-`AbortSignal` 可以在客户端`request` 方法中设置。
+可以在客户端的 `request` 方法中设置 `AbortSignal`。
 
 [//]: # 'Example5'
 
@@ -145,9 +147,9 @@ const query = useQuery({
 
 [//]: # 'Example5'
 
-## 使用`graphql-request`版本低于v4.0.0
+## 使用低于 v4.0.0 的 `graphql-request`
 
-`AbortSignal` 可以在`GraphQLClient` 构造函数中设置。
+可以在 `GraphQLClient` 构造函数中设置 `AbortSignal`。
 
 [//]: # 'Example6'
 
@@ -167,7 +169,9 @@ const query = useQuery({
 
 ## 手动取消
 
-您可能想要手动取消查询。例如，如果请求需要很长时间才能完成，您可以允许用户单击取消按钮来停止请求。为此，您只需调用`queryClient.cancelQueries({ queryKey })`，这将取消查询并将其恢复到之前的状态。如果您在查询函数中消费了传入的 `signal`，TanStack Query 还会额外取消该 Promise。
+有时可能需要手动取消查询。例如，请求耗时较长时，可以让用户点击取消按钮停止请求。为此，只需调用
+`queryClient.cancelQueries({ queryKey })`；它会取消查询并将其还原到先前状态。如果查询函数消费了传入的
+`signal`，TanStack Query 还会一并取消该 Promise。
 
 [//]: # 'Example7'
 
@@ -196,7 +200,7 @@ return (
 
 [//]: # 'Example7'
 
-## `Cancel Options`
+## 取消选项
 
 取消选项用于控制查询取消操作的行为。
 
@@ -208,12 +212,18 @@ await queryClient.cancelQueries({ queryKey: ['posts'] }, { silent: true })
 取消选项支持以下属性：
 
 - `silent?: boolean`
-  - 当设置为 `true` 时，抑制 `CancelledError` 向观察者（例如 `onError` 回调）和相关通知的传播，并返回重试Promise而不是拒绝。
-  - 默认为`false`
+  - 设为 `true` 时，不会向观察者（例如 `onError` 回调）及相关通知传播 `CancelledError`，
+    并会返回重试 Promise，而不是让 Promise reject。
+  - 默认为 `false`
 - `revert?: boolean`
-  - 当设置为`true`时，从正在进行的获取之前立即恢复查询的状态（数据和状态），将`fetchStatus`设置回`idle`，并且仅在没有先前数据的情况下抛出。
-  - 默认为`true`
+  - 设为 `true` 时，将查询状态（数据和 status）恢复到此次进行中获取开始前的状态，
+    把 `fetchStatus` 重新设为 `idle`，并且只在此前没有数据时抛错。
+  - 默认为 `true`
 
 ## 局限性
 
-使用 `Suspense` Hook 时取消不起作用：`useSuspenseQuery`、`useSuspenseQueries` 和 `useSuspenseInfiniteQuery`。
+[//]: # 'Limitations'
+
+取消功能不适用于 Suspense Hook：`useSuspenseQuery`、`useSuspenseQueries` 和 `useSuspenseInfiniteQuery`。
+
+[//]: # 'Limitations'

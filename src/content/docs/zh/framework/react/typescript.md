@@ -5,8 +5,8 @@ title: TypeScript
 
 <!--
 translation-source-path: framework/react/typescript.md
-translation-source-ref: v5.90.3
-translation-source-hash: a6ab2cd793efbc78b0da5e863d99763b058bd91cc4275ec4514321dad768cc57
+translation-source-ref: main
+translation-source-hash: c0447f868693710828ef484a9507b2e96dece8870b189728c678558084bd3a08
 translation-status: translated
 -->
 
@@ -15,12 +15,12 @@ React Query 现在使用 **TypeScript** 编写，以确保库本身和你的项�
 
 需要注意：
 
-- 类型定义当前要求 TypeScript **v4.7** 或更高版本
+- TanStack Query 遵循 [DefinitelyTyped 的支持周期](https://github.com/DefinitelyTyped/DefinitelyTyped#support-window)，支持过去两年内发布的 TypeScript 版本。目前即 TypeScript **5.6** 及更高版本。
 - 该仓库中的类型变更被视为**非破坏性**变更，通常会以 **patch** 版本发布（否则每次类型增强都得发 major 版本）
 - **强烈建议将 react-query 包版本锁定到具体 patch 版本，并在升级时预期任意版本间都可能包含类型修复或增强**
 - React Query 与类型无关的公共 API 仍严格遵循 semver
 
-## Type Inference
+## 类型推断
 
 React Query 的类型通常能够很好地自动流转，你一般无需手动提供类型注解。
 
@@ -68,7 +68,7 @@ const { data } = useQuery({ queryKey: ['groups'], queryFn: fetchGroups })
 
 [//]: # 'TypeInference3'
 
-## Type Narrowing
+## 类型收窄
 
 React Query 对查询结果使用了[可辨识联合类型](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#discriminated-unions)，通过 `status` 字段及其派生布尔状态标记进行区分。这样你就可以通过判断 `success` 状态让 `data` 变为已定义：
 
@@ -90,7 +90,7 @@ if (isSuccess) {
 
 [//]: # 'TypeNarrowing'
 
-## Typing the error field
+## 为 `error` 字段指定类型
 
 `error` 默认类型是 `Error`，因为这符合大多数用户的预期。
 
@@ -136,7 +136,7 @@ if (axios.isAxiosError(error)) {
 
 [//]: # 'TypingError3'
 
-### Registering a global Error
+### 注册全局 Error 类型
 
 TanStack Query v5 允许你通过扩展 `Register` 接口设置全局 Error 类型，无需在每个调用点都写泛型。这样可以在保持类型推断的同时，让 `error` 字段变成你指定的类型。若你希望强制调用点做显式类型收窄，可把 `defaultError` 设为 `unknown`：
 
@@ -159,11 +159,11 @@ const { error } = useQuery({ queryKey: ['groups'], queryFn: fetchGroups })
 [//]: # 'RegisterErrorType'
 [//]: # 'TypingMeta'
 
-## Typing meta
+## 为 `meta` 指定类型
 
-### Registering global Meta
+### 注册全局 Meta 类型
 
-与注册[全局错误类型](#registering-a-global-error)类似，你也可以注册全局 `Meta` 类型。这样可以确保 [queries](../reference/useQuery.md) 和 [mutations](../reference/useMutation.md) 上可选的 `meta` 字段保持一致并具备类型安全。注意，注册类型必须扩展 `Record<string, unknown>`，这样 `meta` 才能保持对象类型。
+与注册[全局错误类型](#registering-a-global-error)类似，你也可以注册全局 `Meta` 类型。这样可以确保[查询](./reference/functions/useQuery.md)和[变更](./reference/functions/useMutation.md)上可选的 `meta` 字段保持一致并具备类型安全。注意，注册类型必须扩展 `Record<string, unknown>`，这样 `meta` 才能保持对象类型。
 
 ```ts
 import '@tanstack/react-query'
@@ -183,9 +183,9 @@ declare module '@tanstack/react-query' {
 [//]: # 'TypingMeta'
 [//]: # 'TypingQueryAndMutationKeys'
 
-## Typing query and mutation keys
+## 为查询键和变更键指定类型
 
-### Registering the query and mutation key types
+### 注册查询键和变更键类型
 
 同样地，类似注册[全局错误类型](#registering-a-global-error)，你也可以注册全局 `QueryKey` 与 `MutationKey` 类型。这能为你的键提供更贴合应用层级的结构，并在整个库表面保持类型一致。注意，注册类型必须扩展 `Array`，以确保键仍然是数组。
 
@@ -205,9 +205,9 @@ declare module '@tanstack/react-query' {
 [//]: # 'TypingQueryAndMutationKeys'
 [//]: # 'TypingQueryOptions'
 
-## Typing Query Options
+## 为查询选项指定类型
 
-如果你在 `useQuery` 中内联 query options，会得到自动类型推断。但有时你可能想把 query options 提取到独立函数里，在 `useQuery` 与 `prefetchQuery` 等场景间复用。这样会丢失推断。要恢复推断，可使用 `queryOptions` 辅助函数：
+如果你在 `useQuery` 中内联查询选项，会得到自动类型推断。但有时你可能想把查询选项提取到独立函数里，在 `useQuery` 与 `query` 等场景间复用。这样会丢失推断。要恢复推断，可使用 `queryOptions` 辅助函数：
 
 ```ts
 import { queryOptions } from '@tanstack/react-query'
@@ -221,7 +221,7 @@ function groupOptions() {
 }
 
 useQuery(groupOptions())
-queryClient.prefetchQuery(groupOptions())
+queryClient.query(groupOptions())
 ```
 
 另外，`queryOptions` 返回的 `queryKey` 会携带其关联 `queryFn` 的类型信息。我们可以利用这一点，让 `queryClient.getQueryData` 之类的方法也感知这些类型：
@@ -245,7 +245,14 @@ const data = queryClient.getQueryData(groupOptions().queryKey)
 const data = queryClient.getQueryData<Group[]>(['groups'])
 ```
 
-## Typing Mutation Options
+请注意，通过 `queryOptions` 获得的类型推断不适用于 `queryClient.getQueriesData`，因为它返回的是由元组构成的数组，其中包含不同类型的 `unknown` 数据。如果你确定查询将返回的数据类型，请显式指定：
+
+```ts
+const entries = queryClient.getQueriesData<Group[]>(groupOptions().queryKey)
+//     ^? const entries: Array<[QueryKey, Group[] | undefined]>
+```
+
+## 为变更选项指定类型
 
 与 `queryOptions` 类似，你可以使用 `mutationOptions` 将 mutation options 提取到独立函数中：
 
@@ -267,15 +274,15 @@ queryClient.isMutating(groupMutationOptions())
 
 [//]: # 'TypingQueryOptions'
 
-## Typesafe disabling of queries using `skipToken`
+## 使用 `skipToken` 以类型安全的方式禁用查询
 
 如果你在使用 TypeScript，可以通过 `skipToken` 禁用查询。这在你希望基于条件禁用查询、同时仍保持查询类型安全时非常有用。
-可在 [Disabling Queries](../guides/disabling-queries.md) 指南中了解更多。
+详情请参阅[禁用查询](./guides/disabling-queries.md)指南。
 
 [//]: # 'Materials'
 
 ## 延伸阅读
 
-如果你想了解更多关于类型推断的技巧，可以阅读社区资源中的 [React Query and TypeScript](../community/tkdodos-blog.md#6-react-query-and-typescript)。若你希望获得尽可能强的类型安全，可阅读 [Type-safe React Query](../community/tkdodos-blog.md#19-type-safe-react-query)。而 [The Query Options API](../community/tkdodos-blog.md#24-the-query-options-api) 讲解了 `queryOptions` 辅助函数中的类型推断机制。
+如需了解更多类型推断技巧，请阅读 [React Query and TypeScript](https://tkdodo.eu/blog/react-query-and-type-script)。若想获得尽可能强的类型安全，可阅读 [Type-safe React Query](https://tkdodo.eu/blog/type-safe-react-query)。[The Query Options API](https://tkdodo.eu/blog/the-query-options-api) 则介绍了 `queryOptions` 辅助函数的类型推断原理。
 
 [//]: # 'Materials'

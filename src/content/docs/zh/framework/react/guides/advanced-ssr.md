@@ -5,23 +5,23 @@ title: 高级服务端渲染
 
 <!--
 translation-source-path: framework/react/guides/advanced-ssr.md
-translation-source-ref: v5.90.3
-translation-source-hash: d2b60a8cb55729f73e54c59518457ebd6d0949c6fd96496270cf78176457e18a
+translation-source-ref: main
+translation-source-hash: d2ea5ba6c0a0816e7a89b7f2c2dc4381f75575cd92bdac5ad908d5b1a465835e
 translation-status: translated
 -->
 
 
 欢迎来到高级服务端渲染指南。在这里你将学习如何将 React Query 与流式传输（streaming）、Server Components 以及 Next.js app router 结合使用。
 
-在阅读本文前，你可能会先看一下 [Server Rendering & Hydration 指南](../ssr.md)。它讲解了 React Query 与 SSR 配合的基础知识；另外，[Performance & Request Waterfalls](../request-waterfalls.md) 和 [Prefetching & Router Integration](../prefetching.md) 也包含了很有价值的背景信息。
+在阅读本文前，你可能会先看一下 [Server Rendering & Hydration 指南](./ssr.md)。它讲解了 React Query 与 SSR 配合的基础知识；另外，[Performance & Request Waterfalls](./request-waterfalls.md) 和 [Prefetching & Router Integration](./prefetching.md) 也包含了很有价值的背景信息。
 
-开始前先说明：SSR 指南中提到的 `initialData` 方案同样适用于 Server Components，不过本指南将重点放在 hydration API 上。
+开始前先说明：SSR 指南中提到的 `initialData` 方案同样适用于 Server Components，不过本指南将重点介绍水合 API。
 
 ## Server Components 与 Next.js app router
 
 这里不会深入讲 Server Components，简要来说：它们是保证**只在服务端**运行的组件，不仅在初次页面渲染时如此，**在页面切换时也一样**。这与 Next.js 的 `getServerSideProps`/`getStaticProps` 和 Remix 的 `loader` 有些相似，它们也都总是在服务端运行；不同点是，这些 loader 只能返回数据，而 Server Components 能做的事情更多。不过对 React Query 来说，数据部分最关键，所以我们聚焦在这里。
 
-如何把我们在 Server Rendering 指南中学到的“[将框架 loader 中预取的数据传给应用](../ssr.md#using-the-hydration-apis)”应用到 Server Components 与 Next.js app router？最好的思考方式是把 Server Components 看作“只是另一种框架 loader”。
+如何把我们在 Server Rendering 指南中学到的“[将框架 loader 中预取的数据传给应用](./ssr.md#using-the-hydration-apis)”应用到 Server Components 与 Next.js app router？最好的思考方式是把 Server Components 看作“只是另一种框架 loader”。
 
 ### 术语快速说明
 
@@ -39,7 +39,7 @@ translation-status: translated
 
 // Since QueryClientProvider relies on useContext under the hood, we have to put 'use client' on top
 import {
-  isServer,
+  environmentManager,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
@@ -59,7 +59,7 @@ function makeQueryClient() {
 let browserQueryClient: QueryClient | undefined = undefined
 
 function getQueryClient() {
-  if (isServer) {
+  if (environmentManager.isServer()) {
     // Server: always make a new query client
     return makeQueryClient()
   } else {
@@ -107,9 +107,9 @@ export default function RootLayout({
 
 这部分和 SSR 指南中做的事情非常相似，只是现在要拆成两个文件。
 
-### 预取与数据 de/hydrate
+### 预取与数据脱水/水合
 
-接下来看看如何实际预取数据、再做 dehydrate 和 hydrate。下面是 **Next.js Pages Router** 中的写法：
+接下来看看如何实际预取数据，再对其进行脱水和水合。下面是 **Next.js Pages Router** 中的写法：
 
 ```tsx
 // pages/posts.tsx
@@ -124,10 +124,12 @@ import {
 export async function getStaticProps() {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-  })
+  await queryClient
+    .query({
+      queryKey: ['posts'],
+      queryFn: getPosts,
+    })
+    .catch(noop)
 
   return {
     props: {
@@ -180,10 +182,12 @@ import Posts from './posts'
 export default async function PostsPage() {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-  })
+  await queryClient
+    .query({
+      queryKey: ['posts'],
+      queryFn: getPosts,
+    })
+    .catch(noop)
 
   return (
     // Neat! Serialization is now as easy as passing props.
@@ -224,9 +228,9 @@ export default function Posts() {
 
 我们在 SSR 指南中提到过，可以去掉每个路由都写 `<HydrationBoundary>` 的样板代码。但在 Server Components 场景下，这点做不到。
 
-> 注意：如果你在使用异步 Server Components 时遇到类型错误，且 TypeScript 版本低于 `5.1.3`、`@types/react` 版本低于 `18.2.8`，建议升级到最新版本。或者可临时在组件被其他组件调用时添加 `{/* @ts-expect-error Server Component */}` 作为权宜方案。详见 Next.js 13 文档中的 [Async Server Component TypeScript Error](https://nextjs.org/docs/app/building-your-application/configuring/typescript#async-server-component-typescript-error)。
+> 注意：如果你在使用异步 Server Components 时遇到类型错误，且 TypeScript 版本低于 `5.1.3`、`@types/react` 版本低于 `18.2.8`，建议升级到最新版本。或者可临时在组件被其他组件调用时添加 `{/* @ts-expect-error Server Component */}` 作为权宜方案。详见 Next.js TypeScript 文档中的 [Async Server Component TypeScript Error](https://nextjs.org/docs/app/building-your-application/configuring/typescript#async-server-component-typescript-error)。
 
-> 注意：如果你遇到错误 `Only plain objects, and a few built-ins, can be passed to Server Actions. Classes or null prototypes are not supported.`，请确保传给 queryFn 的**不是**函数引用，而是直接调用函数。因为 queryFn 参数里有很多属性，并非全部可序列化。参见 [Server Action only works when queryFn isn't a reference](https://github.com/TanStack/query/issues/6264)。
+> 警告：我们**不**建议在 `queryFn` 中使用 Next.js Server Actions 来_获取_数据。当从客户端调用时，Server Actions 会[串行而非并行执行](https://react.dev/reference/rsc/use-server#caveats)，这与 React Query 获取和重新获取查询的方式冲突。这可能使查询卡在 pending 状态，或导致 action 根本无法执行（参见 [#7934](https://github.com/TanStack/query/issues/7934)）。将 Server Action 引用传给 `queryFn` 也可能触发 `Only plain objects, and a few built-ins, can be passed to Server Actions...` 错误，因为你必须_调用_ action，而不是将它作为引用传入（参见 [#6264](https://github.com/TanStack/query/issues/6264)）。如需在客户端获取数据，请使用 `fetch` 请求 API route，或使用 tRPC 等 RPC 层。Server Actions 仍很适合用于**变更**（`useMutation`）。
 
 ### 嵌套 Server Components
 
@@ -245,10 +249,12 @@ import CommentsServerComponent from './comments-server'
 export default async function PostsPage() {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-  })
+  await queryClient
+    .query({
+      queryKey: ['posts'],
+      queryFn: getPosts,
+    })
+    .catch(noop)
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
@@ -269,10 +275,12 @@ import Comments from './comments'
 export default async function CommentsServerComponent() {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery({
-    queryKey: ['posts-comments'],
-    queryFn: getComments,
-  })
+  await queryClient
+    .query({
+      queryKey: ['posts-comments'],
+      queryFn: getComments,
+    })
+    .catch(noop)
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
@@ -282,7 +290,7 @@ export default async function CommentsServerComponent() {
 }
 ```
 
-可以看到，在多个位置使用 `<HydrationBoundary>` 完全没问题；为预取创建并 dehydrate 多个 `queryClient` 也没问题。
+可以看到，在多个位置使用 `<HydrationBoundary>` 完全没问题；为预取创建多个 `queryClient` 并分别进行脱水也没有问题。
 
 注意：由于我们在渲染 `CommentsServerComponent` 前 `await` 了 `getPosts`，这会形成服务端瀑布：
 
@@ -311,11 +319,11 @@ const getQueryClient = cache(() => new QueryClient())
 export default getQueryClient
 ```
 
-好处是：在任何由 Server Component 调用的地方（包括工具函数）都可以 `getQueryClient()` 拿到这个 client。坏处是：每次调用 `dehydrate(getQueryClient())` 都会序列化_整个_ `queryClient`，包括此前已序列化过且与当前 Server Component 无关的查询，带来不必要开销。
+好处是：在任何由 Server Component 调用的地方（包括工具函数）都可以通过 `getQueryClient()` 获取这个客户端实例。坏处是：每次调用 `dehydrate(getQueryClient())` 都会序列化_整个_ `queryClient`，包括此前已序列化过且与当前 Server Component 无关的查询，带来不必要的开销。
 
 Next.js 对 `fetch()` 请求已做去重；但如果你的 `queryFn` 使用的是其他请求方式，或你所用框架**不会**自动去重，那么使用上述“单个 `queryClient`”方案在某些情况下依然有意义，即使会有重复序列化。
 
-> 未来我们可能会考虑提供 `dehydrateNew()`（名称待定）之类的方法，仅 dehydrate 自上次 `dehydrateNew()` 调用后新增的查询。如果你对这个方向感兴趣并愿意参与，欢迎联系我们。
+> 未来我们可能会考虑提供 `dehydrateNew()`（名称待定）之类的方法，仅对自上次调用 `dehydrateNew()` 后新增的查询进行脱水。如果你对这个方向感兴趣并愿意参与，欢迎联系我们。
 
 ### 数据所有权与重新验证
 
@@ -333,8 +341,8 @@ import Posts from './posts'
 export default async function PostsPage() {
   const queryClient = new QueryClient()
 
-  // Note we are now using fetchQuery()
-  const posts = await queryClient.fetchQuery({
+  // Note we are getting the result from query
+  const posts = await queryClient.query({
     queryKey: ['posts'],
     queryFn: getPosts,
   })
@@ -363,11 +371,11 @@ React Query 并不知道如何去_重新验证 Server Component_。因此如果�
 
 很难给出“何时应配合使用 React Query 与 Server Components”的统一答案。**如果你是从零开始一个全新的 Server Components 应用，我们建议先使用框架原生的数据获取工具，直到你真的需要时再引入 React Query。** 你也可能永远不需要它，这完全没问题，按场景选对工具即可。
 
-如果你确实使用它，一个经验法则是：除非你需要捕获错误，否则尽量避免 `queryClient.fetchQuery`。即便使用了，也不要在服务端渲染它的结果，或把结果传给其他组件（即使是 Client Component）。
+如果你确实使用它，一个经验法则是：不要在服务端渲染 `queryClient.query` 的结果，也不要把结果传给其他组件，即使对方是 Client Component。
 
 从 React Query 角度看，请把 Server Components 当作“预取数据的地方”，仅此而已。
 
-当然，让一部分数据由 Server Components 拥有、另一部分由 Client Components 拥有也是可以的，只要确保这两套现实不会失同步。
+当然，也可以让 Server Components 和 Client Components 分别拥有不同的数据，只要确保两边的数据状态不会失去同步。
 
 ## 使用 Server Components 进行流式传输
 
@@ -384,7 +392,7 @@ Next.js app router 会自动将应用中已就绪的部分尽早流式发送给�
 ```tsx
 // app/get-query-client.ts
 import {
-  isServer,
+  environmentManager,
   QueryClient,
   defaultShouldDehydrateQuery,
 } from '@tanstack/react-query'
@@ -416,7 +424,7 @@ function makeQueryClient() {
 let browserQueryClient: QueryClient | undefined = undefined
 
 export function getQueryClient() {
-  if (isServer) {
+  if (environmentManager.isServer()) {
     // Server: always make a new query client
     return makeQueryClient()
   } else {
@@ -445,10 +453,12 @@ export default function PostsPage() {
   const queryClient = getQueryClient()
 
   // look ma, no await
-  queryClient.prefetchQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-  })
+  void queryClient
+    .query({
+      queryKey: ['posts'],
+      queryFn: getPosts,
+    })
+    .catch(noop)
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
@@ -512,10 +522,12 @@ export default function PostsPage() {
   const queryClient = getQueryClient()
 
   // look ma, no await
-  queryClient.prefetchQuery({
-    queryKey: ['posts'],
-    queryFn: () => getPosts().then(serialize), // <-- serialize the data on the server
-  })
+  void queryClient
+    .query({
+      queryKey: ['posts'],
+      queryFn: () => getPosts().then(serialize), // <-- serialize the data on the server
+    })
+    .catch(noop)
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
@@ -538,13 +550,32 @@ export default function Posts() {
 
 现在你的 `getPosts` 函数就可以返回例如 `Temporal` 日期时间对象。只要 transformer 能处理这些类型，数据就会在客户端完成序列化与反序列化。
 
-更多信息可参考 [Next.js App with Prefetching Example](../../examples/nextjs-app-prefetching)。
+更多信息可参考 [Next.js App with Prefetching Example](../examples/nextjs-app-prefetching)。
+
+### 将持久化适配器与流式传输配合使用
+
+如果你将持久化适配器与[Server Components 流式传输](#streaming-with-server-components)功能配合使用，需要注意不要把 Promise 保存到存储中。由于 pending 查询可以被脱水并以流式传输到客户端，你应将 persister 配置为只持久化成功的查询：
+
+```tsx
+<PersistQueryClientProvider
+  client={queryClient}
+  persistOptions={{
+    persister,
+    // We don't want to save promises into the storage, so we only persist successful queries
+    dehydrateOptions: { shouldDehydrateQuery: defaultShouldDehydrateQuery },
+  }}
+>
+  {children}
+</PersistQueryClientProvider>
+```
+
+这可确保只有已成功解析的查询会被持久化到存储中，从而避免 pending Promise 引发序列化问题。
 
 ## Next.js 中不做预取的实验性流式方案
 
 虽然我们推荐上面的预取方案，因为它能在首次页面加载**和**后续页面导航中都打平请求瀑布，但还有一种实验性方案：完全跳过预取，同时仍让 streaming SSR 工作，即 `@tanstack/react-query-next-experimental`。
 
-这个包允许你在组件中直接调用 `useSuspenseQuery`，就在服务端（Client Component 中）取到数据。结果会随着 Suspense 边界的解决从服务端流到客户端。如果你调用 `useSuspenseQuery` 时没有用 `<Suspense>` 包裹，HTML 响应会等到请求完成后才开始发送。某些场景这可能正是你想要的，但要注意它会影响 TTFB。
+这个包允许你在组件中直接调用 `useSuspenseQuery`，就在服务端（Client Component 中）取到数据。随着各 Suspense 边界完成解析，结果会从服务端流式传输到客户端。如果你调用 `useSuspenseQuery` 时没有用 `<Suspense>` 包裹，HTML 响应会等到请求完成后才开始发送。某些场景下这可能正是你想要的，但要注意它会影响 TTFB。
 
 要实现这一点，用 `ReactQueryStreamedHydration` 包裹应用：
 
@@ -553,7 +584,7 @@ export default function Posts() {
 'use client'
 
 import {
-  isServer,
+  environmentManager,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
@@ -575,7 +606,7 @@ function makeQueryClient() {
 let browserQueryClient: QueryClient | undefined = undefined
 
 function getQueryClient() {
-  if (isServer) {
+  if (environmentManager.isServer()) {
     // Server: always make a new query client
     return makeQueryClient()
   } else {
@@ -605,11 +636,11 @@ export function Providers(props: { children: React.ReactNode }) {
 }
 ```
 
-更多信息可参考 [NextJs Suspense Streaming Example](../../examples/nextjs-suspense-streaming)。
+更多信息可参考 [NextJs Suspense Streaming Example](../examples/nextjs-suspense-streaming)。
 
 这个方案最大的优点是：你不再需要手动预取查询就能让 SSR 工作，而且结果仍可流式传输。开发体验（DX）很好，代码复杂度也更低。
 
-缺点可以回看 Performance & Request Waterfalls 指南中的[复杂请求瀑布示例](../request-waterfalls.md#code-splitting)。使用带预取的 Server Components，能在首次页面加载**和**后续导航中都有效消除请求瀑布。而这个“无预取”方案只能在首次加载时打平瀑布，页面导航时又会回到原始示例中的深层瀑布：
+缺点可以回看 Performance & Request Waterfalls 指南中的[复杂请求瀑布示例](./request-waterfalls.md#code-splitting)。使用带预取的 Server Components，能在首次页面加载**和**后续导航中都有效消除请求瀑布。而这个“无预取”方案只能在首次加载时打平瀑布，页面导航时又会回到原始示例中的深层瀑布：
 
 ```
 1. |> JS for <Feed>
@@ -620,7 +651,7 @@ export function Providers(props: { children: React.ReactNode }) {
 
 这甚至比 `getServerSideProps`/`getStaticProps` 更差，因为后者至少还能并行拉取数据与代码。
 
-如果你更重视 DX、迭代速度与交付速度，且希望代码复杂度低于性能；或者你的查询嵌套不深；又或者你已经通过 `useSuspenseQueries` 等手段很好地控制了请求瀑布，那么这可能是可接受的权衡。
+如果你愿意优先考虑 DX、迭代/交付速度和较低的代码复杂度，而非性能；或者查询嵌套不深；又或者你已经通过 `useSuspenseQueries` 等工具并行获取数据，从而妥善控制了请求瀑布，那么这种方案可能是不错的权衡。
 
 > 理论上或许可以组合两种方式，但我们自己也还没尝试过。如果你做了尝试，欢迎反馈结果，甚至直接更新本文分享经验。
 
@@ -634,6 +665,6 @@ Server Components 与 streaming 仍是比较新的概念。我们也还在持续
 
 ## 延伸阅读
 
-如果你想判断应用在使用 Server Components 时是否还能从 React Query 中获益，可阅读社区资源中的 [You Might Not Need React Query](../../community/tkdodos-blog.md#20-you-might-not-need-react-query)。
+如果你想判断应用在使用 Server Components 时是否还能从 React Query 中获益，可阅读 [You Might Not Need React Query](https://tkdodo.eu/blog/you-might-not-need-react-query)。
 
 [//]: # 'Materials'

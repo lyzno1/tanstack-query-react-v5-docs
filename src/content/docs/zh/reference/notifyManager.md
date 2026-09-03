@@ -1,12 +1,14 @@
 ---
 id: NotifyManager
 title: NotifyManager
+redirect_from:
+  - framework/react/reference/notifyManager
 ---
 
 <!--
 translation-source-path: reference/notifyManager.md
-translation-source-ref: v5.90.3
-translation-source-hash: ec4f118c66a4d7e08f781e3260bf5a40459b9f0a2b5d0fb2701b57a4914652df
+translation-source-ref: main
+translation-source-hash: b7ec287fdc9156fe529fbd680ebe6e466478cef887a79dc36744688234f0142e
 translation-status: translated
 -->
 
@@ -15,17 +17,17 @@ translation-status: translated
 
 它暴露了以下方法：
 
-- [batch](#notifymanagerbatch)
-- [batchCalls](#notifymanagerbatchcalls)
-- [schedule](#notifymanagerschedule)
-- [setNotifyFunction](#notifymanagersetnotifyfunction)
-- [setBatchNotifyFunction](#notifymanagersetbatchnotifyfunction)
-- [setScheduler](#notifymanagersetscheduler)
+- [batch](#notifymanager-batch)
+- [batchCalls](#notifymanager-batchcalls)
+- [schedule](#notifymanager-schedule)
+- [setNotifyFunction](#notifymanager-setnotifyfunction)
+- [setBatchNotifyFunction](#notifymanager-setbatchnotifyfunction)
+- [setScheduler](#notifymanager-setscheduler)
 
 ## `notifyManager.batch`
 
 `batch` 可用于将传入回调中安排的所有更新进行批处理。
-这主要用于内部优化 queryClient 的更新。
+这主要在内部用于优化 Query Client 的更新。
 
 ```ts
 function batch<T>(callback: () => T): T
@@ -55,8 +57,7 @@ function schedule(callback: () => void): void
 
 ## `notifyManager.setNotifyFunction`
 
-`setNotifyFunction` 会覆盖通知函数。该函数会接收应被执行的
-callback。默认的 notifyFunction 只是直接调用它。
+`setNotifyFunction` 会覆盖通知函数。该函数会在回调应当执行时接收这个回调。默认的通知函数只会直接调用它。
 
 例如，在运行测试时可用于用 `React.act` 包装通知：
 
@@ -84,18 +85,17 @@ notifyManager.setBatchNotifyFunction(batch)
 
 ## `notifyManager.setScheduler`
 
-`setScheduler` 用于配置一个自定义回调，以决定下一次批处理
-何时运行。默认行为是 `setTimeout(callback, 0)`。
+`setScheduler` 用于配置一个自定义调度回调，决定下一次批处理何时运行。默认行为是 `setTimeout(callback, 0)`。
 
 ```ts
 import { notifyManager } from '@tanstack/react-query'
 
-// Schedule batches in the next microtask
+// 在下一个微任务中执行批处理
 notifyManager.setScheduler(queueMicrotask)
 
-// Schedule batches before the next frame is rendered
+// 在下一帧渲染前执行批处理
 notifyManager.setScheduler(requestAnimationFrame)
 
-// Schedule batches some time in the future
+// 在未来某个时刻执行批处理
 notifyManager.setScheduler((cb) => setTimeout(cb, 10))
 ```

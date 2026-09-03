@@ -5,8 +5,8 @@ title: 禁用/暂停查询
 
 <!--
 translation-source-path: framework/react/guides/disabling-queries.md
-translation-source-ref: v5.90.3
-translation-source-hash: 2ac06e279df6db4ac7b3abade980e24d21f8ef8453b9bd42273fda8087f121ca
+translation-source-ref: main
+translation-source-hash: 9446ce0f06dbb3f2f8d7653b5fd5c29dcac33d8c93a6c0993f0589516761ec1d
 translation-status: translated
 -->
 
@@ -19,7 +19,7 @@ translation-status: translated
 - 如果查询没有缓存数据，则查询会以 `status === 'pending'` 和 `fetchStatus === 'idle'` 状态开始。
 - 查询在挂载时不会自动获取。
 - 查询不会在后台自动重新获取。
-- 查询会忽略通常会触发重新获取的 query client `invalidateQueries` 与 `refetchQueries` 调用。
+- 查询会忽略 Query Client 上通常会触发重新获取的 `invalidateQueries` 与 `refetchQueries` 调用。
 - 可以使用 `useQuery` 返回的 `refetch` 手动触发查询获取。但它不适用于 `skipToken`。
 
 > TypeScript 用户可以考虑使用 [skipToken](#typesafe-disabling-of-queries-using-skiptoken) 作为 `enabled = false` 的替代方案。
@@ -93,7 +93,7 @@ function Todos() {
 
 ### isLoading（此前为 `isInitialLoading`）
 
-懒查询从一开始就是 `status: 'pending'`，因为 `pending` 表示还没有数据。这在技术上是正确的；但由于当前并未获取任何数据（查询还未 _enabled_），你往往无法用这个标记显示加载指示器。
+懒查询从一开始就是 `status: 'pending'`，因为 `pending` 表示还没有数据。这在技术上是正确的；但由于当前并未获取任何数据（查询尚未_启用_），你往往无法用这个标记显示加载指示器。
 
 如果你使用的是禁用查询或懒查询，可以改用 `isLoading` 标记。它是一个派生标记，计算方式为：
 
@@ -105,7 +105,7 @@ function Todos() {
 
 如果你在使用 TypeScript，可以使用 `skipToken` 来禁用查询。它适用于“基于条件禁用查询，但仍希望查询保持类型安全”的场景。
 
-> 重要：`useQuery` 的 `refetch` 与 `skipToken` 不兼容。除此之外，`skipToken` 与 `enabled: false` 行为一致。
+> **重要**：`useQuery` 返回的 `refetch` 无法与 `skipToken` 一起使用。对使用 `skipToken` 的查询调用 `refetch()` 会产生 `Missing queryFn` 错误，因为没有可执行的有效查询函数。如果需要手动触发查询，请考虑改用 `enabled: false`，这样 `refetch()` 便可以正常工作。除了这项限制，`skipToken` 的行为与 `enabled: false` 相同。
 
 [//]: # 'Example3'
 

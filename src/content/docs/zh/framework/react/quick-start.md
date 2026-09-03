@@ -1,25 +1,25 @@
 ---
 id: quick-start
-title: Quick Start
+title: 快速开始
 ---
 
 <!--
 translation-source-path: framework/react/quick-start.md
-translation-source-ref: v5.90.3
-translation-source-hash: 875da51e7536106f3148361ff7a6b41ca412298d432d8e4fb96e4589a24533fc
+translation-source-ref: main
+translation-source-hash: e695ac2a71213c51b25931bb4819511319a5d78baf07f141cf109972c14b8df5
 translation-status: translated
 -->
 
 
 这段代码非常简要地展示了 React Query 的 3 个核心概念：
 
-- [Queries](../guides/queries.md)
-- [Mutations](../guides/mutations.md)
-- [Query Invalidation](../guides/query-invalidation.md)
+- [查询](./guides/queries.md)
+- [变更](./guides/mutations.md)
+- [查询失效](./guides/query-invalidation.md)
 
 [//]: # 'Example'
 
-如果你想看一个完整可运行的示例，请查看我们的 [simple StackBlitz example](../examples/simple)
+如果你想看一个完整可运行的示例，请查看我们的 [StackBlitz 简单示例](./examples/simple)。
 
 ```tsx
 import {

@@ -5,13 +5,15 @@ title: 查询选项
 
 <!--
 translation-source-path: framework/react/guides/query-options.md
-translation-source-ref: v5.90.3
-translation-source-hash: 4d9b49d2ad4a34e7847aa6d23642647fd3a2dbbbad48d39e2a7a376cee1be6f1
+translation-source-ref: main
+translation-source-hash: a41ef393863a3e5af8d525eee2106734369e8e5d639dc41978cfe9c6a4f86bb3
 translation-status: translated
 -->
 
 
-在多个位置共享 `queryKey` 和 `queryFn`，同时又让它们保持就近维护的一个最佳方式，是使用 `queryOptions` 辅助函数。运行时它只是原样返回你传入的配置，但在 [TypeScript 场景](../../typescript.md#typing-query-options) 下有很多优势。你可以在一个地方定义某个查询的全部可选项，并获得完整的类型推断和类型安全。
+在多个位置共享 `queryKey` 和 `queryFn`，同时让它们保持就近维护，最好的方式之一是使用
+`queryOptions` 辅助函数。运行时它只是原样返回传入的内容，但与 [TypeScript](../typescript.md#typing-query-options)
+配合时有很多优势。你可以集中定义某个查询的所有选项，并在各处获得类型推断和类型安全。
 
 [//]: # 'Example1'
 
@@ -33,15 +35,19 @@ useSuspenseQuery(groupOptions(5))
 useQueries({
   queries: [groupOptions(1), groupOptions(2)],
 })
-queryClient.prefetchQuery(groupOptions(23))
+queryClient.query(groupOptions(23))
 queryClient.setQueryData(groupOptions(42).queryKey, newGroups)
 ```
 
 [//]: # 'Example1'
 
-对于无限查询，可使用单独的 [`infiniteQueryOptions`](../../reference/infiniteQueryOptions.md) 辅助函数。
+对于无限查询，可使用单独的 [`infiniteQueryOptions`](../reference/functions/infiniteQueryOptions.md) 辅助函数。
 
-你仍然可以在组件层覆盖部分选项。一个非常常见且实用的模式是为每个组件创建各自的 [`select`](../render-optimizations.md#select) 函数：
+[//]: # 'SelectDescription'
+
+你仍然可以在组件层覆盖部分选项。一个非常常见且实用的模式是为每个组件创建各自的 [`select`](./render-optimizations.md#select) 函数：
+
+[//]: # 'SelectDescription'
 
 [//]: # 'Example2'
 

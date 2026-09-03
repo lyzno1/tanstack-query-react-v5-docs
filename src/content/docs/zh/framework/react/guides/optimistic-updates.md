@@ -1,21 +1,21 @@
 ---
 id: optimistic-updates
-title: 乐观的更新
+title: 乐观更新
 ---
 
 <!--
 translation-source-path: framework/react/guides/optimistic-updates.md
-translation-source-ref: v5.90.3
-translation-source-hash: 15bc398ce50a602b8447683d30933dba4f3d9c391ba13ccc4117eb006b102b71
+translation-source-ref: main
+translation-source-hash: 0c32fabbe875f00ac62e7e1f70156e95e27eca0a8446b09005ca5faf6ec1ecc7
 translation-status: translated
 -->
 
 
-React Query 提供了两种在变更完成之前乐观更新 UI 的方法。您可以使用 `onMutate` 选项直接更新缓存，也可以利用返回的 `variables` 从 `useMutation` 结果更新您的 UI。
+React Query 提供了两种在变更完成之前乐观更新 UI 的方法。你可以使用 `onMutate` 选项直接更新缓存，也可以利用返回的 `variables` 从 `useMutation` 结果更新你的 UI。
 
 ## 通过用户界面
 
-这是更简单的变体，因为它不直接与缓存交互。
+这种方式更简单，因为它不直接操作缓存。
 
 [//]: # 'ExampleUI1'
 
@@ -32,7 +32,7 @@ const { isPending, submittedAt, variables, mutate, isError } = addTodoMutation
 
 [//]: # 'ExampleUI1'
 
-然后您将可以访问`addTodoMutation.variables`，其中包含添加的待办事项。在呈现查询的 UI 列表中，您可以在变更 `isPending` 时将另一个项目附加到列表中：
+随后可以通过 `addTodoMutation.variables` 取得正在添加的待办事项。在渲染查询结果的 UI 列表中，当变更处于 `isPending` 状态时，可以把这一项追加到列表：
 
 [//]: # 'ExampleUI2'
 
@@ -47,9 +47,11 @@ const { isPending, submittedAt, variables, mutate, isError } = addTodoMutation
 
 [//]: # 'ExampleUI2'
 
-只要变更处于待处理状态，我们就会使用不同的 `opacity` 渲染临时项目。完成后，该项目将自动不再渲染。鉴于重新获取成功，我们应该将该项目视为列表中的“正常项目”。
+只要变更仍处于 pending 状态，就会以不同的 `opacity` 渲染这条临时待办事项。变更完成后，
+临时项会自动停止渲染；如果重新获取成功，同一项会以正常样式出现在列表中。
 
-如果变更错误，该物品也会消失。但如果我们愿意，我们可以通过检查变更的 `isError` 状态来继续显示它。 `variables` 在变更错误时不会被清除，因此我们仍然可以访问它们，甚至可能显示重试按钮：
+如果变更失败，该待办事项同样会消失。不过，可以通过检查变更的 `isError` 状态让它继续显示。
+变更失败时不会清除 `variables`，因此仍可读取它，甚至可以显示一个重试按钮：
 
 [//]: # 'ExampleUI3'
 
@@ -68,7 +70,8 @@ const { isPending, submittedAt, variables, mutate, isError } = addTodoMutation
 
 ### 如果变更和查询不在同一组件中
 
-如果变更和查询位于同一组件中，则此方法非常有效。但是，您还可以通过专用的 `useMutationState` Hook访问其他组件中的所有变更。它最好与`mutationKey`结合使用：
+如果变更和查询位于同一组件中，这种方式非常合适。除此之外，还可以通过专用的
+`useMutationState` Hook 访问其他组件中的变更状态。它最适合与 `mutationKey` 配合使用：
 
 [//]: # 'ExampleUI4'
 
@@ -89,13 +92,17 @@ const variables = useMutationState<string>({
 
 [//]: # 'ExampleUI4'
 
-`variables` 将是 `Array`，因为可能有多个变更同时运行。如果我们需要项目的唯一密钥，我们也可以选择`mutation.state.submittedAt`。这甚至可以让显示并发乐观更新变得轻而易举。
+`variables` 会是一个数组，因为可能有多个变更同时运行。如果需要为这些项目提供唯一键，
+还可以选择 `mutation.state.submittedAt`。这样，展示并发乐观更新也会非常简单。
 
 ## 通过缓存
 
-当您在执行变更之前乐观地更新状态时，变更有可能会失败。在大多数失败情况下，您只需触发乐观查询的重新获取即可将它们恢复到真实的服务器状态。但在某些情况下，重新获取可能无法正常工作，并且变更错误可能代表某种类型的服务器问题，无法重新获取。在这种情况下，您可以选择回滚更新。
+在执行变更前进行乐观更新时，变更可能会失败。大多数情况下，只需重新获取相关查询，
+就能将乐观数据恢复为服务端的真实状态。但有时重新获取本身无法正常完成，例如变更错误来自某种服务端故障。
+这时可以改为回滚更新。
 
-为此，`useMutation` 的`onMutate` 处理程序选项允许您返回一个值，该值稍后将作为最后一个参数传递给`onError` 和`onSettled` 处理程序。在大多数情况下，传递回滚函数是最有用的。
+为此，`useMutation` 的 `onMutate` 处理程序可以返回一个值，稍后该值会传给 `onError` 和
+`onSettled` 处理程序。多数情况下，返回一个回滚函数最为实用。
 
 ### 添加新待办事项时更新待办事项列表
 
@@ -171,7 +178,7 @@ useMutation({
 
 [//]: # 'Example2'
 
-如果您愿意，还可以使用 `onSettled` 函数代替单独的 `onError` 和 `onSuccess` 处理程序：
+如果你愿意，还可以使用 `onSettled` 函数代替单独的 `onError` 和 `onSuccess` 处理程序：
 
 [//]: # 'Example3'
 
@@ -191,14 +198,14 @@ useMutation({
 
 ## 什么时候用什么
 
-如果您只有一个地方应该显示乐观结果，那么使用 `variables` 并直接更新 UI 是一种需要更少代码并且通常更容易推理的方法。例如，您根本不需要处理回滚。
+如果乐观结果只需显示在一个位置，使用 `variables` 直接更新 UI 通常代码更少、也更容易理解。例如，你完全不必处理回滚。
 
-但是，如果屏幕上有多个位置需要了解更新，则直接操作缓存将自动为您处理此问题。
+但如果屏幕上的多个位置都需要感知这次更新，直接操作缓存就能自动同步这些位置。
 
 [//]: # 'Materials'
 
 ## 进一步阅读
 
-请查看社区资源以获取有关 [Concurrent Optimistic Updates](../../community/tkdodos-blog.md#29-concurrent-optimistic-updates-in-react-query) 的指南。
+请参阅 TkDodo 的 [Concurrent Optimistic Updates](https://tkdodo.eu/blog/concurrent-optimistic-updates-in-react-query) 指南。
 
 [//]: # 'Materials'

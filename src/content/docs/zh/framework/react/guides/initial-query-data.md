@@ -5,8 +5,8 @@ title: 初始查询数据
 
 <!--
 translation-source-path: framework/react/guides/initial-query-data.md
-translation-source-ref: v5.90.3
-translation-source-hash: a4de3908b66a613bace5fed051f93a0b1be1215fedf635cbb2a94613c4aa69ee
+translation-source-ref: main
+translation-source-hash: 7928e0cef2252e7e154dd572359ba83bfc3589dba8010c4d4dacc900c1940e94
 translation-status: translated
 -->
 
@@ -16,8 +16,8 @@ translation-status: translated
 - 声明式：
   - 向查询提供 `initialData`，在缓存为空时预填充缓存
 - 命令式：
-  - [使用 `queryClient.prefetchQuery` 预取数据](../prefetching.md)
-  - [使用 `queryClient.setQueryData` 手动将数据写入缓存](../prefetching.md)
+  - [使用 `queryClient.query` 预取数据](./prefetching.md)
+  - [使用 `queryClient.setQueryData` 手动将数据写入缓存](./prefetching.md)
 
 ## 使用 `initialData` 预填充查询
 
@@ -39,7 +39,7 @@ const result = useQuery({
 
 ### `staleTime` 与 `initialDataUpdatedAt`
 
-默认情况下，`initialData` 会被视为“刚获取到的全新数据”。这也意味着它会影响 `staleTime` 选项的解释方式。
+默认情况下，`initialData` 会被视为“刚获取到的全新数据”。这也会影响 `staleTime` 对其新鲜度的判断。
 
 - 如果你为查询观察者配置了 `initialData`，但没有配置 `staleTime`（即默认 `staleTime: 0`），查询在挂载时会立即重新获取：
 
@@ -90,11 +90,11 @@ const result = useQuery({
 
   [//]: # 'Example4'
 
-  这个选项让 `staleTime` 回归其原本用途：判断数据需要多新；同时也允许在 `initialData` 比 `staleTime` 更旧时在挂载时重新获取。上面示例里，我们要求数据在 1 分钟内保持新鲜，并通过提示查询 `initialData` 最后更新时间，让查询自行决定是否需要再次重新获取。
+  这个选项让 `staleTime` 回归其原本用途：判断数据需要多新；同时也允许在 `initialData` 的数据年龄超过 `staleTime` 时，于挂载阶段重新获取。上面示例里，我们要求数据在 1 分钟内保持新鲜，并通过提示查询 `initialData` 最后更新时间，让查询自行决定是否需要再次重新获取。
 
-  > 如果你更愿意把这些数据视为**预取数据（prefetched data）**，建议使用 `prefetchQuery` 或 `fetchQuery` API 预先填充缓存，这样你就可以将 `staleTime` 与 `initialData` 独立配置。
+  > 如果你更愿意把这些数据视为**预取数据（prefetched data）**，建议使用 `query` API 预先填充缓存，这样你就可以将 `staleTime` 与 `initialData` 独立配置。
 
-### Initial Data Function
+### 初始数据函数
 
 如果获取查询初始数据的过程开销较大，或你不希望每次渲染都执行该逻辑，可以把函数作为 `initialData` 值传入。该函数只会在查询初始化时执行一次，从而节省内存和/或 CPU：
 
@@ -178,6 +178,6 @@ const result = useQuery({
 
 ## 延伸阅读
 
-关于 `Initial Data` 与 `Placeholder Data` 的对比，可查看[社区资源](../../community/tkdodos-blog.md#9-placeholder-and-initial-data-in-react-query)中的文章。
+关于初始数据与占位数据的对比，可阅读 [TkDodo 的文章](https://tkdodo.eu/blog/placeholder-and-initial-data-in-react-query)。
 
 [//]: # 'Materials'

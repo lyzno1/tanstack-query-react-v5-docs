@@ -5,8 +5,8 @@ title: createSyncStoragePersister
 
 <!--
 translation-source-path: framework/react/plugins/createSyncStoragePersister.md
-translation-source-ref: v5.90.3
-translation-source-hash: 40ba179988da3dc593d8360cb2cc147efc023bebbeb4111e0f57b2202b6f612a
+translation-source-ref: main
+translation-source-hash: bda39f3d3fafd1249c16a4e12aab73de5916f209b9bc41922071daf8bb66ad9a
 translation-status: translated
 -->
 
@@ -14,7 +14,7 @@ translation-status: translated
 ## 已弃用
 
 该插件已弃用，并将在下一个大版本中移除。
-你可以直接改用 ['@tanstack/query-async-storage-persister'](../createAsyncStoragePersister.md)。
+你可以直接改用 ['@tanstack/query-async-storage-persister'](./createAsyncStoragePersister.md)。
 
 ## 安装
 
@@ -46,7 +46,7 @@ bun add @tanstack/query-sync-storage-persister @tanstack/react-query-persist-cli
 
 - 导入 `createSyncStoragePersister` 函数
 - 创建一个新的 syncStoragePersister
-- 将它传给 [`persistQueryClient`](../persistQueryClient.md) 函数
+- 将它传给 [`persistQueryClient`](./persistQueryClient.md) 函数
 
 ```tsx
 import { persistQueryClient } from '@tanstack/react-query-persist-client'
@@ -113,18 +113,18 @@ createSyncStoragePersister(options: CreateSyncStoragePersisterOptions)
 
 ```tsx
 interface CreateSyncStoragePersisterOptions {
-  /** The storage client used for setting an retrieving items from cache (window.localStorage or window.sessionStorage) */
+  /** 用于在缓存中设置和获取条目的存储客户端（window.localStorage 或 window.sessionStorage） */
   storage: Storage | undefined | null
-  /** The key to use when storing the cache */
+  /** 存储缓存时使用的键 */
   key?: string
-  /** To avoid spamming,
-   * pass a time in ms to throttle saving the cache to disk */
+  /** 为避免频繁写入，
+   * 传入毫秒数以对缓存写入磁盘进行节流 */
   throttleTime?: number
-  /** How to serialize the data to storage */
+  /** 如何序列化要写入存储的数据 */
   serialize?: (client: PersistedClient) => string
-  /** How to deserialize the data from storage */
+  /** 如何反序列化存储中的数据 */
   deserialize?: (cachedString: string) => PersistedClient
-  /** How to retry persistence on error **/
+  /** 持久化出错时如何重试 **/
   retry?: PersistRetryer
 }
 ```

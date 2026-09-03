@@ -5,8 +5,8 @@ title: createAsyncStoragePersister
 
 <!--
 translation-source-path: framework/react/plugins/createAsyncStoragePersister.md
-translation-source-ref: v5.90.3
-translation-source-hash: d3148d03de20057a3a35f575be7f6fb4a25f680bdd3d7ef626ea2298f55abbe2
+translation-source-ref: main
+translation-source-hash: ff285a4bf31e493104e4b9d568368dbd2dad3e3a1c56b62ca84edf088e27ecab
 translation-status: translated
 -->
 
@@ -43,7 +43,7 @@ bun add @tanstack/query-async-storage-persister @tanstack/react-query-persist-cl
 - 创建一个新的 asyncStoragePersister
   - 你可以传入任意符合 `AsyncStorage` 接口的 `storage`。下面示例使用的是 React Native 的 async-storage。
   - 像 `window.localStorage` 这样同步读写的 storage 也符合 `AsyncStorage` 接口，因此同样可以与 `createAsyncStoragePersister` 搭配使用。
-- 使用 [`PersistQueryClientProvider`](../persistQueryClient.md#persistqueryclientprovider) 组件包裹你的应用。
+- 使用 [`PersistQueryClientProvider`](./persistQueryClient.md#persistqueryclientprovider) 组件包裹你的应用。
 
 ```tsx
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -77,7 +77,7 @@ export default Root
 
 ## 重试
 
-重试机制与 [SyncStoragePersister](../createSyncStoragePersister.md) 相同，不同点是这里的重试也可以是异步的。你也可以使用所有预定义的重试处理器。
+重试机制与 [SyncStoragePersister](./createSyncStoragePersister.md) 相同，不同点是这里的重试也可以是异步的。你还可以使用所有预定义的重试处理器。
 
 ## API
 
@@ -93,18 +93,18 @@ createAsyncStoragePersister(options: CreateAsyncStoragePersisterOptions)
 
 ```tsx
 interface CreateAsyncStoragePersisterOptions {
-  /** The storage client used for setting an retrieving items from cache */
+  /** 用于在缓存中设置和获取条目的存储客户端 */
   storage: AsyncStorage | undefined | null
-  /** The key to use when storing the cache to localStorage */
+  /** 将缓存存入 localStorage 时使用的键 */
   key?: string
-  /** To avoid localStorage spamming,
-   * pass a time in ms to throttle saving the cache to disk */
+  /** 为避免频繁写入 localStorage，
+   * 传入毫秒数以对缓存写入磁盘进行节流 */
   throttleTime?: number
-  /** How to serialize the data to storage */
+  /** 如何序列化要写入存储的数据 */
   serialize?: (client: PersistedClient) => string
-  /** How to deserialize the data from storage */
+  /** 如何反序列化存储中的数据 */
   deserialize?: (cachedString: string) => PersistedClient
-  /** How to retry persistence on error **/
+  /** 持久化出错时如何重试 **/
   retry?: AsyncPersistRetryer
 }
 

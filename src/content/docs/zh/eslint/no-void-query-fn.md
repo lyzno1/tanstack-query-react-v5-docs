@@ -1,11 +1,11 @@
 ---
 id: no-void-query-fn
-title: Disallow returning void from query functions
+title: 禁止查询函数返回 void
 ---
 
 <!--
 translation-source-path: eslint/no-void-query-fn.md
-translation-source-ref: v5.90.3
+translation-source-ref: main
 translation-source-hash: 4fecc9433aef965fee18a7576bffeef66441e55cc8437c2ea91abb4c1c901d7d
 translation-status: translated
 -->
