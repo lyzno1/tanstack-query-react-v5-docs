@@ -5,8 +5,8 @@ title: 查询失效
 
 <!--
 translation-source-path: framework/react/guides/query-invalidation.md
-translation-source-ref: v5.90.3
-translation-source-hash: e00c3f205c131ba26b1dede60a4d78acb62a2c8f11fbd5bc8cd1fb781cdfe895
+translation-source-ref: main
+translation-source-hash: e4cda3acadb7fb216fe6454ef55a790c2baa09a783fdd6c61b5b79d00faca63c
 translation-status: translated
 -->
 
@@ -33,7 +33,7 @@ queryClient.invalidateQueries({ queryKey: ['todos'] })
 
 ## 使用 `invalidateQueries` 进行查询匹配
 
-当使用 `invalidateQueries`、`removeQueries`（以及其他支持部分匹配的 API）时，你可以通过前缀匹配多个查询，也可以非常精确地匹配某一个查询。关于可用过滤器类型，请参见 [查询过滤器](../filters.md#query-filters)。
+当使用 `invalidateQueries`、`removeQueries`（以及其他支持部分匹配的 API）时，你可以通过前缀匹配多个查询，也可以非常精确地匹配某一个查询。关于可用过滤器类型，请参见[查询过滤器](./filters.md#query-filters)。
 
 在下面的示例中，我们可以使用 `todos` 前缀来使所有查询键以 `todos` 开头的查询失效：
 

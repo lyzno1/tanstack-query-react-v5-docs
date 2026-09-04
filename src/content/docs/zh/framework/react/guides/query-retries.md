@@ -5,8 +5,8 @@ title: 查询重试
 
 <!--
 translation-source-path: framework/react/guides/query-retries.md
-translation-source-ref: v5.90.3
-translation-source-hash: 4681a0b430947210498fa3d1354c75b4ef4d088c2224a434b5ab5c559d95821e
+translation-source-ref: main
+translation-source-hash: dddfc003c62658c91ba05d5e1412fbef12565953ec7e5767087694a0143c08fe
 translation-status: translated
 -->
 
@@ -18,7 +18,7 @@ translation-status: translated
 - 将 `retry = false` 可禁用重试。
 - 将 `retry = 6` 表示失败请求最多重试 6 次，之后才暴露函数最终抛出的错误。
 - 将 `retry = true` 表示对失败请求无限重试。
-- 将 `retry = (failureCount, error) => ...` 可基于失败原因编写自定义重试逻辑。
+- 将 `retry = (failureCount, error) => ...` 可基于失败原因编写自定义重试逻辑。注意，第一次重试时 `failureCount` 从 `0` 开始。
 
 [//]: # 'Info'
 
@@ -86,3 +86,28 @@ const result = useQuery({
 ```
 
 [//]: # 'Example3'
+
+## 后台重试行为
+
+同时使用 `refetchInterval` 与 `refetchIntervalInBackground: true` 时，浏览器标签页处于非活跃状态会暂停重试。这是因为重试遵循与常规重新获取相同的焦点行为。
+
+如果需要在后台持续重试，可以考虑禁用内置重试，并实现自定义重新获取策略：
+
+[//]: # 'Example4'
+
+```tsx
+const result = useQuery({
+  queryKey: ['todos'],
+  queryFn: fetchTodos,
+  refetchInterval: (query) => {
+    // Refetch more frequently when in error state
+    return query.state.status === 'error' ? 5000 : 30000
+  },
+  refetchIntervalInBackground: true,
+  retry: false, // Disable built-in retries
+})
+```
+
+[//]: # 'Example4'
+
+这样既能手动控制重试时机，又能让重新获取在后台保持活跃。

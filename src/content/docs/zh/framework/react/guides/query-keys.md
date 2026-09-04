@@ -5,8 +5,8 @@ title: 查询键
 
 <!--
 translation-source-path: framework/react/guides/query-keys.md
-translation-source-ref: v5.90.3
-translation-source-hash: e02b6d0101431f3a4221fefa0a4bbc331f7d940c4779cf0c8b15492395fe5a72
+translation-source-ref: main
+translation-source-hash: dbd62ca3fc372cada909b9282e2f9ac94e4c695a078fee17b4660df2dd4ac413
 translation-status: translated
 -->
 
@@ -99,12 +99,12 @@ function Todos({ todoId }) {
 
 [//]: # 'Example5'
 
-请注意，查询键也会充当查询函数的依赖项。把依赖变量加入查询键，可以确保查询被独立缓存，并且变量变化时会自动重新获取查询（取决于你的 `staleTime` 配置）。更多信息和示例请参见 [exhaustive-deps](../../../../eslint/exhaustive-deps.md)。
+请注意，查询键也会充当查询函数的依赖项。把依赖变量加入查询键，可以确保查询被独立缓存，并且变量变化时会自动重新获取查询（取决于你的 `staleTime` 配置）。更多信息和示例请参见 [exhaustive-deps](../../../eslint/exhaustive-deps.md)。
 
 [//]: # 'Materials'
 
 ## 延伸阅读
 
-关于在大型应用中组织查询键的建议，可阅读社区资源中的 [Effective React Query Keys](../../community/tkdodos-blog.md#8-effective-react-query-keys)，以及 [Query Key Factory Package](../../community/community-projects.md#query-key-factory)。
+关于如何在大型应用中组织查询键，请参阅 [Effective React Query Keys](https://tkdodo.eu/blog/effective-react-query-keys) 和 [Query Key Factory](https://github.com/lukemorales/query-key-factory) 包；后者来自[社区资源](../../../community-resources)。
 
 [//]: # 'Materials'

@@ -1,29 +1,34 @@
 ---
 id: ssr
 title: 服务端渲染与水合
+redirect_from:
+  - framework/react/reference/hydration
 ---
 
 <!--
 translation-source-path: framework/react/guides/ssr.md
-translation-source-ref: v5.90.3
-translation-source-hash: 95363fa22c0dfac564703848137a5d094d9d12fd75e100139456f8f9093f7c61
+translation-source-ref: main
+translation-source-hash: 9c7e17ca9c70cc4f5a9b2e9c1e7f7a0984a7f72003bdeabdd28a9522b642036c
 translation-status: translated
 -->
 
 
 本指南将介绍如何在服务端渲染中使用 React Query。
 
-你可以先阅读 [预获取与路由集成](../prefetching.md) 作为背景，也建议先看一下 [性能与请求瀑布指南](../request-waterfalls.md)。
+你可以先阅读[预取与路由器集成](./prefetching.md)作为背景，也建议先看一下[性能与请求瀑布指南](./request-waterfalls.md)。
 
-如果你想了解更高级的服务端渲染模式（如流式渲染、Server Components 以及新的 Next.js app router），请参阅 [高级服务端渲染指南](../advanced-ssr.md)。
+如需了解更深入的水合与预取示例（包括代码分割），请参阅[依赖查询与代码分割](./prefetching.md#dependent-queries-code-splitting)一节。
 
-如果你只想先看代码，可以直接跳到下方的 [Full Next.js pages router example](#full-nextjs-pages-router-example) 或 [Full Remix example](#full-remix-example)。
+如果你想了解更高级的服务端渲染模式（如流式渲染、Server Components 以及新的 Next.js app router），请参阅[高级服务端渲染指南](./advanced-ssr.md)。
+
+如果你只想先看代码，可以直接跳到下方的[完整 Next.js pages router 示例](#full-next-js-pages-router-example)
+或[完整 Remix 示例](#full-remix-example)。
 
 ## 服务端渲染与 React Query
 
 先明确一下什么是服务端渲染。下文默认你已经熟悉该概念，但我们还是花点时间看它与 React Query 的关系。服务端渲染是指在服务端生成初始 HTML，让用户在页面加载后尽快看到内容。它可以在请求到来时按需进行（SSR），也可以提前完成（比如复用先前缓存请求结果，或在构建阶段完成，即 SSG）。
 
-如果你看过请求瀑布指南，可能记得这个过程：
+如果你看过[性能与请求瀑布指南](./request-waterfalls.md)，可能记得这个过程：
 
 ```
 1. |-> Markup (without content)
@@ -40,15 +45,15 @@ translation-status: translated
 
 当 **1.** 完成时，用户立刻能看到内容；当 **2.** 完成时，页面变得可交互可点击。由于 markup 已包含初始数据，客户端至少在首次渲染阶段无需再执行 **3.**，除非你之后要重新校验数据。
 
-以上是从客户端视角。服务端侧我们需要在生成/渲染 markup 之前先**预获取（prefetch）**数据，再把数据**脱水（dehydrate）**为可序列化格式嵌入 markup；客户端再把这些数据**水合（hydrate）**进 React Query 缓存，避免再次发起获取。
+以上是从客户端视角。服务端侧我们需要在生成/渲染 markup 之前先**预取（prefetch）**数据，再把数据**脱水（dehydrate）**为可序列化格式嵌入 markup；客户端再把这些数据**水合（hydrate）**进 React Query 缓存，避免再次发起获取。
 
 继续阅读，了解如何用 React Query 实现这三个步骤。
 
 ## 关于 Suspense 的简短说明
 
-本指南使用常规 `useQuery` API。虽然不一定推荐，但你也可以改用 `useSuspenseQuery`，前提是**始终预获取所有查询**。优点是你可以在客户端用 `<Suspense>` 处理加载状态。
+本指南使用常规 `useQuery` API。虽然不一定推荐，但你也可以改用 `useSuspenseQuery`，前提是**始终预取所有查询**。优点是你可以在客户端用 `<Suspense>` 处理加载状态。
 
-如果在使用 `useSuspenseQuery` 时漏掉了某个预获取查询，后果取决于你使用的框架。在一些情况下，数据会在服务端 suspend 并被获取，但不会水合到客户端，导致客户端再次获取。这会造成 markup 水合不匹配，因为服务端和客户端渲染了不同内容。
+如果在使用 `useSuspenseQuery` 时漏掉了某个预取查询，后果取决于你使用的框架。在一些情况下，数据会在服务端 suspend 并被获取，但不会水合到客户端，导致客户端再次获取。这会造成 markup 水合不匹配，因为服务端和客户端渲染了不同内容。
 
 ## 初始设置
 
@@ -121,7 +126,7 @@ export default function MyApp() {
 
 ## 用 `initialData` 快速起步
 
-最快的起步方式是：在预获取阶段先不引入 React Query，也不使用 `dehydrate`/`hydrate` API，而是把原始数据作为 `initialData` 传给 `useQuery`。下面以 Next.js pages router 的 `getServerSideProps` 为例：
+最快的起步方式是：在预取阶段先不引入 React Query，也不使用 `dehydrate`/`hydrate` API，而是把原始数据作为 `initialData` 传给 `useQuery`。下面以 Next.js pages router 的 `getServerSideProps` 为例：
 
 ```tsx
 export async function getServerSideProps() {
@@ -171,25 +176,25 @@ function Posts() {
 
 完整水合方案也很直观，而且没有这些缺点。后续内容将重点介绍完整方案。
 
-## 使用 Hydration APIs
+## 使用水合 API
 
-只需增加一点配置，你就可以在预加载阶段使用 `queryClient` 预获取查询，再把该 `queryClient` 的序列化结果传给应用渲染部分并复用，从而规避上述缺点。你可以直接跳到完整 Next.js pages router 与 Remix 示例；在通用层面，额外步骤如下：
+只需增加一点配置，你就可以在预加载阶段使用 `queryClient` 预取查询，再把该 `queryClient` 的序列化结果传给应用渲染部分并复用，从而规避上述缺点。你可以直接跳到完整 Next.js pages router 与 Remix 示例；在通用层面，额外步骤如下：
 
 - 在框架 loader 函数中创建 `const queryClient = new QueryClient(options)`
-- 在 loader 中，对每个要预获取的查询执行 `await queryClient.prefetchQuery(...)`
+- 在 loader 中，对每个要预取的查询执行 `await queryClient.query(...)`
   - 可并行时建议用 `await Promise.all(...)`
-  - 有些查询不预获取也没问题。它们不会参与服务端渲染，而是在应用可交互后于客户端获取。这对仅在交互后显示的内容，或页面较靠下、避免阻塞关键内容的内容很有价值。
+  - 有些查询不预取也没问题。它们不会参与服务端渲染，而是在应用可交互后于客户端获取。这对仅在交互后显示的内容，或页面较靠下、避免阻塞关键内容的内容很有价值。
 - 从 loader 返回 `dehydrate(queryClient)`；注意不同框架返回语法不同
 - 使用 `<HydrationBoundary state={dehydratedState}>` 包裹组件树，其中 `dehydratedState` 来自框架 loader。`dehydratedState` 的获取方式也因框架而异。
   - 你可以在每条路由上做，也可以在应用顶层做以减少样板，见示例
 
-> 一个有趣细节是：这里实际上有 _三个_ `queryClient`。框架 loader 属于渲染前的“预加载”阶段，这个阶段有自己的 `queryClient` 负责预获取。该阶段脱水后的结果会传给**服务端渲染流程**和**客户端渲染流程**，而两边各自又有自己的 `queryClient`。这样可确保双方从相同数据起步，返回一致 markup。
+> 一个有趣细节是：这里实际上有 _三个_ `queryClient`。框架 loader 属于渲染前的“预加载”阶段，这个阶段有自己的 `queryClient` 负责预取。该阶段脱水后的结果会传给**服务端渲染流程**和**客户端渲染流程**，而两边各自又有自己的 `queryClient`。这样可确保双方从相同数据起步，返回一致 markup。
 
-> Server Components 也是一种“预加载”阶段，也能“预加载”（预渲染）React 组件树的一部分。详见 [高级服务端渲染指南](../advanced-ssr.md)。
+> Server Components 也是一种“预加载”阶段，也能“预加载”（预渲染）React 组件树的一部分。详见[高级服务端渲染指南](./advanced-ssr.md)。
 
-### Full Next.js pages router example
+### 完整 Next.js Pages Router 示例
 
-> 关于 app router 文档，请参阅 [高级服务端渲染指南](../advanced-ssr.md)。
+> 关于 app router 文档，请参阅[高级服务端渲染指南](./advanced-ssr.md)。
 
 初始设置：
 
@@ -234,10 +239,12 @@ import {
 export async function getStaticProps() {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-  })
+  await queryClient
+    .query({
+      queryKey: ['posts'],
+      queryFn: getPosts,
+    })
+    .catch(noop)
 
   return {
     props: {
@@ -270,7 +277,7 @@ export default function PostsRoute({ dehydratedState }) {
 }
 ```
 
-### Full Remix example
+### 完整 Remix 示例
 
 初始设置：
 
@@ -316,10 +323,12 @@ import {
 export async function loader() {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-  })
+  await queryClient
+    .query({
+      queryKey: ['posts'],
+      queryFn: getPosts,
+    })
+    .catch(noop)
 
   return json({ dehydratedState: dehydrate(queryClient) })
 }
@@ -392,9 +401,9 @@ export default function Posts() { ... }
 
 在 Remix 中，这件事稍微复杂一些，推荐查看 [use-dehydrated-state](https://github.com/maplegrove-io/use-dehydrated-state) 包。
 
-## 预获取依赖查询
+## 预取依赖查询
 
-我们在预获取指南中学习了如何[预获取依赖查询](../prefetching.md#dependent-queries--code-splitting)，但在框架 loader 中怎么做？看下面这段代码，摘自[依赖查询指南](../dependent-queries.md)：
+我们在预取指南中学习了如何[预取依赖查询](./prefetching.md#dependent-queries-code-splitting)，但在框架 loader 中怎么做？看下面这段代码，摘自[依赖查询指南](./dependent-queries.md)：
 
 ```tsx
 // Get the user
@@ -418,20 +427,20 @@ const {
 })
 ```
 
-要让它可以服务端渲染，预获取可以这样写：
+要让它可以服务端渲染，预取可以这样写：
 
 ```tsx
 // For Remix, rename this to loader instead
 export async function getServerSideProps() {
   const queryClient = new QueryClient()
 
-  const user = await queryClient.fetchQuery({
+  const user = await queryClient.query({
     queryKey: ['user', email],
     queryFn: getUserByEmail,
   })
 
   if (user?.userId) {
-    await queryClient.prefetchQuery({
+    await queryClient.query({
       queryKey: ['projects', userId],
       queryFn: getProjectsByUser,
     })
@@ -443,24 +452,24 @@ export async function getServerSideProps() {
 }
 ```
 
-当然，实际逻辑可能更复杂。但这些 loader 函数本质就是 JavaScript，你可以充分利用语言能力组织逻辑。务必预获取所有你希望参与服务端渲染的查询。
+当然，实际逻辑可能更复杂。但这些 loader 函数本质就是 JavaScript，你可以充分利用语言能力组织逻辑。务必预取所有你希望参与服务端渲染的查询。
 
 ## 错误处理
 
 React Query 默认采用“优雅降级”策略，意味着：
 
-- `queryClient.prefetchQuery(...)` 不会抛出错误
 - `dehydrate(...)` 只包含成功查询，不包含失败查询
+- 我们可以有意通过 `void queryClient.query(...)` 忽略返回的 Promise，并加上 `.catch(noop)` 吞掉错误，这样外围 loader 代码就不会观察到查询错误
 
 这会导致失败查询在客户端重试，同时服务端输出中会是加载态而非完整内容。
 
-这是一个不错的默认行为，但有时你不想这样。比如关键内容缺失时，你可能希望返回 404 或 500。此时可改用 `queryClient.fetchQuery(...)`，它在失败时会抛错，便于你按框架方式处理。
+这是一个不错的默认行为，但有时并不符合需要。比如关键内容缺失时，你可能希望返回 404 或 500。此时应使用不带 `noop` catch 的 `await queryClient.query(...)`；它会在失败时抛错，便于你以合适的方式处理。
 
 ```tsx
 let result
 
 try {
-  result = await queryClient.fetchQuery(...)
+  result = await queryClient.query(...)
 } catch (error) {
   // Handle the error, refer to your framework documentation
 }
@@ -490,7 +499,7 @@ dehydrate(queryClient, {
 
 ## 关于请求瀑布的补充说明
 
-在[性能与请求瀑布指南](../request-waterfalls.md)中，我们提到会回到一个更复杂的嵌套瀑布场景，说明服务端渲染如何改变它。你可以查看那个[具体代码示例](../request-waterfalls#code-splitting)。这里简单回顾：在 `<Feed>` 组件里有一个代码分割的 `<GraphFeedItem>`，只有 feed 中包含 graph 项时才渲染，且两个组件各自获取自己的数据。客户端渲染下会形成如下请求瀑布：
+在[性能与请求瀑布指南](./request-waterfalls.md)中，我们提到会回到一个更复杂的嵌套瀑布场景，说明服务端渲染如何改变它。你可以查看那个[具体代码示例](./request-waterfalls#code-splitting)。这里简单回顾：在 `<Feed>` 组件里有一个代码分割的 `<GraphFeedItem>`，只有 feed 中包含 graph 项时才渲染，且两个组件各自获取自己的数据。客户端渲染下会形成如下请求瀑布：
 
 ```
 1. |> Markup (without content)
@@ -528,7 +537,7 @@ dehydrate(queryClient, {
 
 这是因为在 SPA 中，服务端渲染只对首次页面加载生效，后续导航不生效。
 
-现代框架通常会尝试并行获取初始代码与数据。所以如果你在 Next.js 或 Remix 中采用了本指南提到的预获取模式（包括依赖查询预获取），实际会更像这样：
+现代框架通常会尝试并行获取初始代码与数据。所以如果你在 Next.js 或 Remix 中采用了本指南提到的预取模式（包括依赖查询预取），实际会更像这样：
 
 ```
 1. |> JS for <Feed>
@@ -536,7 +545,7 @@ dehydrate(queryClient, {
 2.   |> JS for <GraphFeedItem>
 ```
 
-这已经好很多了。如果还想进一步优化，可以借助 Server Components 压平到一次往返。详见 [高级服务端渲染指南](../advanced-ssr.md)。
+这已经好很多了。如果还想进一步优化，可以借助 Server Components 压平到一次往返。详见[高级服务端渲染指南](./advanced-ssr.md)。
 
 ## 提示、技巧与注意事项
 
@@ -554,9 +563,9 @@ dehydrate(queryClient, {
 
 在服务端，`gcTime` 默认是 `Infinity`，会禁用手动垃圾回收，并在请求结束后自动清理内存。如果你显式设置了非 Infinity 的 `gcTime`，就需要自行更早清理缓存。
 
-避免把 `gcTime` 设为 `0`，这可能导致水合错误。原因是 [Hydration Boundary](../../reference/hydration.md#hydrationboundary) 会把渲染所需数据放入缓存，若渲染完成前就被垃圾回收移除，可能出问题。如果你需要更短 `gcTime`，建议设为 `2 * 1000`，给应用留出足够时间引用数据。
+避免把 `gcTime` 设为 `0`，这可能导致水合错误。原因是 [Hydration Boundary](../reference/functions/HydrationBoundary.md) 会把渲染所需数据放入缓存，若渲染完成前就被垃圾回收移除，可能出问题。如果你需要更短 `gcTime`，建议设为 `2 * 1000`，给应用留出足够时间引用数据。
 
-若要在不再需要后清理缓存并降低内存占用，可在请求处理完、且脱水状态已发送给客户端后调用 [`queryClient.clear()`](../../../../reference/QueryClient.md#queryclientclear)。
+若要在不再需要后清理缓存并降低内存占用，可在请求处理完、且脱水状态已发送给客户端后调用 [`queryClient.clear()`](../../../reference/QueryClient.md#queryclientclear)。
 
 或者，你也可以设置更小的 `gcTime`。
 

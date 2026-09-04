@@ -1,12 +1,14 @@
 ---
 id: QueryCache
 title: QueryCache
+redirect_from:
+  - framework/react/reference/QueryCache
 ---
 
 <!--
 translation-source-path: reference/QueryCache.md
-translation-source-ref: v5.90.3
-translation-source-hash: 1ce35e2039747081c28c9aa1753cb286b10f88fbda9258e739184c9bbd778a11
+translation-source-ref: main
+translation-source-hash: f9d662e2487376d364a707d2c3c311496a179fc1e661a7d367bab30b7899423b
 translation-status: translated
 -->
 
@@ -30,15 +32,16 @@ const queryCache = new QueryCache({
   },
 })
 
-const query = queryCache.find(['posts'])
+const query = queryCache.find({ queryKey: ['posts'] })
 ```
 
 它提供的方法有：
 
-- [`find`](#querycachefind)
-- [`findAll`](#querycachefindall)
-- [`subscribe`](#querycachesubscribe)
-- [`clear`](#querycacheclear)
+- [`queryCache.find`](#querycache-find)
+- [`queryCache.findAll`](#querycache-findall)
+- [`queryCache.subscribe`](#querycache-subscribe)
+- [`queryCache.clear`](#querycache-clear)
+- [延伸阅读](#further-reading)
 
 **选项**
 
@@ -59,12 +62,13 @@ const query = queryCache.find(['posts'])
 > 注意：这通常不是大多数应用所必需的，但在少数需要更多查询信息的场景下会很有帮助（例如查看 `query.state.dataUpdatedAt` 时间戳，以决定某个查询是否足够新鲜，可作为初始值）。
 
 ```tsx
-const query = queryCache.find(queryKey)
+const query = queryCache.find({ queryKey })
 ```
 
 **选项**
 
-- `filters?: QueryFilters`: [Query Filters](../../framework/react/guides/filters#query-filters)
+- `filters: QueryFilters`：[查询过滤器](../framework/react/guides/filters#query-filters)
+  - `queryKey: QueryKey`：[查询键](../framework/react/guides/query-keys.md)
 
 **返回值**
 
@@ -78,13 +82,12 @@ const query = queryCache.find(queryKey)
 > 注意：这通常不是大多数应用所必需的，但在少数需要更多查询信息的场景下会很有帮助。
 
 ```tsx
-const queries = queryCache.findAll(queryKey)
+const queries = queryCache.findAll({ queryKey })
 ```
 
 **选项**
 
-- `queryKey?: QueryKey`: [Query Keys](../../framework/react/guides/query-keys.md)
-- `filters?: QueryFilters`: [Query Filters](../../framework/react/guides/filters.md#query-filters)
+- `filters?: QueryFilters`：[查询过滤器](../framework/react/guides/filters.md#query-filters)
 
 **返回值**
 
@@ -93,7 +96,7 @@ const queries = queryCache.findAll(queryKey)
 
 ## `queryCache.subscribe`
 
-`subscribe` 可用于订阅整个 query cache，并在缓存发生安全且已知的更新时收到通知，例如查询状态变化，或查询被更新、添加、移除。
+`subscribe` 可用于订阅整个查询缓存，并在缓存发生安全且已知的更新时收到通知，例如查询状态发生变化，或者查询被更新、添加或移除。
 
 ```tsx
 const callback = (event) => {
@@ -106,12 +109,12 @@ const unsubscribe = queryCache.subscribe(callback)
 **选项**
 
 - `callback: (event: QueryCacheNotifyEvent) => void`
-  - 每当 query cache 通过其受跟踪的更新机制（如 `query.setState`、`queryClient.removeQueries` 等）更新时，都会调用此函数。不鼓励对缓存进行超出这些机制范围的变更，且这类变更不会触发订阅回调。
+  - 每当查询缓存通过其受追踪的更新机制（如 `query.setState`、`queryClient.removeQueries` 等）更新时，都会调用此函数。不建议绕过这些机制直接变更缓存；这类变更不会触发订阅回调。
 
 **返回值**
 
 - `unsubscribe: Function => void`
-  - 该函数用于取消 query cache 的回调订阅。
+  - 该函数用于取消回调对查询缓存的订阅。
 
 ## `queryCache.clear`
 
@@ -125,7 +128,6 @@ queryCache.clear()
 
 ## 延伸阅读
 
-若想更深入理解 QueryCache 的内部工作机制，可阅读社区资源中的 [#18: Inside React Query
-](../../framework/react/community/tkdodos-blog.md#18-inside-react-query)。
+若想进一步了解 QueryCache 的内部工作原理，请阅读 TkDodo 的 [Inside React Query](https://tkdodo.eu/blog/inside-react-query) 一文。
 
 [//]: # 'Materials'

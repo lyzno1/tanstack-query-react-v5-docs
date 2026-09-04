@@ -1,12 +1,14 @@
 ---
 id: QueryObserver
 title: QueryObserver
+redirect_from:
+  - framework/react/reference/QueryObserver
 ---
 
 <!--
 translation-source-path: reference/QueryObserver.md
-translation-source-ref: v5.90.3
-translation-source-hash: 36deff470afec7c6884cd7691b0221fa36e56552726616704483b1ae0ef97d8d
+translation-source-ref: main
+translation-source-hash: 8f956494ea1bbdf22a60536987cc7822305d5e7604a0a472cf4ad649bb8f61c4
 translation-status: translated
 -->
 
@@ -24,4 +26,4 @@ const unsubscribe = observer.subscribe((result) => {
 
 **选项**
 
-`QueryObserver` 的选项与 [`useQuery`](../../framework/react/reference/useQuery) 完全一致。
+`QueryObserver` 的选项与 [`useQuery`](../framework/react/reference/functions/useQuery.md) 完全一致。

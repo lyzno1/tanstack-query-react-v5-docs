@@ -1,18 +1,20 @@
 ---
 id: exhaustive-deps
-title: Exhaustive dependencies for query keys
+title: 完整声明查询键依赖项
 ---
 
 <!--
 translation-source-path: eslint/exhaustive-deps.md
-translation-source-ref: v5.90.3
-translation-source-hash: 9ea85b5cf98ee83c1976ecb6b83071ad7d8012ef09e1fce6f2e5402371f30f9e
+translation-source-ref: main
+translation-source-hash: fedcddd26fc3810150dc72c5475c600b5247b1d7f5f89fd483d7056b336242f8
 translation-status: translated
 -->
 
 
-查询键应被视为查询函数的依赖数组：凡是在 `queryFn` 内使用到的变量，都应该添加到查询键中。
-这样可以确保查询独立缓存，并在变量变化时自动重新获取查询。
+查询键应包含能够标识 `queryFn` 返回数据的可序列化值。
+这样可以确保各个查询分别缓存，并在这些值发生变化时自动重新获取查询。
+
+函数调用的目标不是查询键的依赖项。例如，`fetchTodoById(todoId)` 需要将 `todoId` 放入查询键，但不需要放入 `fetchTodoById`。嵌套回调中引用的值仍然是依赖项，因此 `promise.then(() => todoId)` 同样需要将 `todoId` 放入查询键。
 
 ## 规则详情
 
@@ -34,13 +36,52 @@ const todoQueries = {
 此规则的**正确**代码示例：
 
 ```tsx
-useQuery({
-  queryKey: ['todo', todoId],
-  queryFn: () => api.getTodo(todoId),
-})
+const Component = ({ todoId }) => {
+  const todos = useTodos()
+  useQuery({
+    queryKey: ['todo', todoId],
+    queryFn: () => todos.getTodo(todoId),
+  })
+}
+```
 
+```tsx
+const todos = createTodos()
 const todoQueries = {
-  detail: (id) => ({ queryKey: ['todo', id], queryFn: () => api.getTodo(id) }),
+  detail: (id) => ({
+    queryKey: ['todo', id],
+    queryFn: () => todos.getTodo(id),
+  }),
+}
+```
+
+```tsx
+// 配置 { allowlist: { types: ["Config"] }} 时
+class Config { ... }
+const Component = ({ todoId, config }: { todoId: string, config: Config }) => {
+  useQuery({
+    queryKey: ['todo', todoId],
+    queryFn: () => fetchTodo(todoId, config.baseUrl),
+  })
+}
+```
+
+### 选项
+
+- `allowlist.variables`：检查依赖项时应忽略的变量名数组
+- `allowlist.types`：检查依赖项时应忽略的 TypeScript 类型名称数组
+
+```json
+{
+  "@tanstack/query/exhaustive-deps": [
+    "error",
+    {
+      "allowlist": {
+        "variables": ["api", "config"],
+        "types": ["ApiClient", "Config"]
+      }
+    }
+  ]
 }
 ```
 

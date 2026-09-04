@@ -1,12 +1,12 @@
 ---
 id: installation
-title: Installation
+title: 安装
 ---
 
 <!--
 translation-source-path: framework/react/installation.md
-translation-source-ref: v5.90.3
-translation-source-hash: 8bb3ab5c4ea0955dfe783bdf8b495ad9eb06337d99560a1ed25d3e86c6383d6a
+translation-source-ref: main
+translation-source-hash: 89030a5abb31fe70d1bfc2a94b1957d259a6f63a74c2c3f5092b7195196457ea
 translation-status: translated
 -->
 
@@ -20,31 +20,43 @@ translation-status: translated
 npm i @tanstack/react-query
 ```
 
-or
+或者
 
 ```bash
 pnpm add @tanstack/react-query
 ```
 
-or
+或者
 
 ```bash
 yarn add @tanstack/react-query
 ```
 
-or
+或者
 
 ```bash
 bun add @tanstack/react-query
 ```
 
+或者
+
+```bash
+deno add @tanstack/react-query
+```
+
+[//]: # 'Compatibility'
+
 React Query 兼容 React v18+，并可用于 ReactDOM 和 React Native。
 
-> 想在下载前先试试？可以先运行 [simple](../examples/simple) 或 [basic](../examples/basic) 示例！
+> 想在下载前先试试？可以先运行 [simple](./examples/simple) 或 [basic](./examples/basic) 示例！
+
+[//]: # 'Compatibility'
 
 ### CDN
 
 如果你没有使用模块打包器或包管理器，也可以通过支持 ESM 的 CDN（如 [ESM.sh](https://esm.sh/)）使用该库。只需在 HTML 文件底部添加 `<script type="module">` 标签：
+
+[//]: # 'CDNExample'
 
 ```html
 <script type="module">
@@ -55,6 +67,8 @@ React Query 兼容 React v18+，并可用于 ReactDOM 和 React Native。
 ```
 
 > 你可以在[这里](https://react.dev/reference/react/createElement#creating-an-element-without-jsx)查看不使用 JSX 的 React 用法说明。
+
+[//]: # 'CDNExample'
 
 ### 要求
 
@@ -73,25 +87,25 @@ Opera >= 77
 
 ### 建议
 
-也建议同时使用我们的 [ESLint Plugin Query](../../../eslint/eslint-plugin-query.md)，帮助你在编码时发现 bug 与不一致问题。可通过以下命令安装：
+也建议同时使用我们的 [ESLint Plugin Query](../../eslint/eslint-plugin-query.md)，帮助你在编码时发现 bug 与不一致问题。可通过以下命令安装：
 
 ```bash
 npm i -D @tanstack/eslint-plugin-query
 ```
 
-or
+或者
 
 ```bash
 pnpm add -D @tanstack/eslint-plugin-query
 ```
 
-or
+或者
 
 ```bash
 yarn add -D @tanstack/eslint-plugin-query
 ```
 
-or
+或者
 
 ```bash
 bun add -D @tanstack/eslint-plugin-query

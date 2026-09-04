@@ -5,8 +5,8 @@ title: 渲染优化
 
 <!--
 translation-source-path: framework/react/guides/render-optimizations.md
-translation-source-ref: v5.90.3
-translation-source-hash: a7752c4c95d36ab4b180446b1b9592327287c8b1ad2a854b00254e5b5023f701
+translation-source-ref: main
+translation-source-hash: 605528cca321e3337baa9911c475914e65d8b11e8e737af4bc83286d5455da82
 translation-status: translated
 -->
 
@@ -29,7 +29,7 @@ React Query 使用一种称为“结构共享（structural sharing）”的技�
 
 你可以在全局或单个查询上手动设置 `notifyOnChangeProps` 来定制该行为。如果想关闭这个特性，可设置 `notifyOnChangeProps: 'all'`。
 
-> 注意：访问属性（无论是解构还是直接读取）都会触发 proxy 的 get trap。如果使用对象 rest 解构，会禁用这项优化。我们提供了 [lint 规则](../../../../eslint/no-rest-destructuring.md) 来避免这个陷阱。
+> 注意：访问属性（无论是解构还是直接读取）都会触发 Proxy 的 get trap。如果使用对象剩余属性解构，会禁用这项优化。我们提供了 [lint 规则](../../../eslint/no-rest-destructuring.md)来避免这个陷阱。
 
 ## `select`
 
@@ -80,4 +80,4 @@ export const useTodoCount = () => {
 
 ## 延伸阅读
 
-要深入理解这些主题，可阅读社区资源中的 [React Query Render Optimizations](../../community/tkdodos-blog.md#3-react-query-render-optimizations)。如果想进一步优化 `select`，可阅读 [React Query Selectors, Supercharged](../../community/tkdodos-blog.md#30-react-query-selectors-supercharged)。
+要深入理解这些主题，可阅读 TkDodo 的 [React Query Render Optimizations](https://tkdodo.eu/blog/react-query-render-optimizations)。如果想进一步优化 `select`，可阅读 [React Query Selectors, Supercharged](https://tkdodo.eu/blog/react-query-selectors-supercharged)。

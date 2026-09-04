@@ -1,17 +1,17 @@
 ---
 id: eslint-plugin-query
-title: ESLint Plugin Query
+title: ESLint Query 插件
 ---
 
 <!--
 translation-source-path: eslint/eslint-plugin-query.md
-translation-source-ref: v5.90.3
-translation-source-hash: 77b8f7f8fe843c2cc26d4f29284272e832c54b480cfbbd3051f2aaa7262f7dc0
+translation-source-ref: main
+translation-source-hash: 9dc5644c65099aee09714ca447f3398c5d07af3c60116b5384259607a831d4bb
 translation-status: translated
 -->
 
 
-TanStack Query 自带了专用的 ESLint 插件。这个插件用于强制执行最佳实践，并帮助你避免常见错误。
+TanStack Query 自带 ESLint 插件。该插件用于落实最佳实践，并帮助你避免常见错误。
 
 ## 安装
 
@@ -21,19 +21,19 @@ TanStack Query 自带了专用的 ESLint 插件。这个插件用于强制执行
 npm i -D @tanstack/eslint-plugin-query
 ```
 
-or
+或者
 
 ```bash
 pnpm add -D @tanstack/eslint-plugin-query
 ```
 
-or
+或者
 
 ```bash
 yarn add -D @tanstack/eslint-plugin-query
 ```
 
-or
+或者
 
 ```bash
 bun add -D @tanstack/eslint-plugin-query
@@ -50,7 +50,20 @@ import pluginQuery from '@tanstack/eslint-plugin-query'
 
 export default [
   ...pluginQuery.configs['flat/recommended'],
-  // Any other config...
+  // 其他配置……
+]
+```
+
+### 推荐的严格配置
+
+`flat/recommended-strict` 配置在 `flat/recommended` 的基础上增加了一些倾向性更强的规则，以便更严格地落实最佳实践。
+
+```js
+import pluginQuery from '@tanstack/eslint-plugin-query'
+
+export default [
+  ...pluginQuery.configs['flat/recommended-strict'],
+  // 其他配置……
 ]
 ```
 
@@ -70,7 +83,7 @@ export default [
       '@tanstack/query/exhaustive-deps': 'error',
     },
   },
-  // Any other config...
+  // 其他配置……
 ]
 ```
 
@@ -83,6 +96,16 @@ export default [
 ```json
 {
   "extends": ["plugin:@tanstack/query/recommended"]
+}
+```
+
+### 推荐的严格配置
+
+`recommendedStrict` 配置在 `recommended` 的基础上增加了一些倾向性更强的规则：
+
+```json
+{
+  "extends": ["plugin:@tanstack/query/recommendedStrict"]
 }
 ```
 
@@ -101,9 +124,11 @@ export default [
 
 ## 规则
 
-- [@tanstack/query/exhaustive-deps](../exhaustive-deps.md)
-- [@tanstack/query/no-rest-destructuring](../no-rest-destructuring.md)
-- [@tanstack/query/stable-query-client](../stable-query-client.md)
-- [@tanstack/query/no-unstable-deps](../no-unstable-deps.md)
-- [@tanstack/query/infinite-query-property-order](../infinite-query-property-order.md)
-- [@tanstack/query/no-void-query-fn](../no-void-query-fn.md)
+- [@tanstack/query/exhaustive-deps](./exhaustive-deps.md)
+- [@tanstack/query/no-rest-destructuring](./no-rest-destructuring.md)
+- [@tanstack/query/stable-query-client](./stable-query-client.md)
+- [@tanstack/query/no-unstable-deps](./no-unstable-deps.md)
+- [@tanstack/query/infinite-query-property-order](./infinite-query-property-order.md)
+- [@tanstack/query/no-void-query-fn](./no-void-query-fn.md)
+- [@tanstack/query/mutation-property-order](./mutation-property-order.md)
+- [@tanstack/query/prefer-query-options](./prefer-query-options.md)

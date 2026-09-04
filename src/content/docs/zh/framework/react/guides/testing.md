@@ -5,8 +5,8 @@ title: 测试
 
 <!--
 translation-source-path: framework/react/guides/testing.md
-translation-source-ref: v5.90.3
-translation-source-hash: f4012179c6ed4bf087622d5dc1c9c8367ade61afae80dca9f2e3771b5fed79ec
+translation-source-ref: main
+translation-source-hash: c079651545dcdc850ab3ab33d2e338203b81bcae5dab43b950eeb572b923ab28
 translation-status: translated
 -->
 
@@ -116,7 +116,7 @@ await waitFor(() => expect(result.current.isSuccess).toBe(true))
 expect(result.current.data).toEqual({ answer: 42 })
 ```
 
-这里通过 `waitFor` 等待查询状态成功，从而确定 hook 已完成并拿到了正确数据。_注意_：在 React 18 下，`waitFor` 的语义与上文所述一致有所变化。
+这里通过 `waitFor` 等待查询状态变为成功，从而确定 hook 已执行完毕，并且应该已经拿到正确数据。_注意_：如上文所述，在 React 18 中，`waitFor` 的语义已有变化。
 
 ## 测试“加载更多 / 无限滚动”
 
@@ -171,8 +171,8 @@ await waitFor(() =>
 expectation.done()
 ```
 
-_注意_：在 React 18 下，`waitFor` 的语义与上文所述一致有所变化。
+_注意_：如上文所述，在 React 18 中，`waitFor` 的语义已有变化。
 
 ## 延伸阅读
 
-更多技巧以及使用 `mock-service-worker` 的替代方案，可查看社区资源中的 [Testing React Query](../../community/tkdodos-blog.md#5-testing-react-query)。
+更多技巧以及使用 `mock-service-worker` 的替代配置方式，可参阅 TkDodo 的 [Testing React Query](https://tkdodo.eu/blog/testing-react-query) 一文。

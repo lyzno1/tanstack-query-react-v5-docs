@@ -5,8 +5,8 @@ title: 无限查询
 
 <!--
 translation-source-path: framework/react/guides/infinite-queries.md
-translation-source-ref: v5.90.3
-translation-source-hash: 64073828df79abc313624be94e0ea3257a3b0394b4a36766d33e31a58608d3b0
+translation-source-ref: main
+translation-source-hash: 977f5fb0cd3a3819c20c2160a4f38eb06a97d9dbc380817683411e544d602691
 translation-status: translated
 -->
 
@@ -17,9 +17,9 @@ translation-status: translated
 
 - `data` 现在是一个包含无限查询数据的对象：
 - `data.pages`：包含已获取页面的数组
-- `data.pageParams`：包含用于获取各页的 page param 数组
+- `data.pageParams`：包含用于获取各页的页面参数数组
 - 可使用 `fetchNextPage` 和 `fetchPreviousPage`（其中 `fetchNextPage` 是必需的）
-- 可使用（且必须提供）`initialPageParam` 来指定初始 page param
+- 可使用（且必须提供）`initialPageParam` 来指定初始页面参数
 - 可使用 `getNextPageParam` 与 `getPreviousPageParam`，既用于判断是否还有更多数据，也用于给出下一次获取所需信息。该信息会作为额外参数传入查询函数
 - 新增 `hasNextPage` 布尔值：当 `getNextPageParam` 返回非 `null` / `undefined` 时为 `true`
 - 新增 `hasPreviousPage` 布尔值：当 `getPreviousPageParam` 返回非 `null` / `undefined` 时为 `true`
@@ -125,7 +125,7 @@ function Projects() {
 
 ## 当无限查询需要重新获取时会发生什么？
 
-当无限查询变为 `stale` 并需要重新获取时，会从第一页开始按组**顺序**重新获取。这样即使底层数据发生变更，也能避免使用过期游标，从而减少重复或漏项风险。如果某个无限查询的结果被从 queryCache 移除，分页会回到初始状态，仅请求初始分组。
+当无限查询变为 `stale` 并需要重新获取时，会从第一页开始按组**顺序**重新获取。这样即使底层数据发生变更，也能避免使用过期游标，进而避免产生重复记录或漏掉记录。如果某个无限查询的结果被从查询缓存中移除，分页会回到初始状态，仅请求初始分组。
 
 ## 如果我想实现双向无限列表怎么办？
 
@@ -219,9 +219,9 @@ queryClient.setQueryData(['projects'], (data) => ({
 - 用户可能会加载大量页面（内存占用）
 - 你需要重新获取一个包含几十页的无限查询（网络占用：所有页面都会被顺序重新获取）
 
-解决方案是使用“Limited Infinite Query”。通过将 `maxPages` 与 `getNextPageParam`、`getPreviousPageParam` 结合，就可以在双向按需获取页面。
+解决方案是使用“限制页数的无限查询”。通过将 `maxPages` 与 `getNextPageParam`、`getPreviousPageParam` 结合，就可以在两个方向上按需获取页面。
 
-在下面示例中，查询数据的 pages 数组只保留 3 页。如果需要重新获取，也只会顺序重新获取这 3 页。
+在下面示例中，查询数据的 `pages` 数组只保留 3 页。如果需要重新获取，也只会顺序重新获取这 3 页。
 
 [//]: # 'Example8'
 
@@ -240,7 +240,7 @@ useInfiniteQuery({
 
 ## 如果我的 API 不返回游标怎么办？
 
-如果 API 不返回游标，也可以把 `pageParam` 当作游标使用。因为 `getNextPageParam` 与 `getPreviousPageParam` 也会拿到当前页的 `pageParam`，所以你可以据此计算下一页/上一页的 page param。
+如果 API 不返回游标，也可以把 `pageParam` 当作游标使用。因为 `getNextPageParam` 与 `getPreviousPageParam` 也会拿到当前页的 `pageParam`，所以你可以据此计算下一页/上一页的页面参数。
 
 [//]: # 'Example9'
 
@@ -269,6 +269,6 @@ return useInfiniteQuery({
 
 ## 延伸阅读
 
-若想更深入理解 Infinite Queries 的底层工作方式，可阅读社区资源中的 [How Infinite Queries work](../../community/tkdodos-blog.md#26-how-infinite-queries-work)。
+若想更深入理解无限查询的底层工作方式，可阅读 [How Infinite Queries work](https://tkdodo.eu/blog/how-infinite-queries-work)。
 
 [//]: # 'Materials'

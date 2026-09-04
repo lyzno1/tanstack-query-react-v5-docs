@@ -5,8 +5,8 @@ title: streamedQuery
 
 <!--
 translation-source-path: reference/streamedQuery.md
-translation-source-ref: v5.90.3
-translation-source-hash: 221cd1b2d05e8d74d4fa18909ab8958e7b21c4508dd2cf8dd621225ea41342b1
+translation-source-ref: main
+translation-source-hash: 244ee24bcc3486a0b34180fac52fdb97cb7815265b0fca188a71fbb50a63e3b4
 translation-status: translated
 -->
 
@@ -33,7 +33,7 @@ const query = queryOptions({
 - `streamFn: (context: QueryFunctionContext) => Promise<AsyncIterable<TData>>`
   - **必填**
   - 返回一个 Promise，Promise 的结果是包含流式数据的 AsyncIterable。
-  - 会接收一个 [QueryFunctionContext](../../framework/react/guides/query-functions.md#queryfunctioncontext)
+  - 会接收一个 [QueryFunctionContext](../framework/react/guides/query-functions.md#queryfunctioncontext)
 - `refetchMode?: 'append' | 'reset' | 'replace'`
   - 可选
   - 定义重新获取（refetch）的处理方式。
@@ -48,6 +48,6 @@ const query = queryOptions({
   - 如果 `TData` 不是数组，必须提供自定义 `reducer`。
 - `initialValue?: TData = TQueryFnData`
   - 可选
-  - 定义获取第一块数据期间使用的初始数据。
+  - 定义获取第一块数据期间使用的初始数据；如果数据流没有产生任何值，也会返回该值。
   - 提供自定义 `reducer` 时，此项为必填。
   - 默认为空数组。

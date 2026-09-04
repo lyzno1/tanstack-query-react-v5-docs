@@ -5,13 +5,17 @@ title: 查询函数
 
 <!--
 translation-source-path: framework/react/guides/query-functions.md
-translation-source-ref: v5.90.3
-translation-source-hash: 59d0979caf356c3d88720af8e539d6ebba161369ec475668898276ea5dda2b8f
+translation-source-ref: main
+translation-source-hash: f5ae9a4120c8a9bbd5666774710c05f5ddcde35a7517c92230428bff666f97bb
 translation-status: translated
 -->
 
 
 查询函数本质上可以是任何**返回 Promise**的函数。返回的 Promise 应当**resolve 数据**或**抛出错误**。
+
+成功时，Promise 可以 resolve 为除 **`undefined`** 以外的任何值。resolve 为 `undefined` 的查询会被
+[视为失败](https://tanstack.com/query/latest/docs/framework/react/guides/migrating-to-react-query-4#undefined-is-an-illegal-cache-value-for-successful-queries)。
+如果需要在查询缓存中以“无值”表示成功结果，请改为 resolve `null`。
 
 以下都是有效的查询函数配置：
 
@@ -37,7 +41,8 @@ useQuery({
 
 ## 处理和抛出错误
 
-为了让 TanStack Query 确定查询有错误，查询函数**必须抛出**或返回**rejected Promise**。查询函数中引发的任何错误都将保留在查询的 `error` 状态上。
+为了让 TanStack Query 判断查询出错，查询函数**必须抛出错误**或返回 **rejected Promise**。
+查询函数抛出的错误会保存在查询的 `error` 状态中。
 
 [//]: # 'Example2'
 
@@ -61,7 +66,8 @@ const { error } = useQuery({
 
 ## 与 `fetch` 和其他默认情况下不抛出异常的客户端一起使用
 
-虽然大多数实用程序（如 `axios` 或 `graphql-request`）会针对不成功的 HTTP 调用自动引发错误，但某些实用程序（如`fetch`）默认情况下不会引发错误。如果是这种情况，您需要自己抛出错误。以下是使用流行的 `fetch` API 执行此操作的简单方法：
+虽然 `axios`、`graphql-request` 等客户端会在 HTTP 请求失败时自动抛错，但 `fetch` 等客户端默认不会。
+这种情况下，需要自行抛出错误。下面展示了使用 `fetch` API 时的简单做法：
 
 [//]: # 'Example3'
 
@@ -82,7 +88,7 @@ useQuery({
 
 ## 查询函数变量
 
-查询键不仅用于唯一标识您正在获取的数据，而且还可以作为 QueryFunctionContext 的一部分方便地传递到查询函数中。虽然并不总是必要的，但这使得可以在需要时提取查询函数：
+查询键不仅用于唯一标识正在获取的数据，还会作为 `QueryFunctionContext` 的一部分传给查询函数。虽然并非总有必要使用它，但这样可以在需要时将查询函数独立出来：
 
 [//]: # 'Example4'
 
@@ -103,23 +109,24 @@ function fetchTodoList({ queryKey }) {
 
 [//]: # 'Example4'
 
-### 查询函数上下文
+### `QueryFunctionContext`
 
 `QueryFunctionContext` 是传递给每个查询函数的对象。它包括：
 
-- `queryKey: QueryKey`：[Query Keys](../query-keys.md)
-- `client: QueryClient`：[QueryClient](../../../../reference/QueryClient.md)
+- `queryKey: QueryKey`：[查询键](./query-keys.md)
+- `client: QueryClient`：[QueryClient](../../../reference/QueryClient.md)
 - `signal?: AbortSignal`
-  - [AbortSignal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) TanStack Query提供的实例
-  - 可用于[Query Cancellation](../query-cancellation.md)
+  - TanStack Query 提供的 [AbortSignal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) 实例
+  - 可用于[查询取消](./query-cancellation.md)
 - `meta: Record<string, unknown> | undefined`
-  - 您可以填写有关您的查询的附加信息的可选字段
+  - 可用于填写查询附加信息的可选字段
 
-此外，[Infinite Queries](../infinite-queries.md) 还传递以下选项：
+此外，[无限查询](./infinite-queries.md)还会收到以下属性：
 
 - `pageParam: TPageParam`
-  - 用于获取当前页面的 page 参数
+  - 用于获取当前页面的页面参数
 - `direction: 'forward' | 'backward'`
   - **已弃用**
-  - 当前页面获取的方向
-  - 要访问当前页面获取的方向，请添加从`getNextPageParam` 和`getPreviousPageParam` 到`pageParam` 的方向。
+  - 当前页面的获取方向
+  - 如需在获取当前页面时访问方向信息，请通过 `getNextPageParam` 和 `getPreviousPageParam`
+    将方向加入 `pageParam`。

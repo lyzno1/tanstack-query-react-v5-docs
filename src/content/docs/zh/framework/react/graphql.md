@@ -5,13 +5,13 @@ title: GraphQL
 
 <!--
 translation-source-path: framework/react/graphql.md
-translation-source-ref: v5.90.3
+translation-source-ref: main
 translation-source-hash: 305999891fd5ef4d823fcc8ecb7f3f04e913e8cc09c0fddf2e398f21b1b1b3db
 translation-status: translated
 -->
 
 
-由于 React Query 的获取机制是基于 Promise 构建且与实现无关的，所以你几乎可以把 React Query 与任何异步数据获取客户端一起使用，包括 GraphQL！
+React Query 的数据获取机制基于 Promise，并且与具体实现无关。因此，你几乎可以将 React Query 与任何异步数据客户端搭配使用，包括 GraphQL！
 
 > 请记住，React Query 不支持规范化缓存。虽然绝大多数用户实际上并不需要规范化缓存，或它带来的收益没有想象中那么大，但在极少数场景下它可能确实有必要，所以请先与我们确认这是否真的是你的需求。
 

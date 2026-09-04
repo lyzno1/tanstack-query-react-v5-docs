@@ -5,7 +5,7 @@ title: 后台获取指示器
 
 <!--
 translation-source-path: framework/react/guides/background-fetching-indicators.md
-translation-source-ref: v5.90.3
+translation-source-ref: main
 translation-source-hash: 382050352efa8cddccad4b3984c67848657470da878c283ea8f3a178372e8f6a
 translation-status: translated
 -->
@@ -49,7 +49,7 @@ function Todos() {
 
 ## 显示全局后台获取加载状态
 
-除了单个查询的加载状态之外，如果你希望在**任意**查询正在获取（包括后台获取）时显示全局加载指示器，可以使用 `useIsFetching` hook：
+除了单个查询的加载状态之外，如果你希望在**任意**查询正在获取（包括后台获取）时显示全局加载指示器，可以使用 `useIsFetching` Hook：
 
 [//]: # 'Example2'
 

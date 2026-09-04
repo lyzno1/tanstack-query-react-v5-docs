@@ -1,11 +1,11 @@
 ---
 id: infinite-query-property-order
-title: Ensure correct order of inference sensitive properties for infinite queries
+title: 确保无限查询中影响类型推断的属性顺序正确
 ---
 
 <!--
 translation-source-path: eslint/infinite-query-property-order.md
-translation-source-ref: v5.90.3
+translation-source-ref: main
 translation-source-hash: 3640888d103bd8997d074863efa30374ec634db80230df865708df35fddd82e6
 translation-status: translated
 -->
