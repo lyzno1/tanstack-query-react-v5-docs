@@ -2,56 +2,17 @@
 
 ## Goal
 
-A quiet, monochrome documentation workspace inspired by **nuqs**, with a compact
-navigation column, generous article space, restrained controls and readable Chinese
-prose. The site keeps Astro/Starlight, static HTML, Pagefind, its locale routing and
-upstream Markdown synchronization. Fumadocs is a design reference, not a runtime
-dependency. Do not copy nuqs branding or add a React application to restyle the docs.
+A quiet, monochrome documentation workspace with compact navigation, generous
+article space, restrained controls and readable Chinese prose. This document is the
+specification for this site's implementation: it records its tokens, layout choices
+and maintenance constraints. The site keeps Astro/Starlight, static HTML, Pagefind,
+locale routing and upstream Markdown synchronization.
 
-## Verified reference sources
+## Color system
 
-Reviewed on 2026-09-05. nuqs source is pinned to commit
-[`9bf77646b74f1492fc58a9f289e41bf386ef9ae2`](https://github.com/47ng/nuqs/tree/9bf77646b74f1492fc58a9f289e41bf386ef9ae2).
-
-- [nuqs Design System](https://github.com/47ng/nuqs/blob/9bf77646b74f1492fc58a9f289e41bf386ef9ae2/packages/docs/content/docs/internal/design-system.mdx):
-  the actual internal design document. It is a component specimen covering heading
-  hierarchy, Fumadocs callouts with local tweaks, code and feature matrices; it is
-  not a prose brand manual. This is the reference for component consistency.
-- [Global theme](https://github.com/47ng/nuqs/blob/9bf77646b74f1492fc58a9f289e41bf386ef9ae2/packages/docs/src/app/globals.css):
-  application HSL tokens, 8px radius, Fumadocs `black.css` and `preset.css` imports.
-- [Local design adjustments](https://github.com/47ng/nuqs/blob/9bf77646b74f1492fc58a9f289e41bf386ef9ae2/packages/docs/src/app/styles/tweaks.css):
-  64px desktop header, 56px mobile header, compact sidebar rows, zinc-tinted code
-  blocks, 1.5px inline-code vertical padding and aligned callout borders.
-- [Documentation layout](https://github.com/47ng/nuqs/blob/9bf77646b74f1492fc58a9f289e41bf386ef9ae2/packages/docs/src/app/docs/layout.tsx):
-  Fumadocs **Notebook** layout, top navigation and a non-collapsible desktop sidebar.
-- [Root layout](https://github.com/47ng/nuqs/blob/9bf77646b74f1492fc58a9f289e41bf386ef9ae2/packages/docs/src/app/layout.tsx):
-  Inter typography. [Live installation page](https://nuqs.dev/docs/installation)
-  was inspected in both themes for the article, navigation and code treatment.
-- [Fumadocs theme guide](https://www.fumadocs.dev/docs/ui/theme) and the published
-  [`fumadocs-ui@16.14.5/css/black.css`](https://unpkg.com/fumadocs-ui@16.14.5/css/black.css):
-  the exact package version used by the reviewed nuqs source.
-
-### Application colors from nuqs
-
-Hex values below are rounded from the original HSL values, rather than sampled
-from a screenshot. The source tokens remain authoritative.
-
-| Role | nuqs light HSL | Light hex | nuqs dark HSL | Dark hex |
-| --- | --- | --- | --- | --- |
-| Background | `0 0% 100%` | `#FFFFFF` | `240 10% 3.9%` | `#09090B` |
-| Foreground | `240 10% 3.9%` | `#09090B` | `0 0% 98%` | `#FAFAFA` |
-| Primary | `240 5.9% 10%` | `#18181B` | `0 0% 98%` | `#FAFAFA` |
-| Secondary / muted surface | `240 4.8% 95.9%` | `#F4F4F5` | `240 3.7% 15.9%` | `#27272A` |
-| Muted foreground | `240 3.8% 46.1%` | `#71717A` | `240 5% 64.9%` | `#A1A1AA` |
-| Border / input | `240 5.9% 90%` | `#E4E4E7` | `240 3.7% 15.9%` | `#27272A` |
-| Focus ring | `240 5.9% 10%` | `#18181B` | `240 4.9% 83.9%` | `#D4D4D8` |
-
-These are **application** tokens. Fumadocs black.css has its own neutral tokens:
-light background `hsl(0 0% 98%)`, dark background `hsl(0 0% 2%)`, light border
-`hsla(0 0% 60% / 0.2)`, dark border `hsla(0 0% 50% / 0.2)`, light accent
-`hsl(0 0% 94.1%)`, dark accent `hsl(0 0% 15%)`. They are not interchangeable with
-the application's zinc palette. Our adaptation deliberately uses the application
-palette consistently across the Starlight shell instead of mixing two token systems.
+Use one zinc palette consistently across the shell, article and controls. The values
+below describe the actual local implementation. Body text and spacing are chosen for
+long-form Chinese and English documentation; color alone does not define the design.
 
 ### Local token mapping
 
@@ -67,7 +28,7 @@ Starlight's `--sl-color-*` tokens reference these local tokens in both themes.
 | `--doc-surface` | `#FAFAFA` | `#18181B` | Search, inline code, hover |
 | `--doc-active` | `#F4F4F5` | `#27272A` | Selected navigation |
 | `--doc-border` | `#E4E4E7` | `#27272A` | Dividers, cards, controls |
-| `--doc-code-bg` | `#FDFDFD` | `#101013` | Rounded approximation of nuqs' 50% zinc code surface |
+| `--doc-code-bg` | `#FDFDFD` | `#101013` | Subtle code-block surface |
 
 Semantic Starlight note/tip/caution/danger colors remain distinct. Normal links are
 underlined, selected navigation uses fill and weight, and keyboard focus uses a
@@ -138,8 +99,7 @@ All six repository gates passed locally, and GitHub CI and the Vercel preview bu
 passed. The output contains 333 pages and 62,233 valid internal links. All 139
 translation records remain current and untouched.
 
-Browser inspection of the reference nuqs site covered both themes. Browser inspection
-of this project's changed pages remains **unverified**: the cloud browser cannot
+Browser inspection of this project's changed pages remains **unverified**: the cloud browser cannot
 reach the local server, and the Vercel preview requires account authentication.
 Desktop/mobile screenshots, interaction checks and measured rendered contrast must
 not be represented as passing until someone with preview access performs them.
@@ -158,3 +118,34 @@ requires prior written consent to use its trademarks. The published asset downlo
 alone do not clearly authorize this independent documentation site's branding.
 We therefore use our own document symbol. This is a conservative implementation
 choice, not a legal determination about every possible use of the TanStack marks.
+
+## Styling architecture and StyleX assessment
+
+Keep global tokens and the Starlight/Markdown skin in `src/styles/theme.css`. Keep
+styles for owned markup next to that markup in the scoped `<style>` blocks of
+`SiteTitle.astro` and `PageTitle.astro`. Prefer Starlight's public variables and
+Expressive Code options; keep unavoidable internal-selector overrides narrowly scoped
+and review them when upgrading Starlight.
+
+StyleX is technically a possible addition, but is not adopted for this theme. Its
+[core principles](https://stylexjs.com/docs/learn/thinking-in-stylex/) favor local
+styling and predictable composition on elements that consume StyleX styles. Most
+of this site's skin targets HTML generated by Markdown and components owned by
+Starlight. Those elements do not currently consume StyleX classes. The official
+[descendant styling recipe](https://stylexjs.com/docs/learn/recipes/descendant-styles/)
+uses variables consumed explicitly by the child; it is not a general replacement
+for selectors such as `.sl-markdown-content h2`.
+
+The official [Vite plugin](https://stylexjs.com/docs/learn/installation/vite/) provides
+a possible compiler integration, and [`stylex.attrs`](https://stylexjs.com/docs/api/javascript/attrs/)
+produces `class` and serialized `style` attributes suitable for HTML rendering.
+Neither fact alone verifies `.astro` compilation, development CSS delivery or Astro's
+separate build paths. An integration would require a focused proof of compatibility.
+Static CSS output would not require adding React or hydrating the documentation.
+
+For the current two custom components, introducing another compiler and retaining
+a separate global CSS skin has limited benefit. Reconsider StyleX if the project
+gains a substantial set of owned interactive components with variants and style
+composition. If adopted then, keep styles near components, share semantic tokens via
+`defineVars`, compose styles through the official APIs and retain global Markdown
+styling in CSS. Do not rewrite Starlight components simply to attach generated classes.

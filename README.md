@@ -35,7 +35,7 @@ The sync script also generates example link pages and synchronization status pag
 
 ## Design
 
-The visual specification, verified nuqs sources, theme tokens and review checklist
+The site design specification, theme tokens and review checklist
 are in [DESIGN.md](DESIGN.md). Keep presentation changes in the Starlight theme and
 component overrides so upstream Markdown remains independently synchronized.
 
