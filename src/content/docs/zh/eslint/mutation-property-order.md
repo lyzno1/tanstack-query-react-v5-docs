@@ -3,14 +3,6 @@ id: mutation-property-order
 title: 确保 useMutation() 中影响类型推断的属性顺序正确
 ---
 
-<!--
-translation-source-path: eslint/mutation-property-order.md
-translation-source-ref: main
-translation-source-hash: fc6119dc87431f042851d8ac036e6dac657507ef550be94a8052fb9ab56971e0
-translation-status: translated
--->
-
-
 对于以下函数，由于类型推断的原因，传入对象的属性顺序很重要：
 
 - `useMutation()`
@@ -77,5 +69,5 @@ const mutation = useMutation({
 
 ## 属性
 
-- [x] ✅ Recommended
-- [x] 🔧 Fixable
+- [x] ✅ 推荐
+- [x] 🔧 可自动修复

@@ -3,14 +3,6 @@ id: UsePrefetchQueryOptions
 title: UsePrefetchQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UsePrefetchQueryOptions.md
-translation-source-ref: main
-translation-source-hash: a677f7b5220c87b867476f9f9f25655b3ea414126ff8a6c5cd63c3bbef4b79c0
-translation-status: translated
--->
-
-
 ```ts
 type UsePrefetchQueryOptions<TQueryFnData, TError, TData, TQueryData, TQueryKey> = DistributiveOmit<QueryExecuteOptions<TQueryFnData, TError, TData, TQueryData, TQueryKey>, "queryFn"> & object;
 ```
@@ -28,7 +20,7 @@ type UsePrefetchQueryOptions<TQueryFnData, TError, TData, TQueryData, TQueryKey>
 optional queryFn: Exclude<QueryExecuteOptions<TQueryFnData, TError, TData, TQueryData, TQueryKey>["queryFn"], SkipToken>;
 ```
 
-这里不允许将 `skipToken` 作为值——预获取始终需要查询函数才能实际运行，
+这里不允许将 `skipToken` 作为值——预取始终需要查询函数才能实际运行，
 除非已经定义默认查询函数。
 
 ## 类型参数

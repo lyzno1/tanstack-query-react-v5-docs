@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/mutationOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/mutationOptions.md
-translation-source-ref: main
-translation-source-hash: 989a4f8bc3ff3b5808959cdfac8ec1aaeaf1de2746eb1ef98df7c3b536bcd813
-translation-status: translated
--->
-
-
 ## 调用签名
 
 ```ts

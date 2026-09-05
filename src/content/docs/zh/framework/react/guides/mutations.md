@@ -3,14 +3,6 @@ id: mutations
 title: 变更
 ---
 
-<!--
-translation-source-path: framework/react/guides/mutations.md
-translation-source-ref: main
-translation-source-hash: fc5f01b017df348b439a1c4bcc19abe99555d076d305df6b598c33fd88f7de42
-translation-status: translated
--->
-
-
 与查询不同，变更通常用于创建/更新/删除数据或执行服务器副作用。为此，TanStack Query 导出 `useMutation` Hook。
 
 以下是向服务器添加新待办事项的变更示例：

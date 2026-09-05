@@ -3,14 +3,6 @@ id: invalidations-from-mutations
 title: 由变更触发的失效
 ---
 
-<!--
-translation-source-path: framework/react/guides/invalidations-from-mutations.md
-translation-source-ref: main
-translation-source-hash: 4699ba0bb16ee55a9c4e1b975f41899e5bed6e9b619c696cd50dbeb4d36fdf73
-translation-status: translated
--->
-
-
 让查询失效只是完成了一半，另一半是知道应该在**什么时候**让它失效。通常，当应用中的某个变更成功后，很可能会有相关查询需要失效，甚至可能要重新获取，以反映这次变更带来的新数据。
 
 例如，假设我们有一个用于提交新 todo 的变更：

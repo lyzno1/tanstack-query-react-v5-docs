@@ -3,14 +3,6 @@ id: overview
 title: 概述
 ---
 
-<!--
-translation-source-path: framework/react/overview.md
-translation-source-ref: main
-translation-source-hash: 6b83435a4bba0e13061ad9529df35d5fc02d27d311b04474c68c6dc193ab204b
-translation-status: translated
--->
-
-
 TanStack Query（此前名为 React Query）常被描述为 Web 应用中缺失的数据获取库。更准确地说，
 它让你能够轻松地在 Web 应用中**获取、缓存、同步和更新服务端状态**。
 

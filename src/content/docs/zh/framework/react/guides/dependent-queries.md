@@ -3,14 +3,6 @@ id: dependent-queries
 title: 依赖查询
 ---
 
-<!--
-translation-source-path: framework/react/guides/dependent-queries.md
-translation-source-ref: main
-translation-source-hash: 417af315fab62db4dd90f5e207308498110e32089a576a1d01f5a99a0a355c7d
-translation-status: translated
--->
-
-
 ## useQuery 依赖查询
 
 依赖查询（或串行查询）依赖前一个查询先完成后才能执行。要实现这一点，只需使用 `enabled` 选项告诉查询何时可以运行：

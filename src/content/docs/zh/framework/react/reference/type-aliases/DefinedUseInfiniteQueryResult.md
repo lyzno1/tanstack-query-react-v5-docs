@@ -3,14 +3,6 @@ id: DefinedUseInfiniteQueryResult
 title: DefinedUseInfiniteQueryResult
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/DefinedUseInfiniteQueryResult.md
-translation-source-ref: main
-translation-source-hash: 40274e06b401a64224f0db4875fb4f90fdc4da86bf6df53ec3b1d7e9497b0699
-translation-status: translated
--->
-
-
 ```ts
 type DefinedUseInfiniteQueryResult<TData, TError> = DefinedInfiniteQueryObserverResult<TData, TError>;
 ```

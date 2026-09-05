@@ -3,14 +3,6 @@ id: UseMutationResult
 title: UseMutationResult
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UseMutationResult.md
-translation-source-ref: main
-translation-source-hash: 21881b360bccf32f06f80c5b2bc0815f1c5769e3045b0c696497316b887cf2c6
-translation-status: translated
--->
-
-
 ```ts
 type UseMutationResult<TData, TError, TVariables, TOnMutateResult> = UseBaseMutationResult<TData, TError, TVariables, TOnMutateResult>;
 ```

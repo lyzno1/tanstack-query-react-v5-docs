@@ -1,7 +1,14 @@
 ---
+import path from 'node:path';
+import { editorialMarkdown } from '../../../scripts/docs-markdown.mjs';
+
 const { entry } = Astro.locals.starlightRoute;
 const title = entry.data.title;
-const rawMarkdown = entry.body ?? '';
+const isZh = entry.id.startsWith('zh/');
+const copyLabel = isZh ? '复制' : 'Copy';
+const copiedLabel = isZh ? '已复制！' : 'Copied!';
+const editorial = entry.filePath ? editorialMarkdown(path.resolve(entry.filePath)) : '';
+const rawMarkdown = [entry.body ?? '', editorial].filter(Boolean).join('\n\n');
 const sourceId = `md-source-${entry.id.replace(/[^\w-]+/g, '-')}`;
 
 const frontmatterLines = [`title: ${JSON.stringify(title)}`];
@@ -27,7 +34,9 @@ const fullMarkdownJson = serializeForScriptTag(fullMarkdown);
   <button
     class="copy-md-btn"
     type="button"
-    aria-label="Copy page as Markdown"
+    aria-label={isZh ? '复制页面的 Markdown' : 'Copy page as Markdown'}
+    data-copy-label={copyLabel}
+    data-copied-label={copiedLabel}
     data-md-source-id={sourceId}
   >
   <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -37,7 +46,7 @@ const fullMarkdownJson = serializeForScriptTag(fullMarkdown);
   <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="20 6 9 17 4 12"></polyline>
   </svg>
-  <span class="copy-label">Copy</span>
+  <span class="copy-label">{copyLabel}</span>
   </button>
 </div>
 <script is:inline id={sourceId} type="application/json" set:html={fullMarkdownJson} />
@@ -152,10 +161,10 @@ const fullMarkdownJson = serializeForScriptTag(fullMarkdown);
         const label = btn.querySelector('.copy-label');
         const onDone = () => {
           btn.classList.add('copied');
-          if (label) label.textContent = 'Copied!';
+          if (label) label.textContent = btn.dataset.copiedLabel;
           setTimeout(() => {
             btn.classList.remove('copied');
-            if (label) label.textContent = 'Copy';
+            if (label) label.textContent = btn.dataset.copyLabel;
           }, 2000);
         };
 

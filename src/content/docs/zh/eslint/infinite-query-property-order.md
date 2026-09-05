@@ -3,14 +3,6 @@ id: infinite-query-property-order
 title: 确保无限查询中影响类型推断的属性顺序正确
 ---
 
-<!--
-translation-source-path: eslint/infinite-query-property-order.md
-translation-source-ref: main
-translation-source-hash: 3640888d103bd8997d074863efa30374ec634db80230df865708df35fddd82e6
-translation-status: translated
--->
-
-
 对于下列函数，由于类型推断的原因，传入对象的属性顺序很重要：
 
 - `useInfiniteQuery`
@@ -67,5 +59,5 @@ const query = useInfiniteQuery({
 
 ## 属性
 
-- [x] ✅ Recommended
-- [x] 🔧 Fixable
+- [x] ✅ 推荐
+- [x] 🔧 可自动修复

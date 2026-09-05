@@ -3,14 +3,6 @@ id: QueriesResults
 title: QueriesResults
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/QueriesResults.md
-translation-source-ref: main
-translation-source-hash: 12e89ff3dbd5fe57700704df224b2124853b7c0f8a1e91f8be87e5993998290e
-translation-status: translated
--->
-
-
 ```ts
 type QueriesResults<T, TResults, TDepth> = TDepth["length"] extends MAXIMUM_DEPTH ? UseQueryResult[] : T extends [] ? [] : T extends [infer Head] ? [...TResults, GetUseQueryResult<Head>] : T extends [infer Head, ...(infer Tails)] ? QueriesResults<[...Tails], [...TResults, GetUseQueryResult<Head>], [...TDepth, 1]> : { [K in keyof T]: GetUseQueryResult<T[K]> };
 ```

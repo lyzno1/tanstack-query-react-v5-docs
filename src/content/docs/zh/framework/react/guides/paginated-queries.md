@@ -3,14 +3,6 @@ id: paginated-queries
 title: 分页/滞后查询
 ---
 
-<!--
-translation-source-path: framework/react/guides/paginated-queries.md
-translation-source-ref: main
-translation-source-hash: 59d450af46d5d22a983e5864356c3e6e8dab463ad64ff3265cc462f95e4e015f
-translation-status: translated
--->
-
-
 渲染分页数据是一种非常常见的 UI 模式。在 TanStack Query 中，只需将分页信息包含在查询键中即可：
 
 [//]: # 'Example'

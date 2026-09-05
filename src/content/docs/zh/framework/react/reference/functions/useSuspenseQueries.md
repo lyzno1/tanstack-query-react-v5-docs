@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useSuspenseQueries
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useSuspenseQueries.md
-translation-source-ref: main
-translation-source-hash: bd4d46c90c795ad4cc326f0038bd9a83bef8f8d5b70307dc438a3b2ba7defc6a
-translation-status: translated
--->
-
-
 ## 调用签名
 
 ```ts

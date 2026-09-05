@@ -3,14 +3,6 @@ id: UseSuspenseQueryResult
 title: UseSuspenseQueryResult
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UseSuspenseQueryResult.md
-translation-source-ref: main
-translation-source-hash: eb49c6e1362d24d424a08bc84edea91f1caab2cd7b657b0be8b59f838facf6c2
-translation-status: translated
--->
-
-
 ```ts
 type UseSuspenseQueryResult<TData, TError> = DistributiveOmit<DefinedQueryObserverResult<TData, TError>, "isPlaceholderData">;
 ```

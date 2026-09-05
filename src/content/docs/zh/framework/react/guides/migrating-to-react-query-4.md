@@ -3,14 +3,6 @@ id: migrating-to-react-query-4
 title: 迁移到 React Query 4
 ---
 
-<!--
-translation-source-path: framework/react/guides/migrating-to-react-query-4.md
-translation-source-ref: main
-translation-source-hash: 38ed6abf06e0e9ef4bb167acd441bef67763bfa59a767bc6d6eb9079d414f247
-translation-status: translated
--->
-
-
 ## 重大变化
 
 v4 是一个主要版本，因此需要注意一些重大更改：
@@ -327,11 +319,11 @@ React.useEffect(() => mySideEffectHere(data), [data])
 + const queryClient = new QueryClient({ logger: customLogger }) // [!code ++]
 ```
 
-### 服务端默认_不再_手动进行垃圾回收
+### 服务端默认_不再_由 React Query 定时回收缓存
 
-在 v3 中，React Query 将默认缓存查询结果 5 分钟，然后手动垃圾回收该数据。此默认值也适用于服务器端 React Query。
+在 v3 中，React Query 默认在查询不再使用 5 分钟后，通过定时器回收缓存数据。此默认行为也适用于服务端。
 
-这会导致较高的内存占用，并让进程一直等待手动垃圾回收完成。在 v4 中，服务端 `cacheTime` 默认改为 `Infinity`，实际上禁用了手动垃圾回收（请求完成后，Node.js 进程会自行清除所有内容）。
+这会导致较高的内存占用，并让进程等待缓存回收定时器结束。在 v4 中，服务端 `cacheTime` 默认改为 `Infinity`，禁用了 React Query 的定时缓存回收。请求结束且相应的客户端和缓存不再被引用后，其内存可由 Node.js 运行时回收；这并不是请求结束时立即清空进程中的所有内容。
 
 此更改仅影响服务器端 React Query 的用户，例如 Next.js。如果你手动设置 `cacheTime`，这不会影响你（不过你可能希望保持行为一致）。
 

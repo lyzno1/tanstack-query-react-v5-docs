@@ -37,13 +37,19 @@ jobs:
       - name: Translation integrity check
         run: pnpm run i18n:check
 
+      - name: Maintenance regression tests
+        run: pnpm run test:maintenance
+
       - name: Upstream update probe (non-blocking)
         run: |
           if pnpm run sync:check; then
             echo "Upstream ref is up to date."
           else
-            echo "::notice::A newer upstream v5 tag is available. Run pnpm run sync:docs."
+            echo "::notice::Upstream main has changed. Run pnpm run sync:docs."
           fi
 
       - name: Build
         run: pnpm run build
+
+      - name: Check built documentation links
+        run: pnpm run links:check

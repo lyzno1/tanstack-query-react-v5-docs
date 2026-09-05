@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useMutationState
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useMutationState.md
-translation-source-ref: main
-translation-source-hash: dfbaa45813eb48e2fd2f63a1300ac4f5c7c6481fd47c307c9d23ff8694831d5e
-translation-status: translated
--->
-
-
 ```ts
 function useMutationState<TResult, TMutation>(options, queryClient?): TResult[];
 ```

@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/QueryClientProvider
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/QueryClientProvider.md
-translation-source-ref: main
-translation-source-hash: 89be7dd58b90db4a0b8fb4c52fd8acca68a713ab58d84e9145fa08c6db4872dd
-translation-status: translated
--->
-
-
 ```ts
 function QueryClientProvider(__namedParameters): Element;
 ```

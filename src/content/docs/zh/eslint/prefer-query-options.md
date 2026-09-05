@@ -3,14 +3,6 @@ id: prefer-query-options
 title: 优先使用 queryOptions
 ---
 
-<!--
-translation-source-path: eslint/prefer-query-options.md
-translation-source-ref: main
-translation-source-hash: f7438a59e80d52799effd7d795181e7f1c44b03ccbd99167c627235cfdfe4134
-translation-status: translated
--->
-
-
 将 `queryKey` 和 `queryFn` 分开定义时，如果意外地为同一个查询键使用了多个 `queryFn`，可能会引发意料之外的运行时问题。用 `queryOptions`（或 `infiniteQueryOptions`）将二者包装在一起，可以让查询键和查询函数就近定义，从而使查询更加安全，也更容易复用。
 
 ## 规则详情
@@ -149,5 +141,5 @@ function Component({ id }) {
 
 ## 属性
 
-- [x] ✅ Recommended (strict)
-- [ ] 🔧 Fixable
+- [x] ✅ 推荐（严格配置）
+- [ ] 🔧 可自动修复

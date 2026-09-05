@@ -3,14 +3,6 @@ id: typescript
 title: TypeScript
 ---
 
-<!--
-translation-source-path: framework/react/typescript.md
-translation-source-ref: main
-translation-source-hash: c0447f868693710828ef484a9507b2e96dece8870b189728c678558084bd3a08
-translation-status: translated
--->
-
-
 React Query 现在使用 **TypeScript** 编写，以确保库本身和你的项目都具备类型安全！
 
 需要注意：
@@ -116,7 +108,7 @@ const { error } = useQuery<Group[], string>(['groups'], fetchGroups)
 
 [//]: # 'TypingError2'
 
-但这样会带来一个缺点：`useQuery` 其余泛型的类型推断将不再生效。通常不建议抛出非 `Error` 的值；如果你是 `AxiosError` 这类子类，可用 _type narrowing_ 让 `error` 字段更具体：
+但这样会带来一个缺点：`useQuery` 其余泛型的类型推断将不再生效。通常不建议抛出非 `Error` 的值；如果你是 `AxiosError` 这类子类，可用 _类型收窄_ 让 `error` 字段更具体：
 
 [//]: # 'TypingError3'
 
@@ -187,7 +179,7 @@ declare module '@tanstack/react-query' {
 
 ### 注册查询键和变更键类型
 
-同样地，类似注册[全局错误类型](#registering-a-global-error)，你也可以注册全局 `QueryKey` 与 `MutationKey` 类型。这能为你的键提供更贴合应用层级的结构，并在整个库表面保持类型一致。注意，注册类型必须扩展 `Array`，以确保键仍然是数组。
+同样地，类似注册[全局错误类型](#registering-a-global-error)，你也可以注册全局 `QueryKey` 与 `MutationKey` 类型。这能为你的键提供更贴合应用层级的结构，并在整个库的 API 中保持类型一致。注意，注册类型必须扩展 `Array`，以确保键仍然是数组。
 
 ```ts
 import '@tanstack/react-query'

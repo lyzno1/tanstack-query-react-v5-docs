@@ -3,14 +3,6 @@ id: query-keys
 title: 查询键
 ---
 
-<!--
-translation-source-path: framework/react/guides/query-keys.md
-translation-source-ref: main
-translation-source-hash: dbd62ca3fc372cada909b9282e2f9ac94e4c695a078fee17b4660df2dd4ac413
-translation-status: translated
--->
-
-
 TanStack Query 的核心机制是基于查询键来管理查询缓存。查询键在顶层必须是一个数组，它可以很简单（例如只含一个字符串），也可以很复杂（例如包含多个字符串和嵌套对象）。只要查询键能被 `JSON.stringify` 序列化，并且**对查询数据唯一**，你就可以使用它。
 
 ## 简单查询键

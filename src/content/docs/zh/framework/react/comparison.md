@@ -3,14 +3,6 @@ id: comparison
 title: 对比 | React Query vs SWR vs Apollo vs RTK Query vs React Router
 ---
 
-<!--
-translation-source-path: framework/react/comparison.md
-translation-source-ref: main
-translation-source-hash: 5037af0f815d5e76565b865183eb77f28983c4792966a76ca044415e3a1cbce5
-translation-status: translated
--->
-
-
 > 这个对比表尽可能保持准确且中立。如果你使用其中任一库并认为信息可以改进，欢迎通过页面底部的 “Edit this page on Github” 链接提出修改建议（请附上说明或证据）。
 
 特性/能力标识说明：
@@ -31,7 +23,7 @@ translation-status: translated
 | 缓存键策略                                         | JSON                                     | JSON                                     | GraphQL 查询                               | JSON                                 | 路由路径                                                                  |
 | 缓存变化检测                                       | 深度比较键（稳定序列化）                 | 深度比较键（稳定序列化）                 | 深度比较键（不稳定序列化）                 | 键的引用相等（===）                  | 路由变化                                                                  |
 | 数据变化检测                                       | 深度比较 + 结构共享                      | 深度比较（通过 `stable-hash`）           | 深度比较（不稳定序列化）                   | 键的引用相等（===）                  | Loader 运行                                                               |
-| 数据记忆化                                         | 完整结构共享                             | 标识相等（===）                          | 规范化标识                                 | 标识相等（===）                      | 标识相等（===）                                                           |
+| 数据记忆化                                         | 完整结构共享                             | 引用相等（===）                          | 规范化标识                                 | 引用相等（===）                      | 引用相等（===）                                                           |
 | Bundle 大小                                        | [![][bp-react-query]][bpl-react-query]   | [![][bp-swr]][bpl-swr]                   | [![][bp-apollo]][bpl-apollo]               | [![][bp-rtk-query]][bpl-rtk-query]   | [![][bp-react-router]][bpl-react-router] + [![][bp-history]][bpl-history] |
 | API 定义位置                                       | 组件、外部配置                           | 组件                                     | GraphQL Schema                             | 外部配置                             | 路由树配置                                                                |
 | 查询                                               | ✅                                       | ✅                                       | ✅                                         | ✅                                   | ✅                                                                        |
@@ -65,13 +57,13 @@ translation-status: translated
 | 通用缓存反序列化/再水合                            | ✅                                       | 🛑                                       | ✅                                         | ✅                                   | ✅                                                                        |
 | 离线缓存                                           | ✅                                       | 🛑                                       | ✅                                         | 🔶                                   | 🛑                                                                        |
 | React Suspense                                     | ✅                                       | ✅                                       | ✅                                         | 🛑                                   | ✅                                                                        |
-| 抽象/无关框架核心                                  | ✅                                       | 🛑                                       | ✅                                         | ✅                                   | 🛑                                                                        |
+| 抽象的、与框架无关的核心                                  | ✅                                       | 🛑                                       | ✅                                         | ✅                                   | 🛑                                                                        |
 | 变更后自动重新获取<sup>5</sup>                     | 🔶                                       | 🔶                                       | ✅                                         | ✅                                   | ✅                                                                        |
 | 规范化缓存<sup>6</sup>                             | 🛑                                       | 🛑                                       | ✅                                         | 🛑                                   | 🛑                                                                        |
 
 ### 注释
 
-> **<sup>1</sup> 滞后查询数据** - React Query 提供了在下一次查询加载期间继续显示现有查询数据的能力（类似 Suspense 即将原生提供的 UX）。这对分页 UI 或无限加载 UI 非常关键，因为你不希望每次发起新查询都出现“硬加载”状态。其他库通常不具备这一能力，在新查询加载时会直接进入硬加载（除非该查询已被预取）。
+> **<sup>1</sup> 滞后查询数据** - React Query 提供了在下一次查询加载期间继续显示现有查询数据的能力（类似 Suspense 即将原生提供的 UX）。这对分页 UI 或无限加载 UI 非常关键，因为你不希望每次发起新查询都出现“初始加载”状态。其他库通常不具备这一能力，在新查询加载时会直接进入硬加载（除非该查询已被预取）。
 
 > **<sup>2</sup> 渲染优化** - React Query 的渲染性能非常优秀。默认情况下，它会自动追踪被访问的字段，仅在这些字段变化时才重渲染。若你希望退出该优化，可将 `notifyOnChangeProps` 设为 `'all'`，这样查询每次更新（如有新数据或进入 fetching）都会重渲染组件。React Query 还会对更新做批处理，确保多个组件使用同一查询时应用只重渲染一次。如果你只关心 `data` 或 `error`，可将 `notifyOnChangeProps` 设为 `['data', 'error']` 进一步减少渲染次数。
 

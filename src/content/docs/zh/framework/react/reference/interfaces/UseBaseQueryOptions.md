@@ -3,14 +3,6 @@ id: UseBaseQueryOptions
 title: UseBaseQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/interfaces/UseBaseQueryOptions.md
-translation-source-ref: main
-translation-source-hash: a5d086e02c8b447ff324c147ed54485ea041841ee5c4ce536abeda6fe5bf2948
-translation-status: translated
--->
-
-
 定义于：[react-query/src/types.ts:47](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L47)
 
 `useQuery` 和 `useSuspenseQuery` 共用的选项。它扩展了 `@tanstack/query-core` 中的

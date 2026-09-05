@@ -1,93 +1,39 @@
 ---
 name: tanstack-query-zh-translation
-description: Manage the TanStack Query docs bilingual workflow in this repository. Use when syncing upstream English docs, planning manual Chinese translation, checking missing/stale translation pages, creating zh translation drafts, or verifying translation metadata before CI/PR.
+description: Review and update Chinese translations of the synchronized TanStack Query documentation in this repository, including missing pages and source hash tracking.
 ---
 
-# TanStack Query ZH Translation
+# TanStack Query Chinese translation
 
-## Overview
+English sources under `src/content/docs/` are synchronized from upstream `main`;
+`upstream/lock.json` records the exact commit. Do not hand-edit synchronized English
+files: the next sync overwrites them. Translate into the corresponding `zh/` path.
+Historical migration guides describe their target versions; preserve historical APIs.
 
-Track English upstream changes and keep `zh` translation pages maintainable with deterministic scripts.
-Use this skill to run the full cycle: detect changes, create translation drafts, and verify metadata consistency.
+Read [terminology](references/terminology.md) and [translation style](references/translation-style.md)
+when reviewing prose. Keep signatures, option names, code behavior and Markdown
+heading depth/order aligned with English. The site uses English heading IDs for
+Chinese pages so upstream anchors continue working.
 
 ## Workflow
 
-1. Sync upstream English docs first (`pnpm run sync:docs`).
-2. Run status script to get `missing` and `stale` lists.
-3. Create translation draft files for selected pages.
-4. Translate manually.
-5. Refresh and validate metadata.
-6. Run `pnpm run check` and `pnpm run build` before PR.
+- Run `pnpm sync:docs` when refreshing upstream, then `pnpm i18n:status`.
+- Review missing/stale pages against the complete English source, including code,
+  tables, links, defaults, exceptions and explanatory comments. For a full audit,
+  review every page even if its source hash is unchanged.
+- `node scripts/i18n-init.mjs --path=<source-path>` creates an English draft; it does
+  not translate or approve it. Remove its draft marker only after translating it.
+- Record only completed reviews:
+  `node scripts/i18n-verify.mjs --write --path=<source-path>` (repeatable).
+  Use `--all-reviewed` only after an actual review of every tracked page.
+- Run `pnpm check`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:maintenance`, `pnpm build` and
+  `pnpm links:check` before opening a PR.
 
-## Script Entry Points
+`upstream/i18n.zh.json` is the sole source of review metadata. A matching hash only
+means the source has not changed since the recorded review; it does not prove
+translation quality. Never refresh hashes merely to silence CI. Scripts live in
+`scripts/` because CI needs them independently of skill installation.
 
-- Status
-  - `node .agents/skills/tanstack-query-zh-translation/scripts/i18n-status.mjs`
-  - Output counts and lists: `missing`, `stale`, `upToDate`, `orphans`.
-
-- Init draft files
-  - `node .agents/skills/tanstack-query-zh-translation/scripts/i18n-init.mjs --path framework/react/guides/queries.md`
-  - `node .agents/skills/tanstack-query-zh-translation/scripts/i18n-init.mjs --from-status missing --limit 10`
-  - Insert source metadata comment and copy upstream content to `src/content/docs/zh/...`.
-
-- Verify or write metadata
-  - `node .agents/skills/tanstack-query-zh-translation/scripts/i18n-verify.mjs`
-  - `node .agents/skills/tanstack-query-zh-translation/scripts/i18n-verify.mjs --write`
-  - Maintain `upstream/i18n.zh.json` based on current upstream ref and source hashes.
-
-## Metadata Contract
-
-Use `upstream/i18n.zh.json` as the only translation metadata source.
-
-Each entry key is an upstream-relative path from `upstream/manifest.json` (example: `framework/react/guides/queries.md`).
-
-Shape:
-
-```json
-{
-  "locale": "zh",
-  "sourceRef": "v5.90.3",
-  "generatedAt": "2026-03-01T00:00:00.000Z",
-  "translations": {
-    "framework/react/guides/queries.md": {
-      "hash": "sha256-of-source-file",
-      "sourceRef": "v5.90.3",
-      "translatedAt": "2026-03-01T00:00:00.000Z"
-    }
-  }
-}
-```
-
-## Scope Rules
-
-- Treat upstream synchronized paths as source of truth:
-  - `framework/react/**`
-  - `reference/**`
-  - `eslint/**`
-- Do not use frontmatter custom fields for translation metadata unless docs schema is extended.
-- Keep translation state in sidecar JSON (`upstream/i18n.zh.json`) to avoid schema coupling.
-- Avoid editing files under `src/content/docs/framework`, `src/content/docs/reference`, `src/content/docs/eslint` manually; these are overwritten by sync script.
-
-## References
-
-- Translation style: `references/translation-style.md`
-- Terminology baseline: `references/terminology.md`
-
-## PR Checklist
-
-1. Run `pnpm run sync:docs` if upstream changed.
-2. Run status script and choose translation batch.
-3. Translate pages in `src/content/docs/zh/...`.
-4. Run `i18n-verify.mjs --write`.
-5. Run `pnpm run check`.
-6. Run `pnpm run build`.
-7. Include translated page list in PR body.
-
-## Troubleshooting
-
-- `stale` grows after sync
-  - Expected. Upstream source hash changed. Re-translate affected pages.
-- `orphanZh` appears
-  - Upstream removed/renamed source page. Move, remove, or re-map zh file.
-- `metadataWithoutPage` appears
-  - Run `i18n-verify.mjs --write` to prune stale metadata entries.
+Community resources are tracked and rendered from translated frontmatter.
+Example link pages are generated in both languages by the sync script; do not
+manually translate generated links or add them to the review metadata.

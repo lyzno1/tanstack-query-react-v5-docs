@@ -3,14 +3,6 @@ id: createPersister
 title: experimental_createQueryPersister
 ---
 
-<!--
-translation-source-path: framework/react/plugins/createPersister.md
-translation-source-ref: main
-translation-source-hash: 685c2edb37c2ad602e5ca96b433b3d4450f34db8e48a9ca1762f06949942ebab
-translation-status: translated
--->
-
-
 ## 安装
 
 该工具以独立包形式提供，可通过 `'@tanstack/query-persist-client-core'` 导入。

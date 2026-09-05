@@ -3,14 +3,6 @@ id: UseQueryOptions
 title: UseQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/interfaces/UseQueryOptions.md
-translation-source-ref: main
-translation-source-hash: b62081549fd45ec51bbdc2f1f1e36a01b339c884af1e74708033c170887efd31
-translation-status: translated
--->
-
-
 定义于：[react-query/src/types.ts:165](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L165)
 
 `useQuery` 接受的选项。它与 [UseBaseQueryOptions](UseBaseQueryOptions.md) 相同，但移除了 `suspense`

@@ -3,14 +3,6 @@ id: prefetching
 title: 预取和路由器集成
 ---
 
-<!--
-translation-source-path: framework/react/guides/prefetching.md
-translation-source-ref: main
-translation-source-hash: f2c85894fa0587f005ef43c0cf0ad52c3d459fe601f3fe089f4547a487f29af6
-translation-status: translated
--->
-
-
 当你知道或怀疑需要某条数据时，你可以使用预取来提前用该数据填充缓存，从而获得更快的体验。
 
 有几种不同的预取模式：
@@ -120,7 +112,7 @@ function ShowDetailsButton() {
 
 [//]: # 'ExampleEventHandler'
 
-## 组件中预取
+## 在组件中预取
 
 如果我们知道某个子组件或后代组件会需要特定数据，但必须等另一个查询加载完成后才能渲染它，
 那么在组件生命周期内预取就很有用。下面借用请求瀑布指南中的例子来说明：
@@ -294,7 +286,7 @@ useEffect(() => {
 - 使用 `usePrefetchQuery` 或 `usePrefetchInfiniteQuery` Hook 在 Suspense 边界之前预取
 - 使用 `useQuery` 或 `useSuspenseQueries` 并忽略结果
 - 在查询函数中预取
-- 在效果中预取
+- 在 Effect 中预取
 
 接下来让我们看一个稍微高级的案例。
 
@@ -468,7 +460,7 @@ const articleRoute = new Route({
 
 [//]: # 'Router'
 
-## 手动启动查询
+## 手动预填充查询缓存
 
 如果已经有同步可用的查询数据，就不必预取。可以使用 [Query Client 的 `setQueryData` 方法](../../../reference/QueryClient.md#queryclientsetquerydata)，直接按查询键添加或更新缓存结果。
 

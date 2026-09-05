@@ -3,14 +3,6 @@ id: AnyUseSuspenseQueryOptions
 title: AnyUseSuspenseQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/AnyUseSuspenseQueryOptions.md
-translation-source-ref: main
-translation-source-hash: b622898e4b31b602f0ccec304604c49699405c8154556f0f9faed822debb2bad
-translation-status: translated
--->
-
-
 ```ts
 type AnyUseSuspenseQueryOptions = UseSuspenseQueryOptions<any, any, any, any>;
 ```

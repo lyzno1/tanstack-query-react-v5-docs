@@ -3,14 +3,6 @@ id: filters
 title: 过滤器
 ---
 
-<!--
-translation-source-path: framework/react/guides/filters.md
-translation-source-ref: main
-translation-source-hash: 6789540681506d95b701e56c6f04dc9808faacb8c9c038429ccd48861b92a067
-translation-status: translated
--->
-
-
 TanStack Query 中有些方法会接收 `QueryFilters` 或 `MutationFilters` 对象。
 
 ## `Query Filters`

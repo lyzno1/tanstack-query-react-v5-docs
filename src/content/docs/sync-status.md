@@ -9,7 +9,7 @@ This site tracks TanStack Query React docs from the v5 release line.
 - Tracking strategy: `upstream-main`
 - Current synced ref: `main`
 - Upstream commit: `1893a965d219032207cbe147880d0e9f757a5a56`
-- Synced at (UTC): `2026-09-05T07:43:19.569Z`
+- Synced at (UTC): `2026-09-05T09:51:30.577Z`
 
 ## Synced counts
 

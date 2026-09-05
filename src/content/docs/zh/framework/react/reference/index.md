@@ -3,14 +3,6 @@ id: "@tanstack/react-query"
 title: "@tanstack/react-query"
 ---
 
-<!--
-translation-source-path: framework/react/reference/index.md
-translation-source-ref: main
-translation-source-hash: fb73ec797c55eae32a3837a2bf8c8ca7d1bc7d745ed8dbb9eff331cee496a315
-translation-status: translated
--->
-
-
 ## 接口
 
 - [HydrationBoundaryProps](interfaces/HydrationBoundaryProps.md)

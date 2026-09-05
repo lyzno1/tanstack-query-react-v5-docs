@@ -3,14 +3,6 @@ id: no-unstable-deps
 title: 禁止将查询 Hook 的结果直接放入 React Hook 的依赖数组
 ---
 
-<!--
-translation-source-path: eslint/no-unstable-deps.md
-translation-source-ref: main
-translation-source-hash: ecf3d1eb030a1a5510445fb7a92d42ee145964af4139e6409abed2362e2a820f
-translation-status: translated
--->
-
-
 以下查询 Hook 返回的对象在引用上**并不稳定**：
 
 - `useQuery`
@@ -60,5 +52,5 @@ function Component() {
 
 ## 属性
 
-- [x] ✅ Recommended
-- [ ] 🔧 Fixable
+- [x] ✅ 推荐
+- [ ] 🔧 可自动修复

@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useQueries
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useQueries.md
-translation-source-ref: main
-translation-source-hash: afb28f17c6db97fb6b38de801daa55d31b327519ae6a09d9932f240f6d283e72
-translation-status: translated
--->
-
-
 ```ts
 function useQueries<T, TCombinedResult>(__namedParameters, queryClient?): TCombinedResult;
 ```

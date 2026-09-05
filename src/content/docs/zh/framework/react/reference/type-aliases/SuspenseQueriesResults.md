@@ -3,14 +3,6 @@ id: SuspenseQueriesResults
 title: SuspenseQueriesResults
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/SuspenseQueriesResults.md
-translation-source-ref: main
-translation-source-hash: c5c8564a927cc05cb27dcc50247064ed45de9fa2be99e7a7c6f927cdb33cbe8c
-translation-status: translated
--->
-
-
 ```ts
 type SuspenseQueriesResults<T, TResults, TDepth> = TDepth["length"] extends MAXIMUM_DEPTH ? UseSuspenseQueryResult[] : T extends [] ? [] : T extends [infer Head] ? [...TResults, GetUseSuspenseQueryResult<Head>] : T extends [infer Head, ...(infer Tails)] ? SuspenseQueriesResults<[...Tails], [...TResults, GetUseSuspenseQueryResult<Head>], [...TDepth, 1]> : { [K in keyof T]: GetUseSuspenseQueryResult<T[K]> };
 ```

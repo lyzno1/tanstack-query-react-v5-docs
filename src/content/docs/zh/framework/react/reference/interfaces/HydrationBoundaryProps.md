@@ -3,14 +3,6 @@ id: HydrationBoundaryProps
 title: HydrationBoundaryProps
 ---
 
-<!--
-translation-source-path: framework/react/reference/interfaces/HydrationBoundaryProps.md
-translation-source-ref: main
-translation-source-hash: fbb1638c12a99022698f36d62deca91533caf6c0caa394e733fe3e710e4656a4
-translation-status: translated
--->
-
-
 定义于：[react-query/src/HydrationBoundary.tsx:16](https://github.com/TanStack/query/blob/main/packages/react-query/src/HydrationBoundary.tsx#L16)
 
 `HydrationBoundary` 接受的 props。

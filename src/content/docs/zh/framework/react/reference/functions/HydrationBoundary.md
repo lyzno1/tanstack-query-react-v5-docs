@@ -3,14 +3,6 @@ id: HydrationBoundary
 title: HydrationBoundary
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/HydrationBoundary.md
-translation-source-ref: main
-translation-source-hash: 90f7563cb2f86100cd39be409a535e428bebbfa7e6ba1883a414a254bb275ae9
-translation-status: translated
--->
-
-
 ```ts
 function HydrationBoundary(__namedParameters): ReactElement<unknown, string | JSXElementConstructor<any>>;
 ```
@@ -45,7 +37,7 @@ function App() {
 }
 ```
 
-通过 `dehydrate` 将服务端预获取的结果交给客户端：
+通过 `dehydrate` 将服务端预取的结果交给客户端：
 ```tsx
 import { HydrationBoundary, dehydrate, noop } from '@tanstack/react-query'
 

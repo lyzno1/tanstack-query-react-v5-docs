@@ -3,14 +3,6 @@ id: QueryClientContext
 title: QueryClientContext
 ---
 
-<!--
-translation-source-path: framework/react/reference/variables/QueryClientContext.md
-translation-source-ref: main
-translation-source-hash: 95c0e8b0bfddfeaff598af8a745d3efc1d05c129308d8b624ef5ddf1b3bec025
-translation-status: translated
--->
-
-
 ```ts
 const QueryClientContext: Context<QueryClient | undefined>;
 ```

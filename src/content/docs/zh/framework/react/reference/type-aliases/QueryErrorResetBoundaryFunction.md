@@ -3,14 +3,6 @@ id: QueryErrorResetBoundaryFunction
 title: QueryErrorResetBoundaryFunction
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/QueryErrorResetBoundaryFunction.md
-translation-source-ref: main
-translation-source-hash: 70475f31079cbebbcbe3c407a0aa32771cf1a6c842b9dc98ecab817dce9155f4
-translation-status: translated
--->
-
-
 ```ts
 type QueryErrorResetBoundaryFunction = (value) => React.ReactNode;
 ```

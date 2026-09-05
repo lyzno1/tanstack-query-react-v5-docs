@@ -3,14 +3,6 @@ id: infinite-queries
 title: 无限查询
 ---
 
-<!--
-translation-source-path: framework/react/guides/infinite-queries.md
-translation-source-ref: main
-translation-source-hash: 977f5fb0cd3a3819c20c2160a4f38eb06a97d9dbc380817683411e544d602691
-translation-status: translated
--->
-
-
 可在已有数据集合上持续“加载更多”或实现“无限滚动”的列表，是非常常见的 UI 模式。TanStack Query 为此提供了 `useQuery` 的一个实用变体：`useInfiniteQuery`。
 
 使用 `useInfiniteQuery` 时，你会注意到一些差异：
@@ -111,7 +103,9 @@ function Projects() {
 
 请记住，一个 InfiniteQuery 在同一时刻只能有一个进行中的获取。所有页面共享同一个缓存条目，同时尝试两次获取可能导致数据被覆盖。
 
-如果你希望允许并发获取，可以在 `fetchNextPage` 中使用 `{ cancelRefetch: false }` 选项（默认是 `true`）。
+如果希望保留当前进行中的获取，可以向 `fetchNextPage` 传入 `{ cancelRefetch: false }`（默认是 `true`）。此时，在当前获取完成之前，重复调用不会启动新的获取。
+
+> 译注：上游此处写作“允许并发获取”，与其 [API 类型说明及实现](https://github.com/TanStack/query/blob/1893a965d219032207cbe147880d0e9f757a5a56/packages/query-core/src/types.ts#L640-L649)不符。`false` 会复用当前进行中的获取；默认的 `true` 则可取消当前获取并忽略其结果，再发起新的获取。
 
 为了避免冲突并确保查询流程顺畅，强烈建议先确认查询不处于 `isFetching` 状态，尤其是在用户并不直接控制该调用时。
 

@@ -4,6 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { parse as parseYaml } from 'yaml';
+import { docsMarkdown } from './scripts/docs-markdown.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const UPSTREAM_DOCS_CONFIG_PATH = path.join(__dirname, 'upstream', 'docs.config.json');
@@ -18,68 +20,6 @@ function readUpstreamDocsConfig() {
 		);
 		return null;
 	}
-}
-
-/**
- * Rewrite internal markdown links to Starlight doc routes.
- * Example:
- * - ../reference/useQuery.md -> ../reference/usequery/
- * - ../../guides/filters.md#query-filters -> ../../guides/filters/#query-filters
- */
-function normalizeInternalMarkdownLinks() {
-	/**
-	 * @param {string} url
-	 */
-	function normalizeUrl(url) {
-		if (
-			url.startsWith('http://') ||
-			url.startsWith('https://') ||
-			url.startsWith('mailto:') ||
-			url.startsWith('tel:') ||
-			url.startsWith('#')
-		) {
-			return url;
-		}
-
-		const [beforeHash, hash = ''] = url.split('#');
-		const [pathname, query = ''] = beforeHash.split('?');
-		if (!/\.mdx?$/i.test(pathname)) return url;
-
-		const withoutExt = pathname.replace(/\.mdx?$/i, '');
-		const normalizedPath = withoutExt
-			.split('/')
-			.map((segment) => {
-				if (segment === '' || segment === '.' || segment === '..') return segment;
-				return segment.toLowerCase();
-			})
-			.join('/');
-		const withSlash = normalizedPath.endsWith('/') ? normalizedPath : `${normalizedPath}/`;
-		const queryPart = query ? `?${query}` : '';
-		const hashPart = hash ? `#${hash}` : '';
-		return `${withSlash}${queryPart}${hashPart}`;
-	}
-
-	/**
-	 * @param {any} node
-	 */
-	function walk(node) {
-		if (!node || typeof node !== 'object') return;
-
-		if (node.type === 'link' && typeof node.url === 'string') {
-			node.url = normalizeUrl(node.url);
-		}
-
-		const children = Array.isArray(node.children) ? node.children : [];
-		for (const child of children) {
-			walk(child);
-		}
-	}
-
-	return (
-		/** @type {any} */ tree,
-	) => {
-		walk(tree);
-	};
 }
 
 /**
@@ -149,7 +89,7 @@ function toRankedSidebarLinks(entries, filterRoute) {
 
 		const candidate = {
 			label: entry.label || entry.to,
-			link: `/${route}/`,
+			link: `/${route.replace(/\/index$/, '')}/`,
 			route,
 			score: scoreByKeywords(route),
 			index,
@@ -294,17 +234,46 @@ function buildEslintSidebar(config) {
 	};
 }
 
+/**
+ * @typedef {{label: string, link?: string, items?: LocalizedSidebarItem[], translations?: Record<string, string>}} LocalizedSidebarItem
+ */
+/**
+ * @template {LocalizedSidebarItem[]} T
+ * @param {T} items
+ * @returns {T} The sidebar with translated labels attached.
+ */
+function localizeSidebar(items) {
+  /** @type {Record<string, string>} */
+  const labels = { 'React Docs': 'React 文档', 'Getting Started': '入门', 'Guides & Concepts': '指南与概念', 'API Reference': 'API 参考', 'Examples': '示例', 'Plugins': '插件', 'Community': '社区', 'Community Resources': '社区资源' };
+  for (const item of items) {
+    let translated = labels[item.label];
+    if (item.link) {
+      const route = item.link.replace(/^\/|\/$/g, '');
+      const candidates = [`src/content/docs/zh/${route}.md`, `src/content/docs/zh/${route}/index.md`];
+      const source = candidates.find((file) => existsSync(file));
+      if (source) {
+        const frontmatter = readFileSync(source, 'utf8').match(/^---\n([\s\S]*?)\n---/);
+        if (frontmatter) translated = parseYaml(frontmatter[1]).title;
+      }
+    }
+    if (translated) item.translations = { 'zh-CN': translated };
+    if (item.items) localizeSidebar(item.items);
+  }
+  return items;
+}
+
 const upstreamDocsConfig = readUpstreamDocsConfig();
-const sidebar = [
+const sidebar = localizeSidebar([
 	buildReactSidebar(upstreamDocsConfig),
 	buildEslintSidebar(upstreamDocsConfig),
-];
+  { label: 'Community', link: '/community-resources/' },
+]);
 
 // https://astro.build/config
 export default defineConfig({
 	site: process.env.SITE_URL || 'https://example.com',
 	markdown: {
-		remarkPlugins: [normalizeInternalMarkdownLinks],
+		remarkPlugins: [docsMarkdown],
 	},
 	integrations: [
 		starlight({

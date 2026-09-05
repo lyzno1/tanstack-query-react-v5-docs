@@ -3,14 +3,6 @@ id: AnyUseMutationOptions
 title: AnyUseMutationOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/AnyUseMutationOptions.md
-translation-source-ref: main
-translation-source-hash: 2aec0afece0bd41296fa9991cbf065a8e8a42c406554bff1eb8118f0c3adfd45
-translation-status: translated
--->
-
-
 ```ts
 type AnyUseMutationOptions = UseMutationOptions<any, any, any, any>;
 ```

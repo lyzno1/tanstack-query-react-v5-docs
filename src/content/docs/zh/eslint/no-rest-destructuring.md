@@ -3,14 +3,6 @@ id: no-rest-destructuring
 title: 禁止对查询结果使用对象剩余解构
 ---
 
-<!--
-translation-source-path: eslint/no-rest-destructuring.md
-translation-source-ref: main
-translation-source-hash: f1501e5fa3d98e9a7a7e98b89bdc7b5196cc69a3bfe8be32484eb02fb756b0a7
-translation-status: translated
--->
-
-
 在查询结果上使用对象剩余解构会自动订阅查询结果的每一个字段，这可能导致不必要的重新渲染。
 此规则可确保你只订阅真正需要的字段。
 
@@ -51,5 +43,5 @@ const { data: todos } = todosQuery
 
 ## 属性
 
-- [x] ✅ Recommended
-- [ ] 🔧 Fixable
+- [x] ✅ 推荐
+- [ ] 🔧 可自动修复

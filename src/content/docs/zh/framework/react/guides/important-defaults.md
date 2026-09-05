@@ -3,14 +3,6 @@ id: important-defaults
 title: 重要默认值
 ---
 
-<!--
-translation-source-path: framework/react/guides/important-defaults.md
-translation-source-ref: main
-translation-source-hash: 530bb4d5397f19d3222fc0bbd0bfcf89a556a9d861c4ec549b8991ae5543a5f9
-translation-status: translated
--->
-
-
 开箱即用时，TanStack Query 采用的是一套**激进但合理**的默认配置。**如果不了解这些默认行为，它们有时会让新用户感到意外，也会让学习/调试变得困难。** 在你继续学习和使用 TanStack Query 时，请记住以下几点：
 
 - 通过 `useQuery` 或 `useInfiniteQuery` 创建的查询实例，默认会将缓存数据视为**过期**。
@@ -20,9 +12,11 @@ translation-status: translated
 - 设置了 `staleTime` 的查询在该时间到期前会被视为**新鲜（未过期）**。
   - 例如将 `staleTime` 设为 `2 * 60 * 1000`，可确保 2 分钟内（或在查询被[手动失效](./query-invalidation.md)之前）都从缓存读取，不触发任何重新获取。
   - 将 `staleTime` 设为 `Infinity`，则在查询被[手动失效](./query-invalidation.md)前永不触发重新获取。
-  - 将 `staleTime` 设为 `'static'`，则即使查询被[手动失效](./query-invalidation.md)，也**永不**触发重新获取。
+  - 将 `staleTime` 设为 `'static'`，则即使调用[手动失效](./query-invalidation.md)，也不会因此触发重新获取。
 
 > `'static'` 和 `Infinity` 都能阻止因数据过期而发生的重新获取，但 `'static'` 更严格：`queryClient.invalidateQueries()` 可以使 `staleTime: Infinity` 的查询失效，却不会影响 `staleTime: 'static'` 的查询。即使将 `refetchOnMount`、`refetchOnWindowFocus` 或 `refetchOnReconnect` 设为 `"always"`，`'static'` 也会阻止重新获取。对于应用运行期间不可能变化的数据，例如启动时获取的功能开关、登录时加载的用户权限或静态参考表，应使用 `'static'`。如果仍希望手动失效生效，则使用 `Infinity`。
+
+> 译注：这里限制的是因过期、失效或上述生命周期事件触发的重新获取，不应理解为禁止一切请求。显式调用查询结果的 `refetch()` 仍可获取数据，`refetchInterval` 轮询也独立于 `staleTime`；参见下文及[轮询指南](./polling.md)。
 
 - 过期查询会在以下时机自动后台重新获取：
   - 新的查询实例挂载时

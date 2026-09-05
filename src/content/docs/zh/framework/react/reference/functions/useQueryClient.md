@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useQueryClient
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useQueryClient.md
-translation-source-ref: main
-translation-source-hash: 215237d9398bfdb19491f66fff8cd285524a4680e5cbc550ee4825705a99ce1c
-translation-status: translated
--->
-
-
 ```ts
 function useQueryClient(queryClient?): QueryClient;
 ```

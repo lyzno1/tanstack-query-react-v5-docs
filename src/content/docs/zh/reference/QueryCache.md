@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/QueryCache
 ---
 
-<!--
-translation-source-path: reference/QueryCache.md
-translation-source-ref: main
-translation-source-hash: f9d662e2487376d364a707d2c3c311496a179fc1e661a7d367bab30b7899423b
-translation-status: translated
--->
-
-
 `QueryCache` 是 TanStack Query 的缓存存储机制。它会保存其包含的查询的所有数据、元信息和状态。
 
 **通常你不会直接与 QueryCache 交互，而是通过 `QueryClient` 操作某个具体缓存。**

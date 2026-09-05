@@ -3,14 +3,6 @@ id: UseMutationOptions
 title: UseMutationOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/interfaces/UseMutationOptions.md
-translation-source-ref: main
-translation-source-hash: e4ec45173ee97e6f9840dcd56e114fc51f1883e5be258c2a66830a7e2c4e4de8
-translation-status: translated
--->
-
-
 定义于：[react-query/src/types.ts:412](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L412)
 
 `useMutation` 接受的选项。它与 `@tanstack/query-core` 中的 `MutationObserverOptions` 相同，

@@ -3,14 +3,6 @@ id: UseMutateFunction
 title: UseMutateFunction
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UseMutateFunction.md
-translation-source-ref: main
-translation-source-hash: c0205e05550fe8fc1aa617a341d0d56d1f752b49acb9dae3742be085095ad424
-translation-status: translated
--->
-
-
 ```ts
 type UseMutateFunction<TData, TError, TVariables, TOnMutateResult> = (...args) => void;
 ```

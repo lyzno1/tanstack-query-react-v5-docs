@@ -3,14 +3,6 @@ id: useIsRestoring
 title: useIsRestoring
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useIsRestoring.md
-translation-source-ref: main
-translation-source-hash: 88a2ccc0471c5eb7d4f983cf2a7b9c11b70d6953db66fe2d35904673e7fb81aa
-translation-status: translated
--->
-
-
 ```ts
 function useIsRestoring(): boolean;
 ```

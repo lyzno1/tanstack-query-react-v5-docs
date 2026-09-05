@@ -3,14 +3,6 @@ id: render-optimizations
 title: 渲染优化
 ---
 
-<!--
-translation-source-path: framework/react/guides/render-optimizations.md
-translation-source-ref: main
-translation-source-hash: 605528cca321e3337baa9911c475914e65d8b11e8e737af4bc83286d5455da82
-translation-status: translated
--->
-
-
 React Query 会自动应用一些优化，确保组件只在真正需要时才重新渲染。主要通过以下机制实现：
 
 ## 结构共享
@@ -25,7 +17,7 @@ React Query 使用一种称为“结构共享（structural sharing）”的技�
 
 ## 跟踪属性
 
-只有当 `useQuery` 返回的某个属性被实际“使用”时，React Query 才会触发重新渲染。这是通过 [Proxy 对象](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 实现的。这样可以避免很多不必要的重渲染，例如 `isFetching` 或 `isStale` 可能经常变化，但组件并未使用它们。
+只有当 `useQuery` 返回的、被组件实际使用的属性发生变化时，React Query 才会因查询更新而触发重新渲染。这是通过 [Proxy 对象](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 实现的。这样可以避免很多不必要的重渲染，例如 `isFetching` 或 `isStale` 可能经常变化，但组件并未使用它们。
 
 你可以在全局或单个查询上手动设置 `notifyOnChangeProps` 来定制该行为。如果想关闭这个特性，可设置 `notifyOnChangeProps: 'all'`。
 
@@ -51,7 +43,9 @@ export const useTodoCount = () => {
 
 使用 `useTodoCount` 自定义 hook 的组件，只有在 todos 的长度变化时才会重新渲染。比如某个 todo 的名称变化时，它**不会**重新渲染。
 
-> 注意：`select` 作用于成功缓存的数据，并不适合在这里抛出错误。错误的真实来源应是 `queryFn`。如果 `select` 返回了错误，结果会是 `data` 为 `undefined` 且 `isSuccess` 为 `true`。如果你希望数据不正确时让查询失败，建议在 `queryFn` 中处理；若错误场景与缓存无关，建议在查询 hook 外处理。
+> 注意：`select` 作用于成功缓存的数据。如果你希望数据不正确时让查询失败，建议在 `queryFn` 中校验并抛出错误；若错误场景与缓存无关，建议在查询 hook 外处理。
+
+> 译注：上游混淆了“返回错误对象”和“抛出错误”。根据当前 [QueryObserver 实现](https://github.com/TanStack/query/blob/1893a965d219032207cbe147880d0e9f757a5a56/packages/query-core/src/queryObserver.ts#L545-L584)，`select` 返回的 `Error` 对象会被当作选择后的数据；抛出错误则会使当前观察者的结果处于 `error` 状态，但不会把原本成功的查询缓存改成失败。因此不能将两者都描述为 `data` 为 `undefined` 且 `isSuccess` 为 `true`。
 
 ### 记忆化
 

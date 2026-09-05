@@ -3,14 +3,6 @@ id: queries
 title: 查询
 ---
 
-<!--
-translation-source-path: framework/react/guides/queries.md
-translation-source-ref: main
-translation-source-hash: 3f0ccb1ffee73eb8cd9476e769c62a70af18fc1cc4250fce7bba7073bf6a80ab
-translation-status: translated
--->
-
-
 ## 查询基础知识
 
 查询是对绑定到**唯一键**的异步数据源的声明式依赖。查询可与任何基于 Promise 的方法（包括 GET 和 POST 方法）配合使用，从服务器获取数据。如果你的方法会修改服务器上的数据，建议改用[变更](./mutations.md)。

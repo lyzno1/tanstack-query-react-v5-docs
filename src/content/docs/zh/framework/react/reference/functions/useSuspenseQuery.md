@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useSuspenseQuery
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useSuspenseQuery.md
-translation-source-ref: main
-translation-source-hash: 5d95b97bf553f036257f20bb3fa101a4fa81baf5d9c8b65bdda14d4ab86ae388
-translation-status: translated
--->
-
-
 ```ts
 function useSuspenseQuery<TQueryFnData, TError, TData, TQueryKey>(options, queryClient?): UseSuspenseQueryResult<TData, TError>;
 ```

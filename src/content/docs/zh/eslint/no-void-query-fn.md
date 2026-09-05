@@ -3,14 +3,6 @@ id: no-void-query-fn
 title: 禁止查询函数返回 void
 ---
 
-<!--
-translation-source-path: eslint/no-void-query-fn.md
-translation-source-ref: main
-translation-source-hash: 4fecc9433aef965fee18a7576bffeef66441e55cc8437c2ea91abb4c1c901d7d
-translation-status: translated
--->
-
-
 查询函数必须返回一个会被 TanStack Query 缓存的值。不返回值的函数（void 函数）可能导致意外行为，也常常意味着实现中存在错误。
 
 ## 规则详情
@@ -43,5 +35,5 @@ useQuery({
 
 ## 属性
 
-- [x] ✅ Recommended
-- [ ] 🔧 Fixable
+- [x] ✅ 推荐
+- [ ] 🔧 可自动修复

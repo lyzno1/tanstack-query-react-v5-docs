@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useIsMutating
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useIsMutating.md
-translation-source-ref: main
-translation-source-hash: e5b5ca50affaee50d4e36f2f07567b5ba95c340457d4646e6ee4230a6f01eb58
-translation-status: translated
--->
-
-
 ```ts
 function useIsMutating(filters?, queryClient?): number;
 ```

@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/MutationCache
 ---
 
-<!--
-translation-source-path: reference/MutationCache.md
-translation-source-ref: main
-translation-source-hash: 86c01ebf1703f84bcca2acf3378f123f3bab30dec675def8da9b47f0f5790856
-translation-status: translated
--->
-
-
 `MutationCache` 用于存储变更。
 
 **通常你不会直接与 MutationCache 交互，而是通过 `QueryClient` 来操作。**

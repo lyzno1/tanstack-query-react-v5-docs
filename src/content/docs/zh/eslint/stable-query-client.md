@@ -3,14 +3,6 @@ id: stable-query-client
 title: 稳定的 Query Client
 ---
 
-<!--
-translation-source-path: eslint/stable-query-client.md
-translation-source-ref: main
-translation-source-hash: 72dcebfd80451305796c5e56c7356dc1cc37975849f197fb7b2d32e4b12f8f1b
-translation-status: translated
--->
-
-
 QueryClient 包含 QueryCache，因此在应用生命周期内你通常只应创建一个 QueryClient 实例，而**不是**每次渲染都创建新实例。
 
 > 例外：允许在异步 Server Component 内创建新的 QueryClient，因为该异步函数在服务端只会调用一次。
@@ -65,5 +57,5 @@ async function App() {
 
 ## 属性
 
-- [x] ✅ Recommended
-- [x] 🔧 Fixable
+- [x] ✅ 推荐
+- [x] 🔧 可自动修复

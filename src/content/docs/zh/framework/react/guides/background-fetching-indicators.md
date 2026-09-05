@@ -3,15 +3,7 @@ id: background-fetching-indicators
 title: 后台获取指示器
 ---
 
-<!--
-translation-source-path: framework/react/guides/background-fetching-indicators.md
-translation-source-ref: main
-translation-source-hash: 382050352efa8cddccad4b3984c67848657470da878c283ea8f3a178372e8f6a
-translation-status: translated
--->
-
-
-查询的 `status === 'pending'` 状态足以显示初次的硬加载状态，但有时你可能还想额外显示一个“查询正在后台重新获取”的指示器。为此，查询还提供了 `isFetching` 布尔值，无论 `status` 变量当前处于什么状态，你都可以用它来显示正在获取中：
+查询的 `status === 'pending'` 状态足以显示初次的无缓存数据时的初始加载状态，但有时你可能还想额外显示一个“查询正在后台重新获取”的指示器。为此，查询还提供了 `isFetching` 布尔值，无论 `status` 变量当前处于什么状态，你都可以用它来显示正在获取中：
 
 [//]: # 'Example'
 

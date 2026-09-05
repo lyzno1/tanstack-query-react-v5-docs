@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useQueryErrorResetBoundary
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useQueryErrorResetBoundary.md
-translation-source-ref: main
-translation-source-hash: 7ea4e63119507d45d414142b7a4134204b124c8c30509e721d96cc27a687e0dd
-translation-status: translated
--->
-
-
 ```ts
 function useQueryErrorResetBoundary(): QueryErrorResetBoundaryValue;
 ```

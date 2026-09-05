@@ -3,14 +3,6 @@ id: UseSuspenseInfiniteQueryResult
 title: UseSuspenseInfiniteQueryResult
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UseSuspenseInfiniteQueryResult.md
-translation-source-ref: main
-translation-source-hash: 92a8bf114c44d3d0699a0f267fac4079c99fbb1a033a2fdc4ac85b6d8081f8d9
-translation-status: translated
--->
-
-
 ```ts
 type UseSuspenseInfiniteQueryResult<TData, TError> = OmitKeyof<DefinedInfiniteQueryObserverResult<TData, TError>, "isPlaceholderData">;
 ```

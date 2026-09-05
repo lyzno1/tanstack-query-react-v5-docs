@@ -3,14 +3,6 @@ id: disabling-queries
 title: 禁用/暂停查询
 ---
 
-<!--
-translation-source-path: framework/react/guides/disabling-queries.md
-translation-source-ref: main
-translation-source-hash: 9446ce0f06dbb3f2f8d7653b5fd5c29dcac33d8c93a6c0993f0589516761ec1d
-translation-status: translated
--->
-
-
 如果你想让某个查询不要自动运行，可以使用 `enabled = false` 选项。`enabled` 也支持传入返回布尔值的回调函数。
 
 当 `enabled` 为 `false` 时：

@@ -3,14 +3,6 @@ id: createAsyncStoragePersister
 title: createAsyncStoragePersister
 ---
 
-<!--
-translation-source-path: framework/react/plugins/createAsyncStoragePersister.md
-translation-source-ref: main
-translation-source-hash: ff285a4bf31e493104e4b9d568368dbd2dad3e3a1c56b62ca84edf088e27ecab
-translation-status: translated
--->
-
-
 ## 安装
 
 该工具以独立包形式提供，可通过 `'@tanstack/query-async-storage-persister'` 导入。

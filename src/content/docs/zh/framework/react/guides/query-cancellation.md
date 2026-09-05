@@ -3,15 +3,7 @@ id: query-cancellation
 title: 查询取消
 ---
 
-<!--
-translation-source-path: framework/react/guides/query-cancellation.md
-translation-source-ref: main
-translation-source-hash: fc73340be44796b9bc3fddc7c41118a199ede9749cddad2dd21c728f5a403e2b
-translation-status: translated
--->
-
-
-TanStack Query 会为每个查询函数提供一个 [`AbortSignal` 实例](https://developer.mozilla.org/docs/Web/API/AbortSignal)。当查询变为过期或不活跃时，该 `signal` 会被中止。因此所有查询都可以取消，你也可以按需在查询函数中响应取消操作，同时继续使用熟悉的 async/await 语法并获得自动取消能力。
+TanStack Query 会为每个查询函数提供一个 [`AbortSignal` 实例](https://developer.mozilla.org/docs/Web/API/AbortSignal)。当查询已不再需要（out-of-date）或变为非活跃状态时，该 `signal` 会被中止。因此所有查询都可以取消，你也可以按需在查询函数中响应取消操作，同时继续使用熟悉的 async/await 语法并获得自动取消能力。
 
 大多数[运行时环境](https://developer.mozilla.org/docs/Web/API/AbortController#browser_compatibility)都支持 `AbortController` API。如果你的环境不支持，则需要提供 [polyfill](https://www.npmjs.com/search?q=abortcontroller%20polyfill)。
 

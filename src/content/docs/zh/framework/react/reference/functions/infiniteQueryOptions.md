@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/infiniteQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/infiniteQueryOptions.md
-translation-source-ref: main
-translation-source-hash: 31162aedf193e09780311ada25105d08b052f605aa50aa60fd186cdc1bb997a2
-translation-status: translated
--->
-
-
 ## 调用签名
 
 ```ts

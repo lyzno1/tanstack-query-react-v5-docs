@@ -3,14 +3,6 @@ id: migrating-to-react-query-3
 title: 迁移到 React Query 3
 ---
 
-<!--
-translation-source-path: framework/react/guides/migrating-to-react-query-3.md
-translation-source-ref: main
-translation-source-hash: a6e32d318e3c23efc588f4745b6c3d3a0ce8c09a23db7ab7c18ec1f9c38b5574
-translation-status: translated
--->
-
-
 React Query 的早期版本已经非常优秀，带来了很多惊艳的新特性、更多“魔法”，以及整体更好的使用体验。它们也带来了大规模采用，同时伴随大量打磨（issues/contributions），让我们发现了一些仍需抛光的地方。v3 就是这次集中打磨的结果。
 
 ## 概览
