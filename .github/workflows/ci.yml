@@ -53,3 +53,6 @@ jobs:
 
       - name: Check built documentation links
         run: pnpm run links:check
+
+      - name: Check metadata and document landmarks
+        run: pnpm run seo:check

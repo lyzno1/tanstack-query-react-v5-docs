@@ -108,7 +108,7 @@ button[data-open-modal] { border-radius: 0.5rem; }
 dialog { border-radius: 0.75rem; border-color: var(--doc-border); }
 #starlight__search { --pagefind-ui-border-radius: 0.5rem; }
 
-.sl-markdown-content { font-size: 0.9375rem; }
+.sl-markdown-content { font-size: 1rem; }
 .sl-markdown-content :is(h1, h2, h3, h4) { color: var(--doc-fg); font-weight: 600; letter-spacing: -0.025em; }
 .sl-markdown-content :is(h2, h3) { margin-top: 2.5rem; }
 .sl-markdown-content a:not(.sl-anchor-link) {
@@ -172,4 +172,8 @@ footer .meta { font-size: 0.8125rem; }
 
 @media print {
   :root { --doc-bg: #fff; --doc-fg: #000; --doc-text: #222; --doc-muted: #555; }
+}
+
+@media (pointer: coarse) {
+  nav.sidebar :is(a, summary) { min-height: 2.75rem; }
 }

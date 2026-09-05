@@ -81,13 +81,16 @@ from translated frontmatter; example links are generated in both languages.
 - Translate/review the complete source, then record each reviewed page with
   `node scripts/i18n-verify.mjs --write --path=framework/react/guides/queries.md`.
 - `--all-reviewed` is only for a completed full audit, never for bypassing stale checks.
-- Validate with `pnpm check`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:maintenance`, `pnpm build`, and `pnpm links:check`.
+- Validate with `pnpm check`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:maintenance`, `pnpm build`, and `pnpm links:check`, `pnpm seo:check`.
 
 See the repository translation skill for terminology and review conventions.
 
 ## Environment variables
 
-- `SITE_URL`: production site origin, used to generate canonical URLs and sitemap entries.
+- `SITE_URL`: canonical production origin, used for canonical URLs, hreflang links and sitemap entries. Loaded from `.env` and `NODE_ENV`-specific files (such as `.env.production`) as well as process environment variables.
+- On Vercel, an empty `SITE_URL` falls back to `VERCEL_PROJECT_PRODUCTION_URL`. A production deployment requires one of these. Branch-specific preview URLs are never used as the canonical origin.
+- Without an origin, local builds use `http://localhost:4321` and are marked `noindex`. Preview deployments are also marked `noindex` and their robots file disallows crawling.
+- `/robots.txt` advertises the sitemap on production deployments. Page summaries come from authored descriptions or the first readable Markdown paragraph.
 - Local development and build checks:
 
 ```bash
@@ -95,7 +98,7 @@ cp .env.example .env
 # edit .env and set your real deploy URL
 ```
 
-- Vercel: set `SITE_URL` in Project Settings -> Environment Variables for at least `Production` (recommended: also `Preview`).
+- Vercel: preferably set the same canonical `SITE_URL` in Production and Preview, especially when using a custom domain; otherwise enable system environment variables for the production-domain fallback.
 
 ## Deploy to Vercel
 

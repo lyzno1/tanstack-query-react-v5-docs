@@ -44,7 +44,7 @@ underlined, selected navigation uses fill and weight, and keyboard focus uses a
   uses a vertical rule and an active line, rather than separate filled buttons.
 - Title: 28–34px, semibold, with a small React v5 label and a separate Copy Markdown
   row. No decorative title rule or artificial large introductory paragraph.
-- Body: 15px / 1.8 line height, a deliberate Chinese reading adaptation. Headings
+- Body: 16px / 1.8 line height, a deliberate Chinese reading adaptation. Headings
   use whitespace for hierarchy. Inter Latin is self-hosted with `font-display: swap`;
   system CJK fallbacks avoid downloading a large Chinese font. Code uses system mono.
 - Code: GitHub light/dark syntax themes through Expressive Code's public options,
@@ -84,7 +84,7 @@ success or failure through a live region, and does not hydrate a framework.
 Before merging any future visual or framework update:
 
 - Run `pnpm check`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:maintenance`,
-  `pnpm build` and `pnpm links:check`.
+  `pnpm build` and `pnpm links:check`, `pnpm seo:check`.
 - Inspect light and dark Chinese installation, a long guide/API page and an English
   page; check code, tables, headings, notes and navigation at narrow and wide widths.
 - Check mobile menu, mobile TOC, search, locale/theme selection and copy feedback.
@@ -95,9 +95,10 @@ Before merging any future visual or framework update:
 
 ## Validation recorded for this change
 
-All six repository gates passed locally, and GitHub CI and the Vercel preview build
-passed. The output contains 333 pages and 62,233 valid internal links. All 139
-translation records remain current and untouched.
+The design baseline passed repository checks, GitHub CI and the Vercel preview
+build. After the SEO/accessibility changes, the output contains 333 pages and
+62,235 valid internal links. Metadata checks cover 331 documentation pages and
+the two redirect entry pages. All 139 translation records remain current.
 
 Browser inspection of this project's changed pages remains **unverified**: the cloud browser cannot
 reach the local server, and the Vercel preview requires account authentication.
@@ -149,3 +150,27 @@ gains a substantial set of owned interactive components with variants and style
 composition. If adopted then, keep styles near components, share semantic tokens via
 `defineVars`, compose styles through the official APIs and retain global Markdown
 styling in CSS. Do not rewrite Starlight components simply to attach generated classes.
+
+## Metadata and accessible interactions
+
+- Load `SITE_URL` from `NODE_ENV`-specific env files through Vite's `loadEnv`, following
+  [Astro's environment-variable guide](https://docs.astro.build/en/guides/environment-variables/).
+  Fall back to Vercel's production domain, never a branch deployment URL. Local
+  builds use localhost; a Vercel production build without a real origin fails.
+- Keep Starlight's canonical, hreflang, sitemap and default head rendering. Explicit
+  trailing slashes match generated directory routes. The build-time robots endpoint
+  advertises the canonical sitemap for production and blocks local/preview crawling.
+  Preview pages also get `noindex`; this is indexing guidance, not access control.
+- Use the public [route middleware API](https://starlight.astro.build/guides/route-data/)
+  to preserve authored descriptions or derive summaries from actual Markdown prose.
+  Empty prose gets a localized fallback. Keep Open Graph descriptions in sync, use
+  correctly formatted OG locales, and select a summary card when no image exists.
+- The copy control is progressively enhanced: hidden until Clipboard API support is
+  available, with a native button, persistent keyboard focus and a status live region.
+  Pending state prevents duplicate operations without disabling the focused element.
+  The site title derives its accessible name from visible text.
+- Redirect entry pages include a viewport and a visible localized continuation link.
+  Body copy is 16px; coarse-pointer sidebar targets are at least 44px tall.
+
+Automated checks validate metadata and generated markup; they do not replace the
+outstanding browser/assistive-technology checks described above.

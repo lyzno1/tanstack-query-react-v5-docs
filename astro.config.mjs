@@ -3,6 +3,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
+import { loadEnv } from 'vite';
+import { resolveSite } from './scripts/site-settings.mjs';
 import starlight from '@astrojs/starlight';
 import { unified } from '@astrojs/markdown-remark';
 import { parse as parseYaml } from 'yaml';
@@ -272,7 +274,8 @@ const sidebar = localizeSidebar([
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.SITE_URL || 'https://example.com',
+	site: resolveSite(loadEnv(process.env.NODE_ENV || 'development', process.cwd(), ['SITE_URL', 'VERCEL_'])),
+	trailingSlash: 'always',
 	// Preserve whitespace and the reviewed source-link/heading transforms on Astro 7.
 	compressHTML: true,
 	markdown: {
@@ -282,6 +285,7 @@ export default defineConfig({
 		starlight({
 			title: 'TanStack Query React v5 Docs',
 			favicon: '/favicon.svg',
+			routeMiddleware: './src/middleware/metadata.ts',
 			description: 'TanStack Query React v5 documentation with automated upstream synchronization.',
 			components: {
 				SiteTitle: './src/components/starlight/SiteTitle.astro',
