@@ -3,14 +3,6 @@ id: quick-start
 title: 快速开始
 ---
 
-<!--
-translation-source-path: framework/react/quick-start.md
-translation-source-ref: main
-translation-source-hash: e695ac2a71213c51b25931bb4819511319a5d78baf07f141cf109972c14b8df5
-translation-status: translated
--->
-
-
 这段代码非常简要地展示了 React Query 的 3 个核心概念：
 
 - [查询](./guides/queries.md)

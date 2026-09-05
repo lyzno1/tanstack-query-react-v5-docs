@@ -3,14 +3,6 @@ id: react-native
 title: React Native
 ---
 
-<!--
-translation-source-path: framework/react/react-native.md
-translation-source-ref: main
-translation-source-hash: 93e057636a108ad6e70092b8210d2bea4e30dc220bdfdb952acc81a36315ced5
-translation-status: translated
--->
-
-
 React Query 开箱即用支持 React Native。
 
 ## DevTools 支持

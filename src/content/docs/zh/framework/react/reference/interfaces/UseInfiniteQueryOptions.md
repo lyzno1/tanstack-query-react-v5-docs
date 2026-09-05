@@ -3,14 +3,6 @@ id: UseInfiniteQueryOptions
 title: UseInfiniteQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/interfaces/UseInfiniteQueryOptions.md
-translation-source-ref: main
-translation-source-hash: 49098a485bff2f03de74b67960621ed99fc681055e52a4848dba487b9df7c558
-translation-status: translated
--->
-
-
 定义于：[react-query/src/types.ts:238](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L238)
 
 `useInfiniteQuery` 接受的选项。它扩展了 `@tanstack/query-core` 中的

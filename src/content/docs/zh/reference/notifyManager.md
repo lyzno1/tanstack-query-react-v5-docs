@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/notifyManager
 ---
 
-<!--
-translation-source-path: reference/notifyManager.md
-translation-source-ref: main
-translation-source-hash: b7ec287fdc9156fe529fbd680ebe6e466478cef887a79dc36744688234f0142e
-translation-status: translated
--->
-
-
 `notifyManager` 负责在 TanStack Query 中调度并批处理回调。
 
 它暴露了以下方法：

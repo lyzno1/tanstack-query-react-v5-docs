@@ -3,14 +3,6 @@ id: caching
 title: 缓存示例
 ---
 
-<!--
-translation-source-path: framework/react/guides/caching.md
-translation-source-ref: main
-translation-source-hash: 8684bf526124b63f4f53f8f864361b2e89aa24f4472daf3c5adc9dba3e23355c
-translation-status: translated
--->
-
-
 > 在阅读本指南之前，请先完整阅读[重要默认值](./important-defaults.md)
 
 ## 基础示例
@@ -25,7 +17,7 @@ translation-status: translated
 假设我们使用默认 `gcTime`（**5 分钟**）和默认 `staleTime`（`0`）。
 
 - 一个新的 `useQuery({ queryKey: ['todos'], queryFn: fetchTodos })` 实例被挂载。
-  - 由于此前没有使用 `['todos']` 查询键发起过其他查询，这个查询会先显示硬加载状态，并发起网络请求获取数据。
+  - 由于此前没有使用 `['todos']` 查询键发起过其他查询，这个查询会先显示无缓存数据时的初始加载状态，并发起网络请求获取数据。
   - 网络请求完成后，返回的数据会缓存到 `['todos']` 键下。
   - 数据会在配置的 `staleTime` 到期后被标记为过期（默认是 `0`，即立即过期）。
 - 在其他位置又挂载了第二个 `useQuery({ queryKey: ['todos'], queryFn: fetchTodos })` 实例。

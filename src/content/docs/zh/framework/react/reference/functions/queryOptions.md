@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/queryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/queryOptions.md
-translation-source-ref: main
-translation-source-hash: cdceb06dd2c7a99a11968ecf481cb321aa2a1597195d74de74ce4b915a29b38b
-translation-status: translated
--->
-
-
 ## 调用签名
 
 ```ts

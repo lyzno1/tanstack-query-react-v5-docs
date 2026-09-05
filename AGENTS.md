@@ -1,45 +1,43 @@
-# Repository Guidelines
+# Repository guidelines
 
-## Project Structure & Module Organization
-- `src/content/docs/`: synchronized TanStack Query React v5 docs used by Starlight.
-- `src/styles/theme.css`: site-level theme overrides.
-- `public/`: static assets (for example, `favicon.svg`).
-- `scripts/`: sync automation scripts:
-  - `sync-tanstack-query-react-v5.mjs` pulls upstream docs and updates metadata.
-  - `check-upstream-update.mjs` checks whether a newer upstream v5 tag exists.
-- `upstream/`: sync state (`lock.json`, `manifest.json`, `docs.config.json`).
-- `.github/workflows/`: CI checks and scheduled sync PR automation.
+This Astro/Starlight site mirrors TanStack Query React v5 documentation from upstream
+`main`. `upstream/lock.json` pins the exact reviewed source commit.
 
-## Build, Test, and Development Commands
-- `pnpm install --frozen-lockfile`: install dependencies exactly as locked.
-- `pnpm run dev`: start local Astro/Starlight dev server.
-- `pnpm run check`: run Astro content and type validation.
-- `pnpm run lint`: run ESLint with zero-warning policy.
-- `pnpm run build`: produce the static site in `dist/`.
-- `pnpm run preview`: preview the production build locally.
-- `pnpm run sync:check`: fail if a newer upstream v5 tag is available.
-- `pnpm run sync:docs -- --ref=v5.x.y`: sync docs from latest or pinned upstream tag.
+## Sources and translations
 
-## Coding Style & Naming Conventions
-- Use ESM scripts (`.mjs`) and prefer explicit `node:*` imports.
-- Follow existing formatting; avoid formatting-only churn.
-- Use kebab-case for project-authored Markdown pages (for example, `sync-status.md`).
-- Preserve upstream file names and paths for synchronized docs.
-- For project-authored docs, include clear frontmatter (`title`, `description`).
+- `pnpm sync:docs` copies English React, core reference, ESLint and community docs;
+  never hand-edit these generated source files.
+- Chinese translations live at the same paths under `src/content/docs/zh/`.
+- Use `.agents/skills/tanstack-query-zh-translation/SKILL.md` for translation work.
+- `upstream/i18n.zh.json` records reviewed source hashes, not automatic translation
+  or semantic correctness. Record only pages actually reviewed.
+- Example link pages are generated in both languages. `scripts/docs-markdown.mjs`
+  resolves source-relative links, preserves upstream heading IDs in Chinese and
+  renders community-resource frontmatter.
 
-## Testing Guidelines
-- No dedicated unit-test suite; validation is build/check based.
-- Before opening a PR, run: `pnpm run check` and `pnpm run build`.
-- For sync changes, also run `pnpm run sync:docs` and verify updates in:
-  - `upstream/lock.json`
-  - `upstream/manifest.json`
-  - `src/content/docs/sync-status.md`
+## Commands
 
-## Commit & Pull Request Guidelines
-- Use Conventional Commits (`feat:`, `fix:`, `chore:`), consistent with repo history.
-- For upstream refreshes, use: `chore: sync TanStack Query React v5 docs`.
-- PRs should include a concise summary, tracked upstream ref (`upstream/lock.json`), and confirmation that `check` + `build` passed.
-- Add screenshots only when UI/theme behavior changes.
+Use the package manager pinned in `package.json` (`corepack pnpm` if necessary).
 
-## Configuration Tips
-- Set `SITE_URL` for production builds; otherwise Astro defaults to `https://example.com`.
+- `pnpm install --frozen-lockfile`
+- `pnpm dev` / `pnpm preview`
+- `pnpm sync:docs` (defaults to upstream `main`; `-- --ref=<branch-or-tag>` pins a ref)
+- `pnpm sync:check` (nonzero if upstream `main` differs)
+- `pnpm i18n:status` (missing/stale/orphan pages)
+- Before a PR: `pnpm check`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:maintenance`, `pnpm build`, `pnpm links:check`
+
+For sync changes run `pnpm sync:docs` and inspect source files, manifest, lock and
+both generated example directories. Test maintenance scripts with temporary
+fixtures when changing behavior; do not mark real translations reviewed for a test.
+
+## Changes and PRs
+
+Use ESM `.mjs` and explicit `node:*` imports. Keep changes focused and avoid
+formatting-only churn. Use Conventional Commits. PRs should explain translation
+corrections, include the upstream commit, review coverage and validation results.
+
+The scheduled sync pushes only after all checks including translation integrity
+pass. Otherwise it updates one persistent translation PR. Never refresh translation
+hashes automatically or force-push `main` to make a sync pass.
+
+Set `SITE_URL` for production; its fallback is `https://example.com`.

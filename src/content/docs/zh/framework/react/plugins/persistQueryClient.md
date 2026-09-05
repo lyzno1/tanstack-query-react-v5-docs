@@ -3,14 +3,6 @@ id: persistQueryClient
 title: persistQueryClient
 ---
 
-<!--
-translation-source-path: framework/react/plugins/persistQueryClient.md
-translation-source-ref: main
-translation-source-hash: 4d946ad090835cea7f8e4f5987a2296b68f0efa1cc62571e3860fdf752401265
-translation-status: translated
--->
-
-
 这是一组用于与“Persister”交互的工具。Persister 会保存你的 Query Client，供后续使用。不同的 **Persister** 可以将客户端及其缓存存入多种不同的存储层。
 
 ## 构建 Persister
@@ -187,7 +179,7 @@ ReactDOM.createRoot(rootElement).render(<App />)
 
 ### PersistQueryClientProvider
 
-针对这个用例，可以使用 `PersistQueryClientProvider`。它会确保按照 React 组件生命周期正确地订阅和取消订阅，同时确保恢复尚未完成时查询不会开始获取数据。查询仍会渲染，只是在数据恢复之前保持 `fetchingState: 'idle'`。随后，除非恢复的数据足够_新鲜（未过期）_，否则查询会重新获取；同时也会遵循 _initialData_。它可以_替代_普通的 [QueryClientProvider](../reference/functions/QueryClientProvider.md)：
+针对这个用例，可以使用 `PersistQueryClientProvider`。它会确保按照 React 组件生命周期正确地订阅和取消订阅，同时确保恢复尚未完成时查询不会开始获取数据。查询仍会渲染，只是在数据恢复之前保持 `fetchStatus: 'idle'`。随后，除非恢复的数据足够_新鲜（未过期）_，否则查询会重新获取；同时也会遵循 _initialData_。它可以_替代_普通的 [QueryClientProvider](../reference/functions/QueryClientProvider.md)：
 
 ```tsx
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'

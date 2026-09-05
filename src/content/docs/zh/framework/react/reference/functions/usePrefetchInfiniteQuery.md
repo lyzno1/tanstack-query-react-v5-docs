@@ -5,21 +5,13 @@ redirect_from:
   - framework/react/reference/usePrefetchInfiniteQuery
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/usePrefetchInfiniteQuery.md
-translation-source-ref: main
-translation-source-hash: 4d2b3903d5db847364c79c24d1f48bfbbf1571358f6e01c78617033024fc193a
-translation-status: translated
--->
-
-
 ```ts
 function usePrefetchInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options, queryClient?): void;
 ```
 
 定义于： [react-query/src/usePrefetchInfiniteQuery.tsx:56](https://github.com/TanStack/query/blob/main/packages/react-query/src/usePrefetchInfiniteQuery.tsx#L56)
 
-`usePrefetchInfiniteQuery` 不返回任何内容。它只用于在渲染期间触发预获取，并且应位于 Suspense 边界之前；
+`usePrefetchInfiniteQuery` 不返回任何内容。它只用于在渲染期间触发预取，并且应位于 Suspense 边界之前；
 该边界包裹着使用 `useSuspenseInfiniteQuery` 的组件。所有能够传给 `queryClient.infiniteQuery` 的选项
 都可以传给 `usePrefetchInfiniteQuery`，但 `queryKey`、`initialPageParam` 和 `getNextPageParam` 始终是必填项；
 除非已经定义默认查询函数，否则 `queryFn` 也是必填项。
@@ -28,7 +20,7 @@ function usePrefetchInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageP
 并且应返回一个变量，该变量会以 `context.pageParam` 的形式传给查询函数。返回 `undefined` 或 `null`
 表示没有可用的下一页。
 
-如果查询已经具有任何缓存状态（包括上一次尝试遗留的 `pending` 或 `error` 状态），就会跳过预获取。
+如果查询已经具有任何缓存状态（包括上一次尝试遗留的 `pending` 或 `error` 状态），就会跳过预取。
 因此，每次渲染时调用此 Hook 的开销很小，既不会重新获取已经存在的数据，也不会重复发起正在进行的请求。
 
 ## 类型参数
@@ -87,7 +79,7 @@ const projectsOptions = infiniteQueryOptions({
 })
 
 function App() {
-  // 在渲染期间、下方 Suspense 边界之前触发预获取。
+  // 在渲染期间、下方 Suspense 边界之前触发预取。
   usePrefetchInfiniteQuery(projectsOptions)
 
   return (

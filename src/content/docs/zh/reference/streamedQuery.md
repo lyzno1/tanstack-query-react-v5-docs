@@ -3,14 +3,6 @@ id: streamedQuery
 title: streamedQuery
 ---
 
-<!--
-translation-source-path: reference/streamedQuery.md
-translation-source-ref: main
-translation-source-hash: 244ee24bcc3486a0b34180fac52fdb97cb7815265b0fca188a71fbb50a63e3b4
-translation-status: translated
--->
-
-
 `streamedQuery` 是一个辅助函数，用于创建可从 [AsyncIterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncIterator) 流式读取数据的查询函数。数据会是已接收全部分块组成的数组。查询会在收到第一块数据前保持 `pending` 状态，收到后转为 `success`。在流结束前，查询会一直保持 fetchStatus 为 `fetching`。
 
 若想查看 `streamedQuery` 的实际用法，请参考我们在 [GitHub 的 examples/react/chat 目录](https://github.com/TanStack/query/tree/main/examples/react/chat)中的聊天示例。

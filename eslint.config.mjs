@@ -24,4 +24,11 @@ export default antfu(
       'perfectionist/sort-named-imports': 'off',
     },
   },
+  {
+    files: ['scripts/*.test.mjs'],
+    rules: {
+      // Maintenance scripts use Node's built-in runner, without a browser test stack.
+      'test/no-import-node-test': 'off',
+    },
+  },
 )

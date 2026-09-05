@@ -3,14 +3,6 @@ id: default-query-function
 title: 默认查询函数
 ---
 
-<!--
-translation-source-path: framework/react/guides/default-query-function.md
-translation-source-ref: main
-translation-source-hash: da695c29a919b2237501d92eeb57f44534c2d0ab70e55618a1c61956ffdc9d73
-translation-status: translated
--->
-
-
 如果你出于某些原因希望在整个应用中共用同一个查询函数，仅通过查询键来标识要获取什么数据，那么你可以通过给 TanStack Query 提供一个**默认查询函数**来实现：
 
 [//]: # 'Example'

@@ -3,14 +3,6 @@ id: DefinedUseQueryResult
 title: DefinedUseQueryResult
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/DefinedUseQueryResult.md
-translation-source-ref: main
-translation-source-hash: 2975a68555ec7ea6a768ddf4c531534f522f6b89b9ad43f510a1753e9c658209
-translation-status: translated
--->
-
-
 ```ts
 type DefinedUseQueryResult<TData, TError> = DefinedQueryObserverResult<TData, TError>;
 ```

@@ -3,14 +3,6 @@ id: UseSuspenseInfiniteQueryOptions
 title: UseSuspenseInfiniteQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/interfaces/UseSuspenseInfiniteQueryOptions.md
-translation-source-ref: main
-translation-source-hash: b801697ebb665e6d83ddb26c440b205dae43f24269a8935de3b83f8c6f41c9bf
-translation-status: translated
--->
-
-
 定义于：[react-query/src/types.ts:280](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L280)
 
 `useSuspenseInfiniteQuery` 接受的选项。它与 [UseInfiniteQueryOptions](UseInfiniteQueryOptions.md) 相同，

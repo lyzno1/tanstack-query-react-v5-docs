@@ -3,14 +3,6 @@ id: AnyUseQueryOptions
 title: AnyUseQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/AnyUseQueryOptions.md
-translation-source-ref: main
-translation-source-hash: c194b57d2d218a4ff9200088639dc22277dcae061d64507735dbea84e0c44123
-translation-status: translated
--->
-
-
 ```ts
 type AnyUseQueryOptions = UseQueryOptions<any, any, any, any>;
 ```

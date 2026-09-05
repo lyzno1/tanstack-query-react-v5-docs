@@ -3,14 +3,6 @@ id: query-functions
 title: 查询函数
 ---
 
-<!--
-translation-source-path: framework/react/guides/query-functions.md
-translation-source-ref: main
-translation-source-hash: f5ae9a4120c8a9bbd5666774710c05f5ddcde35a7517c92230428bff666f97bb
-translation-status: translated
--->
-
-
 查询函数本质上可以是任何**返回 Promise**的函数。返回的 Promise 应当**resolve 数据**或**抛出错误**。
 
 成功时，Promise 可以 resolve 为除 **`undefined`** 以外的任何值。resolve 为 `undefined` 的查询会被

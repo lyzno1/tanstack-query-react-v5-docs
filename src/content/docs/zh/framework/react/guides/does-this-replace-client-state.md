@@ -3,14 +3,6 @@ id: does-this-replace-client-state
 title: TanStack Query 会替代 Redux、MobX 或其他全局状态管理器吗？
 ---
 
-<!--
-translation-source-path: framework/react/guides/does-this-replace-client-state.md
-translation-source-ref: main
-translation-source-hash: e839285d23777e13420d5d291b1cdf8f49642509c5ee569f8a88074ac6adb2b9
-translation-status: translated
--->
-
-
 先看几个重要点：
 
 - TanStack Query 是一个**服务端状态（server-state）**库，负责管理服务端与客户端之间的异步操作。

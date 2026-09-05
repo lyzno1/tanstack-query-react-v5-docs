@@ -3,14 +3,6 @@ id: QueryClientProviderProps
 title: QueryClientProviderProps
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/QueryClientProviderProps.md
-translation-source-ref: main
-translation-source-hash: 68cee87b7fc034b5cfb558946228673b4389b93cc7c694a1043c12cf132b2787
-translation-status: translated
--->
-
-
 ```ts
 type QueryClientProviderProps = object;
 ```

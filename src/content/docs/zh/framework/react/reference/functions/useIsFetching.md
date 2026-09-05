@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useIsFetching
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useIsFetching.md
-translation-source-ref: main
-translation-source-hash: b976e8c44131b64274a7d6db3fe1d63862444abbb628fcac24bb7f570774ac81
-translation-status: translated
--->
-
-
 ```ts
 function useIsFetching(filters?, queryClient?): number;
 ```

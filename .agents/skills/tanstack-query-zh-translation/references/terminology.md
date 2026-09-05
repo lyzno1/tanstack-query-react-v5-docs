@@ -29,3 +29,9 @@
 
 - Keep type names, hook names, and option keys in English.
 - Keep `queryKey`, `queryFn`, `staleTime`, `gcTime` unchanged in text and code.
+
+- `stale` means eligible for freshness checks/refetch triggers, not deleted or unusable.
+- `out-of-date` in cancellation prose is not the `staleTime` timer expiring.
+- `persisted to the cache` means 写入/保存在查询缓存中; reserve 持久化 for external storage.
+- Prefetch = 预取; Effect = Effect; initial loading without cached data = 初始加载状态.
+- A server `React.cache` instance is shared within a request, not a process-wide singleton.

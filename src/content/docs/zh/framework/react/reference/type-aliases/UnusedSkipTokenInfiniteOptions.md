@@ -3,14 +3,6 @@ id: UnusedSkipTokenInfiniteOptions
 title: UnusedSkipTokenInfiniteOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UnusedSkipTokenInfiniteOptions.md
-translation-source-ref: main
-translation-source-hash: a4f73272943c769a20c67a7f0fb1d1c0438a952180a86034cce7c20f537013bb
-translation-status: translated
--->
-
-
 ```ts
 type UnusedSkipTokenInfiniteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> = OmitKeyof<UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, "queryFn"> & object;
 ```

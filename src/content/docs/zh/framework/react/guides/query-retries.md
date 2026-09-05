@@ -3,22 +3,14 @@ id: query-retries
 title: 查询重试
 ---
 
-<!--
-translation-source-path: framework/react/guides/query-retries.md
-translation-source-ref: main
-translation-source-hash: dddfc003c62658c91ba05d5e1412fbef12565953ec7e5767087694a0143c08fe
-translation-status: translated
--->
-
-
 当 `useQuery` 查询失败时（即查询函数抛出错误），TanStack Query 会自动重试，前提是该请求尚未达到最大连续重试次数（默认 `3`），或提供了用于判断是否允许重试的函数。
 
 你可以在全局级别和单个查询级别配置重试。
 
-- 将 `retry = false` 可禁用重试。
-- 将 `retry = 6` 表示失败请求最多重试 6 次，之后才暴露函数最终抛出的错误。
-- 将 `retry = true` 表示对失败请求无限重试。
-- 将 `retry = (failureCount, error) => ...` 可基于失败原因编写自定义重试逻辑。注意，第一次重试时 `failureCount` 从 `0` 开始。
+- 设置 `retry = false` 可禁用重试。
+- 设置 `retry = 6` 表示失败请求最多重试 6 次，之后才暴露函数最终抛出的错误。
+- 设置 `retry = true` 表示对失败请求无限重试。
+- 设置 `retry = (failureCount, error) => ...` 可基于失败原因编写自定义重试逻辑。注意，第一次重试时 `failureCount` 从 `0` 开始。
 
 [//]: # 'Info'
 
@@ -40,7 +32,7 @@ const result = useQuery({
 
 [//]: # 'Example'
 
-> 说明：在最后一次重试之前，`useQuery` 返回中 `error` 的内容会放在 `failureReason` 属性里。因此在上面的例子中，前 9 次重试（总计 10 次尝试）期间错误内容都在 `failureReason` 中；如果最后一次后仍失败，错误才会出现在 `error` 里。
+> 说明：重试期间，本轮获取失败的原因会放在 `useQuery` 返回值的 `failureReason` 属性里；耗尽重试次数后仍失败，最终错误才会放入 `error`。上例设置 `retry: 10`，表示首次请求之外最多再重试 10 次，即最多请求 11 次。译注：这里明确区分了请求次数与重试次数，避免上游括号中的计数产生歧义。
 
 ## 重试延迟
 

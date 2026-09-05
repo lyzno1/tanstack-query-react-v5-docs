@@ -3,14 +3,6 @@ id: migrating-to-tanstack-query-5
 title: 迁移到 TanStack Query v5
 ---
 
-<!--
-translation-source-path: framework/react/guides/migrating-to-v5.md
-translation-source-ref: main
-translation-source-hash: 3a0ba561046d8d6022cacec89ca8eb6c93b942fb4f143906e2867d5b30f8037c
-translation-status: translated
--->
-
-
 ## 重大变化
 
 v5 是一个主要版本，因此需要注意一些重大更改：
@@ -165,7 +157,7 @@ npx jscodeshift@latest ./path/to/src/ \
 
 过去，`remove` 用于在不通知观察者的情况下从 `queryCache` 删除查询。它通常用于以命令式方式移除不再需要的数据，例如用户退出登录时。
 
-但是，在查询仍处于活动状态时执行此操作没有多大意义，因为它只会在下一次重新渲染时触发硬加载状态。
+但是，在查询仍处于活动状态时执行此操作没有多大意义，因为它只会在下一次重新渲染时触发无缓存数据时的初始加载状态。
 
 如果仍需删除查询，可以使用 `queryClient.removeQueries({ queryKey: key })`。
 

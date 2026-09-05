@@ -3,14 +3,6 @@ id: UseSuspenseQueryOptions
 title: UseSuspenseQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/interfaces/UseSuspenseQueryOptions.md
-translation-source-ref: main
-translation-source-hash: 7178c5b5a9903a4dd621d61978d39a2093df316199f2f3314cd510e9460a6cff
-translation-status: translated
--->
-
-
 定义于：[react-query/src/types.ts:196](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L196)
 
 `useSuspenseQuery` 接受的选项。它与 [UseQueryOptions](UseQueryOptions.md) 相同，但移除了 `enabled`、

@@ -3,14 +3,6 @@ id: UsePrefetchInfiniteQueryOptions
 title: UsePrefetchInfiniteQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UsePrefetchInfiniteQueryOptions.md
-translation-source-ref: main
-translation-source-hash: 06425d8fbfb209e4aa01a12b1cb7d3bf8c4b09f826e4a72099e168fbeb1d00cd
-translation-status: translated
--->
-
-
 ```ts
 type UsePrefetchInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> = DistributiveOmit<InfiniteQueryExecuteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, "queryFn"> & object;
 ```
@@ -28,7 +20,7 @@ type UsePrefetchInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPa
 optional queryFn: Exclude<InfiniteQueryExecuteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>["queryFn"], SkipToken>;
 ```
 
-这里不允许将 `skipToken` 作为值——预获取始终需要查询函数才能实际运行，
+这里不允许将 `skipToken` 作为值——预取始终需要查询函数才能实际运行，
 除非已经定义默认查询函数。
 
 ## 类型参数
@@ -50,7 +42,7 @@ optional queryFn: Exclude<InfiniteQueryExecuteOptions<TQueryFnData, TError, TDat
 `TData` = `InfiniteData`\<`TQueryFnData`\>
 
 `select` 执行后 `data` 的最终类型。默认为 `InfiniteData<TQueryFnData>`，其结构包含所有已获取的页面
-及其页面参数——预获取不会再读出 `data`，因此只有当你在其他应用了 `select` 的地方复用这些选项时，
+及其页面参数——预取不会再读出 `data`，因此只有当你在其他应用了 `select` 的地方复用这些选项时，
 该参数才有意义。
 
 ### TQueryKey

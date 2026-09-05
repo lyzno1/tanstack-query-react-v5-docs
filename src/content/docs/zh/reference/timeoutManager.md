@@ -3,14 +3,6 @@ id: TimeoutManager
 title: TimeoutManager
 ---
 
-<!--
-translation-source-path: reference/timeoutManager.md
-translation-source-ref: main
-translation-source-hash: 2cc3b015d18a43902cb9bdb5d0b8f019d61862686c4e215219642d357b96f945
-translation-status: translated
--->
-
-
 `TimeoutManager` 负责处理 TanStack Query 中的 `setTimeout` 和 `setInterval` 计时器。
 
 TanStack Query 使用计时器来实现查询 `staleTime`、`gcTime` 等功能，以及重试、节流和防抖。
@@ -98,7 +90,7 @@ timeoutManager.clearTimeout(timeoutId)
 
 ## `timeoutManager.setInterval`
 
-`setInterval(callback, intervalMs)` 会像全局 [setInterval function](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval) 一样，大约每 `intervalMs` 调度一次回调。
+`setInterval(callback, intervalMs)` 会像全局 [setInterval function](https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval) 一样，大约每 `intervalMs` 毫秒调度一次回调。
 
 与 `setTimeout` 一样，它会返回一个计时器 ID，可能是 number，也可能是可通过 [Symbol.toPrimitive](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive) 强制转换为 number 的对象。
 

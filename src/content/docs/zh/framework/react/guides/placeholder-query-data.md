@@ -3,26 +3,20 @@ id: placeholder-query-data
 title: 占位查询数据
 ---
 
-<!--
-translation-source-path: framework/react/guides/placeholder-query-data.md
-translation-source-ref: main
-translation-source-hash: dc0bf8b698ec4f1ee1e95920b641d827535e4b1b6eab82821ae5952fd3f573b3
-translation-status: translated
--->
-
-
 ## 什么是占位数据？
 
-占位数据让查询表现得像是已经拥有数据，类似于 `initialData` 选项，但**这些数据不会持久化到缓存中**。当你已有足以完成渲染的部分数据（或模拟数据），而真实数据仍在后台获取时，这会非常有用。
+占位数据让查询表现得像是已经拥有数据，类似于 `initialData` 选项，但**这些数据不会写入查询缓存中**。当你已有足以完成渲染的部分数据（或模拟数据），而真实数据仍在后台获取时，这会非常有用。
 
-> 例如，单篇博客文章的查询可以从文章列表中取得“预览”数据；列表里可能只有标题和正文摘要。你不会希望把这份不完整的数据持久化为单篇文章查询的结果，但在真实查询获取完整对象期间，它可以帮助页面尽快展示内容布局。
+> 例如，单篇博客文章的查询可以从文章列表中取得“预览”数据；列表里可能只有标题和正文摘要。你不会希望把这份不完整的数据缓存为单篇文章查询的结果，但在真实查询获取完整对象期间，它可以帮助页面尽快展示内容布局。
 
 在真正需要数据前，可以通过以下方式为查询提供占位数据：
 
 - 声明式：
   - 向查询传入 `placeholderData`，在缓存为空时提供占位内容
-- 命令式：
-  - [使用 `queryClient` 预取或获取数据，并配合 `placeholderData` 选项](./prefetching.md)
+- 如果需要提前填充实际缓存：
+  - [使用 `queryClient` 预取或获取真实数据](./prefetching.md)。这与通过 `placeholderData` 展示占位内容不同。
+
+> 译注：上游此处关于“预填充缓存”和命令式使用 `placeholderData` 的说法有误。占位数据由 [QueryObserver](https://github.com/TanStack/query/blob/1893a965d219032207cbe147880d0e9f757a5a56/packages/query-core/src/queryObserver.ts#L504-L542)用于生成当前观察者的展示结果，不会写入查询缓存，也不是 `queryClient` 获取方法的占位缓存选项。
 
 使用 `placeholderData` 后，查询不会从 `pending` 状态开始，而会直接处于 `success` 状态，因为此时已经有可供展示的 `data`——哪怕它只是占位数据。为了与真实数据区分，查询结果中的 `isPlaceholderData` 会被设为 `true`。
 

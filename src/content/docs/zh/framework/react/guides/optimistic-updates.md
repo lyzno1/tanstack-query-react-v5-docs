@@ -3,14 +3,6 @@ id: optimistic-updates
 title: 乐观更新
 ---
 
-<!--
-translation-source-path: framework/react/guides/optimistic-updates.md
-translation-source-ref: main
-translation-source-hash: 0c32fabbe875f00ac62e7e1f70156e95e27eca0a8446b09005ca5faf6ec1ecc7
-translation-status: translated
--->
-
-
 React Query 提供了两种在变更完成之前乐观更新 UI 的方法。你可以使用 `onMutate` 选项直接更新缓存，也可以利用返回的 `variables` 从 `useMutation` 结果更新你的 UI。
 
 ## 通过用户界面

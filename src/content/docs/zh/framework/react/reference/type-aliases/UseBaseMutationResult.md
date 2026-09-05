@@ -3,14 +3,6 @@ id: UseBaseMutationResult
 title: UseBaseMutationResult
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UseBaseMutationResult.md
-translation-source-ref: main
-translation-source-hash: c93dee01dbb5e624f59da77aae9aab256b18d1704c8737f1cd5da9e0008a8d6c
-translation-status: translated
--->
-
-
 ```ts
 type UseBaseMutationResult<TData, TError, TVariables, TOnMutateResult> = Override<MutationObserverResult<TData, TError, TVariables, TOnMutateResult>, {
   mutate: UseMutateFunction<TData, TError, TVariables, TOnMutateResult>;

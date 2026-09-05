@@ -3,14 +3,6 @@ id: query-options
 title: 查询选项
 ---
 
-<!--
-translation-source-path: framework/react/guides/query-options.md
-translation-source-ref: main
-translation-source-hash: a41ef393863a3e5af8d525eee2106734369e8e5d639dc41978cfe9c6a4f86bb3
-translation-status: translated
--->
-
-
 在多个位置共享 `queryKey` 和 `queryFn`，同时让它们保持就近维护，最好的方式之一是使用
 `queryOptions` 辅助函数。运行时它只是原样返回传入的内容，但与 [TypeScript](../typescript.md#typing-query-options)
 配合时有很多优势。你可以集中定义某个查询的所有选项，并在各处获得类型推断和类型安全。

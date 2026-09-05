@@ -3,14 +3,6 @@ id: QueryErrorIsResetFunction
 title: QueryErrorIsResetFunction
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/QueryErrorIsResetFunction.md
-translation-source-ref: main
-translation-source-hash: da0f12d8ef284c961810489ba67989feb3cdbb21f13491d880eef00e6081e5aa
-translation-status: translated
--->
-
-
 ```ts
 type QueryErrorIsResetFunction = () => boolean;
 ```

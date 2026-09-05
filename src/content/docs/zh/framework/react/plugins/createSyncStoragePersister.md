@@ -3,14 +3,6 @@ id: createSyncStoragePersister
 title: createSyncStoragePersister
 ---
 
-<!--
-translation-source-path: framework/react/plugins/createSyncStoragePersister.md
-translation-source-ref: main
-translation-source-hash: bda39f3d3fafd1249c16a4e12aab73de5916f209b9bc41922071daf8bb66ad9a
-translation-status: translated
--->
-
-
 ## 已弃用
 
 该插件已弃用，并将在下一个大版本中移除。

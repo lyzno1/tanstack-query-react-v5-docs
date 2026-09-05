@@ -135,6 +135,34 @@ This example is maintained upstream in TanStack Query.
 `
 }
 
+const zhExampleTitles = {
+  'simple': '简单示例',
+  'basic': '基础示例',
+  'basic-graphql-request': 'GraphQL-Request 基础示例',
+  'auto-refetching': '自动重新获取、轮询与实时更新',
+  'nextjs-app-optimistic-updates': '乐观更新',
+  'pagination': '分页',
+  'load-more-infinite-scroll': '加载更多与无限滚动',
+  'infinite-query-with-max-pages': '限制最大页数的无限查询',
+  'suspense': 'Suspense',
+  'default-query-function': '默认查询函数',
+  'playground': '交互演示',
+  'prefetching': '预取',
+  'star-wars': '星球大战',
+  'rick-morty': '瑞克和莫蒂',
+  'nextjs': 'Next.js Pages Router',
+  'nextjs-app-prefetching': 'Next.js App Router 预取',
+  'nextjs-suspense-streaming': 'Next.js App Router 流式渲染',
+  'react-native': 'React Native',
+  'react-router': 'React Router',
+  'offline': '离线查询与变更',
+  'algolia': 'Algolia',
+  'shadow-dom': 'Shadow DOM',
+  'devtools-panel': '嵌入式开发工具面板',
+  'chat': '聊天示例（流式响应）',
+  'batching': '批处理',
+}
+
 function buildSyncStatusPage(lock) {
   return `---
 title: Sync Status
@@ -230,6 +258,20 @@ async function main() {
       )
     }
 
+    // These pages contain deterministic links, not prose requiring a translation review.
+    const zhExamples = path.join(DOCS_ROOT, 'zh', 'framework', 'react', 'examples')
+    await rm(zhExamples, { recursive: true, force: true })
+    await mkdir(zhExamples, { recursive: true })
+    for (const entry of exampleEntries) {
+      const slug = entry.to.replace('framework/react/examples/', '')
+      const content = buildExampleRedirect({ slug, label: zhExampleTitles[slug] ?? entry.label, ref: resolvedRef })
+        .replace('Official TanStack Query React example link.', 'TanStack Query React 官方示例链接。')
+        .replace('This example is maintained upstream in TanStack Query.', '此示例由 TanStack Query 上游维护。')
+        .replace('Official docs page:', '官方文档页面：')
+        .replace('Upstream source:', '上游源码：')
+      await writeFile(path.join(zhExamples, `${slug}.md`), content, 'utf8')
+    }
+
     const expectedByManifest = markdownFiles.map((filePath) =>
       path.join(DOCS_ROOT, filePath.replace(/^docs\//, '')),
     )
@@ -275,7 +317,7 @@ async function main() {
 
     const lock = {
       upstreamRepo: UPSTREAM_REPO,
-      track: 'upstream-main',
+      track: resolvedRef === DEFAULT_REF ? 'upstream-main' : 'pinned-ref',
       ref: resolvedRef,
       commit: upstreamCommit,
       syncedAt: new Date().toISOString(),
@@ -305,6 +347,22 @@ async function main() {
       buildSyncStatusPage(lock),
       'utf8',
     )
+    const zhStatus = buildSyncStatusPage(lock)
+      .replace('title: Sync Status', 'title: 同步状态')
+      .replace('Upstream synchronization metadata for this docs site.', '本文档站的上游同步信息。')
+      .replace('This site tracks TanStack Query React docs from the v5 release line.', '本站同步 TanStack Query React v5 文档；具体跟踪策略和提交见下方。')
+      .replace('Upstream repo:', '上游仓库：')
+      .replace('Tracking strategy:', '跟踪策略：')
+      .replace('Current synced ref:', '当前同步引用：')
+      .replace('Upstream commit:', '上游提交：')
+      .replace('Synced at (UTC):', '同步时间（UTC）：')
+      .replace('## Synced counts', '## 同步数量')
+      .replace('Markdown files:', 'Markdown 文件：')
+      .replace('React docs pages:', 'React 文档页面：')
+      .replace('Core reference pages:', '核心 API 参考页面：')
+      .replace('ESLint docs pages:', 'ESLint 文档页面：')
+      .replace('Generated example redirect pages:', '自动生成的示例链接页面：')
+    await writeFile(path.join(DOCS_ROOT, 'zh', 'sync-status.md'), zhStatus, 'utf8')
 
     console.log('Sync complete')
     console.log(` - Upstream ref: ${resolvedRef}`)

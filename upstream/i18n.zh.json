@@ -1,8 +1,13 @@
 {
   "locale": "zh",
   "sourceRef": "main",
-  "generatedAt": "2026-09-03T16:09:19.620Z",
+  "generatedAt": "2026-09-05T09:53:44.474Z",
   "translations": {
+    "community-resources.md": {
+      "hash": "bebce7fffc040b40ee6298bce7c9bc37c82204026f6c3fbb80745b01eef01249",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-05T09:53:44.474Z"
+    },
     "eslint/eslint-plugin-query.md": {
       "hash": "9dc5644c65099aee09714ca447f3398c5d07af3c60116b5384259607a831d4bb",
       "sourceRef": "main",
@@ -234,14 +239,14 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/suspense.md": {
-      "hash": "f228f8c90851e928b4a3a168457636ee174e0a82c32056dfb0855cbb5094a22e",
+      "hash": "6231e1336365466568458f1b28e9f81094e76cf55ecfec2f27baca03e6321d07",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-05T09:53:44.474Z"
     },
     "framework/react/guides/testing.md": {
-      "hash": "c079651545dcdc850ab3ab33d2e338203b81bcae5dab43b950eeb572b923ab28",
+      "hash": "82a819cfc4e9b4f1900bc111be316022f3d75568153170261dbceb23f37c22d9",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-05T09:53:44.474Z"
     },
     "framework/react/guides/updates-from-mutation-responses.md": {
       "hash": "d5554e202a2196e9a5c5b8f821221d4e05d213184be4f4c74e726eafd4e6a3c7",

@@ -3,14 +3,6 @@ id: DefinedInitialDataOptions
 title: DefinedInitialDataOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/DefinedInitialDataOptions.md
-translation-source-ref: main
-translation-source-hash: 3f143bb6ca8902c7ce975541f885d4ef70cdfdc5411655cb6c5af0792030e422
-translation-status: translated
--->
-
-
 ```ts
 type DefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey> = Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryFn"> & object;
 ```
@@ -31,7 +23,7 @@ initialData:
 
 如果设置了此项，只要该查询尚未创建或缓存，其值就会用作查询缓存的初始数据。如果传入函数，
 该函数会在共享/根查询初始化期间调用**一次**，并且应当同步返回初始数据。除非设置了 `staleTime`，
-否则初始数据默认视为过期。`initialData` **会持久保存在**缓存中。
+否则初始数据默认视为过期。`initialData` **会保存在**查询缓存中。
 
 ### queryFn?
 

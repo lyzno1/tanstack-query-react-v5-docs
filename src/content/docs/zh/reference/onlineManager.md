@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/onlineManager
 ---
 
-<!--
-translation-source-path: reference/onlineManager.md
-translation-source-ref: main
-translation-source-hash: ac269888ceebe226c40f35bb4de51730702507114436dcf222454e3465734562
-translation-status: translated
--->
-
-
 `OnlineManager` 用于管理 TanStack Query 中的在线状态。它可用于更改默认事件监听器，或手动修改在线状态。
 
 > 默认情况下，`onlineManager` 会假设网络连接可用，并监听 `window` 对象上的 `online` 与 `offline` 事件来检测变化。

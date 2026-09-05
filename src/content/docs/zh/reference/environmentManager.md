@@ -3,14 +3,6 @@ id: EnvironmentManager
 title: environmentManager
 ---
 
-<!--
-translation-source-path: reference/environmentManager.md
-translation-source-ref: main
-translation-source-hash: 5d74d5b05f4bb1e12bf6c7e2fe5ea2c5feebc912776ee041dffc89551b4e65b8
-translation-status: translated
--->
-
-
 `environmentManager` 管理 TanStack Query 如何检测当前运行时是否应被视为服务端环境。
 
 默认情况下，它使用与 query-core 导出的 `isServer` 工具函数相同的服务端检测方式。

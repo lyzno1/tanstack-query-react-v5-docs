@@ -3,14 +3,6 @@ id: parallel-queries
 title: 并行查询
 ---
 
-<!--
-translation-source-path: framework/react/guides/parallel-queries.md
-translation-source-ref: main
-translation-source-hash: 9bdfe27b0162db6353caadd708905cdea5ad1638b57fe52ddd10347b6a31d6f9
-translation-status: translated
--->
-
-
 “并行查询”是指同时执行多个查询，以尽可能提高数据获取的并发度。
 
 ## 手动并行查询

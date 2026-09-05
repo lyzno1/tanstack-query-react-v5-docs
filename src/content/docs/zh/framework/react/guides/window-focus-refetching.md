@@ -3,14 +3,6 @@ id: window-focus-refetching
 title: 窗口聚焦时重新获取
 ---
 
-<!--
-translation-source-path: framework/react/guides/window-focus-refetching.md
-translation-source-ref: main
-translation-source-hash: cfdb00a9a9515efe21c03d3bafc377b21d6bc88c8ff21a2c62d53005f4f9723e
-translation-status: translated
--->
-
-
 如果用户离开你的应用后又返回，且查询数据已过期，**TanStack Query 会自动在后台为你获取最新数据**。你可以通过 `refetchOnWindowFocus` 选项在全局或单个查询上禁用该行为：
 
 #### 全局禁用

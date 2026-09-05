@@ -3,14 +3,6 @@ id: initial-query-data
 title: 初始查询数据
 ---
 
-<!--
-translation-source-path: framework/react/guides/initial-query-data.md
-translation-source-ref: main
-translation-source-hash: 7928e0cef2252e7e154dd572359ba83bfc3589dba8010c4d4dacc900c1940e94
-translation-status: translated
--->
-
-
 在真正需要某个查询之前，你可以通过多种方式把初始数据放进缓存：
 
 - 声明式：
@@ -23,7 +15,7 @@ translation-status: translated
 
 有时应用里已经有某个查询的初始数据，这时可以直接传给查询。在这种情况下，你可以使用 `config.initialData` 选项设置查询的初始数据，并跳过初始加载状态。
 
-> 重要：`initialData` 会持久化到缓存，因此不建议传入占位、部分或不完整数据。此类场景请改用 `placeholderData`。
+> 重要：`initialData` 会写入查询缓存，因此不建议传入占位、部分或不完整数据。此类场景请改用 `placeholderData`。
 
 [//]: # 'Example'
 

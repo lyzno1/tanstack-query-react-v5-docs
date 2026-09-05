@@ -3,17 +3,11 @@ id: testing
 title: 测试
 ---
 
-<!--
-translation-source-path: framework/react/guides/testing.md
-translation-source-ref: main
-translation-source-hash: c079651545dcdc850ab3ab33d2e338203b81bcae5dab43b950eeb572b923ab28
-translation-status: translated
--->
-
-
 React Query 是通过 hooks 工作的，无论是我们提供的 hooks，还是在其基础上封装的自定义 hooks。
 
 在 React 17 或更早版本中，可以借助 [React Hooks Testing Library](https://react-hooks-testing-library.com/) 为这些自定义 hooks 编写单元测试。
+
+> 译注：本段是上游保留的旧版 React 测试背景。TanStack Query v5 本身要求 React 18 或更高版本；v5 项目请使用下文的 `@testing-library/react` 和 `renderHook`。
 
 通过以下命令安装：
 
@@ -132,7 +126,7 @@ function generateMockedResponse(page) {
 ```
 
 然后，`nock` 配置要根据页码返回不同响应，我们会用 `uri` 做区分。
-这里 `uri` 的值类似于 `"/?page=1` 或 `/?page=2`。
+这里 `uri` 的值类似于 `/?page=1` 或 `/?page=2`。
 
 ```tsx
 const expectation = nock('http://example.com')

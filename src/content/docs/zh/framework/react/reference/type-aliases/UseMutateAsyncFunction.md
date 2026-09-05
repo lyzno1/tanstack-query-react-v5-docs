@@ -3,14 +3,6 @@ id: UseMutateAsyncFunction
 title: UseMutateAsyncFunction
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UseMutateAsyncFunction.md
-translation-source-ref: main
-translation-source-hash: 5c53db65b395151e5474104abd32fbdacec0fe74bb31f3e9585032f96205f915
-translation-status: translated
--->
-
-
 ```ts
 type UseMutateAsyncFunction<TData, TError, TVariables, TOnMutateResult> = MutateFunction<TData, TError, TVariables, TOnMutateResult>;
 ```

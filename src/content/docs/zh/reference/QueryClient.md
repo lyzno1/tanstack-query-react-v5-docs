@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/QueryClient
 ---
 
-<!--
-translation-source-path: reference/QueryClient.md
-translation-source-ref: main
-translation-source-hash: 01dcfff3d2766f5096da082fdc4b905d4ff72f5b55d772c3106865a0a5391649
-translation-status: translated
--->
-
-
 `QueryClient` 可用于与缓存交互：
 
 ```tsx
@@ -325,7 +317,7 @@ await queryClient.cancelQueries(
 
 **返回值**
 
-此方法不返回任何内容。
+返回 `Promise<void>`，可通过 `await` 等待取消操作完成；Promise 不包含查询数据。译注：上游的“不返回任何内容”指没有数据结果，并非没有 Promise 返回值。
 
 ## `queryClient.removeQueries`
 
@@ -351,7 +343,7 @@ queryClient.removeQueries({ queryKey, exact: true })
 
 `resetQueries` 可用于根据查询键或查询的其他可访问属性/状态，将缓存中的查询重置为初始状态。
 
-它会通知订阅者 &mdash; 不同于会移除全部订阅者的 `clear` &mdash; 并把查询重置到预加载状态 &mdash; 不同于 `invalidateQueries`。如果查询配置了 `initialData`，其数据会重置为该值。如果查询处于活跃状态，它会被重新获取。
+它会通知订阅者 &mdash; 不同于会移除全部订阅者的 `clear` &mdash; 并把查询重置到首次加载前的状态 &mdash; 不同于 `invalidateQueries`。如果查询配置了 `initialData`，其数据会重置为该值。如果查询处于活跃状态，它会被重新获取。
 
 ```tsx
 queryClient.resetQueries({ queryKey, exact: true })

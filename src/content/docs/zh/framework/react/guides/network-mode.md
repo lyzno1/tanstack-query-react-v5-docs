@@ -3,14 +3,6 @@ id: network-mode
 title: 网络模式
 ---
 
-<!--
-translation-source-path: framework/react/guides/network-mode.md
-translation-source-ref: main
-translation-source-hash: 713fae3317d926526999ea809f08f94a5b03875c2ff00f3281da5d2a0e90f865
-translation-status: translated
--->
-
-
 TanStack Query 提供了三种网络模式，用于决定没有网络连接时[查询](./queries.md)和[变更](./mutations.md)应如何运行。你可以为每个查询或变更单独设置此模式，也可以通过查询或变更的默认选项进行全局配置。
 
 由于 TanStack Query 最常与数据获取库结合使用来获取数据，因此默认网络模式为 [online](#network-mode-online)。
@@ -39,7 +31,7 @@ TanStack Query 提供了三种网络模式，用于决定没有网络连接时[�
 
 ## 网络模式：offlineFirst
 
-此模式介于前两种模式之间：TanStack Query 会先执行一次 `queryFn`，如果失败则暂停重试。如果有 Service Worker 像 [offline-first PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers) 那样拦截请求并从缓存返回内容，或者你通过 [Cache-Control header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#the_cache-control_header) 使用 HTTP 缓存，这种模式会非常有用。
+此模式介于前两种模式之间：TanStack Query 会先执行一次 `queryFn`，随后在离线时暂停重试。如果有 Service Worker 像 [offline-first PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers) 那样拦截请求并从缓存返回内容，或者你通过 [Cache-Control header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#the_cache-control_header) 使用 HTTP 缓存，这种模式会非常有用。
 
 在这些情况下，首次获取可能会成功，因为数据来自离线存储或缓存。如果缓存未命中，则会发出网络请求并且请求会失败。此时它的行为与 `online` 查询相同，会暂停重试。
 

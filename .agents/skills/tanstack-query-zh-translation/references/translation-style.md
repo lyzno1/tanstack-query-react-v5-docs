@@ -10,7 +10,7 @@
 
 - Keep heading hierarchy unchanged.
 - Preserve fenced code blocks exactly unless comments or strings are intentionally translated.
-- Preserve links and relative link targets.
+- Preserve link destinations; correct broken relative paths when verified.
 - Keep admonitions, lists, and tables structurally unchanged.
 
 ## Terminology Rules
@@ -25,7 +25,9 @@
 
 - Use direct instructional tone.
 - Prefer short sentences in conceptual sections.
-- Avoid adding new claims that do not exist in upstream docs.
+- If upstream contradicts its implementation, verify against the locked source
+  commit and mark the correction as a translator note with an exact source link.
+  Do not silently invent behavior or rewrite historical APIs as current APIs.
 
 ## Sync Safety
 
@@ -33,4 +35,5 @@
   - `src/content/docs/framework/**`
   - `src/content/docs/reference/**`
   - `src/content/docs/eslint/**`
+  - `src/content/docs/community-resources.md`
 - Only edit `src/content/docs/zh/**` for translation work.

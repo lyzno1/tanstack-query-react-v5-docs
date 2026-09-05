@@ -3,14 +3,6 @@ id: advanced-ssr
 title: 高级服务端渲染
 ---
 
-<!--
-translation-source-path: framework/react/guides/advanced-ssr.md
-translation-source-ref: main
-translation-source-hash: d2ea5ba6c0a0816e7a89b7f2c2dc4381f75575cd92bdac5ad908d5b1a465835e
-translation-status: translated
--->
-
-
 欢迎来到高级服务端渲染指南。在这里你将学习如何将 React Query 与流式传输（streaming）、Server Components 以及 Next.js app router 结合使用。
 
 在阅读本文前，你可能会先看一下 [Server Rendering & Hydration 指南](./ssr.md)。它讲解了 React Query 与 SSR 配合的基础知识；另外，[Performance & Request Waterfalls](./request-waterfalls.md) 和 [Prefetching & Router Integration](./prefetching.md) 也包含了很有价值的背景信息。
@@ -27,7 +19,7 @@ translation-status: translated
 
 到目前为止，这些指南里我们一直在讨论 _server_ 和 _client_。需要注意的是，容易混淆的一点在于：这并不与 _Server Components_ 和 _Client Components_ 一一对应。Server Components 保证只在服务端运行，而 Client Components 实际上可以在两端运行。原因是它们也可能在首次 _server rendering_ 阶段参与渲染。
 
-一种理解方式是：虽然 Server Components 也会 _render_，但它发生在“loader phase”（始终在服务端）；而 Client Components 运行在“application phase”。这个 application 既可能在 SSR 期间运行在服务端，也可能运行在浏览器等环境。它具体在哪运行、SSR 时是否运行，会因框架而异。
+一种理解方式是：虽然 Server Components 也会 _render_，但它发生在“加载阶段”（loader phase，始终发生在服务端）；而 Client Components 运行在“应用阶段”（application phase）。应用既可能在 SSR 期间运行在服务端，也可能运行在浏览器等环境。它具体在哪运行、SSR 时是否运行，会因框架而异。
 
 ### 初始设置
 
@@ -307,7 +299,7 @@ export default async function CommentsServerComponent() {
 
 ### 可选方案：使用单个 `queryClient` 进行预取
 
-上面的示例中，我们为每个取数的 Server Component 创建新的 `queryClient`。这是推荐方式。但如果你愿意，也可以创建一个单例并在所有 Server Components 之间复用：
+上面的示例中，我们为每个取数的 Server Component 创建新的 `queryClient`。这是推荐方式。但如果你愿意，也可以创建一个在同一次请求内由所有 Server Components 复用的实例：
 
 ```tsx
 // app/getQueryClient.tsx
@@ -481,7 +473,7 @@ export default function Posts() {
 }
 ```
 
-> 注意：你也可以用 `useQuery` 代替 `useSuspenseQuery`，Promise 依然会被正确接管。但在这种情况下 NextJs 不会 suspend，组件会以 `pending` 状态渲染，同时也会退出服务端内容渲染。
+> 注意：你也可以用 `useQuery` 代替 `useSuspenseQuery`，Promise 依然会被正确接管。但在这种情况下 Next.js 不会挂起，组件会以 `pending` 状态渲染，因此实际内容不会在服务端渲染。
 
 如果你使用的是非 JSON 数据类型，并在服务端序列化查询结果，可以在边界两侧分别使用 `dehydrate.serializeData` 与 `hydrate.deserializeData` 来序列化/反序列化数据，确保服务端与客户端缓存中的数据格式一致：
 

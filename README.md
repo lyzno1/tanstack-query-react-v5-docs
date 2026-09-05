@@ -24,14 +24,14 @@ From `https://github.com/TanStack/query`:
 - `docs/community-resources.md` (if present in the tracked ref)
 - `docs/config.json` (metadata for validation and example redirects)
 
-The sync script also generates `framework/react/examples/*` placeholder pages to avoid broken internal links.
+The sync script also generates example link pages and synchronization status pages in both languages.
 
 ## Commands
 
 - `pnpm run dev`: local preview
 - `pnpm run build`: production build
-- `pnpm run sync:docs`: sync docs from latest upstream v5 tag
-- `pnpm run sync:check`: check whether a newer upstream v5 tag exists
+- `pnpm run sync:docs`: sync docs from upstream `main`
+- `pnpm run sync:check`: check whether upstream `main` has changed
 
 ## First setup
 
@@ -53,10 +53,27 @@ pnpm run sync:docs -- --ref=v5.90.3
 
 1. `pnpm run sync:check`
 2. If update is available, run `pnpm run sync:docs`
-3. Run `pnpm run build`
-4. Commit and deploy
+3. Review changed Chinese translations and record only the reviewed source hashes.
+4. Run the validation commands below, then commit and deploy.
 
-A scheduled GitHub Actions workflow is included to run sync daily and open a PR when upstream changes are detected.
+The daily sync runs validation before publishing. When translations remain current,
+it commits directly to `main`. When translations are missing or stale, it updates
+one persistent PR (`chore/sync-query-react-v5-docs`) for translation work instead of
+creating daily PRs. It never marks untranslated content as reviewed. Branch protection
+is respected: a rejected direct push falls back to that PR.
+
+Chinese pages preserve upstream heading anchors. Community resources are rendered
+from translated frontmatter; example links are generated in both languages.
+
+### Translation maintenance
+
+- `pnpm i18n:status`: list missing, stale and orphan translations (including community resources).
+- Translate/review the complete source, then record each reviewed page with
+  `node scripts/i18n-verify.mjs --write --path=framework/react/guides/queries.md`.
+- `--all-reviewed` is only for a completed full audit, never for bypassing stale checks.
+- Validate with `pnpm check`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:maintenance`, `pnpm build`, and `pnpm links:check`.
+
+See the repository translation skill for terminology and review conventions.
 
 ## Environment variables
 

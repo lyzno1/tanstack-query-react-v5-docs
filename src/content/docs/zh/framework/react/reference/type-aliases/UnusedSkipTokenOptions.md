@@ -3,14 +3,6 @@ id: UnusedSkipTokenOptions
 title: UnusedSkipTokenOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UnusedSkipTokenOptions.md
-translation-source-ref: main
-translation-source-hash: dbea307a6d531005c46a0d8175531d2ce17711d41cf34d543ac5a63411fcb3ef
-translation-status: translated
--->
-
-
 ```ts
 type UnusedSkipTokenOptions<TQueryFnData, TError, TData, TQueryKey> = OmitKeyof<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryFn"> & object;
 ```

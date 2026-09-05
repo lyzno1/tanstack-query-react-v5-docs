@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/hydration
 ---
 
-<!--
-translation-source-path: framework/react/guides/ssr.md
-translation-source-ref: main
-translation-source-hash: 9c7e17ca9c70cc4f5a9b2e9c1e7f7a0984a7f72003bdeabdd28a9522b642036c
-translation-status: translated
--->
-
-
 本指南将介绍如何在服务端渲染中使用 React Query。
 
 你可以先阅读[预取与路由器集成](./prefetching.md)作为背景，也建议先看一下[性能与请求瀑布指南](./request-waterfalls.md)。
@@ -561,7 +553,7 @@ dehydrate(queryClient, {
 
 如果你为每个请求都创建 `QueryClient`，React Query 会为其创建隔离缓存，并在 `gcTime` 周期内保留在内存中。若该时间段请求量很大，服务端内存占用可能升高。
 
-在服务端，`gcTime` 默认是 `Infinity`，会禁用手动垃圾回收，并在请求结束后自动清理内存。如果你显式设置了非 Infinity 的 `gcTime`，就需要自行更早清理缓存。
+在服务端，`gcTime` 默认是 `Infinity`，会禁用 React Query 的定时垃圾回收，让请求结束后不再被引用的缓存由运行时回收。如果你显式设置了非 Infinity 的 `gcTime`，就需要自行更早清理缓存。
 
 避免把 `gcTime` 设为 `0`，这可能导致水合错误。原因是 [Hydration Boundary](../reference/functions/HydrationBoundary.md) 会把渲染所需数据放入缓存，若渲染完成前就被垃圾回收移除，可能出问题。如果你需要更短 `gcTime`，建议设为 `2 * 1000`，给应用留出足够时间引用数据。
 

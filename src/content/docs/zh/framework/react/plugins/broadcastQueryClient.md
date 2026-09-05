@@ -3,14 +3,6 @@ id: broadcastQueryClient
 title: broadcastQueryClient (Experimental)
 ---
 
-<!--
-translation-source-path: framework/react/plugins/broadcastQueryClient.md
-translation-source-ref: main
-translation-source-hash: ee7a7fcdca99ee87f06f87689e4584c7301f3562440e373eebf9be9f5f7c11e7
-translation-status: translated
--->
-
-
 > 非常重要：该工具目前处于实验阶段。这意味着次版本和补丁版本都可能出现破坏性变更。请自行承担使用风险。如果你选择在生产环境依赖该实验功能，请将版本锁定到具体补丁版本，以避免意外中断。
 
 `broadcastQueryClient` 是一个实用工具，用于在同源的浏览器标签页和窗口之间广播并同步 Query Client 的状态。

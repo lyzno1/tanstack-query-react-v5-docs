@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/focusManager
 ---
 
-<!--
-translation-source-path: reference/focusManager.md
-translation-source-ref: main
-translation-source-hash: e3d3b079cb6dbdc2d4911e44c16e22cfc9d761cf79d8454dada5643ff631a82a
-translation-status: translated
--->
-
-
 `FocusManager` 用于管理 TanStack Query 中的焦点状态。
 
 它可用于更改默认事件监听器，或手动修改焦点状态。

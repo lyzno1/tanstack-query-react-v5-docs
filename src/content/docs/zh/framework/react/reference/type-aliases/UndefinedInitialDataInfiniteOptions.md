@@ -3,14 +3,6 @@ id: UndefinedInitialDataInfiniteOptions
 title: UndefinedInitialDataInfiniteOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UndefinedInitialDataInfiniteOptions.md
-translation-source-ref: main
-translation-source-hash: 6362073c9a81459173e0da38be809480eac9623baa0bd97b62b72bd1d1e72215
-translation-status: translated
--->
-
-
 ```ts
 type UndefinedInitialDataInfiniteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> = UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> & object;
 ```
@@ -32,7 +24,7 @@ optional initialData:
 
 如果设置了该值，它将作为查询缓存的初始数据（前提是该查询尚未创建或缓存）。如果设置为函数，
 该函数会在共享/根查询初始化期间被调用**一次**，并且应同步返回初始数据。除非设置了 `staleTime`，
-否则初始数据默认被视为已过期。`initialData` **会被持久保存在**缓存中。
+否则初始数据默认被视为已过期。`initialData` **会保存在**查询缓存中。
 
 ## 类型参数
 

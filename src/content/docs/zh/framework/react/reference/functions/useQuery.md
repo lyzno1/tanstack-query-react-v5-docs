@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useQuery
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useQuery.md
-translation-source-ref: main
-translation-source-hash: f2418847ec2ebb63892199aab376f69a1655eb970af473b4ddcf6590cb9a60ae
-translation-status: translated
--->
-
-
 ## 调用签名
 
 ```ts

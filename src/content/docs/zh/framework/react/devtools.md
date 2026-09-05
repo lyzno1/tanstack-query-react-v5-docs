@@ -3,14 +3,6 @@ id: devtools
 title: Devtools
 ---
 
-<!--
-translation-source-path: framework/react/devtools.md
-translation-source-ref: main
-translation-source-hash: aed8d75c7c0f9fb08c4569697d20e2087e0fdf307e295ca72218a9db1b88c76a
-translation-status: translated
--->
-
-
 挥起双手欢呼吧，React Query 自带专用 devtools！🥳
 
 开始使用 React Query 时，强烈建议把这些 devtools 常驻在身边。它们能将 React Query 的内部运行机制

@@ -3,14 +3,6 @@ id: request-waterfalls
 title: 性能与请求瀑布
 ---
 
-<!--
-translation-source-path: framework/react/guides/request-waterfalls.md
-translation-source-ref: main
-translation-source-hash: df429afdd7f8fa45bf2f738ac3c2c1d9bc591e341222702930c53972562f4b44
-translation-status: translated
--->
-
-
 应用性能是一个广泛且复杂的话题。虽然 React Query 不能让你的 API 本身变快，但在使用 React Query 的方式上仍有很多需要注意的点，才能获得最佳性能。
 
 使用 React Query（以及任何允许在组件内获取数据的库）时，最大的性能陷阱之一就是请求瀑布（request waterfalls）。本页将解释它是什么、如何识别它，以及如何通过重构应用或 API 来避免它。

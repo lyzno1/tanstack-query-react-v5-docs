@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useMutation
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useMutation.md
-translation-source-ref: main
-translation-source-hash: fb2434ec052b70367364a203783975611d8bc4fac0cfd432f56152bf75f13eb0
-translation-status: translated
--->
-
-
 ```ts
 function useMutation<TData, TError, TVariables, TOnMutateResult>(options, queryClient?): UseMutationResult<TData, TError, TVariables, TOnMutateResult>;
 ```

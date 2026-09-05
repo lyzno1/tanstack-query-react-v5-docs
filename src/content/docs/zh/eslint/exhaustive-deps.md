@@ -3,14 +3,6 @@ id: exhaustive-deps
 title: 完整声明查询键依赖项
 ---
 
-<!--
-translation-source-path: eslint/exhaustive-deps.md
-translation-source-ref: main
-translation-source-hash: fedcddd26fc3810150dc72c5475c600b5247b1d7f5f89fd483d7056b336242f8
-translation-status: translated
--->
-
-
 查询键应包含能够标识 `queryFn` 返回数据的可序列化值。
 这样可以确保各个查询分别缓存，并在这些值发生变化时自动重新获取查询。
 
@@ -91,5 +83,5 @@ const Component = ({ todoId, config }: { todoId: string, config: Config }) => {
 
 ## 属性
 
-- [x] ✅ Recommended
-- [x] 🔧 Fixable
+- [x] ✅ 推荐
+- [x] 🔧 可自动修复

@@ -3,14 +3,6 @@ id: AnyUseInfiniteQueryOptions
 title: AnyUseInfiniteQueryOptions
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/AnyUseInfiniteQueryOptions.md
-translation-source-ref: main
-translation-source-hash: ae239bf0d7af150d41dd4bbe08d0e564fa56aa8ccf69a0a6ac7fd940a775684e
-translation-status: translated
--->
-
-
 ```ts
 type AnyUseInfiniteQueryOptions = UseInfiniteQueryOptions<any, any, any, any, any>;
 ```

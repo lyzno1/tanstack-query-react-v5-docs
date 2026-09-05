@@ -3,14 +3,6 @@ id: query-invalidation
 title: 查询失效
 ---
 
-<!--
-translation-source-path: framework/react/guides/query-invalidation.md
-translation-source-ref: main
-translation-source-hash: e4cda3acadb7fb216fe6454ef55a790c2baa09a783fdd6c61b5b79d00faca63c
-translation-status: translated
--->
-
-
 等待查询变为过期后再重新获取，并不总是有效，尤其是在你明确知道由于用户操作导致查询数据已过时的情况下。为此，`QueryClient` 提供了 `invalidateQueries` 方法，让你可以智能地将查询标记为过期，并在需要时触发重新获取。
 
 [//]: # 'Example'

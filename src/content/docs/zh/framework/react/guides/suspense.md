@@ -3,14 +3,6 @@ id: suspense
 title: Suspense
 ---
 
-<!--
-translation-source-path: framework/react/guides/suspense.md
-translation-source-ref: main
-translation-source-hash: f228f8c90851e928b4a3a168457636ee174e0a82c32056dfb0855cbb5094a22e
-translation-status: translated
--->
-
-
 React Query 也可以与 React 的 Suspense 数据获取 API 一起使用。为此我们提供了专用 Hook：
 
 - [useSuspenseQuery](../reference/functions/useSuspenseQuery.md)
@@ -83,7 +75,7 @@ const App = () => (
         fallbackRender={({ resetErrorBoundary }) => (
           <div>
             There was an error!
-            <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+            <button onClick={() => resetErrorBoundary()}>Try again</button>
           </div>
         )}
       >
@@ -108,7 +100,7 @@ const App = () => {
       fallbackRender={({ resetErrorBoundary }) => (
         <div>
           There was an error!
-          <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+          <button onClick={() => resetErrorBoundary()}>Try again</button>
         </div>
       )}
     >

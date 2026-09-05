@@ -3,10 +3,10 @@ name: Sync TanStack Query React v5 Docs
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - '.github/workflows/sync-upstream.yml'
-      - 'scripts/check-upstream-update.mjs'
-      - 'scripts/sync-tanstack-query-react-v5.mjs'
+      - 'scripts/**'
   schedule:
     - cron: '20 3 * * *'
 
@@ -14,13 +14,18 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -34,25 +39,19 @@ jobs:
       - name: Keep scheduled workflow active
         if: steps.upstream.outputs.has_update != 'true'
         env:
-          KEEPALIVE_FILE: .github/sync-keepalive
-          KEEPALIVE_INTERVAL_DAYS: 30
+          SKIP_SIMPLE_GIT_HOOKS: 1
         run: |
-          now="$(date -u +%s)"
-          if [[ -f "$KEEPALIVE_FILE" ]]; then
-            last="$(date -u -d "$(cat "$KEEPALIVE_FILE")" +%s)"
-            age_days="$(( (now - last) / 86400 ))"
-            if (( age_days < KEEPALIVE_INTERVAL_DAYS )); then
-              echo "Last keepalive was $age_days days ago; skipping."
-              exit 0
-            fi
+          file=.github/sync-keepalive
+          if [[ -f "$file" ]]; then
+            age=$(( ($(date -u +%s) - $(date -u -d "$(cat "$file")" +%s)) / 86400 ))
+            if (( age < 30 )); then exit 0; fi
           fi
-
-          date -u +'%Y-%m-%dT%H:%M:%SZ' > "$KEEPALIVE_FILE"
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add "$KEEPALIVE_FILE"
+          date -u +'%Y-%m-%dT%H:%M:%SZ' > "$file"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$file"
           git commit -m 'chore: keep sync workflow active [skip ci]'
-          git push
+          git push origin HEAD:main
 
       - name: Setup pnpm
         if: steps.upstream.outputs.has_update == 'true'
@@ -68,108 +67,75 @@ jobs:
         if: steps.upstream.outputs.has_update == 'true'
         run: pnpm run sync:docs
 
-      - name: Collect sync metadata
+      - name: Validate candidate
         if: steps.upstream.outputs.has_update == 'true'
-        id: sync_meta
+        id: validation
+        shell: bash
         run: |
-          echo "timestamp=$(date -u +'%Y%m%d-%H%M%S')" >> "$GITHUB_OUTPUT"
-          ref="$(node --input-type=module -e 'import { readFileSync } from "node:fs"; const lock = JSON.parse(readFileSync("upstream/lock.json", "utf8")); process.stdout.write(lock.ref ?? "unknown")')"
-          echo "synced_ref=$ref" >> "$GITHUB_OUTPUT"
+          # Run all checks and retain diagnostics even when translations need work.
+          ready=true
+          for command in check lint i18n:check test:maintenance build links:check; do
+            log="$RUNNER_TEMP/check-${command//:/-}.log"
+            if ! pnpm run "$command" > "$log" 2>&1; then
+              ready=false
+              cat "$log"
+            fi
+          done
+          echo "ready=$ready" >> "$GITHUB_OUTPUT"
+          {
+            echo 'Automated sync from upstream TanStack Query main.'
+            echo
+            node --input-type=module -e 'import { readFileSync } from "node:fs"; const lock = JSON.parse(readFileSync("upstream/lock.json")); console.log(`Upstream commit: ${lock.commit}`)'
+            echo
+            echo "All validation checks passed: $ready"
+            echo
+            echo 'Translations must be reviewed before updating their source hashes.'
+            echo
+            echo '```text'
+            pnpm run i18n:status
+            echo '```'
+          } > "$RUNNER_TEMP/sync-pr-body.md"
+          cat "$RUNNER_TEMP/sync-pr-body.md" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Collect zh translation status
-        if: steps.upstream.outputs.has_update == 'true'
-        id: i18n
+      - name: Push validated sync to main
+        if: steps.upstream.outputs.has_update == 'true' && steps.validation.outputs.ready == 'true'
+        id: publish
+        env:
+          SKIP_SIMPLE_GIT_HOOKS: 1
         run: |
-          status_json="$RUNNER_TEMP/i18n-status.json"
-          node .agents/skills/tanstack-query-zh-translation/scripts/i18n-status.mjs --json > "$status_json"
-          export I18N_STATUS_PATH="$status_json"
-          node --input-type=module <<'NODE'
-          import { appendFileSync, readFileSync } from 'node:fs'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/content/docs upstream
+          if git diff --cached --quiet; then
+            echo 'pushed=true' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m 'chore: sync TanStack Query React v5 docs'
+          if git push origin HEAD:main; then
+            echo 'pushed=true' >> "$GITHUB_OUTPUT"
+          else
+            # Protected branches or concurrent changes fall back to a reviewable PR.
+            echo 'pushed=false' >> "$GITHUB_OUTPUT"
+          fi
 
-          const statusPath = process.env.I18N_STATUS_PATH
-          const status = JSON.parse(readFileSync(statusPath, 'utf8'))
-          const outputPath = process.env.GITHUB_OUTPUT
-          const counts = status?.counts ?? {}
-          const lists = status?.lists ?? {}
-
-          const missing = Number(counts.missing ?? 0)
-          const stale = Number(counts.stale ?? 0)
-          const upToDate = Number(counts.upToDate ?? 0)
-
-          const missingPreview =
-            Array.isArray(lists.missing) && lists.missing.length > 0
-              ? lists.missing.slice(0, 10).join('\n')
-              : '(none)'
-          const stalePreview =
-            Array.isArray(lists.stale) && lists.stale.length > 0
-              ? lists.stale
-                  .slice(0, 10)
-                  .map((entry) =>
-                    entry && typeof entry === 'object'
-                      ? `${entry.path ?? 'unknown'} (${entry.reason ?? 'unknown'})`
-                      : String(entry),
-                  )
-                  .join('\n')
-              : '(none)'
-
-          appendFileSync(outputPath, `missing=${missing}\n`)
-          appendFileSync(outputPath, `stale=${stale}\n`)
-          appendFileSync(outputPath, `up_to_date=${upToDate}\n`)
-          appendFileSync(outputPath, `missing_preview<<EOF\n${missingPreview}\nEOF\n`)
-          appendFileSync(outputPath, `stale_preview<<EOF\n${stalePreview}\nEOF\n`)
-          NODE
-
-      - name: Astro check
-        if: steps.upstream.outputs.has_update == 'true'
-        run: pnpm run check
-
-      - name: Lint
-        if: steps.upstream.outputs.has_update == 'true'
-        run: pnpm run lint
-
-      - name: Build site
-        if: steps.upstream.outputs.has_update == 'true'
-        run: pnpm run build
-
-      - name: Build pull request body
-        if: steps.upstream.outputs.has_update == 'true'
-        run: |
-          cat > "$RUNNER_TEMP/sync-pr-body.md" <<EOF
-          Automated sync from upstream TanStack Query v5 docs.
-
-          - Synced ref: \`${{ steps.sync_meta.outputs.synced_ref }}\`
-          - Sync branch timestamp (UTC): \`${{ steps.sync_meta.outputs.timestamp }}\`
-          - Ran \`pnpm run sync:docs\`
-          - Ran \`pnpm run check\`
-          - Ran \`pnpm run lint\`
-          - Ran \`pnpm run build\`
-
-          ## zh translation status
-
-          - upToDate: ${{ steps.i18n.outputs.up_to_date }}
-          - missing: ${{ steps.i18n.outputs.missing }}
-          - stale: ${{ steps.i18n.outputs.stale }}
-
-          ### missing (first 10)
-
-          \`\`\`
-          ${{ steps.i18n.outputs.missing_preview }}
-          \`\`\`
-
-          ### stale (first 10)
-
-          \`\`\`
-          ${{ steps.i18n.outputs.stale_preview }}
-          \`\`\`
-          EOF
-
-      - name: Create pull request
-        if: steps.upstream.outputs.has_update == 'true'
+      - name: Create or update translation PR
+        if: steps.upstream.outputs.has_update == 'true' && steps.publish.outputs.pushed != 'true'
         env:
           SKIP_SIMPLE_GIT_HOOKS: 1
         uses: peter-evans/create-pull-request@v7
         with:
+          base: main
           commit-message: 'chore: sync TanStack Query React v5 docs'
-          branch: chore/sync-query-react-v5-docs-${{ steps.sync_meta.outputs.timestamp }}
+          branch: chore/sync-query-react-v5-docs
           title: 'chore: sync TanStack Query React v5 docs'
           body-path: ${{ runner.temp }}/sync-pr-body.md
+          add-paths: |
+            src/content/docs
+            upstream
+
+      - name: Upload validation diagnostics
+        if: always() && steps.upstream.outputs.has_update == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-validation
+          path: ${{ runner.temp }}/check-*.log

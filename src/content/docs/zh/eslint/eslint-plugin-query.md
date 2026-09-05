@@ -3,14 +3,6 @@ id: eslint-plugin-query
 title: ESLint Query 插件
 ---
 
-<!--
-translation-source-path: eslint/eslint-plugin-query.md
-translation-source-ref: main
-translation-source-hash: 9dc5644c65099aee09714ca447f3398c5d07af3c60116b5384259607a831d4bb
-translation-status: translated
--->
-
-
 TanStack Query 自带 ESLint 插件。该插件用于落实最佳实践，并帮助你避免常见错误。
 
 ## 安装

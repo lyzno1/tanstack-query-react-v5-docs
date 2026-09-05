@@ -3,14 +3,6 @@ id: installation
 title: 安装
 ---
 
-<!--
-translation-source-path: framework/react/installation.md
-translation-source-ref: main
-translation-source-hash: 89030a5abb31fe70d1bfc2a94b1957d259a6f63a74c2c3f5092b7195196457ea
-translation-status: translated
--->
-
-
 你可以通过 [NPM](https://npmjs.com/) 安装 React Query，
 也可以通过 [ESM.sh](https://esm.sh/) 的传统 `<script>` 方式使用。
 
@@ -87,7 +79,7 @@ Opera >= 77
 
 ### 建议
 
-也建议同时使用我们的 [ESLint Plugin Query](../../eslint/eslint-plugin-query.md)，帮助你在编码时发现 bug 与不一致问题。可通过以下命令安装：
+也建议同时使用我们的 [ESLint Plugin Query](../../../eslint/eslint-plugin-query.md)，帮助你在编码时发现 bug 与不一致问题。可通过以下命令安装：
 
 ```bash
 npm i -D @tanstack/eslint-plugin-query

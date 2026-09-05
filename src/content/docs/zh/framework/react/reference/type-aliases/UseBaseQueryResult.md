@@ -3,14 +3,6 @@ id: UseBaseQueryResult
 title: UseBaseQueryResult
 ---
 
-<!--
-translation-source-path: framework/react/reference/type-aliases/UseBaseQueryResult.md
-translation-source-ref: main
-translation-source-hash: 59f9a2df7133b7b3e733a33a34597a94c6278b16e13b2793216286201d26f55d
-translation-status: translated
--->
-
-
 ```ts
 type UseBaseQueryResult<TData, TError> = QueryObserverResult<TData, TError>;
 ```

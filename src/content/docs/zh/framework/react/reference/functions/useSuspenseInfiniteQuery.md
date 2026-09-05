@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/useSuspenseInfiniteQuery
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/useSuspenseInfiniteQuery.md
-translation-source-ref: main
-translation-source-hash: 15f8c8f4cfc123f21d3d6e6afd53162b9c325bf9892a04af9a48a50d4a24d3e6
-translation-status: translated
--->
-
-
 ```ts
 function useSuspenseInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options, queryClient?): UseSuspenseInfiniteQueryResult<TData, TError>;
 ```

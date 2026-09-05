@@ -3,14 +3,6 @@ id: polling
 title: 轮询
 ---
 
-<!--
-translation-source-path: framework/react/guides/polling.md
-translation-source-ref: main
-translation-source-hash: 4ca50ab200e96b4c99d65c77d1e7541a81cd4985ab64d50d08c4ea8e948bf9f5
-translation-status: translated
--->
-
-
 `refetchInterval` 可让查询按定时器重新获取数据。将其设为以毫秒为单位的数值后，只要至少有一个活跃观察者，查询就会每隔 N 毫秒运行一次：
 
 [//]: # 'Example1'

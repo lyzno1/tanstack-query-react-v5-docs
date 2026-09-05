@@ -3,14 +3,6 @@ id: IsRestoringProvider
 title: IsRestoringProvider
 ---
 
-<!--
-translation-source-path: framework/react/reference/variables/IsRestoringProvider.md
-translation-source-ref: main
-translation-source-hash: c78eaf029a8ac170aa556e68f4ef04d42f8d6168b726f00eb0bf3bcec779e982
-translation-status: translated
--->
-
-
 ```ts
 const IsRestoringProvider: Provider<boolean> = IsRestoringContext.Provider;
 ```

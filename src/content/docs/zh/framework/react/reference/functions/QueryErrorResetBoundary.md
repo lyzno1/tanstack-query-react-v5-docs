@@ -5,14 +5,6 @@ redirect_from:
   - framework/react/reference/QueryErrorResetBoundary
 ---
 
-<!--
-translation-source-path: framework/react/reference/functions/QueryErrorResetBoundary.md
-translation-source-ref: main
-translation-source-hash: 9b527bfd4fab15d0cfb852905cdad30dcada5748f8fbf141bb0b45cdc903d820
-translation-status: translated
--->
-
-
 ```ts
 function QueryErrorResetBoundary(__namedParameters): Element;
 ```
