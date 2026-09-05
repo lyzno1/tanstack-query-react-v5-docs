@@ -89,7 +89,7 @@ See the repository translation skill for terminology and review conventions.
 
 - `SITE_URL`: canonical production origin, used for canonical URLs, hreflang links and sitemap entries. Loaded from `.env` and `NODE_ENV`-specific files (such as `.env.production`) as well as process environment variables.
 - On Vercel, an empty `SITE_URL` falls back to `VERCEL_PROJECT_PRODUCTION_URL`. A production deployment requires one of these. Branch-specific preview URLs are never used as the canonical origin.
-- Without an origin, local builds use `http://localhost:4321` and are marked `noindex`. Preview deployments are also marked `noindex` and their robots file disallows crawling.
+- Without an origin, local builds use `http://localhost:4321` and are marked `noindex`. Preview deployments are marked `noindex` but allow crawling so search engines can read that directive; their robots file does not advertise a sitemap.
 - `/robots.txt` advertises the sitemap on production deployments. Page summaries come from authored descriptions or the first readable Markdown paragraph.
 - Local development and build checks:
 

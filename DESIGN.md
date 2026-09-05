@@ -159,8 +159,10 @@ styling in CSS. Do not rewrite Starlight components simply to attach generated c
   builds use localhost; a Vercel production build without a real origin fails.
 - Keep Starlight's canonical, hreflang, sitemap and default head rendering. Explicit
   trailing slashes match generated directory routes. The build-time robots endpoint
-  advertises the canonical sitemap for production and blocks local/preview crawling.
-  Preview pages also get `noindex`; this is indexing guidance, not access control.
+  advertises the canonical sitemap for production and blocks localhost crawling.
+  Preview pages get `noindex` while allowing crawlers to read it, following
+  [Google's noindex guidance](https://developers.google.com/search/docs/crawling-indexing/block-indexing).
+  Preview robots files omit the sitemap. This is indexing guidance, not access control.
 - Use the public [route middleware API](https://starlight.astro.build/guides/route-data/)
   to preserve authored descriptions or derive summaries from actual Markdown prose.
   Empty prose gets a localized fallback. Keep Open Graph descriptions in sync, use

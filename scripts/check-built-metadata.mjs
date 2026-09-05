@@ -55,6 +55,11 @@ for (const file of ['index.html', 'zh/index.html']) {
 const robots = readFileSync(path.join(root, 'robots.txt'), 'utf8')
 assert.match(robots, /^User-agent: \*/)
 const [origin] = origins
-if (new URL(origin).hostname === 'localhost' || process.env.VERCEL_ENV === 'preview') assert.match(robots, /Disallow: \//)
+if (new URL(origin).hostname === 'localhost') assert.match(robots, /Disallow: \//)
+else if (process.env.VERCEL_ENV === 'preview') {
+  assert.match(robots, /Allow: \//)
+  assert.ok(!robots.includes('Disallow: /'))
+  assert.ok(!robots.includes('Sitemap:'))
+}
 else assert.ok(robots.includes(`Sitemap: ${origin}/sitemap-index.xml`))
 console.log(`Checked metadata and landmarks on ${docs} documentation pages, redirect links and robots.txt.`)
