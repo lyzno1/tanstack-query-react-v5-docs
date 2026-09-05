@@ -281,6 +281,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'TanStack Query React v5 Docs',
+			favicon: '/favicon.svg',
 			description: 'TanStack Query React v5 documentation with automated upstream synchronization.',
 			components: {
 				SiteTitle: './src/components/starlight/SiteTitle.astro',

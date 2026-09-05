@@ -144,3 +144,17 @@ reach the local server, and the Vercel preview requires account authentication.
 Desktop/mobile screenshots, interaction checks and measured rendered contrast must
 not be represented as passing until someone with preview access performs them.
 The checklist above records the outstanding visual acceptance work.
+
+## Site icon
+
+`public/favicon.svg` is an independently drawn open-book icon for this documentation
+site. It uses the same monochrome palette, has a 32px viewBox and switches contrast
+with the browser's preferred color scheme. `favicon` is explicitly configured in
+Starlight so the default starter mark is not used.
+
+The [TanStack brand assets page](https://tanstack.com/brand-guide) provides official
+favicons and visual usage instructions. However, [section 6 of its terms](https://tanstack.com/terms)
+requires prior written consent to use its trademarks. The published asset downloads
+alone do not clearly authorize this independent documentation site's branding.
+We therefore use our own document symbol. This is a conservative implementation
+choice, not a legal determination about every possible use of the TanStack marks.
