@@ -157,11 +157,17 @@ footer .meta { font-size: 0.8125rem; }
   /* Keep Starlight's responsive shell while giving the article more of the width. */
   .right-sidebar-container { flex: 0 0 13rem; }
   [data-has-sidebar][data-has-toc] .main-pane { width: calc(100% - 13rem); }
+  .right-sidebar { width: 13rem; }
   .right-sidebar-panel { padding-inline: 1rem; }
+  .right-sidebar-panel .sl-container { width: 100%; max-width: 100%; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   :where(nav.sidebar a, button, .pagination-links a) { transition: background-color 120ms, color 120ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav.sidebar .caret { transition: none; }
 }
 
 @media print {

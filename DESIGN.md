@@ -131,3 +131,16 @@ Before merging any future visual or framework update:
   wide tables may scroll inside their own containers; the page itself must not.
 - Verify fonts are served locally and copied Markdown retains the editorial content.
 - Do not modify synchronized Markdown or refresh translation hashes for style work.
+
+## Validation recorded for this change
+
+All six repository gates passed locally, and GitHub CI and the Vercel preview build
+passed. The output contains 333 pages and 62,233 valid internal links. All 139
+translation records remain current and untouched.
+
+Browser inspection of the reference nuqs site covered both themes. Browser inspection
+of this project's changed pages remains **unverified**: the cloud browser cannot
+reach the local server, and the Vercel preview requires account authentication.
+Desktop/mobile screenshots, interaction checks and measured rendered contrast must
+not be represented as passing until someone with preview access performs them.
+The checklist above records the outstanding visual acceptance work.
