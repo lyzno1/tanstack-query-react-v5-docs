@@ -33,7 +33,17 @@ The sync script also generates example link pages and synchronization status pag
 - `pnpm run sync:docs`: sync docs from upstream `main`
 - `pnpm run sync:check`: check whether upstream `main` has changed
 
+## Design
+
+The visual specification, verified nuqs sources, theme tokens and review checklist
+are in [DESIGN.md](DESIGN.md). Keep presentation changes in the Starlight theme and
+component overrides so upstream Markdown remains independently synchronized.
+
 ## First setup
+
+Use Node.js 24 (see `.node-version`) and the pinned pnpm 10.30.1 via Corepack.
+Astro 7 requires Node.js 22.12 or newer; this project standardizes on Node.js 24.
+
 
 ```bash
 pnpm install

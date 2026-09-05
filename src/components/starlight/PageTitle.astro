@@ -5,7 +5,7 @@ import { editorialMarkdown } from '../../../scripts/docs-markdown.mjs';
 const { entry } = Astro.locals.starlightRoute;
 const title = entry.data.title;
 const isZh = entry.id.startsWith('zh/');
-const copyLabel = isZh ? '复制' : 'Copy';
+const copyLabel = isZh ? '复制 Markdown' : 'Copy Markdown';
 const copiedLabel = isZh ? '已复制！' : 'Copied!';
 const editorial = entry.filePath ? editorialMarkdown(path.resolve(entry.filePath)) : '';
 const rawMarkdown = [entry.body ?? '', editorial].filter(Boolean).join('\n\n');
@@ -29,162 +29,56 @@ const serializeForScriptTag = (value: string) =>
 const fullMarkdownJson = serializeForScriptTag(fullMarkdown);
 ---
 
-<div class="page-title-row" data-copy-md-root>
+<div class="page-heading">
+  <p class="eyebrow" translate="no">React <span>v5</span></p>
   <h1 id="_top">{title}</h1>
-  <button
-    class="copy-md-btn"
-    type="button"
-    aria-label={isZh ? '复制页面的 Markdown' : 'Copy page as Markdown'}
-    data-copy-label={copyLabel}
-    data-copied-label={copiedLabel}
-    data-md-source-id={sourceId}
-  >
-  <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M16 3H4a2 2 0 0 0-2 2v11"></path>
-    <rect x="8" y="7" width="14" height="14" rx="2"></rect>
-  </svg>
-  <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="20 6 9 17 4 12"></polyline>
-  </svg>
-  <span class="copy-label">{copyLabel}</span>
-  </button>
+  <copy-markdown class="page-tools print:hidden">
+    <button type="button" class="copy-md-btn" data-source={sourceId}
+      data-copy={copyLabel} data-copied={copiedLabel}
+      data-error={isZh ? '复制失败，请重试' : 'Copy failed. Please retry.'}>
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8" y="8" width="12" height="13" rx="2"></rect>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3"></path>
+      </svg>
+      <span>{copyLabel}</span>
+    </button>
+    <span class="copy-status" role="status" aria-live="polite"></span>
+  </copy-markdown>
 </div>
 <script is:inline id={sourceId} type="application/json" set:html={fullMarkdownJson} />
 
 <style>
-  @layer starlight.core {
-    h1 {
-      margin-top: 1rem;
-      font-size: var(--sl-text-h1);
-      line-height: var(--sl-line-height-headings);
-      font-weight: 600;
-      color: var(--sl-color-white);
-    }
-  }
-
-  .page-title-row {
-    display: flex;
-    align-items: flex-end;
-    gap: 0.75rem;
-  }
-
-  .page-title-row h1 {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .copy-md-btn {
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-bottom: 0.35rem;
-    padding: 0.4rem 0.75rem;
-    border: 1px solid var(--sl-color-hairline);
-    border-radius: 0.5rem;
-    background: var(--sl-color-accent-low);
-    color: var(--sl-color-gray-2);
-    font-family: var(--sl-font);
-    font-size: 0.78rem;
-    font-weight: 500;
-    line-height: 1;
-    cursor: pointer;
-    user-select: none;
-    transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
-  }
-
-  .copy-md-btn:hover {
-    color: var(--sl-color-white);
-    border-color: var(--sl-color-gray-3);
-    background: var(--sl-color-gray-5);
-  }
-
-  .copy-md-btn:active {
-    transform: scale(0.97);
-  }
-
-  .copy-md-btn.copied {
-    color: var(--sl-color-green);
-    border-color: color-mix(in srgb, var(--sl-color-green) 40%, transparent);
-    background: color-mix(in srgb, var(--sl-color-green) 8%, transparent);
-    pointer-events: none;
-  }
-
-  .copy-md-btn .check-icon {
-    display: none;
-  }
-
-  .copy-md-btn.copied .copy-icon {
-    display: none;
-  }
-
-  .copy-md-btn.copied .check-icon {
-    display: block;
-  }
+  .eyebrow { margin: 0 0 0.75rem; color: var(--doc-muted); font-size: 0.75rem; font-weight: 500; }
+  .eyebrow span { margin-inline-start: 0.35rem; }
+  h1 { margin: 0; font-size: clamp(1.75rem, 1.5rem + 0.7vw, 2.125rem); line-height: 1.3; letter-spacing: -0.035em; font-weight: 650; color: var(--doc-fg); overflow-wrap: anywhere; }
+  .page-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-top: 1.25rem; }
+  .copy-md-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.625rem; min-height: 2rem; border: 1px solid var(--doc-border); border-radius: 0.375rem; background: var(--doc-bg); color: var(--doc-muted); font: inherit; font-size: 0.75rem; line-height: 1.5; box-shadow: var(--sl-shadow-sm); cursor: pointer; }
+  .copy-md-btn:hover { color: var(--doc-fg); background: var(--doc-surface); }
+  .copy-status { font-size: 0.75rem; color: var(--doc-muted); }
+  @media (pointer: coarse) { .copy-md-btn { min-height: 2.75rem; } }
 </style>
 
-<script is:inline>
-  const __fallbackCopy = (text) => {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;left:-9999px;opacity:0';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); } catch { /* noop */ }
-    document.body.removeChild(ta);
-  };
-
-  const __initCopyMd = () => {
-    const roots = document.querySelectorAll('[data-copy-md-root]');
-    for (const root of roots) {
-      if (root.__copyBound) continue;
-      root.__copyBound = true;
-
-      const btn = root.querySelector('.copy-md-btn');
-      if (!btn) continue;
-
-      btn.addEventListener('click', () => {
-        if (btn.classList.contains('copied')) return;
-
-        const sourceId = btn.getAttribute('data-md-source-id');
-        if (!sourceId) return;
-        const el = document.getElementById(sourceId);
-        if (!el) return;
-
-        let md;
+<script>
+  class CopyMarkdown extends HTMLElement {
+    connectedCallback() {
+      const button = this.querySelector('button');
+      const status = this.querySelector('[role="status"]');
+      if (!button || !status) return;
+      button.onclick = async () => {
+        const source = document.getElementById(button.dataset.source ?? '');
+        if (!source) return;
+        button.disabled = true;
         try {
-          md = JSON.parse(el.textContent || '""');
+          const markdown: string = JSON.parse(source.textContent ?? '""');
+          await navigator.clipboard.writeText(markdown);
+          status.textContent = button.dataset.copied ?? '';
         } catch {
-          return;
+          status.textContent = button.dataset.error ?? '';
+        } finally {
+          button.disabled = false;
         }
-
-        const label = btn.querySelector('.copy-label');
-        const onDone = () => {
-          btn.classList.add('copied');
-          if (label) label.textContent = btn.dataset.copiedLabel;
-          setTimeout(() => {
-            btn.classList.remove('copied');
-            if (label) label.textContent = btn.dataset.copyLabel;
-          }, 2000);
-        };
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(md).then(onDone).catch(() => {
-            __fallbackCopy(md);
-            onDone();
-          });
-        } else {
-          __fallbackCopy(md);
-          onDone();
-        }
-      });
+      };
     }
-  };
-
-  document.addEventListener('astro:page-load', __initCopyMd);
-  if (document.readyState !== 'loading') {
-    __initCopyMd();
-  } else {
-    document.addEventListener('DOMContentLoaded', __initCopyMd);
   }
+  if (!customElements.get('copy-markdown')) customElements.define('copy-markdown', CopyMarkdown);
 </script>
