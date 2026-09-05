@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.node-version'
           cache: pnpm
 
       - name: Install dependencies
@@ -53,3 +53,6 @@ jobs:
 
       - name: Check built documentation links
         run: pnpm run links:check
+
+      - name: Check metadata and document landmarks
+        run: pnpm run seo:check

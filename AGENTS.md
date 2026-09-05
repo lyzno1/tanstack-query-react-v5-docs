@@ -24,7 +24,7 @@ Use the package manager pinned in `package.json` (`corepack pnpm` if necessary).
 - `pnpm sync:docs` (defaults to upstream `main`; `-- --ref=<branch-or-tag>` pins a ref)
 - `pnpm sync:check` (nonzero if upstream `main` differs)
 - `pnpm i18n:status` (missing/stale/orphan pages)
-- Before a PR: `pnpm check`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:maintenance`, `pnpm build`, `pnpm links:check`
+- Before a PR: `pnpm check`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:maintenance`, `pnpm build`, `pnpm links:check`, `pnpm seo:check`
 
 For sync changes run `pnpm sync:docs` and inspect source files, manifest, lock and
 both generated example directories. Test maintenance scripts with temporary
@@ -40,4 +40,5 @@ The scheduled sync pushes only after all checks including translation integrity
 pass. Otherwise it updates one persistent translation PR. Never refresh translation
 hashes automatically or force-push `main` to make a sync pass.
 
-Set `SITE_URL` for production; its fallback is `https://example.com`.
+Set `SITE_URL` to the canonical production origin. Vercel can fall back to
+`VERCEL_PROJECT_PRODUCTION_URL`; local builds use localhost and are not indexable.

@@ -7,13 +7,20 @@ const canonical = Astro.site ? new URL(target, Astro.site).toString() : target;
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<meta http-equiv="refresh" content={`0;url=${target}`} />
 		<meta name="robots" content="noindex" />
 		<link rel="canonical" href={canonical} />
 		<script is:inline>
 			window.location.replace('/framework/react/overview/');
 		</script>
-		<title>Redirecting</title>
+		<title>Redirecting to documentation</title>
 	</head>
-	<body style="display: none;"></body>
+	<body>
+		<main>
+			<h1>TanStack Query React v5</h1>
+			<p><a href={target}>Continue to the documentation</a></p>
+		</main>
+	</body>
 </html>

@@ -30,7 +30,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.node-version'
 
       - name: Check upstream ref
         id: upstream
@@ -74,7 +74,7 @@ jobs:
         run: |
           # Run all checks and retain diagnostics even when translations need work.
           ready=true
-          for command in check lint i18n:check test:maintenance build links:check; do
+          for command in check lint i18n:check test:maintenance build links:check seo:check; do
             log="$RUNNER_TEMP/check-${command//:/-}.log"
             if ! pnpm run "$command" > "$log" 2>&1; then
               ready=false

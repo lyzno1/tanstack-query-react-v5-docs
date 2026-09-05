@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "packageManager": "pnpm@10.30.1",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -20,11 +23,14 @@
     "i18n:check": "node scripts/check-i18n-status.mjs && node scripts/check-translation-content.mjs",
     "i18n:status": "node scripts/i18n-status.mjs",
     "links:check": "node scripts/check-built-links.mjs",
-    "test:maintenance": "node --test scripts/maintenance.test.mjs"
+    "test:maintenance": "node --test scripts/maintenance.test.mjs",
+    "seo:check": "node scripts/check-built-metadata.mjs"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.37.6",
-    "astro": "^5.6.1",
+    "@astrojs/markdown-remark": "7.3.0",
+    "@astrojs/starlight": "^0.42.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "astro": "^7.3.1",
     "sharp": "^0.34.2"
   },
   "devDependencies": {
@@ -34,10 +40,12 @@
     "eslint": "^9.39.3",
     "eslint-plugin-astro": "^1.6.0",
     "github-slugger": "2.0.0",
+    "parse5": "7.3.0",
     "remark-parse": "11.0.0",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
     "unified": "11.0.5",
+    "vite": "8.2.2",
     "yaml": "2.8.2"
   },
   "simple-git-hooks": {

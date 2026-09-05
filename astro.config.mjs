@@ -3,7 +3,10 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
+import { loadEnv } from 'vite';
+import { resolveSite } from './scripts/site-settings.mjs';
 import starlight from '@astrojs/starlight';
+import { unified } from '@astrojs/markdown-remark';
 import { parse as parseYaml } from 'yaml';
 import { docsMarkdown } from './scripts/docs-markdown.mjs';
 
@@ -185,7 +188,7 @@ function buildReactSidebar(config) {
 	if (!config) {
 		return {
 			label: 'React Docs',
-			autogenerate: { directory: 'framework/react' },
+			items: [{ autogenerate: { directory: 'framework/react' } }],
 		};
 	}
 
@@ -199,7 +202,7 @@ function buildReactSidebar(config) {
 	if (!items.length) {
 		return {
 			label: 'React Docs',
-			autogenerate: { directory: 'framework/react' },
+			items: [{ autogenerate: { directory: 'framework/react' } }],
 		};
 	}
 
@@ -216,7 +219,7 @@ function buildEslintSidebar(config) {
 	if (!config) {
 		return {
 			label: 'ESLint',
-			autogenerate: { directory: 'eslint' },
+			items: [{ autogenerate: { directory: 'eslint' } }],
 		};
 	}
 
@@ -224,7 +227,7 @@ function buildEslintSidebar(config) {
 	if (!eslint.length) {
 		return {
 			label: 'ESLint',
-			autogenerate: { directory: 'eslint' },
+			items: [{ autogenerate: { directory: 'eslint' } }],
 		};
 	}
 
@@ -235,7 +238,7 @@ function buildEslintSidebar(config) {
 }
 
 /**
- * @typedef {{label: string, link?: string, items?: LocalizedSidebarItem[], translations?: Record<string, string>}} LocalizedSidebarItem
+ * @typedef {{label?: string, autogenerate?: {directory: string}, link?: string, items?: LocalizedSidebarItem[], translations?: Record<string, string>}} LocalizedSidebarItem
  */
 /**
  * @template {LocalizedSidebarItem[]} T
@@ -246,7 +249,7 @@ function localizeSidebar(items) {
   /** @type {Record<string, string>} */
   const labels = { 'React Docs': 'React 文档', 'Getting Started': '入门', 'Guides & Concepts': '指南与概念', 'API Reference': 'API 参考', 'Examples': '示例', 'Plugins': '插件', 'Community': '社区', 'Community Resources': '社区资源' };
   for (const item of items) {
-    let translated = labels[item.label];
+    let translated = item.label ? labels[item.label] : undefined;
     if (item.link) {
       const route = item.link.replace(/^\/|\/$/g, '');
       const candidates = [`src/content/docs/zh/${route}.md`, `src/content/docs/zh/${route}/index.md`];
@@ -271,15 +274,21 @@ const sidebar = localizeSidebar([
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.SITE_URL || 'https://example.com',
+	site: resolveSite(loadEnv(process.env.NODE_ENV || 'development', process.cwd(), ['SITE_URL', 'VERCEL_'])),
+	trailingSlash: 'always',
+	// Preserve whitespace and the reviewed source-link/heading transforms on Astro 7.
+	compressHTML: true,
 	markdown: {
-		remarkPlugins: [docsMarkdown],
+		processor: unified({ remarkPlugins: [docsMarkdown] }),
 	},
 	integrations: [
 		starlight({
 			title: 'TanStack Query React v5 Docs',
+			favicon: '/favicon.svg',
+			routeMiddleware: './src/middleware/metadata.ts',
 			description: 'TanStack Query React v5 documentation with automated upstream synchronization.',
 			components: {
+				SiteTitle: './src/components/starlight/SiteTitle.astro',
 				PageTitle: './src/components/starlight/PageTitle.astro',
 			},
 			defaultLocale: 'root',
@@ -291,6 +300,18 @@ export default defineConfig({
 				zh: {
 					label: '简体中文',
 					lang: 'zh-CN',
+				},
+			},
+			expressiveCode: {
+				themes: ['github-dark', 'github-light'],
+				styleOverrides: {
+					borderRadius: '0.5rem',
+					borderColor: 'var(--doc-border)',
+					codeBackground: 'var(--doc-code-bg)',
+					codeFontFamily: 'var(--sl-font-mono)',
+					codeFontSize: '0.8125rem',
+					codeLineHeight: '1.65',
+					frames: { frameBoxShadowCssValue: 'none' },
 				},
 			},
 			customCss: ['./src/styles/theme.css'],

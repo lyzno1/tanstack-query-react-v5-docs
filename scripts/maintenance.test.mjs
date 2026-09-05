@@ -56,3 +56,26 @@ test('community frontmatter becomes visible content', () => {
   assert.match(JSON.stringify(tree), /TkDodo/)
   assert.match(editorialMarkdown(file), /TkDodo/)
 })
+
+
+test('site origins use the production domain and reject placeholder or malformed settings', async () => {
+  const { resolveSite, isNonIndexable } = await import('./site-settings.mjs')
+  assert.equal(resolveSite({ SITE_URL: 'https://docs.test/', VERCEL_PROJECT_PRODUCTION_URL: 'other.test' }), 'https://docs.test')
+  assert.equal(resolveSite({ VERCEL_PROJECT_PRODUCTION_URL: 'docs.test', VERCEL_URL: 'branch.test' }), 'https://docs.test')
+  assert.throws(() => resolveSite({ VERCEL_ENV: 'production' }))
+  for (const SITE_URL of ['https://example.com', 'https://docs.test/path', 'https://user:pass@docs.test', 'javascript:alert(1)']) {
+    assert.throws(() => resolveSite({ SITE_URL }))
+  }
+  assert.equal(isNonIndexable(resolveSite({})), true)
+  assert.equal(isNonIndexable('https://docs.test', 'preview'), true)
+  assert.equal(isNonIndexable('https://docs.test', 'production'), false)
+})
+
+test('page descriptions preserve authored summaries and extract readable bilingual prose', async () => {
+  const { pageDescription } = await import('./page-description.mjs')
+  assert.equal(pageDescription('# Heading\n\nUse **queries** with `useQuery` and [caching](/cache).', 'Queries', false), 'Use queries with useQuery and caching.')
+  assert.equal(pageDescription('正文', '标题', true, '作者摘要'), '作者摘要')
+  assert.equal(pageDescription('<!-- hidden -->\n\n![image](a.png)\n\n中文 **正文**。', '标题', true), '中文 正文。')
+  assert.ok(pageDescription('```js\nsecret()\n```', '安装', true).startsWith('安装：'))
+  assert.equal(Array.from(pageDescription('中'.repeat(120), '标题', true)).length, 101)
+})
