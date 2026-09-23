@@ -6,12 +6,12 @@ redirect_from:
 ---
 
 ```ts
-function useMutation<TData, TError, TVariables, TOnMutateResult>(options, queryClient?): UseMutationResult<TData, TError, TVariables, TOnMutateResult>;
+function useMutation<TData, TError, TVariables, TOnMutateResult>(options: UseMutationOptions<TData, TError, TVariables, TOnMutateResult>, queryClient?: QueryClient): UseMutationResult<TData, TError, TVariables, TOnMutateResult>;
 ```
 
-定义于： [react-query/src/useMutation.ts:191](https://github.com/TanStack/query/blob/main/packages/react-query/src/useMutation.ts#L191)
+定义于： [packages/react-query/src/useMutation.ts:191](https://github.com/TanStack/query/blob/main/packages/react-query/src/useMutation.ts#L191)
 
-与查询不同，变更通常用于创建、更新或删除数据，或执行服务端副作用。`useMutation` 就是用于此目的的 Hook。
+与查询不同，mutation 通常用于创建、更新或删除数据，或执行服务端副作用。`useMutation` 就是用于此目的的 Hook。
 
 ## 类型参数
 
@@ -41,7 +41,7 @@ function useMutation<TData, TError, TVariables, TOnMutateResult>(options, queryC
 
 ### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 
@@ -50,14 +50,14 @@ function useMutation<TData, TError, TVariables, TOnMutateResult>(options, queryC
 [`UseMutationResult`](../type-aliases/UseMutationResult.md)\<`TData`, `TError`, `TVariables`, `TOnMutateResult`\>
 
 `mutate` 和 `mutateAsync` 还接受第二个参数，用于为每次调用传入 `onSuccess`、`onError`、`onSettled`
-回调。这样可以在调用处触发副作用（例如导航），而不必将它们耦合到共享的变更定义中。Hook 级回调
-（通过 `options` 传入）会对每次变更触发；每次调用各自的回调只会对最近一次调用触发，并且仅在组件仍然挂载时触发——
-如果组件在变更结束前卸载，订阅会被移除，这些回调也不会触发。
+回调。这样可以在调用处触发副作用（例如导航），而不必将它们耦合到共享的 mutation 定义中。Hook 级回调
+（通过 `options` 传入）会对每次 mutation 触发；每次调用各自的回调只会对最近一次调用触发，并且仅在组件仍然挂载时触发——
+如果组件在 mutation 结束前卸载，订阅会被移除，这些回调也不会触发。
 
 ## 另请参阅
 
 使用 [mutationOptions](mutationOptions.md) 在多个 `useMutation` 调用处共享这些选项，或在其他位置
-通过 `mutationKey` 查找该变更（例如使用 `useMutationState`）。
+通过 `mutationKey` 查找该 mutation（例如使用 `useMutationState`）。
 
 ## 示例
 
@@ -86,7 +86,7 @@ function AddTodo() {
 }
 ```
 
-渲染变更自身的状态，而不只是触发变更：
+渲染 mutation 自身的状态，而不只是触发 mutation：
 ```tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
@@ -133,7 +133,7 @@ function AddTodo() {
         newTodo,
       ])
 
-      // 如果变更失败，此值会作为 `onMutateResult` 传给 `onError`。
+      // 如果 mutation 失败，此值会作为 `onMutateResult` 传给 `onError`。
       return { previousTodos }
     },
     onError: (_err, _newTodo, onMutateResult) => {
@@ -151,7 +151,7 @@ function AddTodo() {
 ```
 
 每次调用 `mutate` 时传入的回调只会对最后一次调用触发；而 `mutateAsync` 会为每次调用返回一个
-Promise，因此可以等待所有调用完成：
+Promise，因此可以等待所有成功的调用完成：
 ```tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
@@ -179,7 +179,7 @@ function AddTodos() {
 }
 ```
 
-如果上述某些变更可能各自独立失败，并且希望知道具体哪些变更失败，而不是在第一个 Promise 被拒绝时
+如果上述某些 mutation 可能各自独立失败，并且希望知道具体哪些 mutation 失败，而不是在第一个 Promise 被拒绝时
 就丢失这些信息，请将 `Promise.all` 替换为 `Promise.allSettled`：
 ```tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query'

@@ -1,5 +1,5 @@
 ---
-title: 离线查询与变更
+title: 离线查询与 mutation
 description: TanStack Query React 官方示例链接。
 ---
 

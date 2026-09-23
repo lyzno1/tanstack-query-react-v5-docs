@@ -93,9 +93,9 @@ interface CreateAsyncStoragePersisterOptions {
    * 传入毫秒数以对缓存写入磁盘进行节流 */
   throttleTime?: number
   /** 如何序列化要写入存储的数据 */
-  serialize?: (client: PersistedClient) => string
+  serialize?: (client: PersistedClient) => MaybePromise<string>
   /** 如何反序列化存储中的数据 */
-  deserialize?: (cachedString: string) => PersistedClient
+  deserialize?: (cachedString: string) => MaybePromise<PersistedClient>
   /** 持久化出错时如何重试 **/
   retry?: AsyncPersistRetryer
 }
@@ -107,6 +107,8 @@ interface AsyncStorage<TStorageValue = string> {
   entries?: () => MaybePromise<Array<[key: string, value: TStorageValue]>>
 }
 ```
+
+`serialize` 和 `deserialize` 回调既可以同步返回结果，也可以异步返回 Promise。
 
 默认选项为：
 

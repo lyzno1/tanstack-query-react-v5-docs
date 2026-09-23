@@ -1,15 +1,17 @@
 ---
 id: ssr
-title: 服务端渲染与水合
+title: 服务端渲染与 hydration
 redirect_from:
   - framework/react/reference/hydration
 ---
 
 本指南将介绍如何在服务端渲染中使用 React Query。
 
+如果使用 TanStack Start，请阅读 [Start + TanStack Query 指南](https://tanstack.com/start/latest/docs/framework/react/guide/tanstack-query)，了解其 SSR 集成、按请求创建 `QueryClient` 的方式，以及使 mutation 相关查询失效的示例。
+
 你可以先阅读[预取与路由器集成](./prefetching.md)作为背景，也建议先看一下[性能与请求瀑布指南](./request-waterfalls.md)。
 
-如需了解更深入的水合与预取示例（包括代码分割），请参阅[依赖查询与代码分割](./prefetching.md#dependent-queries-code-splitting)一节。
+如需了解更深入的 hydration 与预取示例（包括代码分割），请参阅[依赖查询与代码分割](./prefetching.md#dependent-queries-code-splitting)一节。
 
 如果你想了解更高级的服务端渲染模式（如流式渲染、Server Components 以及新的 Next.js app router），请参阅[高级服务端渲染指南](./advanced-ssr.md)。
 
@@ -37,7 +39,7 @@ redirect_from:
 
 当 **1.** 完成时，用户立刻能看到内容；当 **2.** 完成时，页面变得可交互可点击。由于 markup 已包含初始数据，客户端至少在首次渲染阶段无需再执行 **3.**，除非你之后要重新校验数据。
 
-以上是从客户端视角。服务端侧我们需要在生成/渲染 markup 之前先**预取（prefetch）**数据，再把数据**脱水（dehydrate）**为可序列化格式嵌入 markup；客户端再把这些数据**水合（hydrate）**进 React Query 缓存，避免再次发起获取。
+以上是从客户端视角。服务端侧我们需要在生成/渲染 markup 之前先**预取（prefetch）**数据，再将数据 **dehydrate** 为可序列化格式并嵌入 markup；客户端再将这些数据 **hydrate** 到 React Query 缓存中，避免再次发起获取。
 
 继续阅读，了解如何用 React Query 实现这三个步骤。
 
@@ -45,7 +47,7 @@ redirect_from:
 
 本指南使用常规 `useQuery` API。虽然不一定推荐，但你也可以改用 `useSuspenseQuery`，前提是**始终预取所有查询**。优点是你可以在客户端用 `<Suspense>` 处理加载状态。
 
-如果在使用 `useSuspenseQuery` 时漏掉了某个预取查询，后果取决于你使用的框架。在一些情况下，数据会在服务端 suspend 并被获取，但不会水合到客户端，导致客户端再次获取。这会造成 markup 水合不匹配，因为服务端和客户端渲染了不同内容。
+如果在使用 `useSuspenseQuery` 时漏掉了某个预取查询，后果取决于你使用的框架。在一些情况下，数据会在服务端 suspend 并被获取，但不会 hydrate 到客户端，导致客户端再次获取。这会造成 hydration 不匹配，因为服务端和客户端渲染了不同内容。
 
 ## 初始设置
 
@@ -166,9 +168,9 @@ function Posts() {
 - 若缓存里已存在该查询数据，`initialData` 永远不会覆盖它，**即便新数据比旧数据更新**
   - 这个问题为何严重？以上面 `getServerSideProps` 为例：如果你来回多次访问页面，`getServerSideProps` 每次都会执行并拿到新数据，但由于用了 `initialData`，客户端缓存和数据不会更新。
 
-完整水合方案也很直观，而且没有这些缺点。后续内容将重点介绍完整方案。
+完整 hydrate 方案也很直观，而且没有这些缺点。后续内容将重点介绍完整方案。
 
-## 使用水合 API
+## 使用 hydration API
 
 只需增加一点配置，你就可以在预加载阶段使用 `queryClient` 预取查询，再把该 `queryClient` 的序列化结果传给应用渲染部分并复用，从而规避上述缺点。你可以直接跳到完整 Next.js pages router 与 Remix 示例；在通用层面，额外步骤如下：
 
@@ -180,7 +182,7 @@ function Posts() {
 - 使用 `<HydrationBoundary state={dehydratedState}>` 包裹组件树，其中 `dehydratedState` 来自框架 loader。`dehydratedState` 的获取方式也因框架而异。
   - 你可以在每条路由上做，也可以在应用顶层做以减少样板，见示例
 
-> 一个有趣细节是：这里实际上有 _三个_ `queryClient`。框架 loader 属于渲染前的“预加载”阶段，这个阶段有自己的 `queryClient` 负责预取。该阶段脱水后的结果会传给**服务端渲染流程**和**客户端渲染流程**，而两边各自又有自己的 `queryClient`。这样可确保双方从相同数据起步，返回一致 markup。
+> 一个有趣细节是：这里实际上有 _三个_ `queryClient`。框架 loader 属于渲染前的“预加载”阶段，这个阶段有自己的 `queryClient` 负责预取。该阶段 dehydrate 后的结果会传给**服务端渲染流程**和**客户端渲染流程**，而两边各自又有自己的 `queryClient`。这样可确保双方从相同数据起步，返回一致 markup。
 
 > Server Components 也是一种“预加载”阶段，也能“预加载”（预渲染）React 组件树的一部分。详见[高级服务端渲染指南](./advanced-ssr.md)。
 
@@ -223,6 +225,7 @@ export default function MyApp({ Component, pageProps }) {
 import {
   dehydrate,
   HydrationBoundary,
+  noop,
   QueryClient,
   useQuery,
 } from '@tanstack/react-query'
@@ -308,6 +311,7 @@ import { json } from '@remix-run/node'
 import {
   dehydrate,
   HydrationBoundary,
+  noop,
   QueryClient,
   useQuery,
 } from '@tanstack/react-query'
@@ -370,6 +374,7 @@ export default function PostsRoute({ dehydratedState }) {
 // _app.tsx
 import {
   HydrationBoundary,
+  noop,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
@@ -431,9 +436,9 @@ export async function getServerSideProps() {
     queryFn: getUserByEmail,
   })
 
-  if (user?.userId) {
+  if (user?.id) {
     await queryClient.query({
-      queryKey: ['projects', userId],
+      queryKey: ['projects', user.id],
       queryFn: getProjectsByUser,
     })
   }
@@ -469,7 +474,7 @@ try {
 // You might also want to check and handle any invalid `result` here
 ```
 
-如果你确实希望在脱水状态中包含失败查询以避免重试，可以通过 `shouldDehydrateQuery` 选项覆盖默认逻辑：
+如果你确实希望在 dehydrate 状态中包含失败查询以避免重试，可以通过 `shouldDehydrateQuery` 选项覆盖默认逻辑：
 
 ```tsx
 dehydrate(queryClient, {
@@ -491,7 +496,7 @@ dehydrate(queryClient, {
 
 ## 关于请求瀑布的补充说明
 
-在[性能与请求瀑布指南](./request-waterfalls.md)中，我们提到会回到一个更复杂的嵌套瀑布场景，说明服务端渲染如何改变它。你可以查看那个[具体代码示例](./request-waterfalls#code-splitting)。这里简单回顾：在 `<Feed>` 组件里有一个代码分割的 `<GraphFeedItem>`，只有 feed 中包含 graph 项时才渲染，且两个组件各自获取自己的数据。客户端渲染下会形成如下请求瀑布：
+在[性能与请求瀑布指南](./request-waterfalls.md)中，我们提到会回到一个更复杂的嵌套瀑布场景，说明服务端渲染如何改变它。你可以查看那个[具体代码示例](./request-waterfalls.md#code-splitting)。这里简单回顾：在 `<Feed>` 组件里有一个代码分割的 `<GraphFeedItem>`，只有 feed 中包含 graph 项时才渲染，且两个组件各自获取自己的数据。客户端渲染下会形成如下请求瀑布：
 
 ```
 1. |> Markup (without content)
@@ -555,14 +560,14 @@ dehydrate(queryClient, {
 
 在服务端，`gcTime` 默认是 `Infinity`，会禁用 React Query 的定时垃圾回收，让请求结束后不再被引用的缓存由运行时回收。如果你显式设置了非 Infinity 的 `gcTime`，就需要自行更早清理缓存。
 
-避免把 `gcTime` 设为 `0`，这可能导致水合错误。原因是 [Hydration Boundary](../reference/functions/HydrationBoundary.md) 会把渲染所需数据放入缓存，若渲染完成前就被垃圾回收移除，可能出问题。如果你需要更短 `gcTime`，建议设为 `2 * 1000`，给应用留出足够时间引用数据。
+避免把 `gcTime` 设为 `0`，这可能导致 hydrate 错误。原因是 [Hydration Boundary](../reference/functions/HydrationBoundary.md) 会把渲染所需数据放入缓存，若渲染完成前就被垃圾回收移除，可能出问题。如果你需要更短 `gcTime`，建议设为 `2 * 1000`，给应用留出足够时间引用数据。
 
-若要在不再需要后清理缓存并降低内存占用，可在请求处理完、且脱水状态已发送给客户端后调用 [`queryClient.clear()`](../../../reference/QueryClient.md#queryclientclear)。
+若要在不再需要后清理缓存并降低内存占用，可在请求处理完、且 dehydrate 状态已发送给客户端后调用 [`queryClient.clear()`](../reference/classes/QueryClient.md#clear)。
 
 或者，你也可以设置更小的 `gcTime`。
 
 ### Next.js rewrites 的注意事项
 
-如果你把 [Next.js rewrites 特性](https://nextjs.org/docs/app/api-reference/next-config-js/rewrites) 与 [Automatic Static Optimization](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization) 或 `getStaticProps` 一起使用，需要注意：React Query 会发生第二次水合。这是因为 [Next.js 需要在客户端解析 rewrites](https://nextjs.org/docs/app/api-reference/next-config-js/rewrites#rewrite-parameters)，并在水合后收集参数，以便提供给 `router.query`。
+如果你把 [Next.js rewrites 特性](https://nextjs.org/docs/app/api-reference/next-config-js/rewrites) 与 [Automatic Static Optimization](https://nextjs.org/docs/pages/building-your-application/rendering/automatic-static-optimization) 或 `getStaticProps` 一起使用，需要注意：React Query 会发生第二次 hydrate。这是因为 [Next.js 需要在客户端解析 rewrites](https://nextjs.org/docs/app/api-reference/next-config-js/rewrites#rewrite-parameters)，并在 hydrate 后收集参数，以便提供给 `router.query`。
 
-结果是所有水合数据会丢失引用相等性，这会影响例如把数据作为组件 props 使用、或放在 `useEffect`/`useMemo` 依赖数组中的场景。
+结果是所有 hydrate 数据会丢失引用相等性，这会影响例如把数据作为组件 props 使用、或放在 `useEffect`/`useMemo` 依赖数组中的场景。

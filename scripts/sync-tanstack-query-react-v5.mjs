@@ -155,7 +155,7 @@ const zhExampleTitles = {
   'nextjs-suspense-streaming': 'Next.js App Router 流式渲染',
   'react-native': 'React Native',
   'react-router': 'React Router',
-  'offline': '离线查询与变更',
+  'offline': '离线查询与 mutation',
   'algolia': 'Algolia',
   'shadow-dom': 'Shadow DOM',
   'devtools-panel': '嵌入式开发工具面板',

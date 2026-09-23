@@ -1,11 +1,11 @@
 ---
 id: invalidations-from-mutations
-title: 由变更触发的失效
+title: 由 mutation 触发的失效
 ---
 
-让查询失效只是完成了一半，另一半是知道应该在**什么时候**让它失效。通常，当应用中的某个变更成功后，很可能会有相关查询需要失效，甚至可能要重新获取，以反映这次变更带来的新数据。
+让查询失效只是完成了一半，另一半是知道应该在**什么时候**让它失效。通常，当应用中的某个 mutation 成功后，很可能会有相关查询需要失效，甚至可能要重新获取，以反映这次 mutation 带来的新数据。
 
-例如，假设我们有一个用于提交新 todo 的变更：
+例如，假设我们有一个用于提交新 todo 的 mutation：
 
 [//]: # 'Example'
 
@@ -15,7 +15,7 @@ const mutation = useMutation({ mutationFn: postTodo })
 
 [//]: # 'Example'
 
-当 `postTodo` 变更成功时，我们通常希望所有 `todos` 查询失效，并可能重新获取以展示新增 todo。你可以通过 `useMutation` 的 `onSuccess` 选项和 `client` 的 `invalidateQueries` 函数来实现：
+当 `postTodo` mutation 成功时，我们通常希望所有 `todos` 查询失效，并可能重新获取以展示新增 todo。你可以通过 `useMutation` 的 `onSuccess` 选项和 `client` 的 `invalidateQueries` 函数来实现：
 
 [//]: # 'Example2'
 
@@ -42,7 +42,7 @@ const mutation = useMutation({
 
 [//]: # 'Example2'
 
-在 `onSuccess` 中返回 Promise，可以确保在变更被完全标记为完成前数据已更新（即在 `onSuccess` 完成前，`isPending` 会保持 `true`）。
+在 `onSuccess` 中返回 Promise，可以确保在 mutation 被完全标记为完成前数据已更新（即在 `onSuccess` 完成前，`isPending` 会保持 `true`）。
 
 [//]: # 'Example2'
 
@@ -52,6 +52,6 @@ const mutation = useMutation({
 
 ## 延伸阅读
 
-关于“在变更后自动让查询失效”的技巧，请阅读 TkDodo 的文章 [Automatic Query Invalidation after Mutations](https://tkdodo.eu/blog/automatic-query-invalidation-after-mutations)。
+关于“在 mutation 后自动让查询失效”的技巧，请阅读 TkDodo 的文章 [Automatic Query Invalidation after Mutations](https://tkdodo.eu/blog/automatic-query-invalidation-after-mutations)。
 
 [//]: # 'Materials'

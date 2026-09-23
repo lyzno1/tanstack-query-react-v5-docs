@@ -1,11 +1,11 @@
 ---
 id: mutations
-title: 变更
+title: mutation
 ---
 
-与查询不同，变更通常用于创建/更新/删除数据或执行服务器副作用。为此，TanStack Query 导出 `useMutation` Hook。
+与查询不同，mutation 通常用于创建/更新/删除数据或执行服务器副作用。为此，TanStack Query 导出 `useMutation` Hook。
 
-以下是向服务器添加新待办事项的变更示例：
+以下是向服务器添加新待办事项的 mutation 示例：
 
 [//]: # 'Example'
 
@@ -45,21 +45,21 @@ function App() {
 
 [//]: # 'Example'
 
-变更在任何给定时刻只能处于以下状态之一：
+mutation 在任何给定时刻只能处于以下状态之一：
 
-- `isIdle` 或 `status === 'idle'` - 变更当前空闲或处于初始/重置状态
-- `isPending` 或 `status === 'pending'` - 变更当前正在运行
-- `isError` 或 `status === 'error'` - 变更遇到错误
-- `isSuccess` 或 `status === 'success'` - 变更成功并且变更数据可用
+- `isIdle` 或 `status === 'idle'` - mutation 当前空闲或处于初始/重置状态
+- `isPending` 或 `status === 'pending'` - mutation 当前正在运行
+- `isError` 或 `status === 'error'` - mutation 遇到错误
+- `isSuccess` 或 `status === 'success'` - mutation 成功并且 mutation 数据可用
 
-除了这些主要状态之外，还可以根据变更的状态获得更多信息：
+除了这些主要状态之外，还可以根据 mutation 的状态获得更多信息：
 
-- `error` - 如果变更处于 `error` 状态，则可通过 `error` 属性获取错误。
-- `data` - 如果变更处于 `success` 状态，则可通过 `data` 属性获取数据。
+- `error` - 如果 mutation 处于 `error` 状态，则可通过 `error` 属性获取错误。
+- `data` - 如果 mutation 处于 `success` 状态，则可通过 `data` 属性获取数据。
 
-在上面的示例中，你还可以看到：调用 `mutate` 函数时，可通过**单个变量或对象**向变更函数传入变量。
+在上面的示例中，你还可以看到：调用 `mutate` 函数时，可通过**单个变量或对象**向 mutation 函数传入变量。
 
-仅仅能传入变量还不足以让变更显得特别；但当它与 `onSuccess` 选项、[Query Client 的 `invalidateQueries` 方法](../../../reference/QueryClient.md#queryclientinvalidatequeries)以及 [Query Client 的 `setQueryData` 方法](../../../reference/QueryClient.md#queryclientsetquerydata)结合使用时，就会成为非常强大的工具。
+仅仅能传入变量还不足以让 mutation 显得特别；但当它与 `onSuccess` 选项、[Query Client 的 `invalidateQueries` 方法](../reference/classes/QueryClient.md#invalidatequeries)以及 [Query Client 的 `setQueryData` 方法](../reference/classes/QueryClient.md#setquerydata)结合使用时，就会成为非常强大的工具。
 
 [//]: # 'Info1'
 
@@ -99,9 +99,9 @@ const CreateTodo = () => {
 
 [//]: # 'Example2'
 
-## 重置变更状态
+## 重置 mutation 状态
 
-有时你需要清除变更请求的 `error` 或 `data`。此时可以使用 `reset` 函数：
+有时你需要清除 mutation 请求的 `error` 或 `data`。此时可以使用 `reset` 函数：
 
 [//]: # 'Example3'
 
@@ -134,9 +134,9 @@ const CreateTodo = () => {
 
 [//]: # 'Example3'
 
-## 变更副作用
+## mutation 副作用
 
-`useMutation` 提供了一些辅助选项，使你可以在变更生命周期的任何阶段方便地执行副作用。无论是[在变更后使查询失效并重新获取](./invalidations-from-mutations.md)，还是进行[乐观更新](./optimistic-updates.md)，这些选项都很有用。
+`useMutation` 提供了一些辅助选项，使你可以在 mutation 生命周期的任何阶段方便地执行副作用。无论是[在 mutation 后使查询失效并重新获取](./invalidations-from-mutations.md)，还是进行[乐观更新](./optimistic-updates.md)，这些选项都很有用。
 
 [//]: # 'Example4'
 
@@ -182,7 +182,7 @@ useMutation({
 
 [//]: # 'Example5'
 
-调用 `mutate` 时，你可能希望在 `useMutation` 定义的回调之外，再**触发额外回调**。这很适合用于执行特定于组件的副作用。你可以在变更变量之后，向 `mutate` 传入相同的回调选项：`onSuccess`、`onError` 和 `onSettled`。请注意，如果组件在变更完成前已经卸载，这些额外回调将不会执行。
+调用 `mutate` 时，你可能希望在 `useMutation` 定义的回调之外，再**触发额外回调**。这很适合用于执行特定于组件的副作用。你可以在 mutation 变量之后，向 `mutate` 传入相同的回调选项：`onSuccess`、`onError` 和 `onSettled`。请注意，如果组件在 mutation 完成前已经卸载，这些额外回调将不会执行。
 
 [//]: # 'Example6'
 
@@ -215,11 +215,11 @@ mutate(todo, {
 
 [//]: # 'Example6'
 
-### 连续变更
+### 连续 mutation
 
-对于连续变更，`onSuccess`、`onError` 和 `onSettled` 回调的行为略有不同。将这些回调传给 `mutate` 时，它们只会触发_一次_，且前提是组件仍处于挂载状态。这是因为每次调用 `mutate` 时，变更观察者都会先移除再重新订阅。相比之下，定义在 `useMutation` 上的处理函数会针对每次 `mutate` 调用执行。
+对于连续 mutation，`onSuccess`、`onError` 和 `onSettled` 回调的行为略有不同。将这些回调传给 `mutate` 时，它们只会触发_一次_，且前提是组件仍处于挂载状态。这是因为每次调用 `mutate` 时，mutation 观察者都会先移除再重新订阅。相比之下，定义在 `useMutation` 上的处理函数会针对每次 `mutate` 调用执行。
 
-> 请注意，传递给 `useMutation` 的 `mutationFn` 很可能是异步的。在这种情况下，完成变更的顺序可能与 `mutate` 函数调用的顺序不同。
+> 请注意，传递给 `useMutation` 的 `mutationFn` 很可能是异步的。在这种情况下，完成 mutation 的顺序可能与 `mutate` 函数调用的顺序不同。
 
 [//]: # 'Example7'
 
@@ -267,7 +267,7 @@ try {
 
 ## 重试
 
-默认情况下，TanStack Query 不会在出错时重试变更，但可以使用 `retry` 选项：
+默认情况下，TanStack Query 不会在出错时重试 mutation，但可以使用 `retry` 选项：
 
 [//]: # 'Example9'
 
@@ -280,11 +280,11 @@ const mutation = useMutation({
 
 [//]: # 'Example9'
 
-如果由于设备离线而导致变更失败，则当设备重新连接时，将以相同的顺序重试变更。
+如果由于设备离线而导致 mutation 失败，则当设备重新连接时，将以相同的顺序重试 mutation。
 
-## 持久化变更
+## 持久化 mutation
 
-如果需要，可以将变更持久保存到存储中，并在以后恢复。这可以通过水合函数来完成：
+如果需要，可以将 mutation 持久保存到存储中，并在以后恢复。这可以通过`hydrate` 函数来完成：
 
 [//]: # 'Example10'
 
@@ -342,13 +342,13 @@ queryClient.resumePausedMutations()
 [//]: # 'Example10'
 [//]: # 'PersistOfflineIntro'
 
-### 持久化离线变更
+### 持久化离线 mutation
 
-如果你使用 [`persistQueryClient` 插件](../plugins/persistQueryClient.md)持久化离线变更，除非提供默认变更函数，否则页面重新加载后将无法恢复这些变更。
+如果你使用 [`persistQueryClient` 插件](../plugins/persistQueryClient.md)持久化离线 mutation，除非提供默认 mutation 函数，否则页面重新加载后将无法恢复这些 mutation。
 
 [//]: # 'PersistOfflineIntro'
 
-这是一项技术限制。持久化到外部存储时，只能保存变更的状态，因为函数无法序列化。水合后，原本触发变更的组件可能并未挂载，因此调用 `resumePausedMutations` 可能会抛出 `No mutationFn found` 错误。
+这是一项技术限制。持久化到外部存储时，只能保存 mutation 的状态，因为函数无法序列化。hydrate 后，原本触发 mutation 的组件可能并未挂载，因此调用 `resumePausedMutations` 可能会抛出 `No mutationFn found` 错误。
 
 [//]: # 'Example11'
 
@@ -390,13 +390,13 @@ export default function App() {
 [//]: # 'Example11'
 [//]: # 'OfflineExampleLink'
 
-我们还提供了一个完整的[离线示例](../examples/offline)，其中同时涵盖查询和变更。
+我们还提供了一个完整的[离线示例](../examples/offline)，其中同时涵盖查询和 mutation。
 
 [//]: # 'OfflineExampleLink'
 
-## 变更范围
+## mutation 范围
 
-默认情况下，所有变更都会并行执行，即使你对同一变更多次调用 `.mutate()` 也是如此。你可以为变更指定带 `id` 的 `scope` 来避免这种情况。所有 `scope.id` 相同的变更都会串行执行。触发时，如果同一 `scope` 中已有变更正在进行，后续变更将从 `isPaused: true` 状态开始，并被放入队列；轮到它们时会自动恢复执行。
+默认情况下，所有 mutation 都会并行执行，即使你对同一 mutation 多次调用 `.mutate()` 也是如此。你可以为 mutation 指定带 `id` 的 `scope` 来避免这种情况。所有 `scope.id` 相同的 mutation 都会串行执行。触发时，如果同一 `scope` 中已有 mutation 正在进行，后续 mutation 将从 `isPaused: true` 状态开始，并被放入队列；轮到它们时会自动恢复执行。
 
 [//]: # 'ExampleScopes'
 
@@ -414,6 +414,6 @@ const mutation = useMutation({
 
 ## 进一步阅读
 
-如需了解更多有关变更的内容，请阅读 TkDodo 的文章 [Mastering Mutations in React Query](https://tkdodo.eu/blog/mastering-mutations-in-react-query)。
+如需了解更多有关 mutation 的内容，请阅读 TkDodo 的文章 [Mastering Mutations in React Query](https://tkdodo.eu/blog/mastering-mutations-in-react-query)。
 
 [//]: # 'Materials'

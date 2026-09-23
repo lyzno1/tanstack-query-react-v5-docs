@@ -6,10 +6,10 @@ redirect_from:
 ---
 
 ```ts
-function useIsFetching(filters?, queryClient?): number;
+function useIsFetching(filters?: QueryFilters<readonly unknown[]>, queryClient?: QueryClient): number;
 ```
 
-定义于： [react-query/src/useIsFetching.ts:44](https://github.com/TanStack/query/blob/main/packages/react-query/src/useIsFetching.ts#L44)
+定义于： [packages/react-query/src/useIsFetching.ts:44](https://github.com/TanStack/query/blob/main/packages/react-query/src/useIsFetching.ts#L44)
 
 `useIsFetching` Hook 返回应用中正在加载或后台获取的查询数量（适合用于应用级加载指示器）。
 
@@ -17,13 +17,13 @@ function useIsFetching(filters?, queryClient?): number;
 
 ### filters?
 
-`QueryFilters`\<readonly `unknown`[]\>
+[`QueryFilters`](../interfaces/QueryFilters.md)\<readonly `unknown`[]\>
 
-用于缩小查询匹配范围的 `QueryFilters`。
+用于缩小查询匹配范围的 [QueryFilters](../interfaces/QueryFilters.md)。
 
 ### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 

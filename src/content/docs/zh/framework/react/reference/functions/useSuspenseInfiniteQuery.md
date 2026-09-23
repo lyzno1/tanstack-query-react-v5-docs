@@ -6,10 +6,10 @@ redirect_from:
 ---
 
 ```ts
-function useSuspenseInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options, queryClient?): UseSuspenseInfiniteQueryResult<TData, TError>;
+function useSuspenseInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options: UseSuspenseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, queryClient?: QueryClient): UseSuspenseInfiniteQueryResult<TData, TError>;
 ```
 
-定义于： [react-query/src/useSuspenseInfiniteQuery.ts:104](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseInfiniteQuery.ts#L104)
+定义于： [packages/react-query/src/useSuspenseInfiniteQuery.ts:104](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseInfiniteQuery.ts#L104)
 
 `useSuspenseInfiniteQuery` 的选项与 `useInfiniteQuery` 相同，但不包括 `throwOnError`、`enabled`
 和 `placeholderData`。
@@ -28,7 +28,7 @@ function useSuspenseInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageP
 
 ### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`, `unknown`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`, `unknown`\>
 
 ### TQueryKey
 
@@ -48,7 +48,7 @@ function useSuspenseInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageP
 
 ### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 

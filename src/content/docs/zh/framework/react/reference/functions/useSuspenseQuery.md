@@ -6,10 +6,10 @@ redirect_from:
 ---
 
 ```ts
-function useSuspenseQuery<TQueryFnData, TError, TData, TQueryKey>(options, queryClient?): UseSuspenseQueryResult<TData, TError>;
+function useSuspenseQuery<TQueryFnData, TError, TData, TQueryKey>(options: UseSuspenseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, queryClient?: QueryClient): UseSuspenseQueryResult<TData, TError>;
 ```
 
-定义于： [react-query/src/useSuspenseQuery.ts:75](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseQuery.ts#L75)
+定义于： [packages/react-query/src/useSuspenseQuery.ts:75](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseQuery.ts#L75)
 
 `useSuspenseQuery` 的选项与 `useQuery` 相同，但不包括 `throwOnError`、`enabled` 和 `placeholderData`；
 此外，`queryFn` 不能是 `skipToken`，因为 Suspense Hook 无法渲染“已禁用”状态。
@@ -44,7 +44,7 @@ function useSuspenseQuery<TQueryFnData, TError, TData, TQueryKey>(options, query
 
 ### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 

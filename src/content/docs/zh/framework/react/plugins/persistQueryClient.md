@@ -13,15 +13,15 @@ title: persistQueryClient
 
 ## 工作原理
 
-**重要**：要让持久化正常工作，你通常需要给 `QueryClient` 传入 `gcTime` 值，在水合时覆盖默认值（如上所示）。
+**重要**：要让持久化正常工作，你通常需要给 `QueryClient` 传入 `gcTime` 值，在 hydrate 时覆盖默认值（如上所示）。
 
-如果在创建 `QueryClient` 实例时未设置该值，水合时默认会使用 `300000`（5 分钟），并在 5 分钟无活动后丢弃已存储的缓存。这是默认的垃圾回收行为。
+如果在创建 `QueryClient` 实例时未设置该值，hydrate 时默认会使用 `300000`（5 分钟），并在 5 分钟无活动后丢弃已存储的缓存。这是默认的垃圾回收行为。
 
 它应设置为与 persistQueryClient 的 `maxAge` 选项相同或更大。例如，如果 `maxAge` 是 24 小时（默认值），则 `gcTime` 应为 24 小时或更大。如果 `gcTime` 小于 `maxAge`，垃圾回收会更早触发，导致存储缓存比预期更早被丢弃。
 
 你也可以把它设为 `Infinity` 来完全禁用垃圾回收行为。
 
-受 JavaScript 限制影响，`gcTime` 的最大允许值大约是 [24 天](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#maximum_delay_value)。不过可以通过 [timeoutManager.setTimeoutProvider](../../../reference/timeoutManager.md#timeoutmanagersettimeoutprovider) 绕过该限制。
+受 JavaScript 限制影响，`gcTime` 的最大允许值大约是 [24 天](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#maximum_delay_value)。不过可以通过 [timeoutManager.setTimeoutProvider](../reference/interfaces/TimeoutManager.md#settimeoutprovider) 绕过该限制。
 
 ```tsx
 const queryClient = new QueryClient({
@@ -58,7 +58,7 @@ persistQueryClientRestore({ queryClient, persister, buster: buildHash })
 
 ### `persistQueryClientSave`
 
-- 你的查询和变更会被 `dehydrated`（脱水），并由你提供的 Persister 存储。
+- 对查询和 mutation 执行 dehydrate 后，生成的状态会由你提供的 Persister 存储。
 - `createSyncStoragePersister` 和 `createAsyncStoragePersister` 会将该操作节流为最多每秒执行一次，以减少可能昂贵的写入开销。可查看它们的文档了解如何自定义节流时间。
 
 你可以用它在你选择的时机显式持久化缓存。
@@ -90,7 +90,7 @@ persistQueryClientSubscribe({
 
 ### `persistQueryClientRestore`
 
-- 尝试将 Persister 中之前持久化并脱水的查询/变更缓存，水合到所传 Query Client 的查询缓存中。
+- 尝试将 Persister 中之前持久化并 dehydrate 的查询/mutation 缓存，hydrate 到所传 Query Client 的查询缓存中。
 - 如果找到的缓存超过 `maxAge`（默认 24 小时），它会被丢弃。该时长可按需自定义。
 
 你可以用它在你选择的时机恢复缓存。
@@ -216,7 +216,7 @@ ReactDOM.createRoot(rootElement).render(
 - `onSuccess?: () => Promise<unknown> | unknown`
   - 可选
   - 初次恢复完成时会被调用
-  - 可用于 [resumePausedMutations](../../../reference/QueryClient.md#queryclientresumepausedmutations)
+  - 可用于 [resumePausedMutations](../reference/classes/QueryClient.md#resumepausedmutations)
   - 如果返回 Promise，会等待其完成；在此之前恢复仍视为进行中
 - `onError?: () => Promise<unknown> | unknown`
   - 可选

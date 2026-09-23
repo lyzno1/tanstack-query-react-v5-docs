@@ -7,7 +7,7 @@ title: UndefinedInitialDataOptions
 type UndefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey> = UseQueryOptions<TQueryFnData, TError, TData, TQueryKey> & object;
 ```
 
-定义于：[react-query/src/queryOptions.ts:22](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L22)
+定义于： [packages/react-query/src/queryOptions.ts:22](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L22)
 
 未设置 `initialData` 时所匹配的 `queryOptions` 重载接受的选项——查询处于 `pending` 状态时，
 `data` 可能为 `undefined`。
@@ -36,7 +36,7 @@ optional initialData:
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。
 
@@ -48,6 +48,6 @@ optional initialData:
 
 ### TQueryKey
 
-`TQueryKey` *extends* `QueryKey` = `QueryKey`
+`TQueryKey` *extends* [`QueryKey`](QueryKey.md) = [`QueryKey`](QueryKey.md)
 
 `queryKey` 的类型。

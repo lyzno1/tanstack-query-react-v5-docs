@@ -12,12 +12,12 @@ React Query 的早期版本已经非常优秀，带来了很多惊艳的新特�
 - 随处可用的数据滞后（此前为 `usePaginatedQuery`）
 - 双向无限查询
 - 查询数据选择器
-- 可在使用前完整配置查询和/或变更默认项
+- 可在使用前完整配置查询和/或 mutation 默认项
 - 可选渲染优化拥有更细粒度控制
 - 新增 `useQueries` Hook！（可变长度并行查询执行）
 - `useIsFetching()` Hook 支持查询过滤器
-- 变更支持重试/离线/回放
-- 可在 React 之外观察查询/变更
+- mutation 支持重试/离线/回放
+- 可在 React 之外观察查询/mutation
 - 在任何地方复用 React Query 核心逻辑
 - `react-query/devtools` 内置/同仓库 Devtools
 - 缓存持久化到 web storage（实验性：`react-query/persistQueryClient-experimental` 与 `react-query/createWebStoragePersistor-experimental`）
@@ -26,7 +26,7 @@ React Query 的早期版本已经非常优秀，带来了很多惊艳的新特�
 
 ### `QueryCache` 已拆分为 `QueryClient` 以及更底层的 `QueryCache`、`MutationCache` 实例
 
-`QueryCache` 包含所有查询，`MutationCache` 包含所有变更，而 `QueryClient` 用于配置它们并与它们交互。
+`QueryCache` 包含所有查询，`MutationCache` 包含所有 mutation，而 `QueryClient` 用于配置它们并与它们交互。
 
 这带来以下好处：
 
@@ -46,7 +46,7 @@ const queryClient = new QueryClient()
 
 ### `ReactQueryConfigProvider` 与 `ReactQueryCacheProvider` 均被 `QueryClientProvider` 取代
 
-现在可以在 `QueryClient` 上指定查询与变更默认选项：
+现在可以在 `QueryClient` 上指定查询与 mutation 默认选项：
 
 **注意：现在是 `defaultOptions`，不再是 `defaultConfig`**
 
@@ -244,7 +244,7 @@ queryClient.setQueryData(['projects'], (data) => ({
 
 ### `useMutation` 现在返回对象而不是数组
 
-旧写法确实让人想起第一次发现 `useState` 的温暖感觉，但这种感觉并不持久。现在变更返回值统一为单个对象。
+旧写法确实让人想起第一次发现 `useState` 的温暖感觉，但这种感觉并不持久。现在 mutation 返回值统一为单个对象。
 
 ```tsx
 // Old:
@@ -414,7 +414,7 @@ setConsole({
 
 #### `QueryStatus` 已从 [enum](https://www.typescriptlang.org/docs/handbook/enums.html#string-enums) 改为 [union type](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)
 
-因此，如果你之前用 `QueryStatus` 枚举值比较查询或变更的 `status`，现在需要改为与该枚举原先对应的字符串字面量比较。
+因此，如果你之前用 `QueryStatus` 枚举值比较查询或 mutation 的 `status`，现在需要改为与该枚举原先对应的字符串字面量比较。
 
 对应关系如下：
 
@@ -423,7 +423,7 @@ setConsole({
 - `QueryStatus.Error` -> `'error'`
 - `QueryStatus.Success` -> `'success'`
 
-下面是你需要做的变更示例：
+下面是你需要做的 mutation 示例：
 
 ```tsx
 - import { useQuery, QueryStatus } from 'react-query'; // [!code --]
@@ -481,9 +481,9 @@ function Overview() {
 }
 ```
 
-#### 变更重试/离线能力
+#### mutation 重试/离线能力
 
-默认情况下，React Query 不会在变更报错后自动重试，但你可以用 `retry` 选项开启：
+默认情况下，React Query 不会在 mutation 报错后自动重试，但你可以用 `retry` 选项开启：
 
 ```tsx
 const mutation = useMutation({
@@ -492,11 +492,11 @@ const mutation = useMutation({
 })
 ```
 
-若变更因设备离线失败，会在设备重连后按原顺序重试。
+若 mutation 因设备离线失败，会在设备重连后按原顺序重试。
 
-#### 持久化变更
+#### 持久化 mutation
 
-变更现在可以持久化到存储并在稍后恢复。更多信息可见变更文档。
+mutation 现在可以持久化到存储并在稍后恢复。更多信息可见 mutation 文档。
 
 #### QueryObserver
 
@@ -557,9 +557,9 @@ function Component() {
 }
 ```
 
-#### 为特定变更设置默认选项
+#### 为特定 mutation 设置默认选项
 
-`QueryClient.setMutationDefaults()` 可用于给特定变更设置默认选项：
+`QueryClient.setMutationDefaults()` 可用于给特定 mutation 设置默认选项：
 
 ```tsx
 queryClient.setMutationDefaults(['addPost'], { mutationFn: addPost })

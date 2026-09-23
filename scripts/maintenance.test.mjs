@@ -44,7 +44,7 @@ test('Chinese links resolve from source paths and retain upstream anchors', () =
     for (const child of node.children ?? []) visit(child)
   }
   visit(tree)
-  assert.ok(links.includes('/zh/reference/queryclient/#queryclientsetquerydata'))
+  assert.ok(links.includes('/zh/framework/react/reference/classes/queryclient/#setquerydata'))
   assert.ok(links.includes('/zh/framework/react/guides/ssr/'))
 })
 

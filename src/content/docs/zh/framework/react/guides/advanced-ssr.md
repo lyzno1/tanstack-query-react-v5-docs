@@ -7,7 +7,7 @@ title: 高级服务端渲染
 
 在阅读本文前，你可能会先看一下 [Server Rendering & Hydration 指南](./ssr.md)。它讲解了 React Query 与 SSR 配合的基础知识；另外，[Performance & Request Waterfalls](./request-waterfalls.md) 和 [Prefetching & Router Integration](./prefetching.md) 也包含了很有价值的背景信息。
 
-开始前先说明：SSR 指南中提到的 `initialData` 方案同样适用于 Server Components，不过本指南将重点介绍水合 API。
+开始前先说明：SSR 指南中提到的 `initialData` 方案同样适用于 Server Components，不过本指南将重点介绍 hydration API。
 
 ## Server Components 与 Next.js app router
 
@@ -99,9 +99,9 @@ export default function RootLayout({
 
 这部分和 SSR 指南中做的事情非常相似，只是现在要拆成两个文件。
 
-### 预取与数据脱水/水合
+### 预取、dehydrate 与 hydration
 
-接下来看看如何实际预取数据，再对其进行脱水和水合。下面是 **Next.js Pages Router** 中的写法：
+接下来看看如何实际预取数据，再对其进行 dehydrate 和 hydrate。下面是 **Next.js Pages Router** 中的写法：
 
 ```tsx
 // pages/posts.tsx
@@ -222,7 +222,7 @@ export default function Posts() {
 
 > 注意：如果你在使用异步 Server Components 时遇到类型错误，且 TypeScript 版本低于 `5.1.3`、`@types/react` 版本低于 `18.2.8`，建议升级到最新版本。或者可临时在组件被其他组件调用时添加 `{/* @ts-expect-error Server Component */}` 作为权宜方案。详见 Next.js TypeScript 文档中的 [Async Server Component TypeScript Error](https://nextjs.org/docs/app/building-your-application/configuring/typescript#async-server-component-typescript-error)。
 
-> 警告：我们**不**建议在 `queryFn` 中使用 Next.js Server Actions 来_获取_数据。当从客户端调用时，Server Actions 会[串行而非并行执行](https://react.dev/reference/rsc/use-server#caveats)，这与 React Query 获取和重新获取查询的方式冲突。这可能使查询卡在 pending 状态，或导致 action 根本无法执行（参见 [#7934](https://github.com/TanStack/query/issues/7934)）。将 Server Action 引用传给 `queryFn` 也可能触发 `Only plain objects, and a few built-ins, can be passed to Server Actions...` 错误，因为你必须_调用_ action，而不是将它作为引用传入（参见 [#6264](https://github.com/TanStack/query/issues/6264)）。如需在客户端获取数据，请使用 `fetch` 请求 API route，或使用 tRPC 等 RPC 层。Server Actions 仍很适合用于**变更**（`useMutation`）。
+> 警告：我们**不**建议在 `queryFn` 中使用 Next.js Server Actions 来_获取_数据。当从客户端调用时，Server Actions 会[串行而非并行执行](https://react.dev/reference/rsc/use-server#caveats)，这与 React Query 获取和重新获取查询的方式冲突。这可能使查询卡在 pending 状态，或导致 action 根本无法执行（参见 [#7934](https://github.com/TanStack/query/issues/7934)）。将 Server Action 引用传给 `queryFn` 也可能触发 `Only plain objects, and a few built-ins, can be passed to Server Actions...` 错误，因为你必须_调用_ action，而不是将它作为引用传入（参见 [#6264](https://github.com/TanStack/query/issues/6264)）。如需在客户端获取数据，请使用 `fetch` 请求 API route，或使用 tRPC 等 RPC 层。Server Actions 仍很适合用于**mutation**（`useMutation`）。
 
 ### 嵌套 Server Components
 
@@ -282,7 +282,7 @@ export default async function CommentsServerComponent() {
 }
 ```
 
-可以看到，在多个位置使用 `<HydrationBoundary>` 完全没问题；为预取创建多个 `queryClient` 并分别进行脱水也没有问题。
+可以看到，在多个位置使用 `<HydrationBoundary>` 完全没问题；为预取创建多个 `queryClient` 并分别进行 dehydrate 也没有问题。
 
 注意：由于我们在渲染 `CommentsServerComponent` 前 `await` 了 `getPosts`，这会形成服务端瀑布：
 
@@ -315,7 +315,7 @@ export default getQueryClient
 
 Next.js 对 `fetch()` 请求已做去重；但如果你的 `queryFn` 使用的是其他请求方式，或你所用框架**不会**自动去重，那么使用上述“单个 `queryClient`”方案在某些情况下依然有意义，即使会有重复序列化。
 
-> 未来我们可能会考虑提供 `dehydrateNew()`（名称待定）之类的方法，仅对自上次调用 `dehydrateNew()` 后新增的查询进行脱水。如果你对这个方向感兴趣并愿意参与，欢迎联系我们。
+> 未来我们可能会考虑提供 `dehydrateNew()`（名称待定）之类的方法，仅对自上次调用 `dehydrateNew()` 后新增的查询进行 dehydrate。如果你对这个方向感兴趣并愿意参与，欢迎联系我们。
 
 ### 数据所有权与重新验证
 
@@ -546,7 +546,7 @@ export default function Posts() {
 
 ### 将持久化适配器与流式传输配合使用
 
-如果你将持久化适配器与[Server Components 流式传输](#streaming-with-server-components)功能配合使用，需要注意不要把 Promise 保存到存储中。由于 pending 查询可以被脱水并以流式传输到客户端，你应将 persister 配置为只持久化成功的查询：
+如果你将持久化适配器与[Server Components 流式传输](#streaming-with-server-components)功能配合使用，需要注意不要把 Promise 保存到存储中。由于 pending 查询可以被 dehydrate 并以流式传输到客户端，你应将 persister 配置为只持久化成功的查询：
 
 ```tsx
 <PersistQueryClientProvider

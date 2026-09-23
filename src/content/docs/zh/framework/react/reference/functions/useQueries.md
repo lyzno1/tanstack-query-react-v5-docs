@@ -6,10 +6,10 @@ redirect_from:
 ---
 
 ```ts
-function useQueries<T, TCombinedResult>(__namedParameters, queryClient?): TCombinedResult;
+function useQueries<T, TCombinedResult>(__namedParameters: object, queryClient?: QueryClient): TCombinedResult;
 ```
 
-定义于： [react-query/src/useQueries.ts:355](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQueries.ts#L355)
+定义于： [packages/react-query/src/useQueries.ts:359](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQueries.ts#L359)
 
 `useQueries` Hook 可用于获取数量不固定的查询。
 
@@ -38,7 +38,7 @@ function useQueries<T, TCombinedResult>(__namedParameters, queryClient?): TCombi
 
 #### combine?
 
-(`result`) => `TCombinedResult`
+(`result`: `T` *extends* \[\] ? \[\] : `T` *extends* \[`Head`\] ? \[`GetUseQueryResult`\<`Head`\>\] : `T` *extends* \[`Head`, `...Tails[]`\] ? \[`...Tails[]`\] *extends* \[\] ? \[\] : \[`...Tails[]`\] *extends* \[`Head`\] ? \[`GetUseQueryResult`\<`Head`\>, `GetUseQueryResult`\<`Head`\>\] : \[`...Tails[]`\] *extends* \[`Head`, `...Tails[]`\] ? \[`...(...)[]`\] *extends* \[\] ? \[\] : ... *extends* ... ? ... : ... : \[`...{ [K in (...)]: (...) }[]`\] : \{ \[K in string \| number \| symbol\]: GetUseQueryResult\<T\[K\<K\>\]\> \}) => `TCombinedResult`
 
 使用此函数将多个查询的结果合并为单个值。结果会进行结构共享，以尽可能保持引用稳定。
 
@@ -66,7 +66,7 @@ true
 
 ### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可提供自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 

@@ -103,3 +103,9 @@ focusManager.setFocused(undefined)
 ```
 
 [//]: # 'Example4'
+
+## 排查问题
+
+如果切回浏览器标签页时 stale 查询没有重新获取，请检查 Chrome DevTools 中是否启用了 **Emulate a focused page**。启用后，`document.visibilityState` 会一直保持 `visible`，也不会触发 `visibilitychange` 事件；TanStack Query 默认依赖该事件处理焦点。
+
+在 DevTools 的 **Rendering** 面板中关闭 **Emulate a focused page**，然后切换到其他标签页再返回，以测试窗口聚焦后的重新获取。详情参阅 [Chrome DevTools 文档](https://developer.chrome.com/docs/devtools/rendering/apply-effects#emulate_a_focused_page)。

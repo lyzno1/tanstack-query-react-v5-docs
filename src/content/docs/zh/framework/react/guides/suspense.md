@@ -13,7 +13,7 @@ React Query 也可以与 React 的 Suspense 数据获取 API 一起使用。为�
 组件（包括 `fallback` prop）和用于捕获错误的 React Error Boundary 完成。有关如何配置 Suspense 模式，
 请阅读[重置错误边界](#resetting-error-boundaries)，并查看 [Suspense 示例](../examples/suspense)。
 
-如果你希望变更也像查询一样将错误传播到最近的 Error Boundary，可以把 `throwOnError` 也设为 `true`。
+如果你希望 mutation 也像查询一样将错误传播到最近的 Error Boundary，可以把 `throwOnError` 也设为 `true`。
 
 为查询启用 Suspense 模式：
 
@@ -183,4 +183,4 @@ export function Providers(props: { children: React.ReactNode }) {
 ```
 
 更多信息请查看 [Next.js Suspense Streaming 示例](../examples/nextjs-suspense-streaming)和
-[高级渲染与水合](./advanced-ssr.md)指南。
+[高级渲染与 hydrate](./advanced-ssr.md)指南。

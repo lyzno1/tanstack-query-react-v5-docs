@@ -106,7 +106,7 @@ function fetchTodoList({ queryKey }) {
 `QueryFunctionContext` 是传递给每个查询函数的对象。它包括：
 
 - `queryKey: QueryKey`：[查询键](./query-keys.md)
-- `client: QueryClient`：[QueryClient](../../../reference/QueryClient.md)
+- `client: QueryClient`：[QueryClient](../reference/classes/QueryClient.md)
 - `signal?: AbortSignal`
   - TanStack Query 提供的 [AbortSignal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) 实例
   - 可用于[查询取消](./query-cancellation.md)

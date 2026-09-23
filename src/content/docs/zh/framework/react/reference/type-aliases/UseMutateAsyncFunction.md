@@ -7,7 +7,7 @@ title: UseMutateAsyncFunction
 type UseMutateAsyncFunction<TData, TError, TVariables, TOnMutateResult> = MutateFunction<TData, TError, TVariables, TOnMutateResult>;
 ```
 
-定义于：[react-query/src/types.ts:454](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L454)
+定义于： [packages/react-query/src/types.ts:455](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L455)
 
 `useMutation` 所返回的 `mutateAsync` 的类型。它与 [UseMutateFunction](UseMutateFunction.md) 类似，
 但会返回一个可供 `await` 等待的 promise。
@@ -18,13 +18,13 @@ type UseMutateAsyncFunction<TData, TError, TVariables, TOnMutateResult> = Mutate
 
 `TData` = `unknown`
 
-变更函数 resolve 后得到的值的类型。
+mutation 函数 resolve 后得到的值的类型。
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
-变更函数可能抛出的错误类型。
+mutation 函数可能抛出的错误类型。
 
 ### TVariables
 

@@ -7,7 +7,7 @@ title: SuspenseQueriesResults
 type SuspenseQueriesResults<T, TResults, TDepth> = TDepth["length"] extends MAXIMUM_DEPTH ? UseSuspenseQueryResult[] : T extends [] ? [] : T extends [infer Head] ? [...TResults, GetUseSuspenseQueryResult<Head>] : T extends [infer Head, ...(infer Tails)] ? SuspenseQueriesResults<[...Tails], [...TResults, GetUseSuspenseQueryResult<Head>], [...TDepth, 1]> : { [K in keyof T]: GetUseSuspenseQueryResult<T[K]> };
 ```
 
-定义于：[react-query/src/useSuspenseQueries.ts:165](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseQueries.ts#L165)
+定义于： [packages/react-query/src/useSuspenseQueries.ts:169](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseQueries.ts#L169)
 
 未提供 `combine` 时，`useSuspenseQueries` 返回的结果类型。它与
 [SuspenseQueriesOptions](SuspenseQueriesOptions.md) 相对应：元组中每个元素的结果类型都会被单独推断，

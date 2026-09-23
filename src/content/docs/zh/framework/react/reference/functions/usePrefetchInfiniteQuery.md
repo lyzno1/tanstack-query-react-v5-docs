@@ -6,10 +6,10 @@ redirect_from:
 ---
 
 ```ts
-function usePrefetchInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options, queryClient?): void;
+function usePrefetchInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options: UsePrefetchInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, queryClient?: QueryClient): void;
 ```
 
-定义于： [react-query/src/usePrefetchInfiniteQuery.tsx:56](https://github.com/TanStack/query/blob/main/packages/react-query/src/usePrefetchInfiniteQuery.tsx#L56)
+定义于： [packages/react-query/src/usePrefetchInfiniteQuery.tsx:56](https://github.com/TanStack/query/blob/main/packages/react-query/src/usePrefetchInfiniteQuery.tsx#L56)
 
 `usePrefetchInfiniteQuery` 不返回任何内容。它只用于在渲染期间触发预取，并且应位于 Suspense 边界之前；
 该边界包裹着使用 `useSuspenseInfiniteQuery` 的组件。所有能够传给 `queryClient.infiniteQuery` 的选项
@@ -35,7 +35,7 @@ function usePrefetchInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageP
 
 ### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`, `unknown`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`, `unknown`\>
 
 ### TQueryKey
 
@@ -55,7 +55,7 @@ function usePrefetchInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageP
 
 ### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 

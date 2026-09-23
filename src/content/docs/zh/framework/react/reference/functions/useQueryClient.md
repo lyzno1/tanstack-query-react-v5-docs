@@ -6,10 +6,10 @@ redirect_from:
 ---
 
 ```ts
-function useQueryClient(queryClient?): QueryClient;
+function useQueryClient(queryClient?: QueryClient): QueryClient;
 ```
 
-定义于： [react-query/src/QueryClientProvider.tsx:21](https://github.com/TanStack/query/blob/main/packages/react-query/src/QueryClientProvider.tsx#L21)
+定义于： [packages/react-query/src/QueryClientProvider.tsx:21](https://github.com/TanStack/query/blob/main/packages/react-query/src/QueryClientProvider.tsx#L21)
 
 `useQueryClient` Hook 返回当前的 `QueryClient` 实例。
 
@@ -17,13 +17,13 @@ function useQueryClient(queryClient?): QueryClient;
 
 ### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 
 ## 返回值
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 当前的 `QueryClient` 实例。
 

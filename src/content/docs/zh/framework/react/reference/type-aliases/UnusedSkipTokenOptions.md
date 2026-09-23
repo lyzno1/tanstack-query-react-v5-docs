@@ -7,7 +7,7 @@ title: UnusedSkipTokenOptions
 type UnusedSkipTokenOptions<TQueryFnData, TError, TData, TQueryKey> = OmitKeyof<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryFn"> & object;
 ```
 
-定义于：[react-query/src/queryOptions.ts:50](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L50)
+定义于： [packages/react-query/src/queryOptions.ts:50](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L50)
 
 未设置 `initialData` 且 `queryFn` 不是 `skipToken` 时所匹配的 `queryOptions` 重载接受的选项——
 它与 [UndefinedInitialDataOptions](UndefinedInitialDataOptions.md) 相同，但 `queryFn` 不能是 `skipToken`。
@@ -35,7 +35,7 @@ optional queryFn: Exclude<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。
 
@@ -47,6 +47,6 @@ optional queryFn: Exclude<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey
 
 ### TQueryKey
 
-`TQueryKey` *extends* `QueryKey` = `QueryKey`
+`TQueryKey` *extends* [`QueryKey`](QueryKey.md) = [`QueryKey`](QueryKey.md)
 
 `queryKey` 的类型。

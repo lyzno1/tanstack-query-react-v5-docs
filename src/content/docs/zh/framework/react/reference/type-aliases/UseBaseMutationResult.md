@@ -9,9 +9,9 @@ type UseBaseMutationResult<TData, TError, TVariables, TOnMutateResult> = Overrid
 }> & object;
 ```
 
-定义于：[react-query/src/types.ts:471](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L471)
+定义于： [packages/react-query/src/types.ts:472](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L472)
 
-`useMutation` 的结果。它与 `@tanstack/query-core` 中的 `MutationObserverResult` 相同，但将
+`useMutation` 的结果。它与 `@tanstack/query-core` 中的 [MutationObserverResult](MutationObserverResult.md) 相同，但将
 `mutate` 收窄为只触发、不等待结果的 [UseMutateFunction](UseMutateFunction.md) 签名，并额外添加了 `mutateAsync`。
 
 ## 类型声明
@@ -30,13 +30,13 @@ mutateAsync: UseMutateAsyncFunction<TData, TError, TVariables, TOnMutateResult>;
 
 `TData` = `unknown`
 
-变更函数 resolve 后得到的值的类型。
+mutation 函数 resolve 后得到的值的类型。
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
-变更函数可能抛出的错误类型。
+mutation 函数可能抛出的错误类型。
 
 ### TVariables
 

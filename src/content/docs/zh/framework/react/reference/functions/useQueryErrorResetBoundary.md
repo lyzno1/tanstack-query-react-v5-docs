@@ -9,7 +9,7 @@ redirect_from:
 function useQueryErrorResetBoundary(): QueryErrorResetBoundaryValue;
 ```
 
-定义于： [react-query/src/QueryErrorResetBoundary.tsx:76](https://github.com/TanStack/query/blob/main/packages/react-query/src/QueryErrorResetBoundary.tsx#L76)
+定义于： [packages/react-query/src/QueryErrorResetBoundary.tsx:76](https://github.com/TanStack/query/blob/main/packages/react-query/src/QueryErrorResetBoundary.tsx#L76)
 
 此 Hook 会重置最近的 `QueryErrorResetBoundary` 内的所有查询错误。如果没有定义边界，则会在全局范围内重置。
 

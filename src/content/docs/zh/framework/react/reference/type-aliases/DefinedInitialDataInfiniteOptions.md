@@ -7,9 +7,9 @@ title: DefinedInitialDataInfiniteOptions
 type DefinedInitialDataInfiniteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> = UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> & object;
 ```
 
-定义于：[react-query/src/infiniteQueryOptions.ts:103](https://github.com/TanStack/query/blob/main/packages/react-query/src/infiniteQueryOptions.ts#L103)
+定义于： [packages/react-query/src/infiniteQueryOptions.ts:103](https://github.com/TanStack/query/blob/main/packages/react-query/src/infiniteQueryOptions.ts#L103)
 
-设置 `initialData` 时所选中的 `infiniteQueryOptions` 重载接受的选项——此时 `data` 永远不会是 `undefined`。
+设置 `initialData` 时所选中的 `infiniteQueryOptions` 重载接受的选项——此时 `data` 不会是 `undefined`（除非 `select` 将 `TData` 转换为包含 `undefined` 的类型）。
 
 ## 类型声明
 
@@ -36,20 +36,20 @@ initialData:
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。
 
 ### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`\>
 
 `select` 执行后最终得到的 `data` 类型。默认为 `InfiniteData<TQueryFnData>`，其结构包含
 所有已获取的页面及其页面参数。
 
 ### TQueryKey
 
-`TQueryKey` *extends* `QueryKey` = `QueryKey`
+`TQueryKey` *extends* [`QueryKey`](QueryKey.md) = [`QueryKey`](QueryKey.md)
 
 `queryKey` 的类型。
 

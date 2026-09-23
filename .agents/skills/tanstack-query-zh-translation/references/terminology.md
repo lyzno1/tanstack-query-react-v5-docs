@@ -3,7 +3,8 @@
 | English | Chinese |
 |---|---|
 | Query | 查询 |
-| Mutation | 变更 |
+| Mutation / mutations | mutation（复数仍写 mutation） |
+| Mutate | `mutate`（API）或“执行 mutation”（动作） |
 | Query Key | 查询键 |
 | Query Function | 查询函数 |
 | Query Client | Query Client（客户端实例） |
@@ -19,7 +20,8 @@
 | Dependent Queries | 依赖查询 |
 | Infinite Query | 无限查询 |
 | Suspense | Suspense |
-| Hydration | 水合 |
+| Hydration / hydrate | hydration（过程）/ `hydrate`（API 或动作） |
+| Dehydration / dehydrate | dehydration（过程）/ `dehydrate`（API 或动作） |
 | Server-Side Rendering (SSR) | 服务端渲染（SSR） |
 | Render Optimization | 渲染优化 |
 | Background Fetching | 后台获取 |
@@ -35,3 +37,5 @@
 - `persisted to the cache` means 写入/保存在查询缓存中; reserve 持久化 for external storage.
 - Prefetch = 预取; Effect = Effect; initial loading without cached data = 初始加载状态.
 - A server `React.cache` instance is shared within a request, not a process-wide singleton.
+- Keep `mutation`, `mutate`, `hydration`, `hydrate`, `dehydrate`, and `dehydration` recognizable in prose and headings. Do not translate a mutation as “变更” or hydration as “水合”. Ordinary Chinese uses of 变更, such as “破坏性变更” and “类型变更”, remain unchanged.
+- Preserve API spellings (`useMutation`, `mutationFn`, `HydrationBoundary`, etc.). Use `mutation` for the TanStack Query concept and `mutate` for the method or invocation, rather than treating them as synonyms.

@@ -16,7 +16,7 @@ title: Devtools
 
 > 对于 React Native 用户：有一个第三方原生 macOS 应用可用于在任意基于 JS 的应用中调试 React Query，并实时监控多设备查询。查看这里：[rn-better-dev-tools](https://github.com/LovesWorking/rn-better-dev-tools)
 
-> 注意：从 v5 开始，devtools 也支持观察变更。
+> 注意：从 v5 开始，devtools 也支持观察 mutation。
 
 ## 安装并导入 Devtools
 

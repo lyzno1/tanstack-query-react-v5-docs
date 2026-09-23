@@ -155,7 +155,7 @@ const { error } = useQuery({ queryKey: ['groups'], queryFn: fetchGroups })
 
 ### 注册全局 Meta 类型
 
-与注册[全局错误类型](#registering-a-global-error)类似，你也可以注册全局 `Meta` 类型。这样可以确保[查询](./reference/functions/useQuery.md)和[变更](./reference/functions/useMutation.md)上可选的 `meta` 字段保持一致并具备类型安全。注意，注册类型必须扩展 `Record<string, unknown>`，这样 `meta` 才能保持对象类型。
+与注册[全局错误类型](#registering-a-global-error)类似，你也可以注册全局 `Meta` 类型。这样可以确保[查询](./reference/functions/useQuery.md)和[mutation](./reference/functions/useMutation.md)上可选的 `meta` 字段保持一致并具备类型安全。注意，注册类型必须扩展 `Record<string, unknown>`，这样 `meta` 才能保持对象类型。
 
 ```ts
 import '@tanstack/react-query'
@@ -175,9 +175,9 @@ declare module '@tanstack/react-query' {
 [//]: # 'TypingMeta'
 [//]: # 'TypingQueryAndMutationKeys'
 
-## 为查询键和变更键指定类型
+## 为查询键和 mutation 键指定类型
 
-### 注册查询键和变更键类型
+### 注册查询键和 mutation 键类型
 
 同样地，类似注册[全局错误类型](#registering-a-global-error)，你也可以注册全局 `QueryKey` 与 `MutationKey` 类型。这能为你的键提供更贴合应用层级的结构，并在整个库的 API 中保持类型一致。注意，注册类型必须扩展 `Array`，以确保键仍然是数组。
 
@@ -244,7 +244,7 @@ const entries = queryClient.getQueriesData<Group[]>(groupOptions().queryKey)
 //     ^? const entries: Array<[QueryKey, Group[] | undefined]>
 ```
 
-## 为变更选项指定类型
+## 为 mutation 选项指定类型
 
 与 `queryOptions` 类似，你可以使用 `mutationOptions` 将 mutation options 提取到独立函数中：
 

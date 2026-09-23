@@ -3,7 +3,7 @@ id: optimistic-updates
 title: 乐观更新
 ---
 
-React Query 提供了两种在变更完成之前乐观更新 UI 的方法。你可以使用 `onMutate` 选项直接更新缓存，也可以利用返回的 `variables` 从 `useMutation` 结果更新你的 UI。
+React Query 提供了两种在 mutation 完成之前乐观更新 UI 的方法。你可以使用 `onMutate` 选项直接更新缓存，也可以利用返回的 `variables` 从 `useMutation` 结果更新你的 UI。
 
 ## 通过用户界面
 
@@ -24,7 +24,7 @@ const { isPending, submittedAt, variables, mutate, isError } = addTodoMutation
 
 [//]: # 'ExampleUI1'
 
-随后可以通过 `addTodoMutation.variables` 取得正在添加的待办事项。在渲染查询结果的 UI 列表中，当变更处于 `isPending` 状态时，可以把这一项追加到列表：
+随后可以通过 `addTodoMutation.variables` 取得正在添加的待办事项。在渲染查询结果的 UI 列表中，当 mutation 处于 `isPending` 状态时，可以把这一项追加到列表：
 
 [//]: # 'ExampleUI2'
 
@@ -39,11 +39,11 @@ const { isPending, submittedAt, variables, mutate, isError } = addTodoMutation
 
 [//]: # 'ExampleUI2'
 
-只要变更仍处于 pending 状态，就会以不同的 `opacity` 渲染这条临时待办事项。变更完成后，
+只要 mutation 仍处于 pending 状态，就会以不同的 `opacity` 渲染这条临时待办事项。mutation 完成后，
 临时项会自动停止渲染；如果重新获取成功，同一项会以正常样式出现在列表中。
 
-如果变更失败，该待办事项同样会消失。不过，可以通过检查变更的 `isError` 状态让它继续显示。
-变更失败时不会清除 `variables`，因此仍可读取它，甚至可以显示一个重试按钮：
+如果 mutation 失败，该待办事项同样会消失。不过，可以通过检查 mutation 的 `isError` 状态让它继续显示。
+mutation 失败时不会清除 `variables`，因此仍可读取它，甚至可以显示一个重试按钮：
 
 [//]: # 'ExampleUI3'
 
@@ -60,10 +60,10 @@ const { isPending, submittedAt, variables, mutate, isError } = addTodoMutation
 
 [//]: # 'ExampleUI3'
 
-### 如果变更和查询不在同一组件中
+### 如果 mutation 和查询不在同一组件中
 
-如果变更和查询位于同一组件中，这种方式非常合适。除此之外，还可以通过专用的
-`useMutationState` Hook 访问其他组件中的变更状态。它最适合与 `mutationKey` 配合使用：
+如果 mutation 和查询位于同一组件中，这种方式非常合适。除此之外，还可以通过专用的
+`useMutationState` Hook 访问其他组件中的 mutation 状态。它最适合与 `mutationKey` 配合使用：
 
 [//]: # 'ExampleUI4'
 
@@ -84,13 +84,13 @@ const variables = useMutationState<string>({
 
 [//]: # 'ExampleUI4'
 
-`variables` 会是一个数组，因为可能有多个变更同时运行。如果需要为这些项目提供唯一键，
+`variables` 会是一个数组，因为可能有多个 mutation 同时运行。如果需要为这些项目提供唯一键，
 还可以选择 `mutation.state.submittedAt`。这样，展示并发乐观更新也会非常简单。
 
 ## 通过缓存
 
-在执行变更前进行乐观更新时，变更可能会失败。大多数情况下，只需重新获取相关查询，
-就能将乐观数据恢复为服务端的真实状态。但有时重新获取本身无法正常完成，例如变更错误来自某种服务端故障。
+在执行 mutation 前进行乐观更新时，mutation 可能会失败。大多数情况下，只需重新获取相关查询，
+就能将乐观数据恢复为服务端的真实状态。但有时重新获取本身无法正常完成，例如 mutation 错误来自某种服务端故障。
 这时可以改为回滚更新。
 
 为此，`useMutation` 的 `onMutate` 处理程序可以返回一个值，稍后该值会传给 `onError` 和

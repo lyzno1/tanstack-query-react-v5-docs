@@ -7,7 +7,7 @@ title: UsePrefetchInfiniteQueryOptions
 type UsePrefetchInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> = DistributiveOmit<InfiniteQueryExecuteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, "queryFn"> & object;
 ```
 
-定义于：[react-query/src/types.ts:118](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L118)
+定义于： [packages/react-query/src/types.ts:118](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L118)
 
 `usePrefetchInfiniteQuery` 接受的选项——包含所有可传给 `queryClient.infiniteQuery` 的选项，
 但除非已经定义默认查询函数，否则 `queryFn` 为必填项。
@@ -33,13 +33,13 @@ optional queryFn: Exclude<InfiniteQueryExecuteOptions<TQueryFnData, TError, TDat
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。
 
 ### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`\>
 
 `select` 执行后 `data` 的最终类型。默认为 `InfiniteData<TQueryFnData>`，其结构包含所有已获取的页面
 及其页面参数——预取不会再读出 `data`，因此只有当你在其他应用了 `select` 的地方复用这些选项时，
@@ -47,7 +47,7 @@ optional queryFn: Exclude<InfiniteQueryExecuteOptions<TQueryFnData, TError, TDat
 
 ### TQueryKey
 
-`TQueryKey` *extends* `QueryKey` = `QueryKey`
+`TQueryKey` *extends* [`QueryKey`](QueryKey.md) = [`QueryKey`](QueryKey.md)
 
 `queryKey` 的类型。
 

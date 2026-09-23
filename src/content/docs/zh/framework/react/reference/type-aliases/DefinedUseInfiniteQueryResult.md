@@ -7,9 +7,9 @@ title: DefinedUseInfiniteQueryResult
 type DefinedUseInfiniteQueryResult<TData, TError> = DefinedInfiniteQueryObserverResult<TData, TError>;
 ```
 
-定义于：[react-query/src/types.ts:377](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L377)
+定义于： [packages/react-query/src/types.ts:378](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L378)
 
-设置 `initialData` 时 `useInfiniteQuery` 的结果——此时 `data` 永远不会是 `undefined`。
+设置 `initialData` 时 `useInfiniteQuery` 的结果——此时 `data` 不会是 `undefined`（除非 `select` 将 `TData` 转换为包含 `undefined` 的类型）。
 它重新导出了 `@tanstack/query-core` 中的 `DefinedInfiniteQueryObserverResult`。
 
 ## 类型参数
@@ -22,6 +22,6 @@ type DefinedUseInfiniteQueryResult<TData, TError> = DefinedInfiniteQueryObserver
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。

@@ -6,7 +6,7 @@ title: 快速开始
 这段代码非常简要地展示了 React Query 的 3 个核心概念：
 
 - [查询](./guides/queries.md)
-- [变更](./guides/mutations.md)
+- [mutation](./guides/mutations.md)
 - [查询失效](./guides/query-invalidation.md)
 
 [//]: # 'Example'

@@ -3,13 +3,13 @@ id: network-mode
 title: 网络模式
 ---
 
-TanStack Query 提供了三种网络模式，用于决定没有网络连接时[查询](./queries.md)和[变更](./mutations.md)应如何运行。你可以为每个查询或变更单独设置此模式，也可以通过查询或变更的默认选项进行全局配置。
+TanStack Query 提供了三种网络模式，用于决定没有网络连接时[查询](./queries.md)和[mutation](./mutations.md)应如何运行。你可以为每个查询或 mutation 单独设置此模式，也可以通过查询或 mutation 的默认选项进行全局配置。
 
 由于 TanStack Query 最常与数据获取库结合使用来获取数据，因此默认网络模式为 [online](#network-mode-online)。
 
 ## 网络模式：online
 
-在此模式下，只有连接网络后才会执行查询和变更。这是默认模式。如果查询已开始获取，却因没有网络连接而无法发出请求，它会继续保持当前的 `state`（`pending`、`error` 或 `success`）。除此之外，还会提供一个 [`fetchStatus`](./queries.md#fetchstatus)，可能的值包括：
+在此模式下，只有连接网络后才会执行查询和 mutation。这是默认模式。如果查询已开始获取，却因没有网络连接而无法发出请求，它会继续保持当前的 `state`（`pending`、`error` 或 `success`）。除此之外，还会提供一个 [`fetchStatus`](./queries.md#fetchstatus)，可能的值包括：
 
 - `fetching`：`queryFn` 正在实际执行，请求进行中。
 - `paused`：查询没有执行，会一直暂停到网络重新连接。
@@ -37,7 +37,7 @@ TanStack Query 提供了三种网络模式，用于决定没有网络连接时[�
 
 ## 开发工具
 
-如果查询本应正在获取，却因没有网络连接而无法执行，[TanStack Query Devtools](../devtools.md) 会将其显示为 `paused` 状态。Devtools 还提供了用于_模拟离线行为_的切换按钮。请注意，此按钮并不会真正改变网络连接（你可以在浏览器 DevTools 中进行这种操作），而只会将 [OnlineManager](../../../reference/onlineManager.md) 设为离线状态。
+如果查询本应正在获取，却因没有网络连接而无法执行，[TanStack Query Devtools](../devtools.md) 会将其显示为 `paused` 状态。Devtools 还提供了用于_模拟离线行为_的切换按钮。请注意，此按钮并不会真正改变网络连接（你可以在浏览器 DevTools 中进行这种操作），而只会将 [OnlineManager](../reference/interfaces/OnlineManager.md) 设为离线状态。
 
 ## 签名
 

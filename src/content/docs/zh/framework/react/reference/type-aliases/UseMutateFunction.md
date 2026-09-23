@@ -4,14 +4,14 @@ title: UseMutateFunction
 ---
 
 ```ts
-type UseMutateFunction<TData, TError, TVariables, TOnMutateResult> = (...args) => void;
+type UseMutateFunction<TData, TError, TVariables, TOnMutateResult> = (...args: Parameters<MutateFunction<TData, TError, TVariables, TOnMutateResult>>) => void;
 ```
 
-定义于：[react-query/src/types.ts:433](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L433)
+定义于： [packages/react-query/src/types.ts:434](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L434)
 
 `useMutation` 所返回的 `mutate` 的类型。它会将变量（以及每次调用时可选的
-`onSuccess`/`onError`/`onSettled`）转发给底层 `mutate` 调用。调用只负责触发变更，不等待结果——
-错误会通过变更结果呈现，而不会被抛出。
+`onSuccess`/`onError`/`onSettled`）转发给底层 `mutate` 调用。调用只负责触发 mutation，不等待结果——
+错误会通过 mutation 结果呈现，而不会被抛出。
 
 ## 类型参数
 
@@ -19,13 +19,13 @@ type UseMutateFunction<TData, TError, TVariables, TOnMutateResult> = (...args) =
 
 `TData` = `unknown`
 
-变更函数 resolve 后得到的值的类型。
+mutation 函数 resolve 后得到的值的类型。
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
-变更函数可能抛出的错误类型。
+mutation 函数可能抛出的错误类型。
 
 ### TVariables
 
@@ -44,7 +44,7 @@ type UseMutateFunction<TData, TError, TVariables, TOnMutateResult> = (...args) =
 
 ### args
 
-...`Parameters`\<`MutateFunction`\<`TData`, `TError`, `TVariables`, `TOnMutateResult`\>\>
+...`Parameters`\<[`MutateFunction`](MutateFunction.md)\<`TData`, `TError`, `TVariables`, `TOnMutateResult`\>\>
 
 ## 返回值
 

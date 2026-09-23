@@ -1,9 +1,9 @@
 ---
 id: updates-from-mutation-responses
-title: 从变更响应更新数据
+title: 从 mutation 响应更新数据
 ---
 
-在处理会**更新**服务端对象的变更时，新的对象通常会自动包含在变更响应里。相比重新获取该项的查询并额外浪费一次网络请求，我们可以直接利用变更函数返回的对象，通过 [Query Client 的 `setQueryData`](../../../reference/QueryClient.md#queryclientsetquerydata) 立即更新现有查询数据：
+在处理会**更新**服务端对象的 mutation 时，新的对象通常会自动包含在 mutation 响应里。相比重新获取该项的查询并额外浪费一次网络请求，我们可以直接利用 mutation 函数返回的对象，通过 [Query Client 的 `setQueryData`](../reference/classes/QueryClient.md#setquerydata) 立即更新现有查询数据：
 
 [//]: # 'Example'
 
@@ -32,7 +32,7 @@ const { status, data, error } = useQuery({
 
 [//]: # 'Example'
 
-你可能希望把 `onSuccess` 逻辑绑定到一个可复用的变更里，此时可以创建如下自定义 hook：
+你可能希望把 `onSuccess` 逻辑绑定到一个可复用的 mutation 里，此时可以创建如下自定义 hook：
 
 [//]: # 'Example2'
 

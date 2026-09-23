@@ -8,10 +8,10 @@ redirect_from:
 ## 调用签名
 
 ```ts
-function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options): UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> & object & QueryKeyWithDataTag<TQueryKey, InfiniteData<TQueryFnData, unknown>, TError>;
+function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options: DefinedInitialDataInfiniteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>): UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> & object & QueryKeyWithDataTag<TQueryKey, InfiniteData<TQueryFnData, unknown>, TError>;
 ```
 
-定义于： [react-query/src/infiniteQueryOptions.ts:170](https://github.com/TanStack/query/blob/main/packages/react-query/src/infiniteQueryOptions.ts#L170)
+定义于： [packages/react-query/src/infiniteQueryOptions.ts:170](https://github.com/TanStack/query/blob/main/packages/react-query/src/infiniteQueryOptions.ts#L170)
 
 通常，所有能够传给 `useInfiniteQuery` 的选项都可以传给 `infiniteQueryOptions`。
 这些选项可以在 Hook 与 `queryClient.infiniteQuery` 等命令式 API 之间共享。
@@ -31,7 +31,7 @@ function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam
 
 #### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`, `unknown`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`, `unknown`\>
 
 #### TQueryKey
 
@@ -93,10 +93,10 @@ function Projects() {
 ## 调用签名
 
 ```ts
-function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options): OmitKeyof<UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, "queryFn"> & object & QueryKeyWithDataTag<TQueryKey, InfiniteData<TQueryFnData, unknown>, TError>;
+function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options: UnusedSkipTokenInfiniteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>): OmitKeyof<UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, "queryFn"> & object & QueryKeyWithDataTag<TQueryKey, InfiniteData<TQueryFnData, unknown>, TError>;
 ```
 
-定义于： [react-query/src/infiniteQueryOptions.ts:232](https://github.com/TanStack/query/blob/main/packages/react-query/src/infiniteQueryOptions.ts#L232)
+定义于： [packages/react-query/src/infiniteQueryOptions.ts:232](https://github.com/TanStack/query/blob/main/packages/react-query/src/infiniteQueryOptions.ts#L232)
 
 通常，所有能够传给 `useInfiniteQuery` 的选项都可以传给 `infiniteQueryOptions`。
 这些选项可以在 Hook 与 `queryClient.infiniteQuery` 等命令式 API 之间共享。
@@ -114,7 +114,7 @@ function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam
 
 #### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`, `unknown`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`, `unknown`\>
 
 #### TQueryKey
 
@@ -175,10 +175,10 @@ function Comments({ postId }: { postId: string }) {
 ## 调用签名
 
 ```ts
-function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options): UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> & object & QueryKeyWithDataTag<TQueryKey, InfiniteData<TQueryFnData, unknown>, TError>;
+function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options: UndefinedInitialDataInfiniteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>): UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam> & object & QueryKeyWithDataTag<TQueryKey, InfiniteData<TQueryFnData, unknown>, TError>;
 ```
 
-定义于： [react-query/src/infiniteQueryOptions.ts:294](https://github.com/TanStack/query/blob/main/packages/react-query/src/infiniteQueryOptions.ts#L294)
+定义于： [packages/react-query/src/infiniteQueryOptions.ts:294](https://github.com/TanStack/query/blob/main/packages/react-query/src/infiniteQueryOptions.ts#L294)
 
 通常，所有能够传给 `useInfiniteQuery` 的选项都可以传给 `infiniteQueryOptions`。
 这些选项可以在 Hook 与 `queryClient.infiniteQuery` 等命令式 API 之间共享。
@@ -196,7 +196,7 @@ function infiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam
 
 #### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`, `unknown`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`, `unknown`\>
 
 #### TQueryKey
 

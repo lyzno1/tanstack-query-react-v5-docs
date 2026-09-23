@@ -8,10 +8,10 @@ redirect_from:
 ## 调用签名
 
 ```ts
-function useSuspenseQueries<T, TCombinedResult>(options, queryClient?): TCombinedResult;
+function useSuspenseQueries<T, TCombinedResult>(options: object, queryClient?: QueryClient): TCombinedResult;
 ```
 
-定义于： [react-query/src/useSuspenseQueries.ts:349](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseQueries.ts#L349)
+定义于： [packages/react-query/src/useSuspenseQueries.ts:353](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseQueries.ts#L353)
 
 `useSuspenseQueries` 的选项与 `useQueries` 相同，但不支持顶层 `subscribed` 选项，并且每个 `query`
 都不能包含 `throwOnError`、`enabled` 或 `placeholderData`。
@@ -34,7 +34,7 @@ function useSuspenseQueries<T, TCombinedResult>(options, queryClient?): TCombine
 
 ##### combine?
 
-(`result`) => `TCombinedResult`
+(`result`: `T` *extends* \[\] ? \[\] : `T` *extends* \[`Head`\] ? \[`GetUseSuspenseQueryResult`\<`Head`\>\] : `T` *extends* \[`Head`, `...Tails[]`\] ? \[`...Tails[]`\] *extends* \[\] ? \[\] : \[`...Tails[]`\] *extends* \[`Head`\] ? \[`GetUseSuspenseQueryResult`\<`Head`\>, `GetUseSuspenseQueryResult`\<`Head`\>\] : \[`...Tails[]`\] *extends* \[`Head`, `...Tails[]`\] ? \[`...(...)[]`\] *extends* \[\] ? \[\] : ... *extends* ... ? ... : ... : \[`...{ [K in (...)]: (...) }[]`\] : \{ \[K in string \| number \| symbol\]: GetUseSuspenseQueryResult\<T\[K\<K\>\]\> \}) => `TCombinedResult`
 
 使用此函数将多个查询的结果合并为单个值。结果会进行结构共享，以尽可能保持引用稳定。
 
@@ -47,7 +47,7 @@ function useSuspenseQueries<T, TCombinedResult>(options, queryClient?): TCombine
 
 #### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可提供自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 
@@ -214,10 +214,10 @@ function App() {
 ## 调用签名
 
 ```ts
-function useSuspenseQueries<T, TCombinedResult>(options, queryClient?): TCombinedResult;
+function useSuspenseQueries<T, TCombinedResult>(options: object, queryClient?: QueryClient): TCombinedResult;
 ```
 
-定义于： [react-query/src/useSuspenseQueries.ts:489](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseQueries.ts#L489)
+定义于： [packages/react-query/src/useSuspenseQueries.ts:493](https://github.com/TanStack/query/blob/main/packages/react-query/src/useSuspenseQueries.ts#L493)
 
 `useSuspenseQueries` 的选项与 `useQueries` 相同，但不支持顶层 `subscribed` 选项，并且每个 `query`
 都不能包含 `throwOnError`、`enabled` 或 `placeholderData`。
@@ -240,7 +240,7 @@ function useSuspenseQueries<T, TCombinedResult>(options, queryClient?): TCombine
 
 ##### combine?
 
-(`result`) => `TCombinedResult`
+(`result`: `T` *extends* \[\] ? \[\] : `T` *extends* \[`Head`\] ? \[`GetUseSuspenseQueryResult`\<`Head`\>\] : `T` *extends* \[`Head`, `...Tails[]`\] ? \[`...Tails[]`\] *extends* \[\] ? \[\] : \[`...Tails[]`\] *extends* \[`Head`\] ? \[`GetUseSuspenseQueryResult`\<`Head`\>, `GetUseSuspenseQueryResult`\<`Head`\>\] : \[`...Tails[]`\] *extends* \[`Head`, `...Tails[]`\] ? \[`...(...)[]`\] *extends* \[\] ? \[\] : ... *extends* ... ? ... : ... : \[`...{ [K in (...)]: (...) }[]`\] : \{ \[K in string \| number \| symbol\]: GetUseSuspenseQueryResult\<T\[K\<K\>\]\> \}) => `TCombinedResult`
 
 使用此函数将多个查询的结果合并为单个值。结果会进行结构共享，以尽可能保持引用稳定。
 
@@ -252,7 +252,7 @@ readonly \[`T` *extends* \[\] ? \[\] : `T` *extends* \[`Head`\] ? \[`GetUseSuspe
 
 #### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可提供自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 

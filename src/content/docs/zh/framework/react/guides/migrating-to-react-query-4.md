@@ -56,9 +56,9 @@ npx jscodeshift ./path/to/src/ \
 
 **注意：** codemod _只会_更改导入，你仍需手动安装独立的 Devtools 包。
 
-### 查询键（和变更键）需要是一个数组
+### 查询键（和 mutation 键）需要是一个数组
 
-在 v3 中，查询键和变更键可以是字符串，也可以是数组。React Query 内部一直只使用数组形式的键，有时这一细节也会暴露给使用者。例如，`queryFn` 收到的键始终是数组，从而更方便地配合[默认查询函数](./default-query-function.md)使用。
+在 v3 中，查询键和 mutation 键可以是字符串，也可以是数组。React Query 内部一直只使用数组形式的键，有时这一细节也会暴露给使用者。例如，`queryFn` 收到的键始终是数组，从而更方便地配合[默认查询函数](./default-query-function.md)使用。
 
 但这个规则并未贯彻到所有 API 中。例如，在[查询过滤器](./filters.md)的 `predicate` 函数中，你拿到的是原始查询键。如果同时使用数组和字符串形式的查询键，这类函数便很难处理。全局回调也有相同问题。
 
@@ -154,11 +154,11 @@ useQuery(['key'], () =>
 
 现在类型层面已禁止这种情况；在运行时，`undefined` 会转为一个_失败的 Promise_，查询会进入 `error` 状态，并在开发模式下把错误记录到控制台。
 
-### 默认情况下，查询和变更需要网络连接才能运行
+### 默认情况下，查询和 mutation 需要网络连接才能运行
 
 请阅读[新功能公告](#proper-offline-support)中关于在线/离线支持的说明，以及专门的[网络模式](./network-mode.md)页面。
 
-尽管 React Query 是异步状态管理器，可用于任何产生 Promise 的任务，但它最常与数据获取库配合获取数据。因此，默认情况下，没有网络连接时查询和变更会进入 `paused` 状态。如果希望恢复此前的行为，可以为查询和变更全局设置 `networkMode: offlineFirst`：
+尽管 React Query 是异步状态管理器，可用于任何产生 Promise 的任务，但它最常与数据获取库配合获取数据。因此，默认情况下，没有网络连接时查询和 mutation 会进入 `paused` 状态。如果希望恢复此前的行为，可以为查询和 mutation 全局设置 `networkMode: offlineFirst`：
 
 ```tsx
 new QueryClient({
@@ -193,7 +193,7 @@ new QueryClient({
 - `useQuery` 返回的 `refetch`
 - `useInfiniteQuery` 返回的 `fetchNextPage` 和 `fetchPreviousPage`
 
-除 `fetchNextPage` 和 `fetchPreviousPage` 外，这个标志过去都默认为 `false`。这种不一致可能带来问题：如果之前已有一个较慢的获取正在进行，那么在变更后调用 `refetchQueries` 或 `invalidateQueries` 时，本次重新获取会被跳过，最终结果可能不是最新的。
+除 `fetchNextPage` 和 `fetchPreviousPage` 外，这个标志过去都默认为 `false`。这种不一致可能带来问题：如果之前已有一个较慢的获取正在进行，那么在 mutation 后调用 `refetchQueries` 或 `invalidateQueries` 时，本次重新获取会被跳过，最终结果可能不是最新的。
 
 我们认为，当代码主动要求重新获取查询时，默认就应该重新启动获取。
 
@@ -242,7 +242,7 @@ inactive?: boolean
 
 #### 重新获取活动/重新获取非活动
 
-[`queryClient.invalidateQueries`](../../../reference/QueryClient.md#queryclientinvalidatequeries) 还有两个额外且相似的标志：
+[`queryClient.invalidateQueries`](../reference/classes/QueryClient.md#invalidatequeries) 还有两个额外且相似的标志：
 
 ```
 refetchActive: Boolean
@@ -357,9 +357,9 @@ React Query 现在支持 [package.json `"exports"`](https://nodejs.org/api/packa
 
 > 注意：仅当你通过 `queryCache.subscribe` 或 `mutationCache.subscribe` 手动订阅缓存时，这才相关
 
-### 单独的水合导出已被删除
+### 单独的 hydrate 导出已被删除
 
-从 [3.22.0](https://github.com/TanStack/query/releases/tag/v3.22.0) 开始，水合工具已迁移到 React Query 核心包。在 v3 中，你仍可以从 `react-query/hydration` 使用旧导出，但 v4 已将这些导出删除。
+从 [3.22.0](https://github.com/TanStack/query/releases/tag/v3.22.0) 开始，hydrate 工具已迁移到 React Query 核心包。在 v3 中，你仍可以从 `react-query/hydration` 使用旧导出，但 v4 已将这些导出删除。
 
 ```tsx
 - import { dehydrate, hydrate, useHydrate, Hydrate } from 'react-query/hydration' // [!code --]
@@ -412,7 +412,7 @@ React 18 于当年早些时候发布，v4 现在已对它及其带来的新并�
 
 ### 完善的离线支持
 
-在 v3 中，React Query 始终会触发查询和变更，但随后假设如果你想重试，则需要连接到互联网。这导致了几种令人困惑的情况：
+在 v3 中，React Query 始终会触发查询和 mutation，但随后假设如果你想重试，则需要连接到互联网。这导致了几种令人困惑的情况：
 
 - 你处于离线状态并挂载查询 - 它会进入加载状态，请求失败，并且它会保持加载状态，直到你再次上线，即使它并没有真正获取。
 - 同样，如果你处于离线状态并且关闭了重试，你的查询将触发并失败，并且查询将进入错误状态。
@@ -427,7 +427,7 @@ React Query 默认会“跟踪”查询属性，这能显著优化渲染。该�
 
 ### 使用 setQueryData 避免更新
 
-使用 [`setQueryData` 的函数式 updater](../../../reference/QueryClient.md#queryclientsetquerydata) 时，现在可以通过返回 `undefined` 退出更新。当你收到的 `previousValue` 是 `undefined` 时，这会很有用：它表示当前没有缓存条目，而你不想或无法创建条目。例如以下切换 todo 状态的示例：
+使用 [`setQueryData` 的函数式 updater](../reference/classes/QueryClient.md#setquerydata) 时，现在可以通过返回 `undefined` 退出更新。当你收到的 `previousValue` 是 `undefined` 时，这会很有用：它表示当前没有缓存条目，而你不想或无法创建条目。例如以下切换 todo 状态的示例：
 
 ```tsx
 queryClient.setQueryData(['todo', id], (previousTodo) =>
@@ -435,9 +435,9 @@ queryClient.setQueryData(['todo', id], (previousTodo) =>
 )
 ```
 
-### 变更缓存垃圾回收
+### mutation 缓存垃圾回收
 
-就像查询一样，现在也可以自动对变更进行垃圾回收。变更的默认 `cacheTime` 也设置为 5 分钟。
+就像查询一样，现在也可以自动对 mutation 进行垃圾回收。mutation 的默认 `cacheTime` 也设置为 5 分钟。
 
 ### 为多个 Provider 自定义上下文
 

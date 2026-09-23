@@ -7,7 +7,7 @@ title: QueriesResults
 type QueriesResults<T, TResults, TDepth> = TDepth["length"] extends MAXIMUM_DEPTH ? UseQueryResult[] : T extends [] ? [] : T extends [infer Head] ? [...TResults, GetUseQueryResult<Head>] : T extends [infer Head, ...(infer Tails)] ? QueriesResults<[...Tails], [...TResults, GetUseQueryResult<Head>], [...TDepth, 1]> : { [K in keyof T]: GetUseQueryResult<T[K]> };
 ```
 
-定义于：[react-query/src/useQueries.ts:207](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQueries.ts#L207)
+定义于： [packages/react-query/src/useQueries.ts:211](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQueries.ts#L211)
 
 未提供 `combine` 时，`useQueries` 返回的结果类型。它与 [QueriesOptions](QueriesOptions.md) 相对应：
 分别推断每个元组元素的结果类型，最多支持 20 个元素。对于非元组数组，则会逐元素映射，仍然分别推断

@@ -7,9 +7,9 @@ title: DefinedInitialDataOptions
 type DefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey> = Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryFn"> & object;
 ```
 
-定义于：[react-query/src/queryOptions.ts:80](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L80)
+定义于： [packages/react-query/src/queryOptions.ts:80](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L80)
 
-设置 `initialData` 时所选中的 `queryOptions` 重载接受的选项——此时 `data` 永远不会是 `undefined`。
+设置 `initialData` 时所选中的 `queryOptions` 重载接受的选项——此时 `data` 不会是 `undefined`（除非 `select` 将 `TData` 转换为包含 `undefined` 的类型）。
 
 ## 类型声明
 
@@ -44,7 +44,7 @@ optional queryFn: QueryFunction<TQueryFnData, TQueryKey>;
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。
 
@@ -56,6 +56,6 @@ optional queryFn: QueryFunction<TQueryFnData, TQueryKey>;
 
 ### TQueryKey
 
-`TQueryKey` *extends* `QueryKey` = `QueryKey`
+`TQueryKey` *extends* [`QueryKey`](QueryKey.md) = [`QueryKey`](QueryKey.md)
 
 `queryKey` 的类型。

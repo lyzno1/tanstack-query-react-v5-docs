@@ -8,15 +8,15 @@ redirect_from:
 ## 调用签名
 
 ```ts
-function queryOptions<TQueryFnData, TError, TData, TQueryKey>(options): Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryFn"> & object & QueryKeyWithDataTag<TQueryKey, TQueryFnData, TError>;
+function queryOptions<TQueryFnData, TError, TData, TQueryKey>(options: DefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey>): Omit<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryFn"> & object & QueryKeyWithDataTag<TQueryKey, TQueryFnData, TError>;
 ```
 
-定义于： [react-query/src/queryOptions.ts:142](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L142)
+定义于： [packages/react-query/src/queryOptions.ts:143](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L143)
 
 通常，所有能够传给 `useQuery` 的选项都可以传给 `queryOptions`。这些选项可以在 Hook 与
 `queryClient.query` 等命令式 API 之间共享。`options.queryKey` 为必填项，即要为其生成选项的查询键。
 
-设置 `initialData` 时会选择此重载，因此返回的 `data` 永远不会是 `undefined`。
+设置 `initialData` 时会选择此重载，因此返回的 `data` 不会是 `undefined`（除非 `select` 将 `TData` 转换为包含 `undefined` 的类型）。
 
 ### 类型参数
 
@@ -83,10 +83,10 @@ function Posts() {
 ## 调用签名
 
 ```ts
-function queryOptions<TQueryFnData, TError, TData, TQueryKey>(options): OmitKeyof<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryFn"> & object & QueryKeyWithDataTag<TQueryKey, TQueryFnData, TError>;
+function queryOptions<TQueryFnData, TError, TData, TQueryKey>(options: UnusedSkipTokenOptions<TQueryFnData, TError, TData, TQueryKey>): OmitKeyof<UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryFn"> & object & QueryKeyWithDataTag<TQueryKey, TQueryFnData, TError>;
 ```
 
-定义于： [react-query/src/queryOptions.ts:183](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L183)
+定义于： [packages/react-query/src/queryOptions.ts:184](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L184)
 
 通常，所有能够传给 `useQuery` 的选项都可以传给 `queryOptions`。这些选项可以在 Hook 与
 `queryClient.query` 等命令式 API 之间共享。`options.queryKey` 为必填项，即要为其生成选项的查询键。
@@ -151,10 +151,10 @@ function Post({ id }: { id: string }) {
 ## 调用签名
 
 ```ts
-function queryOptions<TQueryFnData, TError, TData, TQueryKey>(options): UseQueryOptions<TQueryFnData, TError, TData, TQueryKey> & object & QueryKeyWithDataTag<TQueryKey, TQueryFnData, TError>;
+function queryOptions<TQueryFnData, TError, TData, TQueryKey>(options: UndefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey>): UseQueryOptions<TQueryFnData, TError, TData, TQueryKey> & object & QueryKeyWithDataTag<TQueryKey, TQueryFnData, TError>;
 ```
 
-定义于： [react-query/src/queryOptions.ts:247](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L247)
+定义于： [packages/react-query/src/queryOptions.ts:248](https://github.com/TanStack/query/blob/main/packages/react-query/src/queryOptions.ts#L248)
 
 通常，所有能够传给 `useQuery` 的选项都可以传给 `queryOptions`。这些选项可以在 Hook 与
 `queryClient.query` 等命令式 API 之间共享。`options.queryKey` 为必填项，即要为其生成选项的查询键。

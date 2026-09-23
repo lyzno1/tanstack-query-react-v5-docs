@@ -7,10 +7,10 @@ title: DefinedUseQueryResult
 type DefinedUseQueryResult<TData, TError> = DefinedQueryObserverResult<TData, TError>;
 ```
 
-定义于：[react-query/src/types.ts:353](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L353)
+定义于： [packages/react-query/src/types.ts:353](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L353)
 
 设置 `initialData` 时 `useQuery` 的结果，或省略 `isPlaceholderData` 之前 `useSuspenseQuery` 的结果——
-此时 `data` 永远不会是 `undefined`。它重新导出了 `@tanstack/query-core` 中的
+此时 `data` 不会是 `undefined`（除非 `select` 将 `TData` 转换为包含 `undefined` 的类型）。它重新导出了 `@tanstack/query-core` 中的
 `DefinedQueryObserverResult`。
 
 ## 类型参数
@@ -23,6 +23,6 @@ type DefinedUseQueryResult<TData, TError> = DefinedQueryObserverResult<TData, TE
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。

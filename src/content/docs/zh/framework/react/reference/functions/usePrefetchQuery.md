@@ -6,10 +6,10 @@ redirect_from:
 ---
 
 ```ts
-function usePrefetchQuery<TQueryFnData, TError, TData, TQueryData, TQueryKey>(options, queryClient?): void;
+function usePrefetchQuery<TQueryFnData, TError, TData, TQueryData, TQueryKey>(options: UsePrefetchQueryOptions<TQueryFnData, TError, TData, TQueryData, TQueryKey>, queryClient?: QueryClient): void;
 ```
 
-定义于： [react-query/src/usePrefetchQuery.tsx:42](https://github.com/TanStack/query/blob/main/packages/react-query/src/usePrefetchQuery.tsx#L42)
+定义于： [packages/react-query/src/usePrefetchQuery.tsx:42](https://github.com/TanStack/query/blob/main/packages/react-query/src/usePrefetchQuery.tsx#L42)
 
 `usePrefetchQuery` 不返回任何内容。它只用于在渲染期间触发预取，并且应位于 Suspense 边界之前；
 该边界包裹着使用 `useSuspenseQuery` 的组件。所有能够传给 `queryClient.query` 的选项都可以传给
@@ -50,7 +50,7 @@ function usePrefetchQuery<TQueryFnData, TError, TData, TQueryData, TQueryKey>(op
 
 ### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 

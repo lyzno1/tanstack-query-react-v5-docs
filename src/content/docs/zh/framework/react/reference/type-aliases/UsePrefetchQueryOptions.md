@@ -7,7 +7,7 @@ title: UsePrefetchQueryOptions
 type UsePrefetchQueryOptions<TQueryFnData, TError, TData, TQueryData, TQueryKey> = DistributiveOmit<QueryExecuteOptions<TQueryFnData, TError, TData, TQueryData, TQueryKey>, "queryFn"> & object;
 ```
 
-定义于：[react-query/src/types.ts:80](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L80)
+定义于： [packages/react-query/src/types.ts:80](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L80)
 
 `usePrefetchQuery` 接受的选项——包含所有可传给 `queryClient.query` 的选项，
 但除非已经定义默认查询函数，否则 `queryFn` 为必填项。
@@ -33,7 +33,7 @@ optional queryFn: Exclude<QueryExecuteOptions<TQueryFnData, TError, TData, TQuer
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。
 
@@ -52,6 +52,6 @@ optional queryFn: Exclude<QueryExecuteOptions<TQueryFnData, TError, TData, TQuer
 
 ### TQueryKey
 
-`TQueryKey` *extends* `QueryKey` = `QueryKey`
+`TQueryKey` *extends* [`QueryKey`](QueryKey.md) = [`QueryKey`](QueryKey.md)
 
 `queryKey` 的类型。

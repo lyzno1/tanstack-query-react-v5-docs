@@ -7,7 +7,7 @@ title: UseMutationResult
 type UseMutationResult<TData, TError, TVariables, TOnMutateResult> = UseBaseMutationResult<TData, TError, TVariables, TOnMutateResult>;
 ```
 
-定义于：[react-query/src/types.ts:500](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L500)
+定义于： [packages/react-query/src/types.ts:501](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L501)
 
 `useMutation` 的结果。与 [UseBaseMutationResult](UseBaseMutationResult.md) 相同。
 
@@ -17,13 +17,13 @@ type UseMutationResult<TData, TError, TVariables, TOnMutateResult> = UseBaseMuta
 
 `TData` = `unknown`
 
-变更函数 resolve 后得到的值的类型。
+mutation 函数 resolve 后得到的值的类型。
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
-变更函数可能抛出的错误类型。
+mutation 函数可能抛出的错误类型。
 
 ### TVariables
 

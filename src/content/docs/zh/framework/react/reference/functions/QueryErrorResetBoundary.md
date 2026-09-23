@@ -6,10 +6,10 @@ redirect_from:
 ---
 
 ```ts
-function QueryErrorResetBoundary(__namedParameters): Element;
+function QueryErrorResetBoundary(__namedParameters: QueryErrorResetBoundaryProps): Element;
 ```
 
-定义于： [react-query/src/QueryErrorResetBoundary.tsx:136](https://github.com/TanStack/query/blob/main/packages/react-query/src/QueryErrorResetBoundary.tsx#L136)
+定义于： [packages/react-query/src/QueryErrorResetBoundary.tsx:136](https://github.com/TanStack/query/blob/main/packages/react-query/src/QueryErrorResetBoundary.tsx#L136)
 
 在查询中使用 `suspense` 或 `throwOnError` 时，需要有一种方式告知查询：发生错误后重新渲染时，
 希望再次尝试。使用 `QueryErrorResetBoundary` 组件，可以重置该组件边界内的所有查询错误。

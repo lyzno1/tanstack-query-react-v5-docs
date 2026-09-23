@@ -8,10 +8,10 @@ redirect_from:
 ## 调用签名
 
 ```ts
-function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options, queryClient?): DefinedUseInfiniteQueryResult<TData, TError>;
+function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options: DefinedInitialDataInfiniteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, queryClient?: QueryClient): DefinedUseInfiniteQueryResult<TData, TError>;
 ```
 
-定义于： [react-query/src/useInfiniteQuery.ts:65](https://github.com/TanStack/query/blob/main/packages/react-query/src/useInfiniteQuery.ts#L65)
+定义于： [packages/react-query/src/useInfiniteQuery.ts:65](https://github.com/TanStack/query/blob/main/packages/react-query/src/useInfiniteQuery.ts#L65)
 
 `useInfiniteQuery` 的选项与 `useQuery` 完全相同，此外还增加了 `initialPageParam`、
 `getNextPageParam`、`getPreviousPageParam` 和 `maxPages`。
@@ -30,7 +30,7 @@ function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(op
 
 #### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`, `unknown`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`, `unknown`\>
 
 #### TQueryKey
 
@@ -50,7 +50,7 @@ function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(op
 
 #### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 
@@ -101,10 +101,10 @@ function Projects() {
 ## 调用签名
 
 ```ts
-function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options, queryClient?): UseInfiniteQueryResult<TData, TError>;
+function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options: UndefinedInitialDataInfiniteOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, queryClient?: QueryClient): UseInfiniteQueryResult<TData, TError>;
 ```
 
-定义于： [react-query/src/useInfiniteQuery.ts:191](https://github.com/TanStack/query/blob/main/packages/react-query/src/useInfiniteQuery.ts#L191)
+定义于： [packages/react-query/src/useInfiniteQuery.ts:191](https://github.com/TanStack/query/blob/main/packages/react-query/src/useInfiniteQuery.ts#L191)
 
 `useInfiniteQuery` 的选项与 `useQuery` 完全相同，此外还增加了 `initialPageParam`、
 `getNextPageParam`、`getPreviousPageParam` 和 `maxPages`。
@@ -121,7 +121,7 @@ function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(op
 
 #### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`, `unknown`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`, `unknown`\>
 
 #### TQueryKey
 
@@ -141,7 +141,7 @@ function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(op
 
 #### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 
@@ -257,10 +257,10 @@ function Projects() {
 ## 调用签名
 
 ```ts
-function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options, queryClient?): UseInfiniteQueryResult<TData, TError>;
+function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(options: UseInfiniteQueryOptions<TQueryFnData, TError, TData, TQueryKey, TPageParam>, queryClient?: QueryClient): UseInfiniteQueryResult<TData, TError>;
 ```
 
-定义于： [react-query/src/useInfiniteQuery.ts:347](https://github.com/TanStack/query/blob/main/packages/react-query/src/useInfiniteQuery.ts#L347)
+定义于： [packages/react-query/src/useInfiniteQuery.ts:347](https://github.com/TanStack/query/blob/main/packages/react-query/src/useInfiniteQuery.ts#L347)
 
 `useInfiniteQuery` 的选项与 `useQuery` 完全相同，此外还增加了 `initialPageParam`、
 `getNextPageParam`、`getPreviousPageParam` 和 `maxPages`。
@@ -277,7 +277,7 @@ function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(op
 
 #### TData
 
-`TData` = `InfiniteData`\<`TQueryFnData`, `unknown`\>
+`TData` = [`InfiniteData`](../interfaces/InfiniteData.md)\<`TQueryFnData`, `unknown`\>
 
 #### TQueryKey
 
@@ -297,7 +297,7 @@ function useInfiniteQuery<TQueryFnData, TError, TData, TQueryKey, TPageParam>(op
 
 #### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 

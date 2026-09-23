@@ -7,7 +7,7 @@ title: UseSuspenseQueryResult
 type UseSuspenseQueryResult<TData, TError> = DistributiveOmit<DefinedQueryObserverResult<TData, TError>, "isPlaceholderData">;
 ```
 
-定义于：[react-query/src/types.ts:337](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L337)
+定义于： [packages/react-query/src/types.ts:337](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L337)
 
 `useSuspenseQuery` 的结果。它与 [DefinedUseQueryResult](DefinedUseQueryResult.md) 相同，但移除了
 `isPlaceholderData`——该字段在原类型中始终为 `false`，因此这里移除的是一个不再承载有效信息的字段，
@@ -23,6 +23,6 @@ type UseSuspenseQueryResult<TData, TError> = DistributiveOmit<DefinedQueryObserv
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。

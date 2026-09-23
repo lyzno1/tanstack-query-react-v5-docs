@@ -45,7 +45,7 @@ await queryClient.refetchQueries({ queryKey: ['posts'], type: 'active' })
 
 ## `Mutation Filters`
 
-变更过滤器是一个带条件的对象，用于匹配变更：
+mutation 过滤器是一个带条件的对象，用于匹配 mutation：
 
 ```tsx
 // Get the number of all fetching mutations
@@ -60,16 +60,16 @@ await queryClient.isMutating({
 })
 ```
 
-变更过滤器对象支持以下属性：
+mutation 过滤器对象支持以下属性：
 
 - `mutationKey?: MutationKey`
-  - 设置该属性以定义要匹配的变更键。
+  - 设置该属性以定义要匹配的 mutation 键。
 - `exact?: boolean`
-  - 如果你不想按变更键做包含匹配，可以传入 `exact: true`，只返回与传入变更键完全一致的变更。
+  - 如果你不想按 mutation 键做包含匹配，可以传入 `exact: true`，只返回与传入 mutation 键完全一致的 mutation。
 - `status?: MutationStatus`
-  - 允许按变更状态过滤。
+  - 允许按 mutation 状态过滤。
 - `predicate?: (mutation: Mutation) => boolean`
-  - 这个谓词函数会作为所有已匹配变更的最终过滤条件。如果未指定其他过滤器，该函数会对缓存中的每个变更执行判断。
+  - 这个谓词函数会作为所有已匹配 mutation 的最终过滤条件。如果未指定其他过滤器，该函数会对缓存中的每个 mutation 执行判断。
 
 ## 工具函数
 
@@ -87,4 +87,4 @@ const isMatching = matchQuery(filters, query)
 const isMatching = matchMutation(filters, mutation)
 ```
 
-返回一个布尔值，用于表示某个变更是否匹配给定的变更过滤条件。
+返回一个布尔值，用于表示某个 mutation 是否匹配给定的 mutation 过滤条件。

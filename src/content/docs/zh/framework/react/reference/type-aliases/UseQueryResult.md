@@ -7,7 +7,7 @@ title: UseQueryResult
 type UseQueryResult<TData, TError> = UseBaseQueryResult<TData, TError>;
 ```
 
-定义于：[react-query/src/types.ts:325](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L325)
+定义于： [packages/react-query/src/types.ts:325](https://github.com/TanStack/query/blob/main/packages/react-query/src/types.ts#L325)
 
 `useQuery` 的结果。与 [UseBaseQueryResult](UseBaseQueryResult.md) 相同。
 
@@ -21,6 +21,6 @@ type UseQueryResult<TData, TError> = UseBaseQueryResult<TData, TError>;
 
 ### TError
 
-`TError` = `DefaultError`
+`TError` = [`DefaultError`](DefaultError.md)
 
 `queryFn` 可能抛出的错误类型。

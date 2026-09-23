@@ -12,7 +12,7 @@ title: 预取和路由器集成
 3. 通过路由器集成
 4. 在服务器渲染期间（路由器集成的另一种形式）
 
-本指南介绍前三种模式；第四种模式会在[服务端渲染与水合指南](./ssr.md)和[高级服务端渲染指南](./advanced-ssr.md)中深入讲解。
+本指南介绍前三种模式；第四种模式会在[服务端渲染与 hydration 指南](./ssr.md)和[高级服务端渲染指南](./advanced-ssr.md)中深入讲解。
 
 预取的一个典型用途是避免请求瀑布。关于请求瀑布的背景和深入说明，请参阅[性能与请求瀑布指南](./request-waterfalls.md)。
 
@@ -399,7 +399,7 @@ function Feed() {
 组件树中的数据获取很容易形成请求瀑布，而随着应用中此类问题不断累积，逐个修复会越来越繁琐。
 因此，在路由器层集成预取是一种很有吸引力的方案。
 
-在这种方式下，你需要提前为每条_路由_显式声明其组件树所需的数据。传统的服务端渲染必须先加载全部数据才能开始渲染，因此长期以来，这一直是 SSR 应用的主流方式。它至今仍很常见，详情请参阅[服务端渲染与水合指南](./ssr.md)。
+在这种方式下，你需要提前为每条_路由_显式声明其组件树所需的数据。传统的服务端渲染必须先加载全部数据才能开始渲染，因此长期以来，这一直是 SSR 应用的主流方式。它至今仍很常见，详情请参阅[服务端渲染与 hydration 指南](./ssr.md)。
 
 现在先关注客户端场景，看看如何通过 [TanStack Router](https://tanstack.com/router) 实现。为了保持简洁，
 示例省略了大量设置与样板代码；完整细节可查看 [TanStack Router 的 React Query 示例](https://tanstack.com/router/latest/docs/framework/react/examples/basic-react-query-file-based)
@@ -462,7 +462,7 @@ const articleRoute = new Route({
 
 ## 手动预填充查询缓存
 
-如果已经有同步可用的查询数据，就不必预取。可以使用 [Query Client 的 `setQueryData` 方法](../../../reference/QueryClient.md#queryclientsetquerydata)，直接按查询键添加或更新缓存结果。
+如果已经有同步可用的查询数据，就不必预取。可以使用 [Query Client 的 `setQueryData` 方法](../reference/classes/QueryClient.md#setquerydata)，直接按查询键添加或更新缓存结果。
 
 [//]: # 'ExampleManualPriming'
 
@@ -477,6 +477,6 @@ queryClient.setQueryData(['todos'], todos)
 
 要深入了解如何在获取数据之前预先填充查询缓存，请参阅 TkDodo 的 [Seeding the Query Cache](https://tkdodo.eu/blog/seeding-the-query-cache)。
 
-与服务端路由器和框架的集成方式与刚才非常相似，区别在于还需把数据从服务端传给客户端，再水合到客户端缓存中。具体做法请继续阅读[服务端渲染与水合指南](./ssr.md)。
+与服务端路由器和框架的集成方式与刚才非常相似，区别在于还需把数据从服务端传给客户端，再 hydrate 到客户端缓存中。具体做法请继续阅读[服务端渲染与 hydration 指南](./ssr.md)。
 
 [//]: # 'Materials'

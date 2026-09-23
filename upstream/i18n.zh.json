@@ -1,7 +1,7 @@
 {
   "locale": "zh",
   "sourceRef": "main",
-  "generatedAt": "2026-09-05T09:53:44.474Z",
+  "generatedAt": "2026-09-23T13:03:32.286Z",
   "translations": {
     "community-resources.md": {
       "hash": "bebce7fffc040b40ee6298bce7c9bc37c82204026f6c3fbb80745b01eef01249",
@@ -134,9 +134,9 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/migrating-to-react-query-4.md": {
-      "hash": "38ed6abf06e0e9ef4bb167acd441bef67763bfa59a767bc6d6eb9079d414f247",
+      "hash": "d172d65fe181fda54f0d4a66df5c5994458168a05c9b93f5d6390e8e601686a4",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/guides/migrating-to-v5.md": {
       "hash": "3a0ba561046d8d6022cacec89ca8eb6c93b942fb4f143906e2867d5b30f8037c",
@@ -144,14 +144,14 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/mutations.md": {
-      "hash": "fc5f01b017df348b439a1c4bcc19abe99555d076d305df6b598c33fd88f7de42",
+      "hash": "abd2c1afb55a3e9d4a65830257b93dcf326f7d239d399b5d356ab836ac88efc2",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/guides/network-mode.md": {
-      "hash": "713fae3317d926526999ea809f08f94a5b03875c2ff00f3281da5d2a0e90f865",
+      "hash": "92d8c2b2835c9063389505b44372ec3578ec9a0026860eaa4bc567b823a982cd",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/guides/optimistic-updates.md": {
       "hash": "0c32fabbe875f00ac62e7e1f70156e95e27eca0a8446b09005ca5faf6ec1ecc7",
@@ -179,9 +179,9 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/prefetching.md": {
-      "hash": "f2c85894fa0587f005ef43c0cf0ad52c3d459fe601f3fe089f4547a487f29af6",
+      "hash": "ba1232c08b048c256283bf4fb49286eb6ba1ef97fcbc8c4516693e8c014cb4d6",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/guides/queries.md": {
       "hash": "3f0ccb1ffee73eb8cd9476e769c62a70af18fc1cc4250fce7bba7073bf6a80ab",
@@ -194,9 +194,9 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/query-functions.md": {
-      "hash": "f5ae9a4120c8a9bbd5666774710c05f5ddcde35a7517c92230428bff666f97bb",
+      "hash": "7b2b9901cc61ccf1ed15d19743f0dda3856625f84fe00a16d11d9fded855c523",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/guides/query-invalidation.md": {
       "hash": "e4cda3acadb7fb216fe6454ef55a790c2baa09a783fdd6c61b5b79d00faca63c",
@@ -219,9 +219,9 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/render-optimizations.md": {
-      "hash": "605528cca321e3337baa9911c475914e65d8b11e8e737af4bc83286d5455da82",
+      "hash": "b84eb80450def1ddd96f72d297dcda72c57babe424b1f09589d73833f211170e",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/guides/request-waterfalls.md": {
       "hash": "df429afdd7f8fa45bf2f738ac3c2c1d9bc591e341222702930c53972562f4b44",
@@ -234,9 +234,9 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/guides/ssr.md": {
-      "hash": "9c7e17ca9c70cc4f5a9b2e9c1e7f7a0984a7f72003bdeabdd28a9522b642036c",
+      "hash": "9a5ab966cbc5f3376ad1d3b26e3c64f1193e41bfe6e1ef7c7e5f39889d018098",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/guides/suspense.md": {
       "hash": "6231e1336365466568458f1b28e9f81094e76cf55ecfec2f27baca03e6321d07",
@@ -249,14 +249,14 @@
       "translatedAt": "2026-09-05T09:53:44.474Z"
     },
     "framework/react/guides/updates-from-mutation-responses.md": {
-      "hash": "d5554e202a2196e9a5c5b8f821221d4e05d213184be4f4c74e726eafd4e6a3c7",
+      "hash": "40992a2215f5fcfa8245f790baad883d327f2a434094f8105722da1582dfe13a",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/guides/window-focus-refetching.md": {
-      "hash": "cfdb00a9a9515efe21c03d3bafc377b21d6bc88c8ff21a2c62d53005f4f9723e",
+      "hash": "eb7d485f13680558c11fd54862f904deed9879b1ee9fcd9be6651dc381db22fa",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/installation.md": {
       "hash": "89030a5abb31fe70d1bfc2a94b1957d259a6f63a74c2c3f5092b7195196457ea",
@@ -274,9 +274,9 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/plugins/createAsyncStoragePersister.md": {
-      "hash": "ff285a4bf31e493104e4b9d568368dbd2dad3e3a1c56b62ca84edf088e27ecab",
+      "hash": "718bfb5784fa2ed4c7e18923fa5370a7e0db12add02d061ef5e8fc4ae5af2cb6",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/plugins/createPersister.md": {
       "hash": "685c2edb37c2ad602e5ca96b433b3d4450f34db8e48a9ca1762f06949942ebab",
@@ -289,9 +289,9 @@
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
     "framework/react/plugins/persistQueryClient.md": {
-      "hash": "4d946ad090835cea7f8e4f5987a2296b68f0efa1cc62571e3860fdf752401265",
+      "hash": "b1dbb5b9ed2c0e2dff3d9e1223cab7f2f40f066a25f57e6649d3c0ad9dfb8595",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/quick-start.md": {
       "hash": "e695ac2a71213c51b25931bb4819511319a5d78baf07f141cf109972c14b8df5",
@@ -303,398 +303,1103 @@
       "sourceRef": "main",
       "translatedAt": "2026-09-03T16:09:19.620Z"
     },
-    "framework/react/reference/functions/HydrationBoundary.md": {
-      "hash": "90f7563cb2f86100cd39be409a535e428bebbfa7e6ba1883a414a254bb275ae9",
+    "framework/react/reference/classes/CancelledError.md": {
+      "hash": "3b57d86ce2dc98559f5763681609ad6f1026ec022b8a28b60efa9d1dc03d961b",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T12:49:01.018Z"
+    },
+    "framework/react/reference/classes/InfiniteQueryObserver.md": {
+      "hash": "ab5a644c819886669f988a3fb28a62bd1b9045407d81e23b8f427d13a13a2459",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:55:14.735Z"
+    },
+    "framework/react/reference/classes/Mutation.md": {
+      "hash": "f43ab282a3192542e97eb206f2d90dd6df9fb6466aa8ec23e435b31013073f8c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:50:09.214Z"
+    },
+    "framework/react/reference/classes/MutationCache.md": {
+      "hash": "c103dc4565dcde8be980344a8874022fa6884c7e22939b8a1088905272bb59a0",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:50:09.214Z"
+    },
+    "framework/react/reference/classes/MutationObserver.md": {
+      "hash": "9b0f02ed202eaebd617b942d001385e4c8c240883cf0bfeb700db62535507754",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:50:09.214Z"
+    },
+    "framework/react/reference/classes/QueriesObserver.md": {
+      "hash": "0e9cbb6f7846049bbaf1a22fbffdfb8db07c3f3c4bece160a37afbd6977d02b1",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:51:14.310Z"
+    },
+    "framework/react/reference/classes/Query.md": {
+      "hash": "c35b1cfc6afe8ddea77a57b73315d833285529f4bbc202e9a2cd37c8acbb4754",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:52:08.284Z"
+    },
+    "framework/react/reference/classes/QueryCache.md": {
+      "hash": "66c267834567295c5a1d35582381256cb0bca867c34364e28c041c98aa481f4e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:51:14.310Z"
+    },
+    "framework/react/reference/classes/QueryClient.md": {
+      "hash": "09ad266b6a0965db28579fec7df85303c7b395c7723a076355115ab59c9c38c5",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:57:18.781Z"
+    },
+    "framework/react/reference/classes/QueryObserver.md": {
+      "hash": "b2d19a5bf7b2eb6e8b5f09e6dfe547a11fe6c5a441630b334ad4775be5697d2b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:55:14.735Z"
+    },
+    "framework/react/reference/functions/HydrationBoundary.md": {
+      "hash": "1cce097296380dbe3ea5e130024417eaa5f2cb7cb770d90be6db28884b8fa4a1",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/QueryClientProvider.md": {
-      "hash": "89be7dd58b90db4a0b8fb4c52fd8acca68a713ab58d84e9145fa08c6db4872dd",
+      "hash": "35a9812a0f0d78300e9df73d04e9f4e8c8aba04ef903a65d0ef6121b1ceb4d10",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/QueryErrorResetBoundary.md": {
-      "hash": "9b527bfd4fab15d0cfb852905cdad30dcada5748f8fbf141bb0b45cdc903d820",
+      "hash": "cb5c087ad192ddfa4f416fdd41b9b7144cc38598c4a098a655f3c187e0ca9ed1",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/functions/defaultShouldDehydrateMutation.md": {
+      "hash": "c2fe9edc0072ed01586b95007394e8325ce6e70f9bdeb63db0ae8db33fa2259b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/functions/defaultShouldDehydrateQuery.md": {
+      "hash": "b315fc346bd1cac1337825fc5786a11e917e73169bffdc314f8597a38bb69289",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/functions/dehydrate.md": {
+      "hash": "9901e33a25e45d491e643bc8f3d27496fc182e0bece81f4b9e29b4c294ada7a3",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:46:35.255Z"
+    },
+    "framework/react/reference/functions/dehydrateQuery.md": {
+      "hash": "09a1beb3c2ccf0df17b6e121e3077ea4c19d3306af2cb379e04c0b47f96503c5",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:46:35.255Z"
+    },
+    "framework/react/reference/functions/experimental_streamedQuery.md": {
+      "hash": "76b8afc1a7fe7511db7b9efb7f02fc228ed5a37f4d493cd3cb095e1a3a0cfd77",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:46:35.255Z"
+    },
+    "framework/react/reference/functions/hashKey.md": {
+      "hash": "d87fb06a671f7b551a13edcb4a16fbbd699177e36e0decc6e153bc2bc1a38374",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/functions/hydrate.md": {
+      "hash": "247e2e078868315dc71aff853d7c1cbe603848bee80f1279b0ab0a28a4e6ca7c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:46:35.255Z"
     },
     "framework/react/reference/functions/infiniteQueryOptions.md": {
-      "hash": "31162aedf193e09780311ada25105d08b052f605aa50aa60fd186cdc1bb997a2",
+      "hash": "fd1aac3ea796e7b0e14534b89eef714b0373a12f12bace699d9e34c7627b22ff",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/functions/isCancelledError.md": {
+      "hash": "17e5c4d616eb3fdc888ec61a95b67491151e119efd317daf3966e10eafb0f817",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/functions/keepPreviousData.md": {
+      "hash": "b4e3ad4e94e0b2f386853996afd24f79464590843c35198ea2a0787c2b6720c4",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/functions/matchMutation.md": {
+      "hash": "7bf4490eba342f9d9f8ae7d1a042722e4764f245cfd144e9e76d1a547ff56d6e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/functions/matchQuery.md": {
+      "hash": "553beb29a046a8e92276748fb0e79783e81ed9bcda065697f0f539a0266ecf4d",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
     },
     "framework/react/reference/functions/mutationOptions.md": {
-      "hash": "989a4f8bc3ff3b5808959cdfac8ec1aaeaf1de2746eb1ef98df7c3b536bcd813",
+      "hash": "811c6a8b449388cc687aa4d8432cd1cff6639c29a23a33ee046fd27bbc16089a",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/functions/noop.md": {
+      "hash": "118e0a2d7e3b7a092922a72c6dae3cbc6a406666c9cdeb32457f4aef8799babc",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/functions/partialMatchKey.md": {
+      "hash": "ac1f193c9095f2539f0a57dea68632253a343de3d38ca0fb61da9c341984e4f3",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/functions/queryOptions.md": {
-      "hash": "cdceb06dd2c7a99a11968ecf481cb321aa2a1597195d74de74ce4b915a29b38b",
+      "hash": "8772b1ac1d8b18da0449589f981254585dd0f6df928e2260bd9f86c6502b417e",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/functions/replaceEqualDeep.md": {
+      "hash": "79297dc71d88ce20457250cbb7c42aeeb6747d8018fe3d3a7953d8ae76ffdccc",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/functions/shouldThrowError.md": {
+      "hash": "a5b7215b03c9532b41a530af6151d74069846fe64257657bc1b9749d6bffa86c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
     },
     "framework/react/reference/functions/useInfiniteQuery.md": {
-      "hash": "09dfd528eb0daca1a7f1073e3a0bd8662e95ab1a8b3c6d1da5cf9d5dbbf783af",
+      "hash": "e26cc6a2cdc64b0fcf0e07fa0969ed8ac3cd8f318b4e99a0720cbe19a4d176b8",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useIsFetching.md": {
-      "hash": "b976e8c44131b64274a7d6db3fe1d63862444abbb628fcac24bb7f570774ac81",
+      "hash": "42d08746ad856ac72c323b7172a749003db7c4d2507534d96d5f71e8b21f2cb7",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useIsMutating.md": {
-      "hash": "e5b5ca50affaee50d4e36f2f07567b5ba95c340457d4646e6ee4230a6f01eb58",
+      "hash": "375309f098b7eb5ae06c272560c18541f5c439c98e31188f56f0e0ac90b4fe64",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useIsRestoring.md": {
-      "hash": "88a2ccc0471c5eb7d4f983cf2a7b9c11b70d6953db66fe2d35904673e7fb81aa",
+      "hash": "ec9e6434c518da5c9b44eb4004b01dedb5f5f370c91618e469d720b13c229475",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useMutation.md": {
-      "hash": "fb2434ec052b70367364a203783975611d8bc4fac0cfd432f56152bf75f13eb0",
+      "hash": "f51305f82ca5bf9c3e6ad784f3711374ecea04b3073f6dec2ef8f2e8a722dcb8",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useMutationState.md": {
-      "hash": "dfbaa45813eb48e2fd2f63a1300ac4f5c7c6481fd47c307c9d23ff8694831d5e",
+      "hash": "ad7ef1f4d37e832a3bf8f30952137f5b34c7768f1949a857d7e0a4a829c758d5",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/usePrefetchInfiniteQuery.md": {
-      "hash": "4d2b3903d5db847364c79c24d1f48bfbbf1571358f6e01c78617033024fc193a",
+      "hash": "0f966145136d3c0856c7cfa9d797aef98256f6d522cf7e37943a2862b71a9584",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/usePrefetchQuery.md": {
-      "hash": "d6880e4264f6a56c7f4b4aa02328a3d985a0ac25ad9a3da410c51bbbce953695",
+      "hash": "75b0c4faffe0bceb415170f018966a89824e7ece44d18b8433f4b31e2420077c",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useQueries.md": {
-      "hash": "afb28f17c6db97fb6b38de801daa55d31b327519ae6a09d9932f240f6d283e72",
+      "hash": "61e43d67bcb02eccb3f3b4ec9e595657a5b2f67c8c1df5db2e8d217ed515631b",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useQuery.md": {
-      "hash": "f2418847ec2ebb63892199aab376f69a1655eb970af473b4ddcf6590cb9a60ae",
+      "hash": "d36ba5629aad13bbc9342d35b9899d1f033ce536110148af813c5091770fc73c",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useQueryClient.md": {
-      "hash": "215237d9398bfdb19491f66fff8cd285524a4680e5cbc550ee4825705a99ce1c",
+      "hash": "d1e2442af8926a62e51155d5841025e8169e18772af13fc29322bc857cae45d9",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useQueryErrorResetBoundary.md": {
-      "hash": "7ea4e63119507d45d414142b7a4134204b124c8c30509e721d96cc27a687e0dd",
+      "hash": "7bec10011c40aa2dbcc03c14a9140fab89fbd41ea34b23315ba888a854b037bb",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useSuspenseInfiniteQuery.md": {
-      "hash": "15f8c8f4cfc123f21d3d6e6afd53162b9c325bf9892a04af9a48a50d4a24d3e6",
+      "hash": "63b7d405da502f0d405faf3ce28beb317826a3f263967d956ba0e07b6020fff9",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useSuspenseQueries.md": {
-      "hash": "bd4d46c90c795ad4cc326f0038bd9a83bef8f8d5b70307dc438a3b2ba7defc6a",
+      "hash": "a7c205d4dbcc987f88ef26d32c9fbda33d39603ef7f643597f3c08e5d5cea8e2",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/functions/useSuspenseQuery.md": {
-      "hash": "5d95b97bf553f036257f20bb3fa101a4fa81baf5d9c8b65bdda14d4ab86ae388",
+      "hash": "b77e3aba11223495d735bf6f42723392f2961883c48c228b52a6a88e1132455b",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/index.md": {
-      "hash": "fb73ec797c55eae32a3837a2bf8c8ca7d1bc7d745ed8dbb9eff331cee496a315",
+      "hash": "570b97b954fc68adb636cd65c461745248c7304012cd4832aaf3641b27c8daec",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/interfaces/CancelOptions.md": {
+      "hash": "f036ed75705104b0b01e676dc7639d947e27f9072caaa37880415dd2a3f8d498",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/interfaces/DefaultOptions.md": {
+      "hash": "0cd926812063820656e42622474f3493934d0b28819f5652580cf2cf0c2080e2",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/DehydrateOptions.md": {
+      "hash": "df5d7cf46892d0a10c1edc9fa264889d284336b83c81652d6db5e3c2dcb1a849",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/DehydratedState.md": {
+      "hash": "bf496a8c6ed16c3d975459a8648832062e78c34ceb04a584ba44c2035370dbad",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/interfaces/EnsureQueryDataOptions.md": {
+      "hash": "559ecd656b1912934f7c687ab64820b04753e5b61ddf0a86c09d9284ccb10524",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/FetchNextPageOptions.md": {
+      "hash": "282ca6911e6bbc7ec77b900d72148e973e4bff7e908268ebfe9454027fbbeeb2",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/interfaces/FetchPreviousPageOptions.md": {
+      "hash": "babd58c4aab0758a6694173e9b69553477000c4ee9034f3469ef653d617eb4ee",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/interfaces/FetchQueryOptions.md": {
+      "hash": "f49cdf47ea8e0ebe365028838f7c019e4a7f6ec65343859369eed9d13df67cd6",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/FocusManager.md": {
+      "hash": "3814b4229965970ee21394c62fd82a410b65a2e29c66db1534b4c6bc2f95916b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:48:01.806Z"
+    },
+    "framework/react/reference/interfaces/HydrateOptions.md": {
+      "hash": "a13b20a10160dbaa6a4f31a008179ce799a5d78d6e4f168f158178e74bfabb43",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
     },
     "framework/react/reference/interfaces/HydrationBoundaryProps.md": {
-      "hash": "fbb1638c12a99022698f36d62deca91533caf6c0caa394e733fe3e710e4656a4",
+      "hash": "9a9608297246e52e55304766907ef14b462b6135a11e20d2323e5bfada97f194",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/interfaces/InfiniteData.md": {
+      "hash": "5c7b2ee9074b70e1ba3cc4cd225d303ff4f34e11efd02785a58d9fef1b20c0e3",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryObserverBaseResult.md": {
+      "hash": "9893c5caad844d2a36c024bc8bc9d324282d9c847c83b8f4d34ae569de56f857",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryObserverLoadingErrorResult.md": {
+      "hash": "a20841123f567aa12f0e93c756385aa5a620cb59042c1601b86c9cc54429e159",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryObserverLoadingResult.md": {
+      "hash": "90a28e3fa5b65da8c9d03dcc746ca9cb74fc7e22715b25166827a4a6394f171d",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryObserverOptions.md": {
+      "hash": "a1e91c2745bd7c58f622bad9845ac5cd84b16254017f9746505b1142d48e1c0f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryObserverPendingResult.md": {
+      "hash": "bc9a8d26bdc9bc00055c654a94ae3492baf04c6f6da2d9d1d580437c6ca432eb",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryObserverPlaceholderResult.md": {
+      "hash": "4e0c2f93e4431c724433b9e0203e51e9efcdbb10ce7746727868d509d9976f0e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryObserverRefetchErrorResult.md": {
+      "hash": "15fe4f53bd6b0b346763816ea3b41f112bfd34296e84b879f8cc8eddde158e1e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryObserverSuccessResult.md": {
+      "hash": "0b6df8088b379c6c5641181d5c95f5efcb9d6d75008aff3b2a9c307b0be1bf3f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/InfiniteQueryPageParamsOptions.md": {
+      "hash": "ccb1b97da6b28cbf07b4719db48bd7f69cb1d89a9f7f6f757dad0dd6453f6294",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/InitialPageParam.md": {
+      "hash": "e729ae95c1a92907ab048c7fa1c35f87ac2b5132d67da35988f4cfe740726688",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/interfaces/InvalidateOptions.md": {
+      "hash": "d335129d60a3d8208a16f79c4c9645a529940194e4ebec1d0b5e5b6f2e82e9f6",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/interfaces/InvalidateQueryFilters.md": {
+      "hash": "6f415df1fe883bbfacaa2967501a4c79cf63e17f80282ab924391c39367b250e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/MutateOptions.md": {
+      "hash": "239a28d2c43428bc29bf0dc4c88ce966c7e18049ee706c163aa3ddf879d7cad1",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/interfaces/MutationCacheConfig.md": {
+      "hash": "18e7396acd818d4ebcca209e47bb0c9da9993c4d3d3b01e0a2a44ef31c742894",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/MutationFilters.md": {
+      "hash": "014a22a4a0aca287f39d7a80f2173716bf7b3596d346e33191795b02299c4b27",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/interfaces/MutationObserverBaseResult.md": {
+      "hash": "7dedaf8fbe6c3bbee70291b43672bd3ae05c443c90c89c1cd343924eaa06f725",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/MutationObserverErrorResult.md": {
+      "hash": "0f50a530d405c696760d77a4777ff4da3f9d1b043c6d459c70d51a1ecff32554",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/MutationObserverIdleResult.md": {
+      "hash": "69c2b70392566a94eb137c0dd76a318dededdfd1cce5293ebe02c1baee0e980a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/MutationObserverLoadingResult.md": {
+      "hash": "e84c45b243e9b2a4e22daa5ba926e72591239ba287d97b38694bd0a85e9f6c02",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/MutationObserverOptions.md": {
+      "hash": "56c743abc87a1f1e92cd32510b1a1e57417dc0e3d2c59518e3302eb7efdfc4b4",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/MutationObserverSuccessResult.md": {
+      "hash": "73adeeb73eaf5b0d25369c7cfe906f9cec290cd77486219346008303889fcbfb",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/MutationOptions.md": {
+      "hash": "ae6c594642de8011614bdd8359ca3b4ad85c7ebe0852221a28a26f9355e3986e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/MutationState.md": {
+      "hash": "5a099ce744ec0920161ac686f77600084de1f7bcc59d449452addaa61fb512cd",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/NotifyEvent.md": {
+      "hash": "9aaae3dd259aa8b09bc6aadd30a1e3a75a4c82803464074598230c15852c401a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/interfaces/OnlineManager.md": {
+      "hash": "46207310f61cf323ccb6c1eef9f939020f82b6bece3c89e01d1974dc5dedb25f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:48:01.806Z"
+    },
+    "framework/react/reference/interfaces/QueriesObserverOptions.md": {
+      "hash": "ff1377f261bc3db0c7b8833283ea439ebc8631df86bfd7488babe7f10dc82eff",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/interfaces/QueryCacheConfig.md": {
+      "hash": "1673f8c94fbcc3e497dbb37a6b6ed20730f8dead2a3c0046ca3d46b133ea4add",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/QueryClientConfig.md": {
+      "hash": "91391e5ec4c176b64ea1ccfdcce472600400316db4dd22754355d7905ba22e79",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
     },
     "framework/react/reference/interfaces/QueryErrorResetBoundaryProps.md": {
-      "hash": "4b5ef15561c6042f133817f48140aa649ab9ab1df6ab4e1c067e8597bc48d727",
+      "hash": "c99e48695a182d2b710b7dcbb75d2659e9a560424856b5480e91dcfb552ca79e",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/interfaces/QueryExecuteOptions.md": {
+      "hash": "61fee5b7cb45c95625c226faa0108e628d5077b26002a890a8d3bc9c345cf8d8",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/QueryFilters.md": {
+      "hash": "c7677fa6dee96a8ce810b89397940cbdf2925d259ac8114c094bbf44c119076f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/QueryObserverBaseResult.md": {
+      "hash": "3ff03a3cb76ccbc1faa3a1580f9ba71e478367b85a5c91d3ab5cbe0a457ab9c9",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/QueryObserverLoadingErrorResult.md": {
+      "hash": "e5f0b82d7748c9b416fc84850bc78b857f2b3c31666502b34e4d01d63820a486",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/QueryObserverLoadingResult.md": {
+      "hash": "00cb2b07bbebab1911fa0dda1cf01b7f0fcc21fa0bf0e71bb8b80aa4909f3483",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/QueryObserverOptions.md": {
+      "hash": "16afee4333b4b31a89f252336d75b31821f137f94057c0298e373c4f79b3fe75",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/QueryObserverPendingResult.md": {
+      "hash": "f9fa9c32806170ce1ea28e4b3b3406e496d5020cab28e7c62b49dc4531ad53f2",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/QueryObserverPlaceholderResult.md": {
+      "hash": "9c6bbeb5069feb1bb514f8028bf6803ded648342b74f51d39525082426e8c367",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/QueryObserverRefetchErrorResult.md": {
+      "hash": "5ee0a993525fcde6bf54f12333929fa36f48a5bdb76c70c05f3050bc9783271b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/QueryObserverSuccessResult.md": {
+      "hash": "37732a408bd95a2ebaf3bc255127a3c2823838c78352c696293c86779cbed40d",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:44:58.129Z"
+    },
+    "framework/react/reference/interfaces/QueryOptions.md": {
+      "hash": "c029d75302cfd897b0cde8e3798fe2ecc6f74553976d54421d02c6c0547083a8",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/QueryState.md": {
+      "hash": "255300b80b62205a0262e353db63929040f95ffa06c5620143e383e3f8dd011b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/RefetchOptions.md": {
+      "hash": "f84576cb51d5b879fadb76331526076634860382bca2a91ebdcf0da3e12e020d",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/interfaces/RefetchQueryFilters.md": {
+      "hash": "beaf80e82bb437ff7d5b8e568fecb294e434a049e507bfcb3383617f4dde169b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:45:45.405Z"
+    },
+    "framework/react/reference/interfaces/Register.md": {
+      "hash": "7adb66e866ebb36eaca151e2de5d2e2225a15adb289038f10397c5c6e539aa0b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:48:01.806Z"
+    },
+    "framework/react/reference/interfaces/ResetOptions.md": {
+      "hash": "a64628ba633f8a10cd9d4b28440f17a6faab857446e676fda3f9fa8f76db09e7",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:55.739Z"
+    },
+    "framework/react/reference/interfaces/ResultOptions.md": {
+      "hash": "e5b9898a74f8fa4789031027fde3a403996ef41653b2830d50a041bf8a7004b3",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/interfaces/SetDataOptions.md": {
+      "hash": "9bc05bda76d72a071c6d33f1450817063ec57f0ef126a6477f70680adce57739",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/interfaces/TimeoutManager.md": {
+      "hash": "ba8bee0e43d33cd32f3c61547cff573b00f1ff90161c74bd528ac7b4b0b5836b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:48:01.806Z"
     },
     "framework/react/reference/interfaces/UseBaseQueryOptions.md": {
-      "hash": "a5d086e02c8b447ff324c147ed54485ea041841ee5c4ce536abeda6fe5bf2948",
+      "hash": "7bb144119a039d71b98fe15847a15299baca33e05f62c52315a633156aeee6e6",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/interfaces/UseInfiniteQueryOptions.md": {
-      "hash": "49098a485bff2f03de74b67960621ed99fc681055e52a4848dba487b9df7c558",
+      "hash": "7ac1b026eafea57d3acb02bd6efaf2fdb3ba8f290e05958f68d512e093e05f1e",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/interfaces/UseMutationOptions.md": {
-      "hash": "e4ec45173ee97e6f9840dcd56e114fc51f1883e5be258c2a66830a7e2c4e4de8",
+      "hash": "30ddb49ad1c49ab455ef01198bff86c145b7cb6c9d4da45f1b836e3110d7582a",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/interfaces/UseQueryOptions.md": {
-      "hash": "b62081549fd45ec51bbdc2f1f1e36a01b339c884af1e74708033c170887efd31",
+      "hash": "2a1b4b758ae7f789fe812f1522f1769f7fdab5f6b43d319d91381c66c75d241d",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/interfaces/UseSuspenseInfiniteQueryOptions.md": {
-      "hash": "b801697ebb665e6d83ddb26c440b205dae43f24269a8935de3b83f8c6f41c9bf",
+      "hash": "1491acfce1bd988f2e8951dbf991456b9a7c0baac68fb48a744b4722d706f0b8",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/interfaces/UseSuspenseQueryOptions.md": {
-      "hash": "7178c5b5a9903a4dd621d61978d39a2093df316199f2f3314cd510e9460a6cff",
+      "hash": "525d6d80f2ed288d6cc008ef92dae29c0c676d6a1f862c9e861f89f025c81ac3",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/AnyDataTag.md": {
+      "hash": "2dfde5d00fb9d1b9e876e4a5b8a04c5367d37fb03b91edfdbc52716d6ba5c87c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/type-aliases/AnyUseBaseQueryOptions.md": {
-      "hash": "a77ceda37a42bfb34a023df09a64b2483ae6de1726ff72caf97215882ff43925",
+      "hash": "6761f5cdfe76b3a9783c9591b988eac55426018223637a2c4c2afbf9a02309d1",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/AnyUseInfiniteQueryOptions.md": {
-      "hash": "ae239bf0d7af150d41dd4bbe08d0e564fa56aa8ccf69a0a6ac7fd940a775684e",
+      "hash": "51082281a0aef8120b37096217b9a970d4fbaee8012ac99d42bc3915b7665a6a",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/AnyUseMutationOptions.md": {
-      "hash": "2aec0afece0bd41296fa9991cbf065a8e8a42c406554bff1eb8118f0c3adfd45",
+      "hash": "6d2a17a6aa6a7ce23672b611ecc24cddcf48640ae37be268fd40cccc84825d3d",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/AnyUseQueryOptions.md": {
-      "hash": "c194b57d2d218a4ff9200088639dc22277dcae061d64507735dbea84e0c44123",
+      "hash": "f775d09e766076a8d0cfa46f6feb09d489e2341c55f0e9cd7c84c486f1586751",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/AnyUseSuspenseInfiniteQueryOptions.md": {
-      "hash": "aa389e432053d3be2f6ec4b2abaad43d643fb53b6a4321917dd197dd099559d0",
+      "hash": "61e8582a82dae84ac8db0d8da3cf2f26b38a78a6d86cbc11e605fe783d469e7e",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/AnyUseSuspenseQueryOptions.md": {
-      "hash": "b622898e4b31b602f0ccec304604c49699405c8154556f0f9faed822debb2bad",
+      "hash": "7e463118c9c598dd168cd820174578fc546f64525b92765d717d56f48713cb01",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/DataTag.md": {
+      "hash": "cdc56addaeefa8cd5bc70615225a1fa17752f49ef503a522386562ade0f82698",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/DefaultError.md": {
+      "hash": "8150aa76b68daef4ac5749f46d481035379f1e4a21f1a76997e2b410ca941567",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/DefaultedInfiniteQueryObserverOptions.md": {
+      "hash": "5477f2c6e1a098dd07b45477f831d769a72e851cce04bfa6cbc7d2161ac5ddcc",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/DefaultedQueryObserverOptions.md": {
+      "hash": "7fd4ae2f8dbf50cd34ac73b1c2d449c46096d9c6c7cd480e3b09711e9ec65b1c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/DefinedInfiniteQueryObserverResult.md": {
+      "hash": "f0967eac7511268b85a45c237a80b9184ed2d8f3789479c530325596b6765dd5",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/type-aliases/DefinedInitialDataInfiniteOptions.md": {
-      "hash": "e95fca4081a6b37e29d2123ad047b7fc6e9f0e6bbc040977fb25519c305959e5",
+      "hash": "826fd47d6df1500873d98a1478a87fcd9f5737fb9c162e68739a77761655b604",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/DefinedInitialDataOptions.md": {
-      "hash": "3f143bb6ca8902c7ce975541f885d4ef70cdfdc5411655cb6c5af0792030e422",
+      "hash": "81fac729240ad3f99154709b461964c3b23c45d8c1ac3148fb9e4966dbefeec6",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/DefinedQueryObserverResult.md": {
+      "hash": "e89aa36113542fb44a5a9d104820ea3782914ee1bf23c3fcfe4754aafac76362",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/type-aliases/DefinedUseInfiniteQueryResult.md": {
-      "hash": "40274e06b401a64224f0db4875fb4f90fdc4da86bf6df53ec3b1d7e9497b0699",
+      "hash": "9ceb5e0ac2671f60ef34c9f2fba7dfa1f1e85c41d2f88e954375ab7e8f38c5eb",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/DefinedUseQueryResult.md": {
-      "hash": "2975a68555ec7ea6a768ddf4c531534f522f6b89b9ad43f510a1753e9c658209",
+      "hash": "acf7009996af7f4fbb50392c76299cb26677ac292126db6cbfd61b1b57c0d4b7",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/DistributiveOmit.md": {
+      "hash": "ed9e2f36e7fe674d94214e0ec5d0534c653bb7056c37da8ecf4cdd62675addb8",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/EnsureInfiniteQueryDataOptions.md": {
+      "hash": "081874f87e8093d4b611f7cd3116b512c5b170e281a6295e5c53395b98be0588",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/FetchInfiniteQueryOptions.md": {
+      "hash": "093a1b86199e7fe1bc81f003bb8d7426fa765cfc0e361177b54fd708ca00467c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/FetchStatus.md": {
+      "hash": "7838c739132ce08563282471f971b8c0c855f735fe3208396250ef07fb086ed8",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/GetNextPageParamFunction.md": {
+      "hash": "b5fecac644a1512a96f06d5b456e2682493a064f75d76c473c2c0723d64cfbd2",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/GetPreviousPageParamFunction.md": {
+      "hash": "0ff2e5d87b4abc23b9aad53c4880ba61f5351ae52978ce4c75fee6a2e45db151",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/InferDataFromTag.md": {
+      "hash": "5553afb9adce5a6075e03be10dd598416a93ce948c0fc5c8ceaec205e1152dc4",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/InferErrorFromTag.md": {
+      "hash": "41c8594367051c8ccd1cf26383bb5190eeda256a2f33a0998c05809298ba0fa0",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/InfiniteQueryExecuteOptions.md": {
+      "hash": "9cc93c5677e3e29ebf0d663bbdeedba4c7502b62611e5209330b435f9d736473",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/InfiniteQueryObserverResult.md": {
+      "hash": "b84be1f4983aea07133205f65dfffcd71e43df4da16003b0a19db5c154e661f9",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/InitialDataFunction.md": {
+      "hash": "2e46547f72d16234f40b5cf3bf218cfbf5bffcac77ca4dff1820a25dcdb37e22",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/ManagedTimerId.md": {
+      "hash": "1e06f2b6d7defa922f2de63dc269d2ede4c642408ef02cacfad5560e50ecf1a1",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/MutateFunction.md": {
+      "hash": "c4544e5d487257f66132cbf18ba3cdbb556edb9abbb46d3481437f37d060ce7f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/MutateFunctionRest.md": {
+      "hash": "72aa42f9e9702e787b08a3b0fa61a713d759605a5152b53d4f3e4b790b15acec",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/MutationCacheNotifyEvent.md": {
+      "hash": "2a8ae74bff6229137b37083461d2d214d74845e1e0923604f676d983a96b2842",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/MutationFunction.md": {
+      "hash": "8f549a384c1813e904d0ffa5b4551ff3426f321113026691b38e6883abfc7c25",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/MutationFunctionContext.md": {
+      "hash": "4dc97aeef5dc1a7a8ae8f3acfa745c153a38cf2154d184a5142aaeb6a4494981",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/MutationKey.md": {
+      "hash": "9f54c74c6ea71bcbcc276004612d54b863340f40944b355cf21028b79dbe0503",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/MutationMeta.md": {
+      "hash": "282447dfb59137c8bd10285f98e31a96d80973a01a997fe6741444a403727857",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/MutationObserverResult.md": {
+      "hash": "a3e49aefb28b9e5f4c7849d585cfb7a94bf306fcd8a9245dbf1e367bae232901",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/MutationScope.md": {
+      "hash": "34d1556875cd49131e505d47601b85e6f79366784271dd638cbef600b772535c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/type-aliases/MutationStatus.md": {
+      "hash": "d222ad94fcfa8e5253d5baa7fe5dd85834e6e1cf58e393314c66e8aa7d6f4c4f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/NetworkMode.md": {
+      "hash": "10a5a0aba0f50b44693a957eac70f2ffda7a2bd0797575a468340f19b1d4cd6e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/NonUndefinedGuard.md": {
+      "hash": "376fbfb23da0b8a296325bd6a5ab0e3e244c54d50b637396f2ff501ec2f3eb0b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/NotifyEventType.md": {
+      "hash": "115665406e01df7b8bb1f01f5ced0578014072fa6cef42b2dd5013624185b418",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/NotifyOnChangeProps.md": {
+      "hash": "8b8d567e42ecf92da4a438ff50347bc016a27b25b411ef244c776d2f1a4ca5f9",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/OmitKeyof.md": {
+      "hash": "3ddebdc1b6cb5be8cd69a6cc94db8392dced6322f4da102689b7cab09440b2ab",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/Override.md": {
+      "hash": "ab0023b818dd9dcc3668b0487523aa7da6adf14a45b16eb977f3c6debdc7cc2b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/PlaceholderDataFunction.md": {
+      "hash": "84ed908458c083ae0276659be19e5b527359039eba160458c948a004577dfab3",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
     },
     "framework/react/reference/type-aliases/QueriesOptions.md": {
-      "hash": "436b89ecbb017d099cb799fec96fe9080c548d252654a3932c36e458322141fa",
+      "hash": "19e17a824c32c77b1c7d9b758252082fc54c38c4aa8213cb38039104b00d9278",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/QueriesPlaceholderDataFunction.md": {
+      "hash": "0e5bb01504837caf18bcfa9bc1ff67eca157754ed4ab36f18e785571d9e1ea54",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/type-aliases/QueriesResults.md": {
-      "hash": "12e89ff3dbd5fe57700704df224b2124853b7c0f8a1e91f8be87e5993998290e",
+      "hash": "e79a0429c1a6e253f9e7ce06056f8cb953e90eeccc9a162737ce86578229fba0",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/QueryBooleanOption.md": {
+      "hash": "3e2950da222e71c9a544ed7362e4b34b0149ab5a08460e60833af5f79e2859ea",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/QueryCacheNotifyEvent.md": {
+      "hash": "78cdec8d954ab3b3e1a2e124535fbfc939bca86d9350ea0ba49862c4085bc46b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/type-aliases/QueryClientProviderProps.md": {
-      "hash": "68cee87b7fc034b5cfb558946228673b4389b93cc7c694a1043c12cf132b2787",
+      "hash": "8d68b531ea99b9fddd5b79b828f26958eda4fe4eb2bd6d2a540b3db38663eae4",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/QueryErrorClearResetFunction.md": {
-      "hash": "04e27a31b21488d4ff121dbea7fb5bc63069a1a8a76f71498710a79cd1b7a74c",
+      "hash": "995e9d1f175c0f4d6b6c634455067759242dbc7e0c817d0f68602176d5510bbd",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/QueryErrorIsResetFunction.md": {
-      "hash": "da0f12d8ef284c961810489ba67989feb3cdbb21f13491d880eef00e6081e5aa",
+      "hash": "c01c16a25565a8768fa35988e3e65fee214c153643af43fc8f0145c40304dd7d",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/QueryErrorResetBoundaryFunction.md": {
-      "hash": "70475f31079cbebbcbe3c407a0aa32771cf1a6c842b9dc98ecab817dce9155f4",
+      "hash": "c72432fd13c9bc5083b45bd5e0531b4fca067f48c0d79f52d5a18133733e341f",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/QueryErrorResetFunction.md": {
-      "hash": "56009405a267050b81c6e7a5f01ecfd44189f67860fe7c1747978f8599f228a7",
+      "hash": "b67f33ef2a9868206df9f2c72401fb9cf8f60548fef2971e0ce0a47c9583587d",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/QueryFunction.md": {
+      "hash": "57dd14877890f75517233570e0d5c1e5e5779b1bb695c205d5d41bcf0b825273",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/QueryFunctionContext.md": {
+      "hash": "889d52d585a3614b3bec6a941a7c030f763c7db8d08ac9e55302aa5226708073",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/QueryKey.md": {
+      "hash": "1e942027b8c1f231c367d76824fb59a3715ec00488721d032d23c539669450a7",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/QueryKeyHashFunction.md": {
+      "hash": "42972e4130f13ab4aca4a96af1ed7e046e039f5ed0f0aca1d6a159ffc113386e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/QueryKeyWithDataTag.md": {
+      "hash": "5319ad132a80c052d1b6e5146c8c21559d2ca345375fbc9dcd546dfa1591a624",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:36:16.231Z"
+    },
+    "framework/react/reference/type-aliases/QueryMeta.md": {
+      "hash": "9e623b3be9b2caddc1c661fa9a9882be8cce71c86c2166edeb0977a690224b03",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/QueryObserverResult.md": {
+      "hash": "0a59ec164bfc0cd7b6be321558f622d7bdeb70d255b8f73f81ed70fad880eafe",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/QueryPersister.md": {
+      "hash": "63d642b97c64645fffcb50d5645bb7e92c7f1de7adb8750779735c0278958413",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/QueryStatus.md": {
+      "hash": "74eea5af900c51fc0485cf34543805de70b6a12ce8ee6a36cb6ce94893d7fa9f",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/SkipToken.md": {
+      "hash": "4fe8fd4a3675348fe915fb04464058cfd4a2e81de7a1cb8294b01901920fccea",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/StaleTime.md": {
+      "hash": "f5db64252a62c922ae160c018c845d400a1299126e8177294c3c804b49b00f44",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/StaleTimeFunction.md": {
+      "hash": "4ac7fa1da0d763b6ca46fd9a5a40880ef22b59c1cdffba8e8e5130ebf6c01eff",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/type-aliases/SuspenseQueriesOptions.md": {
-      "hash": "37eb37d73e05025f4006cd9b2b2506568fdd63448e399f2c32c53a2678c63ca9",
+      "hash": "35ddd0ad872f78f17cda006537fa6336923334eb1e9dfc6067eb9c946d4c8aac",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/SuspenseQueriesResults.md": {
-      "hash": "c5c8564a927cc05cb27dcc50247064ed45de9fa2be99e7a7c6f927cdb33cbe8c",
+      "hash": "69e5e94988809c09c725981357425806a3c499cf8697d4c3cb36e72d7a22a165",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/ThrowOnError.md": {
+      "hash": "cf43a3d843b35cebf28f95502c69a159dc928bbdb9ecc971079bcce3f89a774c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/TimeoutCallback.md": {
+      "hash": "0db1a27e6e268a60eb98803e7453636d6e7005c7fee5fea2833e76b2411add3e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
+    },
+    "framework/react/reference/type-aliases/TimeoutProvider.md": {
+      "hash": "8f63f65a3ebbd6dcab6edd2561d5841c5c465bf809f4e4ec4e6a4aa4374330fd",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
     },
     "framework/react/reference/type-aliases/UndefinedInitialDataInfiniteOptions.md": {
-      "hash": "6362073c9a81459173e0da38be809480eac9623baa0bd97b62b72bd1d1e72215",
+      "hash": "7d2ad98b0002c2c618aac72ebdb08b7bfee358f9331f73b0b80356fcbc0b26bd",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UndefinedInitialDataOptions.md": {
-      "hash": "7d63cde619381cfeaf1ae47e74d7a934fdb9db1604c629c1ff006d4fee3027bd",
+      "hash": "705af51420693ee966345fbd0e40c211f4e28b544fc3ce7f2a6a8e12de5e5894",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/UnsetMarker.md": {
+      "hash": "4b1e790d53486ab5f6140e403074d9f616f090afe86ef4e995eb43ef7b72338e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/type-aliases/UnusedSkipTokenInfiniteOptions.md": {
-      "hash": "a4f73272943c769a20c67a7f0fb1d1c0438a952180a86034cce7c20f537013bb",
+      "hash": "59664c750c9936855c4c8c5c8d3ba8f333a659e5ee0d7ecda240840ae63b594c",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UnusedSkipTokenOptions.md": {
-      "hash": "dbea307a6d531005c46a0d8175531d2ce17711d41cf34d543ac5a63411fcb3ef",
+      "hash": "8e92defc37b36a76535eb22e0cbe5c3eceff725c4e8c2eaf9be516805bd62f42",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/Updater.md": {
+      "hash": "bfc9c49451adbf73ddf8ffd7d6cf5c3df0f7879d23e5136d464fe2f0c99d587e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:37:42.525Z"
     },
     "framework/react/reference/type-aliases/UseBaseMutationResult.md": {
-      "hash": "c93dee01dbb5e624f59da77aae9aab256b18d1704c8737f1cd5da9e0008a8d6c",
+      "hash": "14cb2e954dfb7b93412125ebbd0cc011b3a3483bde393a70ac0a5a86e7dad72c",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UseBaseQueryResult.md": {
-      "hash": "59f9a2df7133b7b3e733a33a34597a94c6278b16e13b2793216286201d26f55d",
+      "hash": "7b64df68d268693433d6c2ec51e6bff7da5d3b411d35cb65a9aeaa64e3467677",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UseInfiniteQueryResult.md": {
-      "hash": "71117f81f16e404522967fe5c8877054d61680f6699cb1815504e7082632f875",
+      "hash": "38368488c7425caa0ef1ebd990d9fd4729d18be651e529e77977ce3d5eadd2a9",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UseMutateAsyncFunction.md": {
-      "hash": "5c53db65b395151e5474104abd32fbdacec0fe74bb31f3e9585032f96205f915",
+      "hash": "347d5ffa4be82b25ffca487b520bb20abb0d001307cca7e484bc0173e523e571",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UseMutateFunction.md": {
-      "hash": "c0205e05550fe8fc1aa617a341d0d56d1f752b49acb9dae3742be085095ad424",
+      "hash": "b922380382a65b83c37b35bfc64887d7bd03b298ca9619696ae31ad422d2deaa",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UseMutationResult.md": {
-      "hash": "21881b360bccf32f06f80c5b2bc0815f1c5769e3045b0c696497316b887cf2c6",
+      "hash": "30618e8ae22bdc3e76c0f88e24be0f25bf54ed5ec39bcd18760406b255887aca",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UsePrefetchInfiniteQueryOptions.md": {
-      "hash": "06425d8fbfb209e4aa01a12b1cb7d3bf8c4b09f826e4a72099e168fbeb1d00cd",
+      "hash": "96ad2aeaff4f2a195dcf7c145a2a2bb12036756418c3d9991d33c33446081ae0",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UsePrefetchQueryOptions.md": {
-      "hash": "a677f7b5220c87b867476f9f9f25655b3ea414126ff8a6c5cd63c3bbef4b79c0",
+      "hash": "b6ba57af986b05f6391763788476e6447cd544a6464ba0653d0b7ac1c7143b3f",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UseQueryResult.md": {
-      "hash": "ecc83fd6efacbf8b5e170e07aa8c3502390a16269868ed168e4c88d88f590f20",
+      "hash": "f6c6517cbd429018dee44818f72773c8c850f257bc05f501543fc88b73f13deb",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UseSuspenseInfiniteQueryResult.md": {
-      "hash": "92a8bf114c44d3d0699a0f267fac4079c99fbb1a033a2fdc4ac85b6d8081f8d9",
+      "hash": "2415a7ef5460e2aa87210e47e9d10b14d2317236732ace06bd46164a81591753",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/type-aliases/UseSuspenseQueryResult.md": {
-      "hash": "eb49c6e1362d24d424a08bc84edea91f1caab2cd7b657b0be8b59f838facf6c2",
+      "hash": "85e4580442f6943a690357f01659c5b54ed8786f37dde9d8ad5bcfe454ccbeb5",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/type-aliases/WithRequired.md": {
+      "hash": "272f644feead973afc31d827f12ea59c0bdb85b7ea01d35f4ca95b8a95ecc284",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/dataTagErrorSymbol.md": {
+      "hash": "372f6b23fb0d45a71a27bca28e6e0e3dae9c2a3d9a2b79093b52d9b983d35af0",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/type-aliases/dataTagSymbol.md": {
+      "hash": "49ac1095e4d522ff4b46dc6f0e51694ea4aa8fe4713946dd9ee8bce467e57e0c",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/reference/variables/IsRestoringProvider.md": {
-      "hash": "c78eaf029a8ac170aa556e68f4ef04d42f8d6168b726f00eb0bf3bcec779e982",
+      "hash": "e665008ee38c70a8c1e214fc565e02a689fd755556a18514f9cf2cebfa5db8b6",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
     },
     "framework/react/reference/variables/QueryClientContext.md": {
-      "hash": "95c0e8b0bfddfeaff598af8a745d3efc1d05c129308d8b624ef5ddf1b3bec025",
+      "hash": "197f0924ad194f5dffbc96e1010e3e53e2a25c9e9658d0c770f609e32b6b65fc",
       "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
+      "translatedAt": "2026-09-23T13:03:32.286Z"
+    },
+    "framework/react/reference/variables/dataTagErrorSymbol.md": {
+      "hash": "221f07d134e8c4fba715a8b993226a5bde10ba08c8d2fc4f6064fa3074f3416a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/variables/dataTagSymbol.md": {
+      "hash": "0c2b5d78e408f6bcb9cf5ff245b84afc7f2a6e2b271bc6025374494bd6cf8421",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/variables/defaultScheduler.md": {
+      "hash": "e381f1ea6b7e2ab9c991867d221a111f877a8feacbb4a932ba87adbe193a4e41",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/variables/environmentManager.md": {
+      "hash": "ce1a208f3deb110ae36820f6f788e4513b83e61ed11b787e21cd5d3d7ceaca52",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:48:01.806Z"
+    },
+    "framework/react/reference/variables/focusManager.md": {
+      "hash": "8dc5ce14cde4fb5c5c9d3cc32b16d84d44f4d8d15f2e49c2b77ded1919c27b74",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/variables/isServer.md": {
+      "hash": "10c850959da6617dbbee894fa81c2460c2c5a0b96324057a0d20333ac098123a",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/variables/notifyManager.md": {
+      "hash": "21b349a09e2c903409d2bb74683d597a5da3841152101deee628d85d23f2182b",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:48:01.806Z"
+    },
+    "framework/react/reference/variables/onlineManager.md": {
+      "hash": "1b89f4c97e01d64d96aea63690e16750a5d0ff5f82cc20f6142d2fb359247e8e",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/variables/skipToken.md": {
+      "hash": "dfb8b0943c592ff5d962c51bff645a65cfbe1fc3fdacd9c7b14a9dce7389f2be",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/variables/timeoutManager.md": {
+      "hash": "5fb0ad8b0121a08ac6a410023429f0ffe237848809b1978b6bf3a2745c733bda",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
+    },
+    "framework/react/reference/variables/unsetMarker.md": {
+      "hash": "2d1325412d693e0102845d3e5c44111570517764c8928fd8068bc66de2122298",
+      "sourceRef": "main",
+      "translatedAt": "2026-09-23T12:35:16.085Z"
     },
     "framework/react/typescript.md": {
       "hash": "c0447f868693710828ef484a9507b2e96dece8870b189728c678558084bd3a08",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/InfiniteQueryObserver.md": {
-      "hash": "6816a206df11504275fe4540c66da24cc3f9bbb5090414ebcd3c98f3d344a39c",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/MutationCache.md": {
-      "hash": "86c01ebf1703f84bcca2acf3378f123f3bab30dec675def8da9b47f0f5790856",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/QueriesObserver.md": {
-      "hash": "de3126b53d842e75cc838221af0c3fb431299e9fca5fe0aa615680b298a08bb1",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/QueryCache.md": {
-      "hash": "f9d662e2487376d364a707d2c3c311496a179fc1e661a7d367bab30b7899423b",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/QueryClient.md": {
-      "hash": "01dcfff3d2766f5096da082fdc4b905d4ff72f5b55d772c3106865a0a5391649",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/QueryObserver.md": {
-      "hash": "8f956494ea1bbdf22a60536987cc7822305d5e7604a0a472cf4ad649bb8f61c4",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/environmentManager.md": {
-      "hash": "5d74d5b05f4bb1e12bf6c7e2fe5ea2c5feebc912776ee041dffc89551b4e65b8",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/focusManager.md": {
-      "hash": "e3d3b079cb6dbdc2d4911e44c16e22cfc9d761cf79d8454dada5643ff631a82a",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/notifyManager.md": {
-      "hash": "b7ec287fdc9156fe529fbd680ebe6e466478cef887a79dc36744688234f0142e",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/onlineManager.md": {
-      "hash": "ac269888ceebe226c40f35bb4de51730702507114436dcf222454e3465734562",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/streamedQuery.md": {
-      "hash": "244ee24bcc3486a0b34180fac52fdb97cb7815265b0fca188a71fbb50a63e3b4",
-      "sourceRef": "main",
-      "translatedAt": "2026-09-03T16:09:19.620Z"
-    },
-    "reference/timeoutManager.md": {
-      "hash": "2cc3b015d18a43902cb9bdb5d0b8f019d61862686c4e215219642d357b96f945",
       "sourceRef": "main",
       "translatedAt": "2026-09-03T16:09:19.620Z"
     }

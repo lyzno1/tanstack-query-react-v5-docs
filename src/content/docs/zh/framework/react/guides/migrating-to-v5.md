@@ -140,7 +140,7 @@ npx jscodeshift@latest ./path/to/src/ \
 
 ### useQuery（和 QueryObserver）上的回调已被删除
 
-查询中的 `onSuccess`、`onError` 和 `onSettled` 已被删除，变更中的同名回调不受影响。关于此更改的原因及迁移方式，请参阅[这份 RFC](https://github.com/TanStack/query/discussions/5279)。
+查询中的 `onSuccess`、`onError` 和 `onSettled` 已被删除，mutation 中的同名回调不受影响。关于此更改的原因及迁移方式，请参阅[这份 RFC](https://github.com/TanStack/query/discussions/5279)。
 
 ### `refetchInterval` 回调现在只接收 `query`
 
@@ -345,7 +345,7 @@ v5 为无限查询新增了 `maxPages` 选项，用于限制查询数据中保�
 
 ### 新的 `dehydrate` API
 
-可传给 `dehydrate` 的选项已经简化。查询和变更现在始终会按默认函数的规则进行脱水。如需改变此行为，请实现对应的 `shouldDehydrateQuery` 或 `shouldDehydrateMutation` 函数，而不再使用已删除的 `dehydrateMutations` 和 `dehydrateQueries` 布尔选项。如果要恢复“完全不脱水查询或变更”的旧行为，可传入 `() => false`。
+可传给 `dehydrate` 的选项已经简化。查询和 mutation 现在始终会按默认函数的规则进行 dehydrate。如需改变此行为，请实现对应的 `shouldDehydrateQuery` 或 `shouldDehydrateMutation` 函数，而不再使用已删除的 `dehydrateMutations` 和 `dehydrateQueries` 布尔选项。如果要恢复“完全不 dehydrate 查询或 mutation”的旧行为，可传入 `() => false`。
 
 ```tsx
 - dehydrateMutations?: boolean // [!code --]
@@ -384,7 +384,7 @@ useInfiniteQuery({
 
 `loading` 状态已重命名为 `pending`，类似地，派生的 `isLoading` 标志已重命名为 `isPending`。
 
-对于变更，`status` 也从 `loading` 改为 `pending`，`isLoading` 标志则改为 `isPending`。
+对于 mutation，`status` 也从 `loading` 改为 `pending`，`isLoading` 标志则改为 `isPending`。
 
 最后，查询新增了派生标志 `isLoading`，其计算方式为 `isPending && isFetching`。它与 `isInitialLoading` 含义相同，但 `isInitialLoading` 现已弃用，并将在下一个主要版本中删除。
 
@@ -392,7 +392,7 @@ useInfiniteQuery({
 
 ### `hashQueryKey` 已重命名为 `hashKey`
 
-因为它也能对变更键进行哈希，并可用于 `useIsMutating` 和 `useMutationState` 的 `predicate` 函数；这些函数会接收变更对象。
+因为它也能对 mutation 键进行哈希，并可用于 `useIsMutating` 和 `useMutationState` 的 `predicate` 函数；这些函数会接收 mutation 对象。
 
 [//]: # 'FrameworkSpecificBreakingChanges'
 
@@ -421,13 +421,13 @@ import { batch } from 'solid-js'
 notifyManager.setBatchNotifyFunction(batch)
 ```
 
-### 水合 API 更改
+### hydration API 更改
 
-为了更好地支持并发特性和过渡，我们调整了水合 API。`Hydrate` 组件已更名为 `HydrationBoundary`，`useHydrate` Hook 已被删除。
+为了更好地支持并发特性和过渡，我们调整了 hydration API。`Hydrate` 组件已更名为 `HydrationBoundary`，`useHydrate` Hook 已被删除。
 
-`HydrationBoundary` 现在只水合查询，不再水合变更。如需水合变更，请使用底层 `hydrate` API 或 `persistQueryClient` 插件。
+`HydrationBoundary` 现在只会对查询执行 hydrate，不再对 mutation 执行 hydrate。如需 hydrate mutation，请使用底层 `hydrate` API 或 `persistQueryClient` 插件。
 
-还有一项技术细节：查询的水合时机略有变化。新查询仍在渲染阶段水合，以保证 SSR 正常工作；对于缓存中已存在的查询，只要传入的数据比缓存数据更新，现在就会在 Effect 中水合。如果你只在应用启动时水合一次，这项变化不会产生影响。但如果你使用 Server Components，并在页面导航时传入新数据进行水合，则可能会短暂看到旧数据，随后页面立即以新数据重新渲染。
+还有一项技术细节：查询的 hydrate 时机略有变化。新查询仍在渲染阶段 hydrate，以保证 SSR 正常工作；对于缓存中已存在的查询，只要传入的数据比缓存数据更新，现在就会在 Effect 中 hydrate。如果你只在应用启动时 hydrate 一次，这项变化不会产生影响。但如果你使用 Server Components，并在页面导航时传入新数据进行 hydrate，则可能会短暂看到旧数据，随后页面立即以新数据重新渲染。
 
 这在技术上属于破坏性变更，目的是避免在页面过渡完全提交前，过早更新_当前_页面的内容。你无需采取任何操作。
 
@@ -503,7 +503,7 @@ if (queryInfo.data) {
 }
 ```
 
-在这里，我们只是在变更运行期间改变 UI 的显示，而没有直接把数据写入缓存。如果只有一个位置需要展示乐观更新，这种方式最为合适。详情请参阅[乐观更新文档](./optimistic-updates.md)。
+在这里，我们只是在 mutation 运行期间改变 UI 的显示，而没有直接把数据写入缓存。如果只有一个位置需要展示乐观更新，这种方式最为合适。详情请参阅[乐观更新文档](./optimistic-updates.md)。
 
 ### 使用新的 `maxPages` 选项限制无限查询的页数
 

@@ -8,12 +8,12 @@ redirect_from:
 ## 调用签名
 
 ```ts
-function useQuery<TQueryFnData, TError, TData, TQueryKey>(options, queryClient?): DefinedUseQueryResult<TData, TError>;
+function useQuery<TQueryFnData, TError, TData, TQueryKey>(options: DefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey>, queryClient?: QueryClient): DefinedUseQueryResult<TData, TError>;
 ```
 
-定义于： [react-query/src/useQuery.ts:50](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQuery.ts#L50)
+定义于： [packages/react-query/src/useQuery.ts:51](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQuery.ts#L51)
 
-设置 `initialData` 时会选择此重载，因此返回的 `data` 永远不会是 `undefined`。
+设置 `initialData` 时会选择此重载，因此返回的 `data` 不会是 `undefined`（除非 `select` 将 `TData` 转换为包含 `undefined` 的类型）。
 
 ### 类型参数
 
@@ -43,7 +43,7 @@ function useQuery<TQueryFnData, TError, TData, TQueryKey>(options, queryClient?)
 
 #### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 
@@ -87,10 +87,10 @@ function Posts() {
 ## 调用签名
 
 ```ts
-function useQuery<TQueryFnData, TError, TData, TQueryKey>(options, queryClient?): UseQueryResult<TData, TError>;
+function useQuery<TQueryFnData, TError, TData, TQueryKey>(options: UndefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey>, queryClient?: QueryClient): UseQueryResult<TData, TError>;
 ```
 
-定义于： [react-query/src/useQuery.ts:117](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQuery.ts#L117)
+定义于： [packages/react-query/src/useQuery.ts:118](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQuery.ts#L118)
 
 ### 类型参数
 
@@ -120,7 +120,7 @@ function useQuery<TQueryFnData, TError, TData, TQueryKey>(options, queryClient?)
 
 #### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 
@@ -186,10 +186,10 @@ function Posts() {
 ## 调用签名
 
 ```ts
-function useQuery<TQueryFnData, TError, TData, TQueryKey>(options, queryClient?): UseQueryResult<TData, TError>;
+function useQuery<TQueryFnData, TError, TData, TQueryKey>(options: UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>, queryClient?: QueryClient): UseQueryResult<TData, TError>;
 ```
 
-定义于： [react-query/src/useQuery.ts:281](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQuery.ts#L281)
+定义于： [packages/react-query/src/useQuery.ts:286](https://github.com/TanStack/query/blob/main/packages/react-query/src/useQuery.ts#L286)
 
 ### 类型参数
 
@@ -219,7 +219,7 @@ function useQuery<TQueryFnData, TError, TData, TQueryKey>(options, queryClient?)
 
 #### queryClient?
 
-`QueryClient`
+[`QueryClient`](../classes/QueryClient.md)
 
 使用此参数可指定自定义 `QueryClient`。否则，将使用最近的上下文所提供的实例。
 
@@ -319,7 +319,7 @@ function Post({ postId }: { postId: number | undefined }) {
 }
 ```
 
-使用已经缓存的列表为详情查询提供初始数据，从而跳过加载状态：
+使用已缓存的列表为详情查询提供初始数据，从而跳过加载状态。`initialDataUpdatedAt` 会沿用列表自身的获取时间，因此如果设置了 `staleTime`，它会从列表实际获取的时间开始计算，而不是从当前时间开始：
 ```tsx
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 
@@ -333,6 +333,10 @@ function Post({ postId }: { postId: number }) {
       queryClient
         .getQueryData<Array<Post>>(['posts'])
         ?.find((post) => post.id === postId),
+    initialDataUpdatedAt: () =>
+      queryClient.getQueryState(['posts'])?.dataUpdatedAt,
+    initialDataUpdatedAt: () =>
+      queryClient.getQueryState(['posts'])?.dataUpdatedAt,
   })
 
   if (isError) return <span>错误：{error.message}</span>

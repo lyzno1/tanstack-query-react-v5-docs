@@ -193,7 +193,7 @@ others:
     {
       title: 'Tanstack Query Visualizer',
       url: 'https://tanstack-query-visualizer.sofi.coop/',
-      description: '用于可视化变更与查询键之间关系的交互式沙箱。',
+      description: '用于可视化 mutation 与查询键之间关系的交互式沙箱。',
     },
     {
       title: 'ts-rest',
