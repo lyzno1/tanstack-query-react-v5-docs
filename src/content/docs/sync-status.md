@@ -8,8 +8,8 @@ This site tracks TanStack Query React docs from the v5 release line.
 - Upstream repo: [https://github.com/TanStack/query.git](https://github.com/TanStack/query.git)
 - Tracking strategy: `upstream-main`
 - Current synced ref: `main`
-- Upstream commit: `32ca5b50d4f646b489bc57100767990ef55718c7`
-- Synced at (UTC): `2026-09-23T13:04:28.635Z`
+- Upstream commit: `645291a439da6ca9b65e6f5dd248c447fb1f290a`
+- Synced at (UTC): `2026-09-24T08:32:06.390Z`
 
 ## Synced counts
 
