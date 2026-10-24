@@ -8,8 +8,8 @@ description: 本文档站的上游同步信息。
 - 上游仓库： [https://github.com/TanStack/query.git](https://github.com/TanStack/query.git)
 - 跟踪策略： `upstream-main`
 - 当前同步引用： `main`
-- 上游提交： `645291a439da6ca9b65e6f5dd248c447fb1f290a`
-- 同步时间（UTC）： `2026-09-24T08:32:06.390Z`
+- 上游提交： `9e4253766f8015d1372bcd515f50103fd067a42d`
+- 同步时间（UTC）： `2026-10-24T08:12:48.210Z`
 
 ## 同步数量
 
