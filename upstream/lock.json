@@ -2,8 +2,8 @@
   "upstreamRepo": "https://github.com/TanStack/query.git",
   "track": "upstream-main",
   "ref": "main",
-  "commit": "645291a439da6ca9b65e6f5dd248c447fb1f290a",
-  "syncedAt": "2026-09-24T08:32:06.390Z",
+  "commit": "979695d0a2daa8662bdfcbf9f4ae9c9805d97dec",
+  "syncedAt": "2026-10-31T09:44:02.248Z",
   "counts": {
     "syncedMarkdown": 280,
     "reactMarkdown": 270,
