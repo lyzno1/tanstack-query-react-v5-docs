@@ -1,5 +1,5 @@
 ---
-title: Optimistic Updates
+title: Optimistic Updates (Next.js App Router)
 description: Official TanStack Query React example link.
 ---
 

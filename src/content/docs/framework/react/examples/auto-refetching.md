@@ -1,5 +1,5 @@
 ---
-title: Auto Refetching / Polling / Realtime
+title: Auto Refetching / Polling / Realtime (Next.js Pages Router)
 description: Official TanStack Query React example link.
 ---
 

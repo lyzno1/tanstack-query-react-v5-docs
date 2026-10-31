@@ -1,5 +1,5 @@
 ---
-title: Pagination
+title: Pagination (Next.js Pages Router)
 description: Official TanStack Query React example link.
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Rick And Morty
+title: Rick And Morty (React Router)
 description: Official TanStack Query React example link.
 ---
 

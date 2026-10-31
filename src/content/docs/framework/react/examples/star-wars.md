@@ -1,5 +1,5 @@
 ---
-title: Star Wars
+title: Star Wars (React Router)
 description: Official TanStack Query React example link.
 ---
 
